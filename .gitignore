@@ -131,3 +131,7 @@ dist
 
 # JETBRAINS
 .idea
+
+#DIST
+dist-electron/
+release
