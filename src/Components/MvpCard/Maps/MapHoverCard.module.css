@@ -1,0 +1,15 @@
+.countdownItem {
+    @apply flex flex-row w-full justify-between gap-4 items-center text-lg text-white;
+}
+
+.map {
+    --tombpos-x: 0;
+    --tombpos-y: 0;
+    --image-size: 0;
+    @apply flex justify-center items-center relative;
+
+    img {
+        width: var(--image-size);
+        height: var(--image-size);
+    }
+}

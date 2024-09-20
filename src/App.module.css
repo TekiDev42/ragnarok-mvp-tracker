@@ -1,0 +1,31 @@
+.App {
+    @apply relative flex flex-col h-full gap-8 w-full bg-fixed p-5 min-h-screen;
+}
+
+.cardContainer {
+    @apply grid grid-cols-2 w-full items-start gap-8 overflow-hidden z-10;
+}
+
+@media screen(sm){
+    .cardContainer {
+        @apply grid-cols-2
+    }
+}
+
+@media screen(md){
+    .cardContainer {
+        @apply grid-cols-3
+    }
+}
+
+@media screen(lg){
+    .cardContainer {
+        @apply grid-cols-4
+    }
+}
+
+@media screen(xl){
+    .cardContainer {
+        @apply grid-cols-6
+    }
+}

@@ -1,0 +1,24 @@
+.card {
+    @apply relative flex flex-col w-full shadow-lg py-2 select-none;
+    border-radius: 1rem;
+    min-height: 300px;
+}
+
+.content {
+    @apply flex flex-col items-center gap-2 py-2 px-5;
+}
+
+.actions {
+    @apply flex w-full items-end justify-end px-5 py-2 gap-2 flex-grow;
+}
+
+.image_container {
+    @apply flex flex-col justify-center items-center min-h-32;
+}
+
+.name {
+    @apply flex w-full flex-col justify-between items-center gap-0;
+    h2 {
+        @apply text-xl text-white;
+    }
+}
