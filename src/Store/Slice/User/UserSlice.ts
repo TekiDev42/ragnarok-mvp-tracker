@@ -10,7 +10,8 @@ import {defaultSettings} from "@constants/defaults.ts";
 
 
 const initialState: UserState = {
-    ...defaultSettings
+    ...defaultSettings,
+    activePage: 1
 }
 
 export const userSlice = createSlice({
@@ -25,6 +26,9 @@ export const userSlice = createSlice({
             state.respawnTimer = action.payload.respawnTimer
             state.perPage = action.payload.perPage
         },
+        setActivePage: (state, action: PayloadAction<number>) => {
+            state.activePage = action.payload
+        },
         setBackground: setBackgroundReducer,
         setAnimation: setAnimationReducer,
         setSoundNotification: setSoundNotificationReducer,
@@ -37,6 +41,6 @@ export const userSlice = createSlice({
 
 
 export const {setAnimation, setBackground, setPerPage, setRespawnTimer, setSettings} = userSlice.actions
-export const {setSoundNotification, setDelayNotification, reset} = userSlice.actions
+export const {setActivePage, setSoundNotification, setDelayNotification, reset} = userSlice.actions
 
 export default userSlice.reducer

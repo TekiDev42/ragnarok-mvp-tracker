@@ -1,6 +1,6 @@
 import style from "@/App.module.css";
 import {MvpCard} from "@components/MvpCard/MvpCard.tsx";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {getSortedMvp} from "@utils/getSortedMvp.ts";
 import {setMvps} from "@store/Slice/Mvp/Slice.ts";
 import {useAppDispatch, useAppSelector} from "@store/Hooks"
@@ -10,7 +10,7 @@ export const MvpList = () => {
     const dispatch = useAppDispatch()
     const mvps = useAppSelector(state => state.Slice.filtered)
     const perPage = useAppSelector(state => state.userSlice.perPage)
-    const [activePage] = useState(1)
+    const activePage = useAppSelector(state => state.userSlice.activePage)
     const data = createChunk(mvps.map(mvp => mvp), perPage)
 
     useEffect(() => {

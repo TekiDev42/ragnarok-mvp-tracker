@@ -128,7 +128,9 @@ interface MvpState {
     filtered: Mvp[]
 }
 
-interface UserState extends Settings {}
+interface UserState extends Settings {
+    activePage: number
+}
 
 interface TombPosCss extends React.CSSProperties {
     "--tombpos-x": string
