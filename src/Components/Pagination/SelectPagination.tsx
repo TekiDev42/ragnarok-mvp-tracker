@@ -1,6 +1,6 @@
-import {Pagination, Select} from "@mantine/core";
-import {setActivePage, setPerPage} from "@store/Slice/User/UserSlice.ts";
-import {useAppDispatch, useAppSelector} from "@store/Hooks.ts";
+import {Pagination, Select} from "@mantine/core"
+import {setActivePage, setPerPage} from "@store/Slice/User/UserSlice.ts"
+import {useAppDispatch, useAppSelector} from "@store/Hooks.ts"
 
 export const SelectPagination = () => {
     const dispatch = useAppDispatch()
