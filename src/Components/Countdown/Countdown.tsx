@@ -102,8 +102,8 @@ export const Countdown = ({ respawn, mapName, mvpName }: CountdownProps) => {
     return (
         <Text>
             {Math.max(0, Math.round(diff.as('hours')))}h
-            {Math.max(0, Math.round(diff.as('minutes') % 60))}m
-            {Math.max(0, Math.round(diff.as('seconds') % 60))}s
+            {Math.max(0, Math.floor(diff.as('minutes') % 60))}m
+            {Math.max(0, Math.floor(diff.as('seconds') % 60))}s
         </Text>
     );
 };

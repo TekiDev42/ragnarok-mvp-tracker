@@ -1,13 +1,22 @@
 import path from "node:path";
 import url from "node:url";
 
-import {app, BrowserWindow, Menu, nativeImage,net,
+import {app, BrowserWindow, Menu, nativeImage, net,
         screen, Tray, Display, Size, App, protocol, ipcMain} from "electron";
 import { MvpManager } from "./MvpManager";
 import { SettingsManager } from "./SettingsManager";
 import {ICON_APP_PATH, RENDERER_DIST, VITE_DEV_SERVER_URL, __dirname} from "../constants/path.ts";
 
-
+/**
+ * MvpApp class
+ * 
+ * This class represents the main application for the MVP Timer.
+ * It handles window creation, tray icon, event handling, and manages MVP and settings data.
+ * 
+ * @example
+ * const mvpApp = new MvpApp();
+ * // The app is now initialized and ready to run
+ */
 export class MvpApp {
     private app: App = app
     private window: BrowserWindow | null = null
@@ -18,6 +27,10 @@ export class MvpApp {
     primaryDisplay: Display | null = null
     windowSize: Size | null = null
 
+    /**
+     * Creates an instance of MvpApp.
+     * Initializes managers and sets up event listeners.
+     */
     constructor() {
         this.settingsManager = new SettingsManager()
         this.mvpManager = new MvpManager()
@@ -26,6 +39,10 @@ export class MvpApp {
         this.whenReady()
     }
 
+    /**
+     * Sets up the 'activate' event listener.
+     * Creates a new window if no windows are open when the app is activated.
+     */
     onActivate () {
         this.app.on('activate', () => {
             // On OS X it's common to re-create a window in the app when the
@@ -34,9 +51,15 @@ export class MvpApp {
                 this.createWindow()
             }
         })
-
     }
 
+    /**
+     * Creates the tray icon and its context menu.
+     * 
+     * @example
+     * this.createTray();
+     * // Tray icon is now visible with a 'Quit' option in its context menu
+     */
     createTray () {
         const icon = nativeImage.createFromPath(ICON_APP_PATH)
         const contextMenu = Menu.buildFromTemplate([
@@ -49,6 +72,13 @@ export class MvpApp {
         this.tray.setContextMenu(contextMenu)
     }
 
+    /**
+     * Creates the main application window.
+     * 
+     * @example
+     * this.createWindow();
+     * // Main application window is now created and visible
+     */
     createWindow () {
         this.window = new BrowserWindow({
             width: this.windowSize?.width ?? 1280,
@@ -60,7 +90,6 @@ export class MvpApp {
                 preload: path.join(__dirname, 'preload.mjs'),
             },
             title: "Mvp Timer",
-
         })
 
         if (VITE_DEV_SERVER_URL) {
@@ -79,9 +108,14 @@ export class MvpApp {
         this.window.removeMenu()
     }
 
+    /**
+     * Sets up event handlers for IPC communication and custom protocol.
+     * 
+     * @example
+     * this.setHandleEvent();
+     * // Event handlers are now set up for 'getMvps', 'getSettings', and 'atom' protocol
+     */
     setHandleEvent(){
-        console.log('setHandleEvent')
-
         ipcMain.handle('getMvps', () => this.getMvps())
         ipcMain.handle('getSettings', () => this.getSettings())
 
@@ -91,6 +125,13 @@ export class MvpApp {
         })
     }
 
+    /**
+     * Sets up event listeners for IPC communication.
+     * 
+     * @example
+     * this.setOnEvent();
+     * // Event listeners are now set up for 'updateMvp', 'setMvps', and 'setSettings'
+     */
     setOnEvent(){
         ipcMain.on('updateMvp', (_event, args: Mvp) => {
             this.mvpManager.updateMvp(args)
@@ -105,14 +146,36 @@ export class MvpApp {
         })
     }
 
+    /**
+     * Retrieves the list of MVPs from the MvpManager.
+     * 
+     * @returns {Mvp[]} An array of MVP objects
+     * 
+     * @example
+     * const mvps = this.getMvps();
+     * console.log(mvps); // [{id: 1, name: 'Baphomet', ...}, ...]
+     */
     getMvps () {
         return this.mvpManager.getMvps()
     }
 
+    /**
+     * Retrieves the current settings from the SettingsManager.
+     * 
+     * @returns {Object} The current settings object
+     * 
+     * @example
+     * const settings = this.getSettings();
+     * console.log(settings); // {theme: 'dark', notifications: true, ...}
+     */
     getSettings (){
         return this.settingsManager.getSettings()
     }
 
+    /**
+     * Sets up the 'window-all-closed' event listener.
+     * Quits the app if all windows are closed (except on macOS).
+     */
     onWindowAllClosed () {
         this.app.on('window-all-closed', () => {
             if (process.platform !== 'darwin') {
@@ -122,23 +185,27 @@ export class MvpApp {
         })
     }
 
+    /**
+     * Initializes the app when it's ready.
+     * Sets up the primary display, creates the window and tray, and sets up event handlers.
+     * 
+     * @example
+     * this.whenReady();
+     * // App is now fully initialized and running
+     */
     whenReady () {
         this.app.whenReady()
         .then(() => {
             this.primaryDisplay = screen.getPrimaryDisplay()
             this.windowSize = this.primaryDisplay.workAreaSize
 
-            console.log('1')
             this.setHandleEvent()
-            console.log('2')
             this.setOnEvent()
-            console.log('3')
 
             this.createTray()
             this.createWindow()
         })
         .catch((e) => {
-
             console.log('Error : ', e)
         })
     }

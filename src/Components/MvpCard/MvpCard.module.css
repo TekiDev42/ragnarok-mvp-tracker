@@ -17,8 +17,5 @@
 }
 
 .name {
-    @apply flex w-full flex-col justify-between items-center gap-0;
-    h2 {
-        @apply text-xl text-white;
-    }
+    @apply flex w-full flex-col justify-between items-center gap-0 text-xl text-white;
 }

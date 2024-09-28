@@ -6,23 +6,35 @@ import { setMvps } from "@store/Slice/Mvp/Slice.ts";
 import { useAppDispatch, useAppSelector } from "@store/Hooks"
 import { createChunk } from "@utils/createChunk.ts";
 
+/**
+ * MvpList Component
+ * 
+ * This component is responsible for rendering a list of MVP (Most Valuable Player) cards.
+ * It fetches MVP data, manages pagination, and renders MVP cards based on the current page.
+ */
 export const MvpList = () => {
     const dispatch = useAppDispatch()
     const mvps = useAppSelector(state => state.Slice.filtered)
     const perPage = useAppSelector(state => state.userSlice.perPage)
     const activePage = useAppSelector(state => state.userSlice.activePage)
 
+    /**
+     * Fetches sorted MVP data and updates the Redux store
+     */
     const fetchMvps = async () => {
         const mvps = await getSortedMvp()
         dispatch(setMvps(mvps))
     }
 
+    // Fetch MVPs when the component mounts
     useEffect(() => {
         fetchMvps()
     }, [dispatch]);
 
+    // Create chunks of MVP data based on the number of items per page
     const data = useMemo(() => createChunk<Mvp>(mvps, perPage), [mvps, perPage])
 
+    // Generate MvpCard components for the current page
     const items = useMemo(() => {
         if (!data.length) return []
 

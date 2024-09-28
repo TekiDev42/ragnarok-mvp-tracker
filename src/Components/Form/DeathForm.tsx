@@ -1,3 +1,8 @@
+/**
+ * @file DeathForm.tsx
+ * @description This file contains the DeathFormModal component, which is responsible for handling the MVP death form.
+ */
+
 import { MultiSelect, NumberInput, Text, Modal, Flex, Button } from "@mantine/core";
 import { useCallback, useEffect, useState, useMemo } from "react";
 import { DateTime } from "luxon";
@@ -6,6 +11,10 @@ import { setMvpMaps } from "@store/Slice/Mvp/Slice.ts";
 import { setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { TimeInputWithIcon } from "@components/Form/TimeInput/TimeInput.tsx";
 
+/**
+ * DeathFormModal component
+ * @returns {JSX.Element} The rendered DeathFormModal component
+ */
 export const DeathFormModal = () => {
     const dispatch = useAppDispatch();
     const { opened, mvp } = useAppSelector(state => state.modalSlice);
@@ -14,8 +23,17 @@ export const DeathFormModal = () => {
     const [mapsData, setMapsData] = useState<MvpMap[]>([]);
     const [dropdownOpened, setDropdownOpened] = useState<boolean>(false);
 
+    /**
+     * Memoized array of MVP map names
+     */
     const mvpMapsName = useMemo(() => mvp.mvpMaps.map(mvpmap => mvpmap.name), [mvp.mvpMaps]);
 
+    /**
+     * Updates the map data based on user input
+     * @param {string} mapName - The name of the map to update
+     * @param {'time' | 'x' | 'y'} type - The type of data to update
+     * @param {string | number} value - The new value
+     */
     const updateMapData = useCallback((mapName: string, type: 'time' | 'x' | 'y', value: string | number) => {
         setMapsData(prevMapsData => {
             const newMapsData = [...prevMapsData];
@@ -44,17 +62,27 @@ export const DeathFormModal = () => {
         });
     }, []);
 
+    /**
+     * Handles the confirmation of the form submission
+     */
     const handleConfirm = useCallback(() => {
         dispatch(setMvpMaps({ mvp, newMapsData: mapsData }));
         setMapsSelected([]);
         dispatch(setOpened(false));
     }, [dispatch, mapsData, mvp]);
 
+    /**
+     * Handles the selection of multiple maps
+     * @param {string[]} value - The selected map names
+     */
     const handleMultiSelect = useCallback((value: string[]) => {
         setMapsSelected(value);
         setDropdownOpened(false);
     }, []);
 
+    /**
+     * Updates the mapsData state when the MVP changes
+     */
     useEffect(() => {
         setMapsData([...mvp.mvpMaps]);
     }, [mvp]);
