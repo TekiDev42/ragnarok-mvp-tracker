@@ -12,11 +12,12 @@ export const MvpList = () => {
     const perPage = useAppSelector(state => state.userSlice.perPage)
     const activePage = useAppSelector(state => state.userSlice.activePage)
 
+    const fetchMvps = async () => {
+        const mvps = await getSortedMvp()
+        dispatch(setMvps(mvps))
+    }
+
     useEffect(() => {
-        const fetchMvps = async () => {
-            const mvps = await getSortedMvp()
-            dispatch(setMvps(mvps))
-        }
         fetchMvps()
     }, [dispatch]);
 
@@ -28,7 +29,7 @@ export const MvpList = () => {
         return data[activePage - 1].map((mvp, i) => (
             <MvpCard key={`mvp-card-${mvp.Id || i}`} mvp={mvp}/>
         ))
-        
+
     }, [data, activePage])
 
     return (
