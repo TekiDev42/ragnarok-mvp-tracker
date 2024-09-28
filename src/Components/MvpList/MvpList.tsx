@@ -21,7 +21,7 @@ export const MvpList = () => {
         fetchMvps()
     }, [dispatch]);
 
-    const data = useMemo(() => createChunk(mvps, perPage), [mvps, perPage])
+    const data = useMemo(() => createChunk<Mvp>(mvps, perPage), [mvps, perPage])
 
     const items = useMemo(() => {
         if (!data.length) return []

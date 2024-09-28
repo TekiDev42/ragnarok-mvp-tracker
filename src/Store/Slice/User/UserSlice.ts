@@ -7,7 +7,7 @@ import {setDelayNotificationReducer} from "@store/Reducers/User/setDelayNotifica
 import {setPerPageReducer} from "@store/Reducers/User/setPerPageReducer.ts";
 import {setRespawnTimerReducer} from "@store/Reducers/User/setRespawnTimerReducer.ts";
 import {defaultSettings} from "@constants/defaults.ts";
-
+import {updateStorage} from "@utils/Storage/updateStorage.ts";
 
 const initialState: UserState = {
     ...defaultSettings,
@@ -25,6 +25,8 @@ export const userSlice = createSlice({
             state.delayNotification = action.payload.delayNotification
             state.respawnTimer = action.payload.respawnTimer
             state.perPage = action.payload.perPage
+
+            updateStorage("respawnTimer", action.payload.respawnTimer)
         },
         setActivePage: (state, action: PayloadAction<number>) => {
             state.activePage = action.payload
