@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-    overflow: hidden;
-}
 
 :root {
     --url-cursor: url("/images/cursor/cursor-ragnarok.png");

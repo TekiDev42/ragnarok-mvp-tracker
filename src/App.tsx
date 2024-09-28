@@ -30,7 +30,7 @@ const App = () => {
                     <SelectPagination />
                 </Flex>
 
-                <ScrollArea h={650}>
+                <ScrollArea>
                     <MvpList />
                 </ScrollArea>
             </div>
