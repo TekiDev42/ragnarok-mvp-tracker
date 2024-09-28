@@ -1,18 +1,48 @@
 /// <reference types="vite/client" />
 
+/**
+ * Extends the Window interface to include the mvpApi object.
+ */
 interface Window {
     mvpApi: {
-        // MVP
+        // MVP related methods
+        /**
+         * Retrieves all MVPs.
+         * @returns {Promise<Mvp[]>} A promise that resolves to an array of Mvp objects.
+         */
         getMvps: () => Promise<Mvp[]>
+
+        /**
+         * Updates a specific MVP.
+         * @param {Mvp} mvp - The MVP object to update.
+         */
         updateMvp: (mvp: Mvp) => void
+
+        /**
+         * Sets the entire list of MVPs.
+         * @param {Mvp[]} mvps - An array of Mvp objects to set.
+         */
         setMvps: (mvps: Mvp[]) => void
 
-        // SETTINGS
+        // Settings related methods
+        /**
+         * Retrieves the current settings.
+         * @returns {Promise<Settings>} A promise that resolves to a Settings object.
+         */
         getSettings: () => Promise<Settings>
+
+        /**
+         * Updates a specific setting.
+         * @param {string} key - The key of the setting to update.
+         * @param {string|number|boolean} value - The new value for the setting.
+         */
         setSettings: (key:string, value: string|number|boolean) => void
     }
 }
 
+/**
+ * Represents user settings.
+ */
 interface Settings {
     animation: boolean
     background: string
@@ -22,6 +52,9 @@ interface Settings {
     perPage: number
 }
 
+/**
+ * Represents an item drop from an MVP.
+ */
 interface Drop {
     Item: string
     Rate: number
@@ -30,11 +63,17 @@ interface Drop {
     Index?: number
 }
 
+/**
+ * Represents the position of an MVP's tomb.
+ */
 interface TombPos {
     x: number
     y: number
 }
 
+/**
+ * Represents a map where an MVP can spawn.
+ */
 interface MvpMap {
     name: string
     deathTime: string
@@ -46,6 +85,9 @@ interface MvpMap {
     },
 }
 
+/**
+ * Represents an MVP (Most Valuable Player) monster.
+ */
 interface Mvp {
     Id: number,
     AegisName: string
@@ -123,15 +165,24 @@ interface Mvp {
     mvpMaps: MvpMap[]
 }
 
+/**
+ * Represents the state of MVPs in the application.
+ */
 interface MvpState {
     mvps: Mvp[]
     filtered: Mvp[]
 }
 
+/**
+ * Represents the user state, extending the Settings interface.
+ */
 interface UserState extends Settings {
     activePage: number
 }
 
+/**
+ * Extends React.CSSProperties to include custom CSS variables for tomb position.
+ */
 interface TombPosCss extends React.CSSProperties {
     "--tombpos-x": string
     "--tombpos-y": string
