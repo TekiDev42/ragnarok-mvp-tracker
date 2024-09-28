@@ -1,6 +1,21 @@
-import {DateTime} from "luxon";
+import {DateTime} from "luxon"
 
-export const getRespawn = (deathTime: string, respawnTime: number): DateTime => {
-    const deathDT = DateTime.fromISO(deathTime)
-    return deathDT.plus({minute: respawnTime})
-}
+/**
+ * Calculates the respawn time of an MVP (Most Valuable Player) based on its death time and respawn interval.
+ * 
+ * @param {string} deathTime - The ISO 8601 formatted string representing the time when the MVP died.
+ * @param {number} respawnTime - The number of minutes it takes for the MVP to respawn.
+ * @returns {DateTime} A DateTime object representing the calculated respawn time.
+ * 
+ * This function takes the death time of an MVP and adds the respawn interval to it,
+ * effectively calculating when the MVP will be available again. It uses the Luxon
+ * library for date and time manipulation.
+ * 
+ * @example
+ * const deathTime = "2023-06-01T12:00:00Z";
+ * const respawnInterval = 120; // 2 hours
+ * const respawnTime = getRespawn(deathTime, respawnInterval);
+ * console.log(respawnTime.toISO()); // Outputs: 2023-06-01T14:00:00.000Z
+ */
+export const getRespawn = (deathTime: string, respawnTime: number): DateTime =>
+    DateTime.fromISO(deathTime).plus({minutes: respawnTime});
