@@ -14,19 +14,49 @@ import { useAppDispatch } from "@store/Hooks"
  * 
  * This component serves as the root of the application, managing the overall layout
  * and orchestrating the main components of the MVP tracker.
+ * 
+ * @example
+ * // In index.tsx or main entry point
+ * import React from 'react'
+ * import ReactDOM from 'react-dom'
+ * import App from './App'
+ * 
+ * ReactDOM.render(
+ *   <React.StrictMode>
+ *     <App />
+ *   </React.StrictMode>,
+ *   document.getElementById('root')
+ * )
  */
 const App = () => {
     const dispatch = useAppDispatch()
 
     /**
      * Fetches user settings from the API and updates the Redux store
+     * 
+     * @example
+     * // This function is called automatically when the component mounts
+     * // due to the useEffect hook below. You don't need to call it manually.
+     * // However, if you needed to fetch settings again, you could do:
+     * const refreshSettings = () => {
+     *   fetchSettings()
+     * }
      */
     const fetchSettings = async () => {
         const settings = await window.mvpApi.getSettings()
         dispatch(setSettings(settings))
     }
 
-    // Fetch settings when the component mounts
+    /**
+     * Effect hook to fetch settings when the component mounts
+     * 
+     * @example
+     * // This useEffect is already in place and will run automatically
+     * // when the App component mounts. You don't need to add it manually.
+     * useEffect(() => {
+     *   fetchSettings()
+     * }, [dispatch])
+     */
     useEffect(() => {
         fetchSettings()
     }, [dispatch])
