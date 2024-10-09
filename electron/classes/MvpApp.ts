@@ -6,6 +6,7 @@ import {app, BrowserWindow, Menu, nativeImage, net,
 import { MvpManager } from "./MvpManager";
 import { SettingsManager } from "./SettingsManager";
 import {ICON_APP_PATH, RENDERER_DIST, VITE_DEV_SERVER_URL, __dirname} from "../constants/path.ts";
+import { Schema } from "electron/store/store.ts";
 
 /**
  * MvpApp class
@@ -141,8 +142,8 @@ export class MvpApp {
             this.mvpManager.setMvps(args)
         })
 
-        ipcMain.on('setSettings', (_event, args: {key: string, value: string|number|boolean }) => {
-            this.settingsManager.setSettings(args)
+        ipcMain.on('setSettings', (_event, args: {key: keyof Schema, value: Schema[keyof Schema] }) => {
+            this.settingsManager.updateSetting(args.key, args.value)
         })
     }
 
@@ -155,7 +156,7 @@ export class MvpApp {
      * const mvps = this.getMvps();
      * console.log(mvps); // [{id: 1, name: 'Baphomet', ...}, ...]
      */
-    getMvps () {
+    getMvps (): Mvp[] {
         return this.mvpManager.getMvps()
     }
 
@@ -168,8 +169,8 @@ export class MvpApp {
      * const settings = this.getSettings();
      * console.log(settings); // {theme: 'dark', notifications: true, ...}
      */
-    getSettings (){
-        return this.settingsManager.getSettings()
+    getSettings (): Schema {
+        return this.settingsManager.getAllSettings()
     }
 
     /**
