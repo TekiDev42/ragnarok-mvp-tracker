@@ -2,7 +2,8 @@ import path from "node:path";
 import url from "node:url";
 
 import {app, BrowserWindow, Menu, nativeImage, net,
-        screen, Tray, Display, Size, App, protocol, ipcMain} from "electron";
+        screen, Tray, Display, Size, App, protocol, ipcMain,
+        IpcMainEvent} from "electron";
 import { MvpManager } from "./MvpManager";
 import { SettingsManager } from "./SettingsManager";
 import {ICON_APP_PATH, RENDERER_DIST, VITE_DEV_SERVER_URL, __dirname} from "../constants/path.ts";
@@ -142,7 +143,7 @@ export class MvpApp {
             this.mvpManager.setMvps(args)
         })
 
-        ipcMain.on('setSettings', (_event, args: {key: keyof Schema, value: Schema[keyof Schema] }) => {
+        ipcMain.on('setSettings', <K extends keyof Schema>(_event: IpcMainEvent, args: {key: K, value: Schema[K] }) => {
             this.settingsManager.updateSetting(args.key, args.value)
         })
     }
