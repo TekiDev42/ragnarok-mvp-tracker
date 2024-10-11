@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer } from "electron"
+import { Schema } from "./store/store"
 
 contextBridge.exposeInMainWorld('mvpApi', {
     // MVPS
@@ -41,11 +42,11 @@ contextBridge.exposeInMainWorld('mvpApi', {
 
     /**
      * Updates a specific setting.
-     * @param {string} key - The key of the setting to update.
-     * @param {string|number|boolean} value - The new value for the setting.
+     * @param {keyof Schema} key - The key of the setting to update.
+     * @param {Schema[keyof Schema]} value - The new value for the setting.
      * @example
      * window.mvpApi.setSettings('theme', 'light')
      * window.mvpApi.setSettings('notifications', false)
      */
-    setSettings: (key: string, value: string|number|boolean ) => ipcRenderer.send('setSettings', {key: key, value: value})
+    setSettings: <K extends keyof Schema>(key: K, value: Schema[K]) => ipcRenderer.send('setSettings', {key: key, value: value})
 })
