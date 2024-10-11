@@ -9,7 +9,7 @@ contextBridge.exposeInMainWorld('mvpApi', {
      * const mvps = await window.mvpApi.getMvps()
      * console.log(mvps) // [{id: 1, name: 'MVP 1'}, {id: 2, name: 'MVP 2'}]
      */
-    getMvps: () => ipcRenderer.invoke('getMvps') as Promise<Mvp[]>,
+    getMvps: (): Promise<Mvp[]> => ipcRenderer.invoke('getMvps') as Promise<Mvp[]>,
 
     /**
      * Updates a specific MVP.
@@ -37,7 +37,7 @@ contextBridge.exposeInMainWorld('mvpApi', {
      * const settings = await window.mvpApi.getSettings()
      * console.log(settings) // {theme: 'dark', notifications: true}
      */
-    getSettings: () => ipcRenderer.invoke('getSettings') as Promise<Settings>,
+    getSettings: (): Promise<Settings> => ipcRenderer.invoke('getSettings') as Promise<Settings>,
 
     /**
      * Updates a specific setting.
