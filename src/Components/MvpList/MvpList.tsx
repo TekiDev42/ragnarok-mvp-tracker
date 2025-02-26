@@ -5,6 +5,7 @@ import { getSortedMvp } from "@utils/getSortedMvp.ts";
 import { setMvps } from "@store/Slice/Mvp/Slice.ts";
 import { useAppDispatch, useAppSelector } from "@store/Hooks"
 import { createChunk } from "@utils/createChunk.ts";
+import { Box, LoadingOverlay } from "@mantine/core";
 
 /**
  * MvpList Component
@@ -36,7 +37,16 @@ export const MvpList = () => {
 
     // Generate MvpCard components for the current page
     const items = useMemo(() => {
-        if (!data.length) return []
+        if (!data.length) return Array(perPage).fill(0).map((_, i) => (
+            <Box pos="relative" key={`skeleton-${i}`} style={{height: 325}}>
+                <LoadingOverlay
+                    visible={true}
+                    zIndex={1000}
+                    overlayProps={{ radius: 'lg', blur: 1 }}
+                    loaderProps={{ color: 'blue', type: 'bars' }}
+                />
+            </Box>
+        ))
 
         return data[activePage - 1].map((mvp, i) => (
             <MvpCard key={`mvp-card-${mvp.Id || i}`} mvp={mvp}/>
