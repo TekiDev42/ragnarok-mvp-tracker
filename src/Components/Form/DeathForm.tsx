@@ -80,6 +80,11 @@ export const DeathFormModal = () => {
         setDropdownOpened(false);
     }, []);
 
+    const handleClose = useCallback(() => {
+        dispatch(setOpened(false));
+        setMapsSelected([]);
+    }, [dispatch]);
+
     /**
      * Updates the mapsData state when the MVP changes
      */
@@ -88,7 +93,7 @@ export const DeathFormModal = () => {
     }, [mvp]);
 
     return (
-        <Modal opened={opened} onClose={() => dispatch(setOpened(false))} centered withCloseButton={false} radius="lg">
+        <Modal opened={opened} onClose={handleClose} centered withCloseButton={false} radius="lg">
             <Text>
                 <span className="text-2xl">{mvp.Name}</span>
             </Text>
@@ -148,7 +153,7 @@ export const DeathFormModal = () => {
                 <Button
                     variant="gradient"
                     radius="xl"
-                    onClick={() => dispatch(setOpened(false))}
+                    onClick={handleClose}
                     gradient={{ from: 'pink', to: 'red', deg: 90 }}
                 >
                     Close

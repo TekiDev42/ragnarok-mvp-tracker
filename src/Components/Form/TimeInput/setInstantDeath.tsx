@@ -27,6 +27,7 @@ export const setInstantDeath = (ref: RefObject<HTMLInputElement>, { mvpMap, upda
         <ActionIcon
             variant="subtle"
             color="gray"
+            radius="xl"
             onClick={() => {
                 if (ref.current) {
                     const now = DateTime.now().toFormat("HH:mm")

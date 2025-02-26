@@ -31,6 +31,7 @@ export const PickerControl = (ref: RefObject<HTMLInputElement>) => {
         <ActionIcon
             variant="subtle"
             color="gray"
+            radius="xl"
             onClick={() => ref.current?.showPicker()}
         >
             <IconClock style={{ width: rem(16), height: rem(16) }} stroke={1.5} />

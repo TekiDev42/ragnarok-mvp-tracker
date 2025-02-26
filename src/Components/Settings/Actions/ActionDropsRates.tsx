@@ -33,7 +33,7 @@ export const ActionDropsRates = () => {
     useEffect(() => {
         setCardRatesState(cardRates)
         setRatesState(rates)
-    }, [cardRates, rates]);
+    }, [cardRates, rates])
 
     return (<>
         <Stack align="stretch" justify="flex-start" gap="xs">
