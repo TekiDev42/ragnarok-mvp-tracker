@@ -1,7 +1,7 @@
 import {ActionIcon, HoverCard} from "@mantine/core";
 import {DropsIcons} from "@components/Icons/Icons.tsx";
 import {Drops} from "@components/MvpCard/Drops/Drops.tsx";
-
+import {useAppSelector} from "@store/Hooks.ts";
 /**
  * DropsHoverCard component displays a hover card with drop information for MVPs.
  *
@@ -15,7 +15,12 @@ import {Drops} from "@components/MvpCard/Drops/Drops.tsx";
  * @example
  * <DropsHoverCard drops={regularDrops} mvpDrops={mvpSpecificDrops} />
  */
-export const DropsHoverCard: React.FC<{ drops: Drop[]; mvpDrops: Drop[] }> = ({ drops, mvpDrops }) => (
+export const DropsHoverCard: React.FC<{ drops: Drop[]; mvpDrops: Drop[] }> = ({ drops, mvpDrops }) => {
+
+    const rates = useAppSelector(state => state.userSlice.rates)
+    const cardRates = useAppSelector(state => state.userSlice.cardRates)
+
+    return (
     <HoverCard width={325} shadow="md">
         <HoverCard.Target>
             <ActionIcon
@@ -31,9 +36,10 @@ export const DropsHoverCard: React.FC<{ drops: Drop[]; mvpDrops: Drop[] }> = ({ 
         </HoverCard.Target>
         <HoverCard.Dropdown>
             <ul className="w-full pt-0 px-3">
-                {drops.length > 0 && <Drops drops={drops} label="Drops" />}
-                {mvpDrops.length > 0 && <Drops drops={mvpDrops} label="MVP drops" />}
+                {drops.length > 0 && <Drops drops={drops} rates={rates} cardRates={cardRates} label="Drops" />}
+                {mvpDrops.length > 0 && <Drops drops={mvpDrops} rates={rates} cardRates={cardRates} label="MVP drops" />}
             </ul>
         </HoverCard.Dropdown>
     </HoverCard>
-);
+    )
+}

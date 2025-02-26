@@ -8,8 +8,10 @@ import { FC } from "react";
  * @property {Drop[]} drops - An array of Drop objects to be displayed
  */
 interface DropsProps {
-  label: string;
-  drops: Drop[];
+  label: string
+  drops: Drop[]
+  rates: number
+  cardRates: number
 }
 
 /**
@@ -22,17 +24,27 @@ interface DropsProps {
  * @example
  * <Drops label="MVP Drops" drops={mvpDrops} />
  */
-export const Drops: FC<DropsProps> = ({ drops, label }) => (
-  <>
-    <Divider my="xs" label={label} labelPosition="center" />
-    {drops.map(({ Item, Rate }, index) => (
-      <li
-        key={`${Item}-${index}`}
-        className="flex justify-between w-full p-1"
-      >
-        <div>{Item.replace(/_/g, ' ')}</div>
-        <div>{(Rate / 100).toFixed(2)}%</div>
-      </li>
-    ))}
-  </>
+export const Drops: FC<DropsProps> = ({ drops, label, rates, cardRates }) => (
+    <>
+        <Divider my="xs" label={label} labelPosition="center" />
+    
+        {drops.map(({ Item, Rate }, index) => {
+
+            let itemRate = Rate * rates
+
+            if (Item.includes('Card')){
+                itemRate = Rate * cardRates
+            }
+
+            return (
+                <li
+                    key={`${Item}-${index}`}
+                    className="flex justify-between w-full p-1"
+                    >
+                    <div>{Item.replace(/_/g, ' ')}</div>
+                    <div>{((itemRate / 100) > 100 ? 100.0 : (itemRate / 100).toFixed(2))}%</div>
+                </li> 
+            )
+        })}
+    </>
 );

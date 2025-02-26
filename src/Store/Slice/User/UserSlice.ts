@@ -15,7 +15,9 @@ import {updateStorage} from "@utils/Storage/updateStorage.ts"
  */
 const initialState: UserState = {
     ...defaultSettings,
-    activePage: 1
+    activePage: 1,
+    cardRates: 1,
+    rates: 1
 }
 
 /**
@@ -40,13 +42,15 @@ export const userSlice = createSlice({
          *   perPage: 20
          * }))
          */
-        setSettings: (state, action: PayloadAction<Settings>) => {
+        setSettings: (state, action: PayloadAction<UserState>) => {
             state.animation = action.payload.animation
             state.background = action.payload.background
             state.soundNotification = action.payload.soundNotification
             state.delayNotification = action.payload.delayNotification
             state.respawnTimer = action.payload.respawnTimer
             state.perPage = action.payload.perPage
+            state.cardRates = action.payload.cardRates
+            state.rates = action.payload.rates
 
             updateStorage("respawnTimer", action.payload.respawnTimer)
         },
@@ -110,11 +114,32 @@ export const userSlice = createSlice({
          * dispatch(reset())
          */
         reset: resetReducer,
+        /**
+         * Sets the card rates.
+         * 
+         * @example
+         * dispatch(setCardRates(10))
+         */
+        setCardRates: (state, action: PayloadAction<number>) => {
+            state.cardRates = action.payload
+            window.mvpApi.setSettings('cardRates', action.payload)
+        },
+
+        /**
+         * Sets the rates.
+         * 
+         * @example
+         * dispatch(setRates(1))
+         */
+        setRates: (state, action: PayloadAction<number>) => {
+            state.rates = action.payload
+            window.mvpApi.setSettings('rates', action.payload)
+        }
     }
 })
 
 // Export individual action creators
-export const {setAnimation, setBackground, setPerPage, setRespawnTimer, setSettings} = userSlice.actions
+export const {setAnimation, setBackground, setPerPage, setRespawnTimer, setSettings, setCardRates, setRates} = userSlice.actions
 export const {setActivePage, setSoundNotification, setDelayNotification, reset} = userSlice.actions
 
 // Export the reducer

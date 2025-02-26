@@ -29,7 +29,7 @@ interface Window {
          * Retrieves the current settings.
          * @returns {Promise<Settings>} A promise that resolves to a Settings object.
          */
-        getSettings: () => Promise<Settings>
+        getSettings: () => Promise<UserState>
 
         /**
          * Updates a specific setting.
@@ -178,6 +178,8 @@ interface MvpState {
  */
 interface UserState extends Settings {
     activePage: number
+    cardRates: number
+    rates: number
 }
 
 /**

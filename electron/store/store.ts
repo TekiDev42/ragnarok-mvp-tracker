@@ -47,6 +47,14 @@ export type Schema = {
     perPage: {
         type: string,
         default: number,
+    },
+    cardRates: {
+        type: string,
+        default: number,
+    },
+    rates: {
+        type: string,
+        default: number,
     }
 }
 
@@ -82,6 +90,14 @@ export const schema: Schema = {
     perPage:{
         type: "number",
         default: 12,
+    },
+    cardRates: {
+        type: "number",
+        default: 1,
+    },
+    rates: {
+        type: "number",
+        default: 1,
     }
 }
 
