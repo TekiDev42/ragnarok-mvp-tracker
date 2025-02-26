@@ -43,7 +43,7 @@ export const MvpList = () => {
                     visible={true}
                     zIndex={1000}
                     overlayProps={{ radius: 'lg', blur: 1 }}
-                    loaderProps={{ color: 'blue', type: 'bars' }}
+                    loaderProps={{ color: 'blue', type: 'bars', size: 'sm' }}
                 />
             </Box>
         ))
