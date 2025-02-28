@@ -1,4 +1,4 @@
-import {sortMvps} from "@utils/Sort/sortMvps.ts"
+import { sortMvps } from "@utils/Sort/sortMvps.ts"
 
 /**
  * Reducer function to re-sort the MVP lists in the state.

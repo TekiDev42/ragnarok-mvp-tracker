@@ -1,9 +1,9 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit"
-import {bookmarkReducer} from "@store/Reducers/Mvp/bookmarkReducer"
-import {mvpMapsReducer} from "@store/Reducers/Mvp/mvpMapsReducer"
-import {reSortMvpReducer} from "@store/Reducers/Mvp/reSortMvpReducer"
-import {filterByNameOrIdReducer} from "@store/Reducers/Mvp/filterByNameOrIdReducer"
-import {resetReducer} from "@store/Reducers/Mvp/resetReducer"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { bookmarkReducer } from "@store/Reducers/Mvp/bookmarkReducer"
+import { mvpMapsReducer } from "@store/Reducers/Mvp/mvpMapsReducer"
+import { reSortMvpReducer } from "@store/Reducers/Mvp/reSortMvpReducer"
+import { filterByNameOrIdReducer } from "@store/Reducers/Mvp/filterByNameOrIdReducer"
+import { resetReducer } from "@store/Reducers/Mvp/resetReducer"
 
 /**
  * Initial state for the MVP slice
@@ -64,6 +64,6 @@ export const Slice = createSlice({
  * // To set all MVPs
  * dispatch(setMvps([{ id: 1, name: "Eddga" }, { id: 2, name: "Osiris" }]))
  */
-export const {setMvpBookmarkStatus, filterByNameOrId, reSortMvp, reset, setMvpMaps, setMvps} = Slice.actions
+export const { setMvpBookmarkStatus, filterByNameOrId, reSortMvp, reset, setMvpMaps, setMvps } = Slice.actions
 
 export default Slice.reducer
