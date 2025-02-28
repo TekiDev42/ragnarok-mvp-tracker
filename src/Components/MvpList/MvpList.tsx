@@ -4,7 +4,6 @@ import { useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "@store/Hooks";
 import { createChunk } from "@utils/createChunk.ts";
 import { Box, LoadingOverlay } from "@mantine/core";
-import { usePreFetch } from "@/hooks/usePreFetch";
 import { setMvps } from "@/Store/Slice/Mvp/Slice";
 import { getSortedMvp } from "@/Utils/getSortedMvp";
 
