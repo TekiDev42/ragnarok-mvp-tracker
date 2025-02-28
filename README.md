@@ -1,30 +1,61 @@
-# React + TypeScript + Vite
+# Ragnarok Online MVP Timer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Une application pour suivre et gérer les MVP dans Ragnarok Online.
 
-Currently, two official plugins are available:
+## Fonctionnalités
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Suivi des MVP**
+  - Timer précis pour chaque MVP
+  - Notification sonore à la fin du timer
+  - Localisation de la tombe sur la carte
+  - Affichage des drops normaux et MVP drops
+  - Taux de drop personnalisables
 
-## Expanding the ESLint configuration
+- **Gestion des favoris**
+  - Marquez vos MVP préférés
+  - Accès rapide à vos timers les plus utilisés (TODO)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Utilisation
 
-- Configure the top-level `parserOptions` property like this:
+1. **Timer MVP**
+   - Sélectionnez un MVP dans la liste
+   - Démarrez le timer après avoir tué le MVP
+   - Recevez une notification sonore quand le MVP peut réapparaître
+   - Visualisez l'emplacement de la tombe sur la carte
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+2. **Drops**
+   - Consultez la liste complète des drops possibles
+   - Visualisez les taux de drop
+   - Personnalisez les rates selon votre serveur
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. **Favoris**
+   - Ajoutez des MVP à vos favoris
+   - Accédez rapidement à vos MVP favoris depuis l'onglet dédié (TODO)
+
+## Installation
+1. **Téléchargement**
+   - Clonez le dépôt : `git clone https://github.com/votre-nom/ro-mvp-timer.git`
+   - Ou téléchargez directement le ZIP depuis GitHub
+
+2. **Installation des dépendances**
+   ```bash
+   cd ragnarok-mvp-timer
+   npm install / bun install / pnpm install
+   
+   ```
+
+3. **Lancement**
+   ```bash
+   npm run dev / bun run dev / pnpm run dev
+   ```
+   L'application sera accessible à l'adresse `http://localhost:3000`
+
+4. **Build (optionnel)**
+   Pour créer une version de production :
+   ```bash
+   npm run build / bun run build / pnpm run build
+   ```
+
+## Contribueurs
+- [MrKitey](https://github.com/TekiDev42)
+
