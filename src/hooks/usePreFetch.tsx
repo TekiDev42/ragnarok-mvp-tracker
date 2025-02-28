@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/Store/Hooks'
 import { ReactElement, useEffect, useState } from 'react'
-import { GetPathImage } from '@/Components/MvpCard/GetImage'
+import { GetPathImage } from '@/Utils/GetImage'
 import style from '@/Components/MvpCard/Image/MvpImage.module.css'
 
 export const usePreFetch = (data: Mvp[]) => {

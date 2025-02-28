@@ -13,7 +13,7 @@ import { Bookmark } from "@components/MvpCard/Bookmark/Bookmark.tsx";
 import { setMvp, setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { ReactElement } from 'react';
-import { GetPathImage } from '@/Components/MvpCard/GetImage'
+import { GetPathImage } from '@/Utils/GetImage'
 
 /**
  * MvpCard component
