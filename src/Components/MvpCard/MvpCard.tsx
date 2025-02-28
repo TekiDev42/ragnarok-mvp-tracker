@@ -11,7 +11,7 @@ import { MvpImage } from "@components/MvpCard/Image/MvpImage.tsx";
 import { DropsHoverCard } from "@components/MvpCard/Drops/DropsHoverCard.tsx";
 import { Bookmark } from "@components/MvpCard/Bookmark/Bookmark.tsx";
 import { setMvp, setOpened } from "@store/Slice/Modal/ModalSlice.ts";
-import { useAppDispatch } from "@store/Hooks.ts";
+import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { ReactElement } from 'react';
 
 /**
@@ -42,9 +42,9 @@ import { ReactElement } from 'react';
  *   );
  * };
  */
-export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: Map<string, ReactElement> }) => {
+export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: Map<number, ReactElement> }) => {
     const dispatch = useAppDispatch();
-
+    const animation = useAppSelector(state => state.userSlice.animation)
     /**
      * Handles the click event on the death action button
      * Opens the MVP death modal
@@ -54,12 +54,23 @@ export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: M
         dispatch(setOpened(true));
     };
 
+    let imageElement = preloadedImages.get(mvp.Id)
+    if (!imageElement) {
+        const imageName = mvp.image.replace('gif', 'webp')
+
+        const animatedPath = `images/mvps/webp/animated/${imageName}`
+        const fixedPath = `images/mvps/webp/fixe/${imageName}`
+
+        const path = animation ? animatedPath : fixedPath
+        imageElement = <img src={path} className={style.mvpImage} loading="lazy" alt={mvp.Name} />
+    }
+
     return (
         <div className={`${style.card} glass`}>
             <Bookmark mvp={mvp} />
 
             <div className={style.image_container}>
-                <MvpImage preloadedImage={preloadedImages.get(mvp.Name)} />
+                <MvpImage preloadedImage={imageElement} />
             </div>
 
             <div className={style.content}>
