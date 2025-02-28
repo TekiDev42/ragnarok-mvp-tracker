@@ -36,7 +36,7 @@ interface Window {
          * @param {string} key - The key of the setting to update.
          * @param {string|number|boolean} value - The new value for the setting.
          */
-        setSettings: (key:string, value: string|number|boolean) => void
+        setSettings: (key: string, value: string | number | boolean) => void
     }
 }
 
@@ -161,6 +161,7 @@ interface Mvp {
     MvpDrops?: Drop[]
     Drops?: Drop[]
     image: string
+    imageObject?: HTMLImageElement
     isBookmark: boolean
     mvpMaps: MvpMap[]
 }

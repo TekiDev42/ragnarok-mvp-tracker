@@ -14,6 +14,7 @@ export const usePreFetch = (data: Mvp[][], activePage: number) => {
                     const path = animation ? `images/mvps/${mvp.image}` : `images/mvps/fixe/${mvp.image.replace('gif', 'png')}`
                     const img = new Image()
                     img.src = path
+                    mvp.imageObject = img
                 }
             })
         }
