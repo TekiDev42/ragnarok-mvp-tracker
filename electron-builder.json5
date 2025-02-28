@@ -26,13 +26,7 @@
         "arch": [
           "x64"
         ]
-      }
-    ],
-    "artifactName": "${productName}-${version}-Setup.${ext}"
-  },
-  "win10": {
-    "icon": "public/images/mvp-timer-icon.png",
-    "target": [
+      },
       {
         "target": "msi",
         "arch": [
