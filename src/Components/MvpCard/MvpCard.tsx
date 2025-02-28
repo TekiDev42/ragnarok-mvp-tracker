@@ -13,6 +13,7 @@ import { Bookmark } from "@components/MvpCard/Bookmark/Bookmark.tsx";
 import { setMvp, setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { ReactElement } from 'react';
+import { GetPathImage } from '@/Components/MvpCard/GetImage'
 
 /**
  * MvpCard component
@@ -56,13 +57,8 @@ export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: M
 
     let imageElement = preloadedImages.get(mvp.Id)
     if (!imageElement) {
-        const imageName = mvp.image.replace('gif', 'webp')
-
-        const animatedPath = `images/mvps/webp/animated/${imageName}`
-        const fixedPath = `images/mvps/webp/fixe/${imageName}`
-
-        const path = animation ? animatedPath : fixedPath
-        imageElement = <img src={path} className={style.mvpImage} loading="lazy" alt={mvp.Name} />
+        const img = GetPathImage({ mvp, animation })
+        imageElement = <img src={img} className={style.mvpImage} loading="lazy" alt={mvp.Name} />
     }
 
     return (
