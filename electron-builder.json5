@@ -30,16 +30,47 @@
     ],
     "artifactName": "${productName}-${version}-Setup.${ext}"
   },
+  "win10": {
+    "icon": "public/images/mvp-timer-icon.png",
+    "target": [
+      {
+        "target": "msi",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "artifactName": "${productName}-${version}-Setup.${ext}"
+  },
+  "msi": {
+    "oneClick": false,
+    "perMachine": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Ragnarok MVP Tracker"
+  },
   "nsis": {
     "oneClick": false,
-    "perMachine": false,
+    "perMachine": true,
+    "multiLanguageInstaller": true,
     "allowToChangeInstallationDirectory": true,
-    "deleteAppDataOnUninstall": false
+    "deleteAppDataOnUninstall": false,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Ragnarok MVP Tracker"
   },
   "linux": {
     "target": [
       "AppImage"
     ],
     "artifactName": "${productName}-Linux-${version}.${ext}"
+  }
+  "AppImage": {
+    "desktopActions": {
+      "NewWindow": {
+        "Name": "New Window",
+        "Exec": "app --new-window"
+      }
+    }
   }
 }
