@@ -16,6 +16,7 @@ import { getSortedMvp } from "@/Utils/getSortedMvp";
  */
 export const MvpList = () => {
     const dispatch = useAppDispatch()
+    
     const mvps = useAppSelector((state) => state.Slice.filtered)
     const perPage = useAppSelector((state) => state.userSlice.perPage);
     const activePage = useAppSelector((state) => state.userSlice.activePage);
