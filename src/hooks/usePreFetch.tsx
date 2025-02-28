@@ -16,7 +16,7 @@ export const usePreFetch = (data: Mvp[]) => {
             // Précharger les images des MVPs de la page suivante
             imageData.forEach(mvp => {
                 if (mvp.image && mvp.Name) {
-                    const path = animation ? `images/mvps/${mvp.image}` : `images/mvps/fixe/${mvp.image.replace('gif', 'png')}`
+                    const path = animation ? `images/mvps/webp/animated/${mvp.image.replace('.gif', '.webp')}` : `images/mvps/webp/fixe/${mvp.image.replace('.png', '.webp')}`
                     if (!preloadedImages.has(mvp.Name)) {
                         const img = <img src={path} className={style.mvpImage} loading="lazy" alt={mvp.Name} />
 
