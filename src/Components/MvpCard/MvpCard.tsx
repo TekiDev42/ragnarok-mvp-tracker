@@ -12,6 +12,7 @@ import { DropsHoverCard } from "@components/MvpCard/Drops/DropsHoverCard.tsx";
 import { Bookmark } from "@components/MvpCard/Bookmark/Bookmark.tsx";
 import { setMvp, setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { useAppDispatch } from "@store/Hooks.ts";
+import { ReactElement } from 'react';
 
 /**
  * MvpCard component
@@ -41,7 +42,7 @@ import { useAppDispatch } from "@store/Hooks.ts";
  *   );
  * };
  */
-export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: Map<string, HTMLImageElement> }) => {
+export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: Map<string, ReactElement> }) => {
     const dispatch = useAppDispatch();
 
     /**
