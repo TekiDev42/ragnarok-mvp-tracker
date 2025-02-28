@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '@store/Hooks'
 import { setMvps } from '@store/Slice/Mvp/Slice'
 import { getSortedMvp } from '@/Utils/getSortedMvp'
 
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+const CACHE_DURATION = 10 * 60 * 1000 // 10 minutes
 
 export const useMvpCache = () => {
     const dispatch = useAppDispatch()
