@@ -27,7 +27,7 @@ export const MvpList = () => {
     const data = useMemo(() => createChunk<Mvp>(mvps, perPage), [mvps, perPage]);
 
     // Enable pre-fetching for next page
-    usePreFetch(data, activePage);
+    const preloadedImages = usePreFetch(data, activePage + 1);
 
     // Generate MvpCard components for the current page
     const items = useMemo(() => {
@@ -52,7 +52,7 @@ export const MvpList = () => {
         if (!currentPageData) return null
 
         return currentPageData.map((mvp, i) => (
-            <MvpCard key={mvp.Id ?? `mvp-${i}`} mvp={mvp} />
+            <MvpCard key={mvp.Id ?? `mvp-${i}`} mvp={mvp} preloadedImages={preloadedImages} />
         ))
     }, [data, activePage, mvps.length, perPage])
 

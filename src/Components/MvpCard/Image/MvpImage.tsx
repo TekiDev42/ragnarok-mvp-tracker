@@ -2,14 +2,14 @@ import style from "@components/MvpCard/Image/MvpImage.module.css";
 import {PropsWithChildren,useEffect, useRef} from "react";
 import {useAppSelector} from "@store/Hooks.ts";
 
-export const MvpImage = ({name, image, imageObject}: PropsWithChildren & {name: string, image: string, imageObject?: HTMLImageElement}) => {
+export const MvpImage = ({name, image, preloadedImages}: PropsWithChildren & {name: string, image: string, preloadedImages: Map<string, HTMLImageElement>}) => {
     const animation = useAppSelector(state => state.userSlice.animation)
     const ref = useRef<HTMLImageElement>(null)
 
     const addImageToRef = () => {
         if (ref.current) {
-            if (imageObject) {
-                ref.current.appendChild(imageObject)
+            if (preloadedImages.has(name)) {
+                ref.current.appendChild(preloadedImages.get(name) as Node)
             } else {
                 const path = animation ? `images/mvps/${image}` : `images/mvps/fixe/${image.replace('gif', 'png')}`
                 const img = new Image()
@@ -23,18 +23,17 @@ export const MvpImage = ({name, image, imageObject}: PropsWithChildren & {name: 
                     (e.currentTarget as HTMLImageElement).src = `images/mvp-flag.png`
                 }, {once: true})
 
-                img.addEventListener("load", () => {
-                    if (ref.current) {
-                        ref.current.appendChild(img)
-                    }
-                }, {once: true})
+                ref.current.appendChild(img)
             }
         }
     }
 
-
     useEffect(() => {
         addImageToRef()
+
+        return () => {
+            
+        }
     }, [ref])
 
     return (

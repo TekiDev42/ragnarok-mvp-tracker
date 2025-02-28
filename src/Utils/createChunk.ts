@@ -22,6 +22,6 @@ export const createChunk = <T>(array: T[], size: number): T[][] => {
     for (let i = 0; i < array.length; i += size) {
         result.push(array.slice(i, i + size));
     }
-    
+
     return result;
 }

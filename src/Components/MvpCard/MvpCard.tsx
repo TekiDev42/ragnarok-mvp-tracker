@@ -41,7 +41,7 @@ import { useAppDispatch } from "@store/Hooks.ts";
  *   );
  * };
  */
-export const MvpCard = ({ mvp }: { mvp: Mvp }) => {
+export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: Map<string, HTMLImageElement> }) => {
     const dispatch = useAppDispatch();
 
     /**
@@ -58,7 +58,7 @@ export const MvpCard = ({ mvp }: { mvp: Mvp }) => {
             <Bookmark mvp={mvp} />
 
             <div className={style.image_container}>
-                <MvpImage image={mvp.image} name={mvp.Name} />
+                <MvpImage image={mvp.image} name={mvp.Name} preloadedImages={preloadedImages} />
             </div>
 
             <div className={style.content}>
