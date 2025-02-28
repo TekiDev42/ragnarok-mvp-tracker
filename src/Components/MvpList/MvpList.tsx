@@ -34,7 +34,7 @@ export const MvpList = () => {
     // Create chunks of MVP data based on the number of items per page
     const data = useMemo(() => createChunk<Mvp>(mvps, perPage), [mvps, perPage]);
 
-    // Enable pre-fetching for next page
+    // Enable pre-fetching images
     const preloadedImages = usePreFetch(mvps);
 
     // Generate MvpCard components for the current page

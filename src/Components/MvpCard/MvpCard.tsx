@@ -59,7 +59,7 @@ export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: M
             <Bookmark mvp={mvp} />
 
             <div className={style.image_container}>
-                <MvpImage image={mvp.image} name={mvp.Name} preloadedImages={preloadedImages} />
+                <MvpImage preloadedImage={preloadedImages.get(mvp.Name)} />
             </div>
 
             <div className={style.content}>
