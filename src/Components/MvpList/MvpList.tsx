@@ -1,11 +1,12 @@
 import style from "@/App.module.css";
 import { MvpCard } from "@components/MvpCard/MvpCard.tsx";
 import { useEffect, useMemo } from "react";
-import { useAppSelector } from "@store/Hooks";
+import { useAppDispatch, useAppSelector } from "@store/Hooks";
 import { createChunk } from "@utils/createChunk.ts";
 import { Box, LoadingOverlay } from "@mantine/core";
-import { useMvpCache } from "@/hooks/useMvpCache";
 import { usePreFetch } from "@/hooks/usePreFetch";
+import { setMvps } from "@/Store/Slice/Mvp/Slice";
+import { getSortedMvp } from "@/Utils/getSortedMvp";
 
 /**
  * MvpList Component
@@ -14,20 +15,26 @@ import { usePreFetch } from "@/hooks/usePreFetch";
  * It fetches MVP data, manages pagination, and renders MVP cards based on the current page.
  */
 export const MvpList = () => {
-    const { mvps, fetchAndCacheMvps } = useMvpCache();
+    const dispatch = useAppDispatch()
+    const mvps = useAppSelector((state) => state.Slice.filtered)
     const perPage = useAppSelector((state) => state.userSlice.perPage);
     const activePage = useAppSelector((state) => state.userSlice.activePage);
 
     // Fetch MVPs when the component mounts
     useEffect(() => {
-        fetchAndCacheMvps();
+        const fetchMvps = async () => {
+            const mvps = await getSortedMvp()
+            dispatch(setMvps(mvps))
+        }
+
+        fetchMvps()
     }, []);
 
     // Create chunks of MVP data based on the number of items per page
     const data = useMemo(() => createChunk<Mvp>(mvps, perPage), [mvps, perPage]);
 
     // Enable pre-fetching for next page
-    const preloadedImages = usePreFetch(data, activePage + 1);
+    const preloadedImages = usePreFetch(data, activePage);
 
     // Generate MvpCard components for the current page
     const items = useMemo(() => {
