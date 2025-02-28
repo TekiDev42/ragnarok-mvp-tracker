@@ -12,40 +12,15 @@ import { DropsHoverCard } from "@components/MvpCard/Drops/DropsHoverCard.tsx";
 import { Bookmark } from "@components/MvpCard/Bookmark/Bookmark.tsx";
 import { setMvp, setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
-import { ReactElement } from 'react';
+import { PropsWithChildren, ReactElement, useEffect, useState } from 'react';
 import { GetPathImage } from '@/Utils/GetImage'
 
-/**
- * MvpCard component
- * 
- * This component displays information about an MVP in a card format, including an image, name, maps, and actions.
- * 
- * @param {Object} props - The component props
- * @param {Mvp} props.mvp - The MVP object containing information to display
- * 
- * @returns {JSX.Element} The rendered MvpCard component
- * 
- * @example
- * // Usage in a parent component
- * import { MvpCard } from './MvpCard';
- * 
- * const ParentComponent = () => {
- *   const mvpData = {
- *     Name: 'Baphomet',
- *     image: 'baphomet.png',
- *     // ... other MVP properties
- *   };
- * 
- *   return (
- *     <div>
- *       <MvpCard mvp={mvpData} />
- *     </div>
- *   );
- * };
- */
-export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: Map<number, ReactElement> }) => {
+
+export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
     const dispatch = useAppDispatch();
     const animation = useAppSelector(state => state.userSlice.animation)
+    const [image, setImage] = useState<ReactElement | null>(null)
+
     /**
      * Handles the click event on the death action button
      * Opens the MVP death modal
@@ -55,18 +30,17 @@ export const MvpCard = ({ mvp, preloadedImages }: { mvp: Mvp, preloadedImages: M
         dispatch(setOpened(true));
     };
 
-    let imageElement = preloadedImages.get(mvp.Id)
-    if (!imageElement) {
+    useEffect(() => {
         const img = GetPathImage({ mvp, animation })
-        imageElement = <img src={img} className={style.mvpImage} loading="lazy" alt={mvp.Name} />
-    }
+        setImage(<img src={img} className={style.mvpImage} alt={mvp.Name} />)
+    }, [mvp, animation])
 
     return (
         <div className={`${style.card} glass`}>
             <Bookmark mvp={mvp} />
 
             <div className={style.image_container}>
-                <MvpImage preloadedImage={imageElement} />
+                <MvpImage preloadedImage={image} />
             </div>
 
             <div className={style.content}>

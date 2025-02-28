@@ -85,7 +85,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "OSIRIS.gif",
+        "image": "OSIRIS.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -189,7 +189,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "BAPHOMET.gif",
+        "image": "BAPHOMET.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -302,7 +302,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "DOPPELGANGER.gif",
+        "image": "DOPPELGANGER.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -419,7 +419,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "MISTRESS.gif",
+        "image": "MISTRESS.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -532,7 +532,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "GOLDEN_BUG.gif",
+        "image": "GOLDEN_BUG.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -639,7 +639,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "ORK_HERO.gif",
+        "image": "ORK_HERO.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -739,7 +739,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "DRAKE.gif",
+        "image": "DRAKE.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -843,7 +843,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "EDDGA.gif",
+        "image": "EDDGA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -960,7 +960,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "MAYA.gif",
+        "image": "MAYA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -1077,7 +1077,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "MOONLIGHT.gif",
+        "image": "MOONLIGHT.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -1194,7 +1194,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "PHARAOH.gif",
+        "image": "PHARAOH.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -1298,7 +1298,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "PHREEONI.gif",
+        "image": "PHREEONI.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -1401,7 +1401,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "ORC_LORD.gif",
+        "image": "ORC_LORD.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -1506,7 +1506,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "KNIGHT_OF_WINDSTORM.gif",
+        "image": "KNIGHT_OF_WINDSTORM.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -1607,7 +1607,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "GARM.gif",
+        "image": "GARM.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -1711,7 +1711,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "DARK_LORD.gif",
+        "image": "DARK_LORD.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -1841,7 +1841,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "TURTLE_GENERAL.gif",
+        "image": "TURTLE_GENERAL.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -1946,7 +1946,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "LORD_OF_DEATH.gif",
+        "image": "LORD_OF_DEATH.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2046,7 +2046,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "DRACULA.gif",
+        "image": "DRACULA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2150,7 +2150,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "DARK_SNAKE_LORD.gif",
+        "image": "DARK_SNAKE_LORD.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2255,7 +2255,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "INCANTATION_SAMURAI.gif",
+        "image": "INCANTATION_SAMURAI.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2359,7 +2359,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "AMON_RA.gif",
+        "image": "AMON_RA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2463,7 +2463,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "TAO_GUNKA.gif",
+        "image": "TAO_GUNKA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2568,7 +2568,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "RSX_0806.gif",
+        "image": "RSX_0806.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2673,7 +2673,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "BACSOJIN_.gif",
+        "image": "BACSOJIN_.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2779,7 +2779,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_SEYREN.gif",
+        "image": "B_SEYREN.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2885,7 +2885,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_EREMES.gif",
+        "image": "B_EREMES.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -2992,7 +2992,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_HARWORD.gif",
+        "image": "B_HARWORD.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -3099,7 +3099,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_MAGALETA.gif",
+        "image": "B_MAGALETA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -3206,7 +3206,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_SHECIL.gif",
+        "image": "B_SHECIL.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -3313,7 +3313,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_KATRINN.gif",
+        "image": "B_KATRINN.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -3421,7 +3421,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_YGNIZEM.gif",
+        "image": "B_YGNIZEM.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -3525,7 +3525,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "APOCALIPS_H.gif",
+        "image": "APOCALIPS_H.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -3629,7 +3629,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "LADY_TANEE.gif",
+        "image": "LADY_TANEE.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -3737,7 +3737,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "THANATOS.gif",
+        "image": "THANATOS.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -3842,7 +3842,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "DETALE.gif",
+        "image": "DETALE.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -3946,7 +3946,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "KIEL_.gif",
+        "image": "KIEL_.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -4046,7 +4046,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "RANDGRIS.gif",
+        "image": "RANDGRIS.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -4149,7 +4149,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "GLOOMUNDERNIGHT.gif",
+        "image": "GLOOMUNDERNIGHT.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -4253,7 +4253,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "KTULLANUX.gif",
+        "image": "KTULLANUX.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -4357,7 +4357,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "ATROCE.gif",
+        "image": "ATROCE.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -4513,7 +4513,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "IFRIT.gif",
+        "image": "IFRIT.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -4618,7 +4618,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "FALLINGBISHOP.gif",
+        "image": "FALLINGBISHOP.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -4722,7 +4722,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "BEELZEBUB_.gif",
+        "image": "BEELZEBUB_.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -4826,7 +4826,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "GOPINICH.gif",
+        "image": "GOPINICH.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -4921,7 +4921,7 @@ export const defaultMvps: Mvp[] = [
                 "Rate": 4500
             }
         ],
-        "image": "MOROCC_.gif",
+        "image": "MOROCC_.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5025,7 +5025,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "BOITATA.gif",
+        "image": "BOITATA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5125,7 +5125,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "QUEEN_SCARABA.gif",
+        "image": "QUEEN_SCARABA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5229,7 +5229,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "LEAK.gif",
+        "image": "LEAK.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5333,7 +5333,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "KRAKEN.gif",
+        "image": "KRAKEN.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5436,7 +5436,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_RANDEL.gif",
+        "image": "B_RANDEL.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5542,7 +5542,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_FLAMEL.gif",
+        "image": "B_FLAMEL.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5640,7 +5640,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_CELIA.gif",
+        "image": "B_CELIA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5743,7 +5743,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_CHEN.gif",
+        "image": "B_CHEN.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5845,7 +5845,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_GERTIE.gif",
+        "image": "B_GERTIE.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -5943,7 +5943,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_ALPHOCCIO.gif",
+        "image": "B_ALPHOCCIO.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6031,7 +6031,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "B_TRENTINI.gif",
+        "image": "B_TRENTINI.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6132,7 +6132,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "PYURIEL.gif",
+        "image": "PYURIEL.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6232,7 +6232,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "GIOIA.gif",
+        "image": "GIOIA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6333,7 +6333,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "DAEHYON.gif",
+        "image": "DAEHYON.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6434,7 +6434,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "KADES.gif",
+        "image": "KADES.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6521,7 +6521,7 @@ export const defaultMvps: Mvp[] = [
                 "Rate": 2
             }
         ],
-        "image": "B_NOVICE.gif",
+        "image": "B_NOVICE.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6604,7 +6604,7 @@ export const defaultMvps: Mvp[] = [
                 "Rate": 2
             }
         ],
-        "image": "B_SUPERNOVICE.gif",
+        "image": "B_SUPERNOVICE.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6697,7 +6697,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "TIMEHOLDER.gif",
+        "image": "TIMEHOLDER.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6788,7 +6788,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_EREMES.gif",
+        "image": "V_B_EREMES.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6879,7 +6879,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_MAGALETA.gif",
+        "image": "V_B_MAGALETA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -6971,7 +6971,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_SHECIL.gif",
+        "image": "V_B_SHECIL.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7063,7 +7063,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_HARWORD.gif",
+        "image": "V_B_HARWORD.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7155,7 +7155,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_KATRINN.gif",
+        "image": "V_B_KATRINN.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7246,7 +7246,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_SEYREN.gif",
+        "image": "V_B_SEYREN.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7337,7 +7337,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_RANDEL.gif",
+        "image": "V_B_RANDEL.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7428,7 +7428,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_FLAMEL.gif",
+        "image": "V_B_FLAMEL.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7519,7 +7519,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_CELIA.gif",
+        "image": "V_B_CELIA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7610,7 +7610,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_CHEN.gif",
+        "image": "V_B_CHEN.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7701,7 +7701,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_GERTIE.gif",
+        "image": "V_B_GERTIE.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7792,7 +7792,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_ALPHOCCIO.gif",
+        "image": "V_B_ALPHOCCIO.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7883,7 +7883,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "V_B_TRENTINI.gif",
+        "image": "V_B_TRENTINI.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -7969,7 +7969,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "MECHASPIDER.gif",
+        "image": "MECHASPIDER.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -8061,7 +8061,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "MUSPELLSKOLL_H.gif",
+        "image": "MUSPELLSKOLL_H.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -8149,7 +8149,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "JUNGOLIANT.gif",
+        "image": "JUNGOLIANT.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -8236,7 +8236,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "CHIMERA_THEONE.gif",
+        "image": "CHIMERA_THEONE.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -8315,7 +8315,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "R001_BESTIA.gif",
+        "image": "R001_BESTIA.webp",
         "isBookmark": false,
         "mvpMaps": [
             {
@@ -8402,7 +8402,7 @@ export const defaultMvps: Mvp[] = [
                 "StealProtected": true
             }
         ],
-        "image": "DEATH_WITCH.gif",
+        "image": "DEATH_WITCH.webp",
         "isBookmark": false,
         "mvpMaps": [
             {

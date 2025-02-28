@@ -5,6 +5,8 @@ import style from '@/Components/MvpCard/Image/MvpImage.module.css'
 
 export const usePreFetch = (data: Mvp[]) => {
     const animation = useAppSelector(state => state.userSlice.animation)
+
+    console.log("usePreFetch", animation)
     const [preloadedImages] = useState(new Map<number, ReactElement>())
 
     useEffect(() => {
@@ -17,14 +19,14 @@ export const usePreFetch = (data: Mvp[]) => {
             imageData.forEach(mvp => {
                 if (mvp.image && mvp.Name) {
                     const img = GetPathImage({ mvp, animation })
-                    const imageElement = <img src={img} className={style.mvpImage} loading="lazy" alt={mvp.Name} />
+                    const imageElement = <img src={img} className={style.mvpImage} alt={mvp.Name} />
                     preloadedImages.set(mvp.Id, imageElement)
                 }
             })
         }
 
         preloadNextPage()
-    }, [data, animation, preloadedImages])
+    }, [data, animation])
 
     return preloadedImages
 } 
