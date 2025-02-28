@@ -3,6 +3,7 @@
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
   "appId": "ragnarok-mvp-tracker.app",
   "asar": true,
+  "copyright": "Copyright © 2025 ${author}",
   "productName": "ragnarok-mvp-tracker",
   "directories": {
     "output": "release/${version}",
