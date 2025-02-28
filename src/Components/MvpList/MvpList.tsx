@@ -16,7 +16,7 @@ import { getSortedMvp } from "@/Utils/getSortedMvp";
  */
 export const MvpList = () => {
     const dispatch = useAppDispatch()
-    
+
     const mvps = useAppSelector((state) => state.Slice.filtered)
     const perPage = useAppSelector((state) => state.userSlice.perPage);
     const activePage = useAppSelector((state) => state.userSlice.activePage);
@@ -35,7 +35,7 @@ export const MvpList = () => {
     const data = useMemo(() => createChunk<Mvp>(mvps, perPage), [mvps, perPage]);
 
     // Enable pre-fetching for next page
-    const preloadedImages = usePreFetch(data, activePage);
+    const preloadedImages = usePreFetch(mvps);
 
     // Generate MvpCard components for the current page
     const items = useMemo(() => {
