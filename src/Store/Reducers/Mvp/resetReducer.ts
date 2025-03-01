@@ -1,5 +1,7 @@
 import {defaultMvps} from "@constants/defaultMvps.ts"
 import {sortMvps} from "@utils/Sort/sortMvps.ts"
+import { CaseReducer } from "@reduxjs/toolkit";
+import { WritableDraft } from "immer";
 
 /**
  * Reducer function to reset the MVP state to its default values.
@@ -25,11 +27,11 @@ import {sortMvps} from "@utils/Sort/sortMvps.ts"
  * // }
  * // And also update the persisted MVPs using window.mvpApi.setMvps()
  */
-export const resetReducer = (state: MvpState) => {
+export const resetReducer: CaseReducer<MvpState> = (state) => {
     const mvpsSorted = sortMvps(defaultMvps)
 
-    state.filtered = mvpsSorted
-    state.mvps = mvpsSorted
+    state.filtered = mvpsSorted as WritableDraft<Mvp>[]
+    state.mvps = mvpsSorted as WritableDraft<Mvp>[]
 
     window.mvpApi.setMvps(mvpsSorted)
 }

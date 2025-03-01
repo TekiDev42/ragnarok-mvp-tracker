@@ -43,9 +43,9 @@ export const TimeInputWithIcon = ({ mapsData, mvpMap, updateMapData }: TimeInput
         <TimeInput
             radius="xl"
             ref={ref}
-            onChange={(value) => {
-                if (typeof value === 'string') {
-                    updateMapData(mvpMap, 'time', value);
+            onChange={(event) => {
+                if (typeof event.target.value === 'string' && event.target.value !== '') {
+                    updateMapData(mvpMap, 'time', event.target.value);
                 }
             }}
             rightSection={PickerControl(ref)}

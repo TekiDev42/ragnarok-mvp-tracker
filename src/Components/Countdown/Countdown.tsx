@@ -10,29 +10,6 @@ type CountdownProps =  PropsWithChildren & {
     mapName: string;
     mvpName: string;
 }
-/**
- * Countdown component for MVP respawn timer
- * 
- * This component displays a countdown timer for MVP (Most Valuable Player) respawns in a game.
- * It shows the remaining time until the MVP respawns and triggers notifications when the time is up.
- * 
- * @component
- * @param {Object} props - The properties passed to the component
- * @param {DateTime} props.respawn - The DateTime object representing when the MVP will respawn
- * @param {string} props.mapName - The name of the map where the MVP will respawn
- * @param {string} props.mvpName - The name of the MVP
- * 
- * @returns {JSX.Element} A component that displays the countdown timer and handles notifications
- * 
- * The component uses the following hooks and features:
- * - useState: To manage the countdown state
- * - useEffect: To set up and clean up the countdown interval and audio
- * - useCallback: To memoize the updateDiff function
- * - useAppSelector: To access user preferences from the Redux store
- * - useAppDispatch: To dispatch actions to the Redux store
- * - notifications: To show notifications when the MVP respawns
- * - Audio API: To play a sound when the MVP respawns (if enabled in user preferences)
- */
 
 export const Countdown = ({ respawn, mapName, mvpName }: CountdownProps) => {
     const [diff, setDiff] = useState<Duration>(() => 

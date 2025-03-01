@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
-
+import { WritableDraft } from "immer"
 /**
  * Interface representing the state of the modal.
  */
@@ -48,7 +48,7 @@ export const modalSlice = createSlice({
          * }))
          */
         setMvp: (state, action: PayloadAction<Mvp>) => {
-            state.mvp = action.payload
+            state.mvp = action.payload as WritableDraft<Mvp>
         },
         /**
          * Sets the opened state of the modal.
