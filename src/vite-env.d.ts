@@ -181,6 +181,7 @@ interface UserState extends Settings {
     activePage: number
     cardRates: number
     rates: number
+    notificationVolume: number
 }
 
 /**

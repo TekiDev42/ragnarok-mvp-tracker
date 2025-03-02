@@ -3,7 +3,7 @@ import { MvpCard } from "@components/MvpCard/MvpCard.tsx";
 import { useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "@store/Hooks";
 import { createChunk } from "@utils/createChunk.ts";
-import { Box, LoadingOverlay } from "@mantine/core";
+import { Box } from "@mantine/core";
 import { setMvps } from "@/Store/Slice/Mvp/Slice";
 import { getSortedMvp } from "@/Utils/getSortedMvp";
 
@@ -40,13 +40,8 @@ export const MvpList = () => {
             return Array(perPage)
                 .fill(0)
                 .map((_, i) => (
-                <Box pos="relative" key={`skeleton-${i}`} style={{ height: 325 }}>
-                    <LoadingOverlay
-                    visible={true}
-                    zIndex={1000}
-                    overlayProps={{ radius: "lg", blur: 1 }}
-                    loaderProps={{ color: "blue", type: "bars", size: "sm" }}
-                    />
+                <Box className="flex justify-center items-center glass shadow-lg" pos="relative" key={`skeleton-${i}`} style={{ height: 325, borderRadius: "1rem" }}>
+                    <img src="/images/poring-loader.webp" alt="Poring loader" width={"41px"} height={"39px"}/>
                 </Box>
             ))
         }

@@ -58,4 +58,3 @@ Une application pour suivre et gérer les MVP dans Ragnarok Online.
 
 ## Contribueurs
 - [MrKitey](https://github.com/TekiDev42)
-

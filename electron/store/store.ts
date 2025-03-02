@@ -55,6 +55,10 @@ export type Schema = {
     rates: {
         type: string,
         default: number,
+    },
+    notificationVolume: {
+        type: string,
+        default: number,
     }
 }
 
@@ -98,16 +102,11 @@ export const schema: Schema = {
     rates: {
         type: "number",
         default: 1,
+    },
+    notificationVolume: {
+        type: "number",
+        default: 100,
     }
 }
 
-/**
- * Electron store instance with the defined schema.
- * @type {Store<Schema>}
- * @example
- * // Getting a value from the store
- * const animationEnabled = store.get('animation')
- * // Setting a value in the store
- * store.set('delayNotification', 2000)
- */
 export const store = new Store<Schema>({schema})

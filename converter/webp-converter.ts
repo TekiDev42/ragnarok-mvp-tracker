@@ -1,11 +1,11 @@
 import sharp from "sharp";
 import fs from "fs";
 
-const inputFixePath = "public/images/mvps/fixe";
-const inputAnimatedPath = "public/images/mvps";
+const inputFixePath = "converter/fixe";
+const inputAnimatedPath = "converter/animated";
 
-const outputFixePath = "public/images/mvps/webp/fixe";
-const outputAnimatedPath = "public/images/mvps/webp/animated";
+const outputFixePath = "converter/output/fixe";
+const outputAnimatedPath = "converter/output/animated";
 
 
 if (!fs.existsSync(outputFixePath)) {
@@ -26,14 +26,14 @@ const convertToWebp = async (inputPath: string, outputPath: string, ext: string)
 }
 
 const convertAllImages = async () => {
-    const files = fs.readdirSync(inputFixePath);
+    /*const files = fs.readdirSync(inputFixePath);
 
     for (const file of files) {
         console.log(`Converting ${file} to ${outputFixePath}/${file.replace('.png', '.webp')}`)
         if (file.endsWith('.png')) {
             await convertToWebp(`${inputFixePath}/${file}`, `${outputFixePath}/${file.replace('.png', '.webp')}`, '.png')
         }
-    }
+    } */
 
     const animatedFiles = fs.readdirSync(inputAnimatedPath)
     for (const file of animatedFiles) {

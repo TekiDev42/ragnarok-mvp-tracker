@@ -3,6 +3,7 @@ import {IconGrave, IconMapPin2} from "@tabler/icons-react";
 import style from "@components/MvpCard/Maps/MapHoverCard.module.css";
 import {CSSProperties, PropsWithChildren} from "react";
 import {sizeImage} from "@constants/defaults.ts";
+import { DateTime } from "luxon";
 
 export const MapHoverCard = ({mvpmap}: PropsWithChildren & {mvpmap: MvpMap}) => {
     const ratio = {
@@ -42,6 +43,8 @@ export const MapHoverCard = ({mvpmap}: PropsWithChildren & {mvpmap: MvpMap}) => 
                                  alt={mvpmap.name}
                             />
                         </figure>
+
+                        <div className="text-sm text-white py-1">Respawn time: {DateTime.fromSeconds(mvpmap.respawnTimer * 60).toFormat("hh'h'mm")}</div>
                     </div>
                 </Flex>
             </HoverCard.Dropdown>

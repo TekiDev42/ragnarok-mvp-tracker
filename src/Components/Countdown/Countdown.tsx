@@ -19,6 +19,7 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
     );
     const delayNotification = useAppSelector(state => state.userSlice.delayNotification);
     const soundNotification = useAppSelector(state => state.userSlice.soundNotification);
+    const notificationVolume = useAppSelector(state => state.userSlice.notificationVolume);
     const dispatch = useAppDispatch();
 
     const updateDiff = useCallback(() => {
@@ -31,6 +32,8 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
 
         if (diff.as('seconds') > 0) {
             audio = new Audio('sounds/sign_right.wav');
+            audio.volume = notificationVolume / 100;
+
             interval = setInterval(() => {
                 const newDiff = respawn.diff(DateTime.now(), ['hours', 'minutes', 'seconds']);
                 setDiff(newDiff);

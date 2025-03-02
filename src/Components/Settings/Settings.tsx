@@ -9,6 +9,7 @@ import {ActionSwitchAnimation} from "@components/Settings/Actions/ActionSwitchAn
 import {ActionDelayNotification} from "@components/Settings/Actions/ActionDelayNotification";
 import {ActionSwitchNotificationSound} from "@components/Settings/Actions/ActionSwitchNotificationSound";
 import {ActionDropsRates} from "@components/Settings/Actions/ActionDropsRates";
+import {ActionNotificationVolume} from "@components/Settings/Actions/ActionNotificationVolume";
 
 export const Settings = () => {
     const [opened, { open, close }] = useDisclosure(false);
@@ -39,6 +40,7 @@ export const Settings = () => {
                     <Divider/>
 
                     <ActionDelayNotification />
+                    <ActionNotificationVolume />
                     <ActionSwitchNotificationSound />
                     <Divider/>
 

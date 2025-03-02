@@ -17,7 +17,8 @@ const initialState: UserState = {
     ...defaultSettings,
     activePage: 1,
     cardRates: 1,
-    rates: 1
+    rates: 1,
+    notificationVolume: 100
 }
 
 /**
@@ -51,8 +52,7 @@ export const userSlice = createSlice({
             state.perPage = action.payload.perPage
             state.cardRates = action.payload.cardRates
             state.rates = action.payload.rates
-
-            updateStorage("respawnTimer", action.payload.respawnTimer)
+            state.notificationVolume = action.payload.notificationVolume
         },
         /**
          * Sets the active page number.
@@ -134,12 +134,23 @@ export const userSlice = createSlice({
         setRates: (state, action: PayloadAction<number>) => {
             state.rates = action.payload
             window.mvpApi.setSettings('rates', action.payload)
+        },
+
+        /**
+         * Sets the notification volume.
+         * 
+         * @example
+         * dispatch(setNotificationVolume(100))
+         */
+        setNotificationVolume: (state, action: PayloadAction<number>) => {
+            state.notificationVolume = action.payload
+            window.mvpApi.setSettings('notificationVolume', action.payload)
         }
     }
 })
 
 // Export individual action creators
-export const {setAnimation, setBackground, setPerPage, setRespawnTimer, setSettings, setCardRates, setRates} = userSlice.actions
+export const {setAnimation, setBackground, setPerPage, setRespawnTimer, setSettings, setCardRates, setRates, setNotificationVolume} = userSlice.actions
 export const {setActivePage, setSoundNotification, setDelayNotification, reset} = userSlice.actions
 
 // Export the reducer

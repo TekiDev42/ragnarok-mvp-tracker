@@ -14,7 +14,7 @@ import { setMvp, setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { PropsWithChildren, ReactElement, useEffect, useState } from 'react';
 import { GetPathImage } from '@/Utils/GetImage'
-import { ScrollArea } from "@mantine/core";
+import { ScrollArea, Text } from "@mantine/core";
 
 
 export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {

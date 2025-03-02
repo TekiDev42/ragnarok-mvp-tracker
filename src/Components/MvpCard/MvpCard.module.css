@@ -17,7 +17,7 @@
 }
 
 .image_container img {
-    @apply h-32 w-auto;
+    @apply max-h-32 w-auto;
 }
 
 .name {
