@@ -5,7 +5,7 @@
 
 import style from './MvpCard.module.css'
 import { HeadstoneIcon } from "@components/Icons/Icons.tsx";
-import { ActionIcon } from "@mantine/core";
+import { ActionIcon, Flex } from "@mantine/core";
 import { MvpMapCardList } from "@components/MvpCard/Maps/MvpMapCardList.tsx";
 import { MvpImage } from "@components/MvpCard/Image/MvpImage.tsx";
 import { DropsHoverCard } from "@components/MvpCard/Drops/DropsHoverCard.tsx";
@@ -55,8 +55,10 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
             </div>
 
             <div className={style.actions}>
-                <StatsHoverCard stats={[]} />
-                <DropsHoverCard drops={mvp.Drops ?? []} mvpDrops={mvp.MvpDrops ?? []} />
+                <Flex flex={1} gap={8}>
+                    <StatsHoverCard mvp={mvp} />
+                    <DropsHoverCard drops={mvp.Drops ?? []} mvpDrops={mvp.MvpDrops ?? []} />
+                </Flex>
 
                 <ActionIcon
                     onClick={handleClick}

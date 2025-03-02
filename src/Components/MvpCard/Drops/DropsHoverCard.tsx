@@ -2,7 +2,7 @@ import {ActionIcon, HoverCard} from "@mantine/core";
 import {DropsIcons} from "@components/Icons/Icons.tsx";
 import {Drops} from "@components/MvpCard/Drops/Drops.tsx";
 import {useAppSelector} from "@store/Hooks.ts";
-
+import { ScrollArea } from "@mantine/core";
 
 export const DropsHoverCard: React.FC<{ drops: Drop[]; mvpDrops: Drop[] }> = ({ drops, mvpDrops }) => {
 
@@ -24,10 +24,12 @@ export const DropsHoverCard: React.FC<{ drops: Drop[]; mvpDrops: Drop[] }> = ({ 
             </ActionIcon>
         </HoverCard.Target>
         <HoverCard.Dropdown>
-            <ul className="w-full pt-0 px-3">
-                {drops.length > 0 && <Drops drops={drops} rates={rates} cardRates={cardRates} label="Drops" />}
-                {mvpDrops.length > 0 && <Drops drops={mvpDrops} rates={rates} cardRates={cardRates} label="MVP drops" />}
-            </ul>
+            <ScrollArea h={340} type="always" className={"px-3"}>
+                <ul className="w-full pt-0 px-3">
+                    {drops.length > 0 && <Drops drops={drops} rates={rates} cardRates={cardRates} label="Drops" />}
+                    {mvpDrops.length > 0 && <Drops drops={mvpDrops} rates={rates} cardRates={cardRates} label="MVP drops" />}
+                    </ul>
+            </ScrollArea>
         </HoverCard.Dropdown>
     </HoverCard>
     )
