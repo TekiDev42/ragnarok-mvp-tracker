@@ -105,7 +105,7 @@ export const schema: Schema = {
     },
     notificationVolume: {
         type: "number",
-        default: 100,
+        default: 20,
     }
 }
 
