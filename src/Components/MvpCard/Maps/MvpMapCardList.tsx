@@ -6,7 +6,9 @@ import {PropsWithChildren, useEffect, useState} from "react";
 import {MapHoverCard} from "@components/MvpCard/Maps/MapHoverCard.tsx";
 import {useAppSelector} from "@store/Hooks.ts";
 
+
 export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
+
     const [mvpMaps, setMvpMaps] = useState<MvpMap[]>(mvp.mvpMaps)
     const respawnTimer = useAppSelector(state => state.userSlice.respawnTimer)
 

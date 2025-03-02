@@ -14,6 +14,8 @@ import { setMvp, setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { PropsWithChildren, ReactElement, useEffect, useState } from 'react';
 import { GetPathImage } from '@/Utils/GetImage'
+import { Flex, ScrollArea } from "@mantine/core";
+
 
 
 export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
@@ -45,7 +47,10 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
 
             <div className={style.content}>
                 <h2 className={style.name}>{mvp.Name}</h2>
-                <MvpMapCardList mvp={mvp} />
+
+                <ScrollArea h={100} type="auto" w={"100%"} className={"px-3"}>
+                    <MvpMapCardList mvp={mvp} />
+                </ScrollArea>
             </div>
 
             <div className={style.actions}>

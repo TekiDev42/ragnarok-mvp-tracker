@@ -16,6 +16,10 @@
     @apply flex flex-col justify-center items-center min-h-32;
 }
 
+.image_container img {
+    @apply h-32 w-auto;
+}
+
 .name {
     @apply flex w-full flex-col justify-between items-center gap-0 text-xl text-white;
 }
