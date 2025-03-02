@@ -2,19 +2,8 @@ import {ActionIcon, HoverCard} from "@mantine/core";
 import {DropsIcons} from "@components/Icons/Icons.tsx";
 import {Drops} from "@components/MvpCard/Drops/Drops.tsx";
 import {useAppSelector} from "@store/Hooks.ts";
-/**
- * DropsHoverCard component displays a hover card with drop information for MVPs.
- *
- * @component
- * @param {Object} props - The component props
- * @param {Drop[]} props.drops - An array of regular drops
- * @param {Drop[]} props.mvpDrops - An array of MVP-specific drops
- *
- * @returns {JSX.Element} A HoverCard component containing drop information
- *
- * @example
- * <DropsHoverCard drops={regularDrops} mvpDrops={mvpSpecificDrops} />
- */
+
+
 export const DropsHoverCard: React.FC<{ drops: Drop[]; mvpDrops: Drop[] }> = ({ drops, mvpDrops }) => {
 
     const rates = useAppSelector(state => state.userSlice.rates)

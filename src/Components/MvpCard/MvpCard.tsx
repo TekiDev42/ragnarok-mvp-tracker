@@ -14,8 +14,8 @@ import { setMvp, setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { PropsWithChildren, ReactElement, useEffect, useState } from 'react';
 import { GetPathImage } from '@/Utils/GetImage'
-import { ScrollArea, Text } from "@mantine/core";
-
+import { ScrollArea } from "@mantine/core";
+import { StatsHoverCard } from "@components/MvpCard/Stats/StatsHover.tsx";
 
 export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
     const dispatch = useAppDispatch();
@@ -53,6 +53,7 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
             </div>
 
             <div className={style.actions}>
+                <StatsHoverCard stats={[]} />
                 <DropsHoverCard drops={mvp.Drops ?? []} mvpDrops={mvp.MvpDrops ?? []} />
 
                 <ActionIcon
