@@ -33,7 +33,9 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
 
     useEffect(() => {
         const img = GetPathImage({ mvp, animation })
-        setImage(<img src={img} className={style.mvpImage} alt={mvp.Name} />)
+        setImage(<img src={img} className={style.mvpImage} alt={mvp.Name} onError={(event) => {
+            event.currentTarget.src = "/images/mvp-flag.png"
+        }} />)
     }, [mvp, animation])
 
     return (

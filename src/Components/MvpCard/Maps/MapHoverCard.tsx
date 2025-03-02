@@ -39,7 +39,7 @@ export const MapHoverCard = ({mvpmap}: PropsWithChildren & {mvpmap: MvpMap}) => 
                         <figure>
                             <img loading={"lazy"}
                                  style={{"--image-size": `${sizeImage}px`} as CSSProperties & {"--image-size": string}}
-                                 src={`images/maps/${mvpmap.name}.gif`}
+                                 src={`images/maps/${mvpmap.name}.webp`}
                                  alt={mvpmap.name}
                             />
                         </figure>
