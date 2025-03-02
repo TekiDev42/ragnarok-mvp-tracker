@@ -34,23 +34,23 @@ const convertToWebp = async (inputPath: string, outputPath: string, animated: bo
 
 const convertAllImages = async () => {
 
-    const files = fs.readdirSync(inputAnimatedPath);
+    const files = fs.readdirSync("converter/input");
     for (const file of files) {
         console.log(`Converting ${file} to ${outputFixePath}/${file.replace('.gif', '.webp')}`)
-        await convertToWebp(`${inputAnimatedPath}/${file}`, `${outputFixePath}/${file.replace('.gif', '.webp')}`, false)
+        await convertToWebp(`converter/input/${file}`, `converter/output/fixe/${file.replace('.gif', '.webp')}`, false)
     }
 
-    const animatedFiles = fs.readdirSync(inputAnimatedPath)
+    const animatedFiles = fs.readdirSync("converter/input")
     for (const file of animatedFiles) {
         console.log(`Converting ${file} to ${outputAnimatedPath}/${file.replace('.gif', '.webp')}`)
-        await convertToWebp(`${inputAnimatedPath}/${file}`, `${outputAnimatedPath}/${file.replace('.gif', '.webp')}`, true)
+        await convertToWebp(`converter/input/${file}`, `converter/output/animated/${file.replace('.gif', '.webp')}`, true)
     }
 
-    const mapsFiles = fs.readdirSync(inputMapsPath)
+    /*const mapsFiles = fs.readdirSync(inputMapsPath)
     for (const file of mapsFiles) {
         console.log(`Converting ${file} to ${outputMapsPath}/${file.replace('.gif', '.webp')}`)
         await convertToWebp(`${inputMapsPath}/${file}`, `${outputMapsPath}/${file.replace('.gif', '.webp')}`, false)
-    }
+    }*/
 }
 
 convertAllImages()

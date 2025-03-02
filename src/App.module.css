@@ -3,7 +3,7 @@
 }
 
 .cardContainer {
-    @apply grid grid-cols-2 w-full items-start gap-x-8 gap-y-16 overflow-hidden z-10;
+    @apply grid grid-cols-1 w-full items-start gap-x-8 gap-y-16 overflow-hidden z-10;
 }
 
 @media screen(sm){
@@ -25,6 +25,12 @@
 }
 
 @media screen(xl){
+    .cardContainer {
+        @apply grid-cols-5
+    }
+}
+
+@media screen(2xl){
     .cardContainer {
         @apply grid-cols-6
     }

@@ -11,6 +11,7 @@
 
 html body[data-scroll-locked] {
     margin-right: 0 !important;
+    overflow: hidden !important;
 }
 
 .bookmark, .ro-cursor, button,
