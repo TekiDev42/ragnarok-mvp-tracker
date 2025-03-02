@@ -1,5 +1,5 @@
 import style from "@components/MvpCard/Maps/MapHoverCard.module.css";
-import {Flex, CloseButton} from "@mantine/core";
+import {Flex} from "@mantine/core";
 import {Countdown} from "@components/Countdown/Countdown.tsx";
 import {getRespawn} from "@utils/getRespawn.ts";
 import {PropsWithChildren, useEffect, useState} from "react";
