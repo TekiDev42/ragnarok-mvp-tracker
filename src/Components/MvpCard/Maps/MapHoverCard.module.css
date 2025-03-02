@@ -1,5 +1,5 @@
 .countdownItem {
-    @apply flex flex-row w-full justify-between gap-4 items-center text-lg text-white;
+    @apply flex flex-row w-full justify-between gap-0 items-center text-lg text-white;
 }
 
 .map {

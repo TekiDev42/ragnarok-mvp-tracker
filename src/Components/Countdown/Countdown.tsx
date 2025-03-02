@@ -4,14 +4,16 @@ import { Badge, Text } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { reSortMvp } from "@store/Slice/Mvp/Slice.ts";
+import { Flex, CloseButton } from "@mantine/core";
 
 type CountdownProps =  PropsWithChildren & {
     respawn: DateTime;
     mapName: string;
     mvpName: string;
+    handleResetDeathTime: (mapName: string) => void;
 }
 
-export const Countdown = ({ respawn, mapName, mvpName }: CountdownProps) => {
+export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: CountdownProps) => {
     const [diff, setDiff] = useState<Duration>(() => 
         respawn.diff(DateTime.now(), ['hours', 'minutes', 'seconds'])
     );
@@ -77,10 +79,14 @@ export const Countdown = ({ respawn, mapName, mvpName }: CountdownProps) => {
     }
 
     return (
-        <Text>
-            {Math.max(0, Math.round(diff.as('hours')))}h
-            {Math.max(0, Math.floor(diff.as('minutes') % 60))}m
-            {Math.max(0, Math.floor(diff.as('seconds') % 60))}s
-        </Text>
+        <Flex align="center">
+            <Text>
+                {Math.max(0, Math.round(diff.as('hours')))}h
+                {Math.max(0, Math.floor(diff.as('minutes') % 60))}m
+                {Math.max(0, Math.floor(diff.as('seconds') % 60))}s
+            </Text>
+
+            <CloseButton variant="transparent" size="sm" onClick={() => handleResetDeathTime(mapName)} />
+        </Flex>
     );
 };

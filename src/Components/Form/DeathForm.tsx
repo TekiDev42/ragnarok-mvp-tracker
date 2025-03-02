@@ -40,7 +40,7 @@ export const DeathFormModal = () => {
             const index = newMapsData.findIndex(mvpMap => mvpMap.name === mapName);
             if (index === -1) return prevMapsData;
 
-            const newMap = { ...newMapsData[index] };
+            const newMap = { ...newMapsData[index] }
 
             switch (type) {
                 case 'time':
