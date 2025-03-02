@@ -60,7 +60,7 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
                     <DropsHoverCard drops={mvp.Drops ?? []} mvpDrops={mvp.MvpDrops ?? []} />
                 </Flex>
 
-                <ActionIcon
+                {mvp.mvpMaps.length > 0 && <ActionIcon
                     onClick={handleClick}
                     className="glass ro-cursor"
                     variant="gradient"
@@ -70,7 +70,7 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
                     aria-label="Action set death mvp"
                 >
                     <HeadstoneIcon />
-                </ActionIcon>
+                </ActionIcon>}
             </div>
         </div>
     );
