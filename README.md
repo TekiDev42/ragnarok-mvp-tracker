@@ -61,5 +61,4 @@ Une application pour suivre et gérer les MVP dans Ragnarok Online.
 
 ## TODO
 - Liste des stats (similaire drops)
-- Changer la façon de selectionner les maps (Formulaire de mort)
 - Multi synchro (local) creation de groupe / rejoindre une session avec code, use socket.io??
