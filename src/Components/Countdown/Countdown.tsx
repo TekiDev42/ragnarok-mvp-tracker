@@ -31,9 +31,6 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
         let audio: HTMLAudioElement;
 
         if (diff.as('seconds') > 0) {
-            audio = new Audio('sounds/sign_right.wav');
-            audio.volume = notificationVolume / 100;
-
             interval = setInterval(() => {
                 const newDiff = respawn.diff(DateTime.now(), ['hours', 'minutes', 'seconds']);
                 setDiff(newDiff);
@@ -51,6 +48,8 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
                     dispatch(reSortMvp());
 
                     if (soundNotification) {
+                        audio = new Audio('sounds/sign_right.wav');
+                        audio.volume = notificationVolume / 100;
                         audio.play().then(() => audio.remove());
                     }
 
