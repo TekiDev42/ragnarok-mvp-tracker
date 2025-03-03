@@ -1,9 +1,8 @@
 import style from './App.module.css'
 import { Navbar } from "@components/Navbar/Navbar"
-import { Flex, ScrollArea } from "@mantine/core"
+import { ScrollArea } from "@mantine/core"
 import { DeathFormModal } from "@components/Form/DeathForm"
 import { Background } from "@components/Background/Background"
-import { SelectPagination } from "@components/Pagination/SelectPagination"
 import { MvpList } from "@components/MvpList/MvpList"
 import { useEffect, useState } from "react"
 import { setSettings } from "@store/Slice/User/UserSlice"
@@ -37,9 +36,6 @@ const App = () => {
             <div className={style.App}>
                 <Background />
                 <Navbar />
-                <Flex justify="center" gap={5} align="center">
-                    <SelectPagination />
-                </Flex>
                 <MvpList />
             </div>
             <DeathFormModal />
