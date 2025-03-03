@@ -20,7 +20,6 @@ export const MvpList = () => {
     const loadMoreRef = useRef<HTMLDivElement>(null)
 
     const mvps = useAppSelector((state) => state.Slice.filtered)
-    const perPage = useAppSelector((state) => state.userSlice.perPage)
     const [visibleItems, setVisibleItems] = useState(18)
     const [loading, setLoading] = useState(false)
 
@@ -62,7 +61,7 @@ export const MvpList = () => {
         return mvps.slice(0, visibleItems).map((mvp, i) => (
             <MvpCard key={mvp.Id ?? `mvp-${i}`} mvp={mvp} />
         ))
-    }, [mvps, visibleItems, perPage])
+    }, [mvps, visibleItems])
 
     return (
         <div className={style.cardContainer} style={{ width: "100%" }}>
