@@ -15,8 +15,6 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
     const respawnTimer = useAppSelector(state => state.userSlice.respawnTimer)
     const dispatch = useAppDispatch()
 
-    // "1970-01-01T01:00:00"
-
     const handleResetDeathTime = useCallback((mapName: string) => {
         const newMapsData = mvpMaps.map(mvpmap => mvpmap.name === mapName ? {...mvpmap, deathTime: "1970-01-01T01:00:00"} : mvpmap)
         dispatch(setMvpMapsAction({ mvp, newMapsData }))

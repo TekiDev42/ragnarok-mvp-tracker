@@ -76,7 +76,6 @@ export const DeathFormModal = () => {
      * @param {string[]} value - The selected map names
      */
     const handleMapSelection = useCallback((mapName: string, checked: boolean) => {
-        console.log(mapName, checked);
         if (!checked) {
             setMapsSelected(prevMapsSelected => [...prevMapsSelected, mapName]);
         } else {
