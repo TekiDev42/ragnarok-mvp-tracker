@@ -1,8 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export const useIntersectionObserver = (targetRef: React.RefObject<HTMLElement>, callback: () => void, options = {}) => {
+    const observer = useRef<IntersectionObserver | null>(null)
+
     useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
+        observer.current = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     callback()
@@ -12,13 +14,15 @@ export const useIntersectionObserver = (targetRef: React.RefObject<HTMLElement>,
 
         const currentTarget = targetRef.current
         if (currentTarget) {
-            observer.observe(currentTarget)
+            observer.current?.observe(currentTarget)
         }
 
         return () => {
             if (currentTarget) {
-                observer.unobserve(currentTarget)
+                observer.current?.unobserve(currentTarget)
             }
         }
     }, [callback, options])
+
+    return observer
 } 
