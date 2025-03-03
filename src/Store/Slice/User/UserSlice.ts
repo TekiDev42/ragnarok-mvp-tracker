@@ -27,20 +27,9 @@ export const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
+
         /**
          * Updates all user settings at once.
-         * @param {UserState} state - The current state.
-         * @param {PayloadAction<Settings>} action - The action containing new settings.
-         * 
-         * @example
-         * dispatch(setSettings({
-         *   animation: true,
-         *   background: 'dark',
-         *   soundNotification: true,
-         *   delayNotification: 5,
-         *   respawnTimer: 60,
-         *   perPage: 20
-         * }))
          */
         setSettings: (state, action: PayloadAction<UserState>) => {
             state.animation = action.payload.animation
@@ -55,69 +44,40 @@ export const userSlice = createSlice({
         },
         /**
          * Sets the active page number.
-         * @param {UserState} state - The current state.
-         * @param {PayloadAction<number>} action - The action containing the new page number.
-         * 
-         * @example
-         * dispatch(setActivePage(3))
          */
         setActivePage: (state, action: PayloadAction<number>) => {
             state.activePage = action.payload
         },
         /**
          * Sets the background setting.
-         * 
-         * @example
-         * dispatch(setBackground('light'))
          */
         setBackground: setBackgroundReducer,
         /**
          * Sets the animation setting.
-         * 
-         * @example
-         * dispatch(setAnimation(true))
          */
         setAnimation: setAnimationReducer,
         /**
          * Sets the sound notification setting.
-         * 
-         * @example
-         * dispatch(setSoundNotification(true))
          */
         setSoundNotification: setSoundNotificationReducer,
         /**
          * Sets the delay notification setting.
-         * 
-         * @example
-         * dispatch(setDelayNotification(10))
          */
         setDelayNotification: setDelayNotificationReducer,
         /**
          * Sets the number of items per page.
-         * 
-         * @example
-         * dispatch(setPerPage('20'))
          */
         setPerPage: setPerPageReducer,
         /**
          * Sets the respawn timer.
-         * 
-         * @example
-         * dispatch(setRespawnTimer(120))
          */
         setRespawnTimer: setRespawnTimerReducer,
         /**
          * Resets the user settings to default values.
-         * 
-         * @example
-         * dispatch(reset())
          */
         reset: resetReducer,
         /**
          * Sets the card rates.
-         * 
-         * @example
-         * dispatch(setCardRates(10))
          */
         setCardRates: (state, action: PayloadAction<number>) => {
             state.cardRates = action.payload
@@ -126,9 +86,6 @@ export const userSlice = createSlice({
 
         /**
          * Sets the rates.
-         * 
-         * @example
-         * dispatch(setRates(1))
          */
         setRates: (state, action: PayloadAction<number>) => {
             state.rates = action.payload
@@ -137,9 +94,6 @@ export const userSlice = createSlice({
 
         /**
          * Sets the notification volume.
-         * 
-         * @example
-         * dispatch(setNotificationVolume(100))
          */
         setNotificationVolume: (state, action: PayloadAction<number>) => {
             state.notificationVolume = action.payload

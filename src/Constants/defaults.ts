@@ -1,5 +1,5 @@
 import {getStorageTimer} from "@utils/Storage/getStorageTimer.ts"
-import bg from '@assets/wallpaper.webp'
+import bg from '@assets/dark-background.webp'
 
 /**
  * Default respawn timer value retrieved from storage.

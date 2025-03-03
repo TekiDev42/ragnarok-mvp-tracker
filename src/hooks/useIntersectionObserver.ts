@@ -1,8 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
-export const useIntersectionObserver = (callback: () => void, options = {}) => {
-    const targetRef = useRef(null)
-
+export const useIntersectionObserver = (targetRef: React.RefObject<HTMLElement>, callback: () => void, options = {}) => {
     useEffect(() => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -23,6 +21,4 @@ export const useIntersectionObserver = (callback: () => void, options = {}) => {
             }
         }
     }, [callback, options])
-
-    return targetRef
 } 
