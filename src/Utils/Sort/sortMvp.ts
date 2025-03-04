@@ -1,22 +1,27 @@
-import {getMvpDiff} from "@utils/getMvpDiff.ts";
+import {getMvpDiff} from "@utils/getMvpDiff.ts"
 
 
 export const sortMvp = (MvpA: Mvp, MvpB: Mvp): number => {
-    // Compare bookmark status
-    const bookmarkDiff = Number(MvpB.isBookmark) - Number(MvpA.isBookmark);
-    if (bookmarkDiff !== 0) return bookmarkDiff;
-
     // Get time differences for both MVPs
-    const MvpADiff = getMvpDiff(MvpA).toMillis();
-    const MvpBDiff = getMvpDiff(MvpB).toMillis();
+    const MvpADiff = getMvpDiff(MvpA).toMillis() > 0 ? getMvpDiff(MvpA).toMillis() : 0
+    const MvpBDiff = getMvpDiff(MvpB).toMillis() > 0 ? getMvpDiff(MvpB).toMillis() : 0
+
+    // Compare bookmark status first
+    const bookmarkDiff = Number(MvpB.isBookmark) - Number(MvpA.isBookmark)
+    if (bookmarkDiff !== 0) {
+        // If one is bookmarked, prioritize it regardless of timer
+        return bookmarkDiff
+    }
 
     // If both have non-positive time differences, sort alphabetically
-    if (MvpADiff <= 0 && MvpBDiff <= 0) return MvpA.Name.localeCompare(MvpB.Name);
+    if (MvpADiff === 0 && MvpBDiff === 0) {
+        return MvpA.Name.localeCompare(MvpB.Name)
+    }
 
-    // Prioritize MVPs with positive time differences
-    if (MvpADiff <= 0) return 1;
-    if (MvpBDiff <= 0) return -1;
+    // Prioritize MVPs with non-positive time differences
+    if (MvpADiff <= 0) return 1
+    if (MvpBDiff <= 0) return -1
 
-    // Sort based on time difference
-    return MvpADiff - MvpBDiff;
+    // Sort based on time difference for positive timers
+    return MvpADiff - MvpBDiff
 }

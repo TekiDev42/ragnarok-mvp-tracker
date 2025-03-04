@@ -34,9 +34,25 @@ interface Window {
         /**
          * Updates a specific setting.
          * @param {string} key - The key of the setting to update.
-         * @param {string|number|boolean} value - The new value for the setting.
+         * @param {string|number|boolean|MvpNotification[]} value - The new value for the setting.
          */
-        setSettings: (key: string, value: string | number | boolean) => void
+        setSettings: (key: string, value: string | number | boolean | MvpNotification) => void
+
+        // Notifications related methods
+        /**
+         * Adds a notification.
+         */
+        addNotification: (notification: MvpNotification) => void
+
+        /**
+         * Removes a notification.
+         */
+        removeNotification: (notification: MvpNotification) => void
+
+        /**
+         * Clears all notifications.
+         */ 
+        clearNotifications: () => void
     }
 }
 
@@ -175,6 +191,15 @@ interface MvpState {
 }
 
 /**
+ * Represents a notification.
+ */
+interface MvpNotification {
+    mvpName: string
+    mapName: string
+    respawn: DateTime
+}
+
+/**
  * Represents the user state, extending the Settings interface.
  */
 interface UserState extends Settings {
@@ -182,7 +207,9 @@ interface UserState extends Settings {
     cardRates: number
     rates: number
     notificationVolume: number
+    notifications: MvpNotification[]
 }
+
 
 /**
  * Extends React.CSSProperties to include custom CSS variables for tomb position.

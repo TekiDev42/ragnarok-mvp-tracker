@@ -1,28 +1,7 @@
 import bg from "../../public/images/wallpaper.webp"
 import Store from "electron-store"
 
-/**
- * Schema for the application's configuration store.
- * @typedef {Object} Schema
- * @property {Object} animation - Controls animation settings.
- * @property {string} animation.type - The data type of the animation setting (should be 'boolean').
- * @property {boolean} animation.default - The default value for animation (true or false).
- * @property {Object} background - Controls background image settings.
- * @property {string} background.type - The data type of the background setting (should be 'string').
- * @property {string} background.default - The default background image path.
- * @property {Object} soundNotification - Controls sound notification settings.
- * @property {string} soundNotification.type - The data type of the sound notification setting (should be 'boolean').
- * @property {boolean} soundNotification.default - The default value for sound notifications (true or false).
- * @property {Object} delayNotification - Controls notification delay settings.
- * @property {string} delayNotification.type - The data type of the delay notification setting (should be 'number').
- * @property {number} delayNotification.default - The default delay in milliseconds.
- * @property {Object} respawnTimer - Controls respawn timer settings.
- * @property {string} respawnTimer.type - The data type of the respawn timer setting (should be 'number').
- * @property {number} respawnTimer.default - The default respawn time in milliseconds.
- * @property {Object} perPage - Controls items per page settings.
- * @property {string} perPage.type - The data type of the per page setting (should be 'number').
- * @property {number} perPage.default - The default number of items per page.
- */
+
 export type Schema = {
     animation: {
         type: string,
@@ -59,16 +38,15 @@ export type Schema = {
     notificationVolume: {
         type: string,
         default: number,
+    },
+    notifications: {
+        type: string,
+        default: [],
     }
 }
 
 /**
  * Configuration schema for the application.
- * @type {Schema}
- * @example
- * // Accessing the schema
- * console.log(schema.animation.default) // true
- * console.log(schema.delayNotification.default) // 1000
  */
 export const schema: Schema = {
     animation: {
@@ -106,6 +84,10 @@ export const schema: Schema = {
     notificationVolume: {
         type: "number",
         default: 20,
+    },
+    notifications: {
+        type: "array",
+        default: [],
     }
 }
 

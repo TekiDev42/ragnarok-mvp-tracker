@@ -5,6 +5,7 @@ import { notifications } from "@mantine/notifications";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { reSortMvp } from "@store/Slice/Mvp/Slice.ts";
 import { Flex, CloseButton } from "@mantine/core";
+import { addNotification } from "@store/Slice/User/UserSlice.ts";
 
 type CountdownProps =  PropsWithChildren & {
     respawn: DateTime;
@@ -36,6 +37,12 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
                 setDiff(newDiff);
 
                 if (newDiff.as('seconds') <= 0) {
+                    dispatch(addNotification({
+                        mvpName: mvpName,
+                        mapName: mapName,
+                        respawn: DateTime.now().toFormat("dd/MM/yyyy HH'h'mm'm'ss's'")
+                    }));
+
                     notifications.show({
                         title: `${mvpName} respawn`,
                         message: `At map: ${mapName}`,

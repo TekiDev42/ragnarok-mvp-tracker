@@ -2,6 +2,7 @@ import style from './Navbar.module.css'
 import {ActionSearch} from "@components/Settings/Actions/ActionSearch.tsx"
 import {Settings} from "@components/Settings/Settings.tsx"
 import mvpFlag from '@assets/mvp-flag.png'
+import {NotificationList} from "@components/NotificationList/NotificationList.tsx"
 
 export const Navbar = () => {
 
@@ -20,6 +21,7 @@ export const Navbar = () => {
             </div>
 
             <div className={style.TimerContainer}>
+                <NotificationList/>
                 <Settings />
             </div>
         </div>

@@ -45,7 +45,7 @@ export class SettingsManager {
      * console.log(theme)
      */
     getSetting<K extends keyof Schema>(key: K): Schema[K] {
-        return this.settings.get(key)
+        return this.settings.get(key) as Schema[K]
     }
 
     /**
@@ -59,5 +59,54 @@ export class SettingsManager {
      */
     updateSetting<K extends keyof Schema>(key: K, value: Schema[K]): void {
         this.settings.set(key, value)
+    }
+
+    /**
+     * Retrieves all notifications.
+     * 
+     * @returns {MvpNotification[]} All current notifications
+     * 
+     * @example
+     * const notifications = settingsManager.getNotifications()
+     * console.log(notifications)
+     */
+    getNotifications(): MvpNotification[] {
+        return this.settings.get('notifications').default
+    }
+
+    /**
+     * Clears all notifications.
+     * 
+     * @example
+     * settingsManager.clearNotifications()
+     */
+    clearNotifications(): void {
+        this.settings.set('notifications', [])  
+    }
+
+    /**
+     * Removes a notification.
+     * 
+     * @param {MvpNotification} notification - The notification to remove
+     * 
+     * @example
+     * settingsManager.removeNotification(notification)
+     */
+    removeNotification(notification: MvpNotification): void {
+        const notifications = this.settings.get('notifications').default
+        this.settings.set('notifications', notifications.filter((n: MvpNotification) => n.mvpName !== notification.mvpName))
+    }
+
+    /**
+     * Adds a notification.
+     * 
+     * @param {MvpNotification} notification - The notification to add
+     * 
+     * @example
+     * settingsManager.addNotification(notification)
+     */
+    addNotification(notification: MvpNotification): void {
+        const notifications = this.settings.get('notifications').default
+        this.settings.set('notifications', [...notifications, notification])
     }
 }

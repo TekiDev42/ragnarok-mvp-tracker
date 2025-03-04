@@ -17,7 +17,8 @@ const initialState: UserState = {
     activePage: 1,
     cardRates: 1,
     rates: 1,
-    notificationVolume: 100
+    notificationVolume: 100,
+    notifications: []
 }
 
 /**
@@ -41,6 +42,7 @@ export const userSlice = createSlice({
             state.cardRates = action.payload.cardRates
             state.rates = action.payload.rates
             state.notificationVolume = action.payload.notificationVolume
+            state.notifications = action.payload.notifications
         },
         /**
          * Sets the active page number.
@@ -98,12 +100,40 @@ export const userSlice = createSlice({
         setNotificationVolume: (state, action: PayloadAction<number>) => {
             state.notificationVolume = action.payload
             window.mvpApi.setSettings('notificationVolume', action.payload)
+        },
+
+        /**
+         * Sets the notifications.
+         */
+        addNotification: (state, action: PayloadAction<MvpNotification>) => {
+            state.notifications.push(action.payload)
+            if (state.notifications.length > 20) {
+                state.notifications.shift()
+            }
+            window.mvpApi.addNotification(action.payload)
+        },
+
+        /**
+         * Removes a notification.
+         */
+        removeNotification: (state, action: PayloadAction<MvpNotification>) => {
+            state.notifications = state.notifications.filter(notification => notification.mvpName !== action.payload.mvpName)
+            window.mvpApi.removeNotification(action.payload)
+        },
+
+        /**
+         * Clears all notifications.
+         */
+        clearNotifications: (state) => {
+            state.notifications = []
+            window.mvpApi.clearNotifications()
         }
     }
 })
 
 // Export individual action creators
 export const {setAnimation, setBackground, setPerPage, setRespawnTimer, setSettings, setCardRates, setRates, setNotificationVolume} = userSlice.actions
+export const {addNotification, removeNotification, clearNotifications} = userSlice.actions
 export const {setActivePage, setSoundNotification, setDelayNotification, reset} = userSlice.actions
 
 // Export the reducer

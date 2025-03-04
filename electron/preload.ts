@@ -41,6 +41,15 @@ contextBridge.exposeInMainWorld('mvpApi', {
     getSettings: (): Promise<Settings> => ipcRenderer.invoke('getSettings') as Promise<Settings>,
 
     /**
+     * Retrieves all notifications.
+     * @returns {Promise<MvpNotification[]>} A promise that resolves to an array of MVP notifications.
+     * @example
+     * const notifications = await window.mvpApi.getNotifications()
+     * console.log(notifications) // [{mvpName: 'Baphomet', mapName: 'Inferno', respawn: '2024-01-01 12:00:00', ...}, ...]
+     */
+    getNotifications: (): Promise<MvpNotification[]> => ipcRenderer.invoke('getNotifications') as Promise<MvpNotification[]>,
+
+    /**
      * Updates a specific setting.
      * @param {keyof Schema} key - The key of the setting to update.
      * @param {Schema[keyof Schema]} value - The new value for the setting.
@@ -48,5 +57,21 @@ contextBridge.exposeInMainWorld('mvpApi', {
      * window.mvpApi.setSettings('theme', 'light')
      * window.mvpApi.setSettings('notifications', false)
      */
-    setSettings: <K extends keyof Schema>(key: K, value: Schema[K]) => ipcRenderer.send('setSettings', {key: key, value: value})
+    setSettings: <K extends keyof Schema>(key: K, value: Schema[K]) => ipcRenderer.send('setSettings', {key: key, value: value}),
+
+    // NOTIFICATIONS
+    /**
+     * Adds a notification.
+     */
+    addNotification: (notification: MvpNotification) => ipcRenderer.send('addNotification', notification),
+
+    /**
+     * Clears all notifications.
+     */
+    clearNotifications: () => ipcRenderer.send('clearNotifications'),
+
+    /**
+     * Removes a notification.
+     */
+    removeNotification: (notification: MvpNotification) => ipcRenderer.send('removeNotification', notification)
 })

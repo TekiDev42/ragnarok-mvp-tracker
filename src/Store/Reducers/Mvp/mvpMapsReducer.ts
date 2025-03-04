@@ -15,6 +15,7 @@ export const mvpMapsReducer: CaseReducer<MvpState, PayloadAction<{mvp: Mvp, newM
     const mvpsSorted = sortMvps(newMvpList)
 
     state.filtered = mvpsSorted as WritableDraft<Mvp>[]
+
     state.mvps = mvpsSorted as WritableDraft<Mvp>[]
 
     window.mvpApi.updateMvp(newMvp)

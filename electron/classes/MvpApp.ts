@@ -175,6 +175,49 @@ export class MvpApp {
     }
 
     /**
+     * Retrieves the current notifications from the SettingsManager.
+     * 
+     * @returns {MvpNotification[]} An array of MVP notifications
+     * 
+     * @example
+     * const notifications = this.getNotifications();
+     * console.log(notifications); // [{mvpName: 'Baphomet', mapName: 'Inferno', respawn: '2024-01-01 12:00:00', ...}, ...]
+     */
+    getNotifications (): MvpNotification[] {
+        return this.settingsManager.getNotifications()
+    }
+
+    /**
+     * Clears all notifications from the SettingsManager.
+     * 
+     * @example
+     * this.clearNotifications();
+     */ 
+    clearNotifications () {
+        this.settingsManager.clearNotifications()
+    }
+
+    /**
+     * Removes a notification from the SettingsManager.
+     * 
+     * @example
+     * this.removeNotification(notification);
+     */
+    removeNotification (notification: MvpNotification) {
+        this.settingsManager.removeNotification(notification)
+    }
+
+    /**
+     * Adds a notification to the SettingsManager.
+     * 
+     * @example
+     * this.addNotification(notification);
+     */
+    addNotification (notification: MvpNotification) {
+        this.settingsManager.addNotification(notification)
+    }
+    
+    /**
      * Sets up the 'window-all-closed' event listener.
      * Quits the app if all windows are closed (except on macOS).
      */

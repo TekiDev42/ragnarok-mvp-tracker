@@ -1,10 +1,11 @@
 import {TextInput} from "@mantine/core";
 import {ChangeEvent, useEffect, useState} from "react";
-import {useAppDispatch} from "@store/Hooks.ts";
+import {useAppDispatch, useAppSelector} from "@store/Hooks.ts";
 import {filterByNameOrId} from "@store/Slice/Mvp/Slice.ts";
 
 export const ActionSearch = () => {
     const dispatch = useAppDispatch()
+    const mvps = useAppSelector((state) => state.Slice.mvps)
     const [search, setSearch] = useState<string>("")
 
     const searchHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +20,10 @@ export const ActionSearch = () => {
 
         return () => clearTimeout(timeout)
     }, [search]);
+
+    useEffect(() => {
+        setSearch('')
+    }, [mvps])
 
     return (
         <TextInput radius="xl"
