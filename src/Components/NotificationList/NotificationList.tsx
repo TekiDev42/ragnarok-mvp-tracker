@@ -34,7 +34,7 @@ export const NotificationList = () => {
 
                     {notifications.length > 0 && (<Button variant="light" color="red" onClick={() => dispatch(clearNotifications())}>Clear all notifications</Button>)}
 
-                    {notifications.map((notification, index) => {
+                    {notifications.map((notification) => {
                         let date = ""
                         if(typeof notification.respawn === 'number') {
                             date = DateTime.fromMillis(notification.respawn).toFormat("dd/MM/yyyy HH'h'mm'm'ss's'")
