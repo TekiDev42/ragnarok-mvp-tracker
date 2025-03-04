@@ -44,10 +44,13 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
                     }));
 
                     notifications.show({
-                        title: `${mvpName} respawn`,
-                        message: `At map: ${mapName}`,
+                        title: <div className="text-gray-500 text-sm italic">{DateTime.now().toFormat("dd/MM/yyyy HH'h'mm'm")}</div>,
+                        message: <Flex direction="column" gap={0}>
+                            <div className="text-gray-800 text-lg font-bold">MVP : {mvpName}</div>
+                            <div className="text-gray-800 text-lg font-bold">Map : {mapName}</div>
+                        </Flex>,
                         autoClose: delayNotification === 0 ? false : delayNotification * 1000,
-                        color: 'green',
+                        color: 'transparent',
                         radius: "lg",
                         withBorder: false
                     });

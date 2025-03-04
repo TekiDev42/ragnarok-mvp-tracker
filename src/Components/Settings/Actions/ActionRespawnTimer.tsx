@@ -37,7 +37,7 @@ export const ActionRespawnTimer = () => {
                     size={"lg"}
                     min={0}
                     max={600}
-                    step={5}
+                    step={1}
                     marks={marks}
             />
             <Text fs={"italic"} size="xs" c={"#495057"} style={{paddingTop: 15}}>

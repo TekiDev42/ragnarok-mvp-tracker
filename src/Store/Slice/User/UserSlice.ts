@@ -106,11 +106,11 @@ export const userSlice = createSlice({
          * Sets the notifications.
          */
         addNotification: (state, action: PayloadAction<MvpNotification>) => {
-            state.notifications.push(action.payload)
+            state.notifications.unshift(action.payload)
             if (state.notifications.length > 20) {
-                state.notifications.shift()
+                state.notifications.pop()
             }
-            window.mvpApi.addNotification(action.payload)
+            window.mvpApi.addNotification({...action.payload})
         },
 
         /**

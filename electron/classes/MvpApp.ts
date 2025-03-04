@@ -146,6 +146,18 @@ export class MvpApp {
         ipcMain.on('setSettings', <K extends keyof Schema>(_event: IpcMainEvent, args: {key: K, value: Schema[K] }) => {
             this.settingsManager.updateSetting(args.key, args.value)
         })
+
+        ipcMain.on('addNotification', (_event, args: MvpNotification) => {
+            this.settingsManager.addNotification(args)
+        })
+
+        ipcMain.on('removeNotification', (_event, args: MvpNotification) => {
+            this.settingsManager.removeNotification(args)
+        })
+
+        ipcMain.on('clearNotifications', () => {
+            this.settingsManager.clearNotifications()
+        })
     }
 
     /**
@@ -172,49 +184,6 @@ export class MvpApp {
      */
     getSettings (): Schema {
         return this.settingsManager.getAllSettings()
-    }
-
-    /**
-     * Retrieves the current notifications from the SettingsManager.
-     * 
-     * @returns {MvpNotification[]} An array of MVP notifications
-     * 
-     * @example
-     * const notifications = this.getNotifications();
-     * console.log(notifications); // [{mvpName: 'Baphomet', mapName: 'Inferno', respawn: '2024-01-01 12:00:00', ...}, ...]
-     */
-    getNotifications (): MvpNotification[] {
-        return this.settingsManager.getNotifications()
-    }
-
-    /**
-     * Clears all notifications from the SettingsManager.
-     * 
-     * @example
-     * this.clearNotifications();
-     */ 
-    clearNotifications () {
-        this.settingsManager.clearNotifications()
-    }
-
-    /**
-     * Removes a notification from the SettingsManager.
-     * 
-     * @example
-     * this.removeNotification(notification);
-     */
-    removeNotification (notification: MvpNotification) {
-        this.settingsManager.removeNotification(notification)
-    }
-
-    /**
-     * Adds a notification to the SettingsManager.
-     * 
-     * @example
-     * this.addNotification(notification);
-     */
-    addNotification (notification: MvpNotification) {
-        this.settingsManager.addNotification(notification)
     }
     
     /**

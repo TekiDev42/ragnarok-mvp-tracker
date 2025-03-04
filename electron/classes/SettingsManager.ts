@@ -71,7 +71,7 @@ export class SettingsManager {
      * console.log(notifications)
      */
     getNotifications(): MvpNotification[] {
-        return this.settings.get('notifications').default
+        return this.settings.get('notifications') as unknown as MvpNotification[]
     }
 
     /**
@@ -81,7 +81,7 @@ export class SettingsManager {
      * settingsManager.clearNotifications()
      */
     clearNotifications(): void {
-        this.settings.set('notifications', [])  
+        this.settings.set('notifications', [])
     }
 
     /**
@@ -93,8 +93,8 @@ export class SettingsManager {
      * settingsManager.removeNotification(notification)
      */
     removeNotification(notification: MvpNotification): void {
-        const notifications = this.settings.get('notifications').default
-        this.settings.set('notifications', notifications.filter((n: MvpNotification) => n.mvpName !== notification.mvpName))
+        const notifications = this.settings.get('notifications') as unknown as MvpNotification[]
+        this.settings.set('notifications', notifications.filter((n: MvpNotification) => n.respawn !== notification.respawn))
     }
 
     /**
@@ -106,7 +106,11 @@ export class SettingsManager {
      * settingsManager.addNotification(notification)
      */
     addNotification(notification: MvpNotification): void {
-        const notifications = this.settings.get('notifications').default
-        this.settings.set('notifications', [...notifications, notification])
+        const notifications = this.settings.get('notifications') as unknown as MvpNotification[]
+        notifications.unshift(notification)
+        if (notifications.length > 20) {
+            notifications.pop()
+        }
+        this.settings.set('notifications', notifications)
     }
 }
