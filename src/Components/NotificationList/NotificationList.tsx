@@ -39,7 +39,7 @@ export const NotificationList = () => {
                                 <Flex direction="column" gap={0}>
                                     <div className="text-gray-500 text-sm italic">{notification.respawn}</div>
 
-                                    <Flex gap={5}>
+                                    <Flex direction="column" gap={0}>
                                         <div className="text-gray-800 text-md font-bold">MVP : {notification.mvpName}</div>
                                         <div className="text-gray-800 text-md font-bold">Map : {notification.mapName}</div>
                                     </Flex>
@@ -53,7 +53,8 @@ export const NotificationList = () => {
                                     <IconX style={{ width: '70%', height: '70%' }} stroke={1.5} />
                                 </ActionIcon>
                             </Flex>
-                            <Divider />
+
+                            <Divider mt="md"/>
                         </div>
                     ))}
                 </Flex>
