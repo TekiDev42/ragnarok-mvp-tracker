@@ -194,9 +194,10 @@ interface MvpState {
  * Represents a notification.
  */
 interface MvpNotification {
+    id: string
     mvpName: string
     mapName: string
-    respawn: DateTime
+    respawn: number
 }
 
 /**

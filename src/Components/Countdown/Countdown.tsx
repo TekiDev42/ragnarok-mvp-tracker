@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { reSortMvp } from "@store/Slice/Mvp/Slice.ts";
 import { Flex, CloseButton } from "@mantine/core";
 import { addNotification } from "@store/Slice/User/UserSlice.ts";
+import { v4 as uuidv4 } from 'uuid';
 
 type CountdownProps =  PropsWithChildren & {
     respawn: DateTime;
@@ -38,9 +39,10 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
 
                 if (newDiff.as('seconds') <= 0) {
                     dispatch(addNotification({
+                        id: uuidv4(),
                         mvpName: mvpName,
                         mapName: mapName,
-                        respawn: DateTime.now().toFormat("dd/MM/yyyy HH'h'mm'm'ss's'")
+                        respawn: DateTime.now().toMillis()
                     }));
 
                     notifications.show({
@@ -50,7 +52,7 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
                             <div className="text-gray-800 text-lg font-bold">Map : {mapName}</div>
                         </Flex>,
                         autoClose: delayNotification === 0 ? false : delayNotification * 1000,
-                        color: 'transparent',
+                        color: 'green',
                         radius: "lg",
                         withBorder: false
                     });

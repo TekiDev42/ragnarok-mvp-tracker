@@ -117,7 +117,7 @@ export const userSlice = createSlice({
          * Removes a notification.
          */
         removeNotification: (state, action: PayloadAction<MvpNotification>) => {
-            state.notifications = state.notifications.filter(notification => notification.mvpName !== action.payload.mvpName)
+            state.notifications = state.notifications.filter(notification => notification.id !== action.payload.id)
             window.mvpApi.removeNotification(action.payload)
         },
 

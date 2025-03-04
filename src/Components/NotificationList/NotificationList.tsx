@@ -3,6 +3,7 @@ import {ActionIcon, Drawer, Flex, Text, Button, Divider} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { clearNotifications, removeNotification } from "@store/Slice/User/UserSlice.ts";
+import { DateTime } from "luxon";
 
 export const NotificationList = () => {
     const [opened, { open, close }] = useDisclosure(false);
@@ -33,11 +34,19 @@ export const NotificationList = () => {
 
                     {notifications.length > 0 && (<Button variant="light" color="red" onClick={() => dispatch(clearNotifications())}>Clear all notifications</Button>)}
 
-                    {notifications.map((notification, index) => (
-                        <div key={`${notification.mvpName}-${index}`}>
+                    {notifications.map((notification, index) => {
+                        let date = ""
+                        if(typeof notification.respawn === 'number') {
+                            date = DateTime.fromMillis(notification.respawn).toFormat("dd/MM/yyyy HH'h'mm'm'ss's'")
+                        } else {
+                            date = notification.respawn
+                        }
+                        
+                        return (
+                        <div key={notification.id}>
                             <Flex w={"100%"} align={"center"} justify={"space-between"}>
                                 <Flex direction="column" gap={0}>
-                                    <div className="text-gray-500 text-sm italic">{notification.respawn}</div>
+                                    <div className="text-gray-500 text-sm italic">{date}</div>
 
                                     <Flex direction="column" gap={0}>
                                         <div className="text-gray-800 text-md font-bold">MVP : {notification.mvpName}</div>
@@ -56,7 +65,7 @@ export const NotificationList = () => {
 
                             <Divider mt="md"/>
                         </div>
-                    ))}
+                    )})}
                 </Flex>
             </Drawer>
         </>

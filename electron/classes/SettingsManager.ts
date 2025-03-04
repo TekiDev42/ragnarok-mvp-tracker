@@ -94,7 +94,7 @@ export class SettingsManager {
      */
     removeNotification(notification: MvpNotification): void {
         const notifications = this.settings.get('notifications') as unknown as MvpNotification[]
-        this.settings.set('notifications', notifications.filter((n: MvpNotification) => n.respawn !== notification.respawn))
+        this.settings.set('notifications', notifications.filter((n: MvpNotification) => n.id !== notification.id))
     }
 
     /**
