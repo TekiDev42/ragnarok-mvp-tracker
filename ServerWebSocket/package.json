@@ -1,0 +1,24 @@
+{
+  "name": "serverwebsocket",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/joi": "^17.2.3",
+    "@types/node": "^22.13.9",
+    "@types/uuid": "^10.0.0",
+    "bufferutil": "^4.0.9",
+    "joi": "^17.13.3",
+    "socket.io": "^4.8.1",
+    "utf-8-validate": "^6.0.5",
+    "uuid": "^11.1.0"
+  }
+}
