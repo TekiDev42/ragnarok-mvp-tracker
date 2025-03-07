@@ -12,135 +12,156 @@ if (!supabaseUrl || !supabaseKey) {
 // Create a single supabase client for interacting with your database
 const supabase = createClient<Database>(supabaseUrl, supabaseKey)
 
-async function insertMvps() {
-    // Insert MVPs
-    const { data: mvpData, error: mvpError } = await supabase
-        .from('mvps')
-        .insert(
-            mvps.map(mvp => ({
-                id: mvp.Id,
+const importMvps = async () => {
+    mvps.forEach(async (mvp, index) => {
+        const { data, error } = await supabase
+            .from('mvps')
+            .insert({
                 aegis_name: mvp.AegisName,
+                agi: mvp.Agi ?? null,
+                ai: mvp.Ai ?? null,
+                attack: mvp.Attack ?? null,
+                attack_delay: mvp.AttackDelay ?? null,
+                attack_motion: mvp.AttackMotion ?? null,
+                attack2: mvp.Attack2 ?? null,
+                base_exp: mvp.BaseExp ?? null,
+                chase_range: mvp.ChaseRange ?? null,
+                class: mvp.Class,
+                client_attack_motion: mvp.ClientAttackMotion ?? null,
+                damage_motion: mvp.DamageMotion ?? null,
+                damage_taken: mvp.DamageTaken ?? null,
+                defense: mvp.Defense ?? null,
+                dex: mvp.Dex ?? null,
+                element: mvp.Element,
+                element_level: mvp.ElementLevel ?? null,
+                hp: mvp.Hp ?? null,
+                mvp_id: mvp.Id,
+                image: mvp.image,
+                int: mvp.Int ?? null,
+                is_bookmark: mvp.isBookmark,
+                japanese_name: mvp.JapaneseName ?? null,
+                job_exp: mvp.JobExp ?? null,
+                level: mvp.Level ?? null,
+                luk: mvp.Luk ?? null,
+                magic_defense: mvp.MagicDefense ?? null,
+                magic_resistance: mvp.MagicResistance ?? null,
+                mvp_exp: mvp.MvpExp ?? null,
                 name: mvp.Name,
-                japanese_name: mvp.JapaneseName || null,
-                level: mvp.Level || null,
-                hp: mvp.Hp || null,
-                base_exp: mvp.BaseExp || null,
-                job_exp: mvp.JobExp || null,
-                mvp_exp: mvp.MvpExp || null,
-                attack: mvp.Attack || null,
-                attack2: mvp.Attack2 || null,
-                defense: mvp.Defense || null,
-                magic_defense: mvp.MagicDefense || null,
-                str: mvp.Str || null,
-                agi: mvp.Agi || null,
-                vit: mvp.Vit || null,
-                int: mvp.Int || null,
-                dex: mvp.Dex || null,
-                luk: mvp.Luk || null,
-                attack_range: mvp.AttackRange || null,
-                skill_range: mvp.SkillRange || null,
-                chase_range: mvp.ChaseRange || null,
-                size: mvp.Size || null,
-                race: mvp.Race || null,
-                element: mvp.Element || null,
-                element_level: mvp.ElementLevel || null,
-                walk_speed: mvp.WalkSpeed || null,
-                attack_delay: mvp.AttackDelay || null,
-                attack_motion: mvp.AttackMotion || null,
-                damage_motion: mvp.DamageMotion || null,
-                damage_taken: mvp.DamageTaken || null,
-                ai: mvp.Ai || null,
-                class: mvp.Class || null,
-                image: mvp.image
-            }))
-        )
-        .select()
+                race: mvp.Race ?? null,
+                resistance: mvp.Resistance ?? null,
+                size: mvp.Size ?? null,
+                skill_range: mvp.SkillRange ?? null,
+                sp: mvp.Sp ?? null,
+                str: mvp.Str ?? null,
+                walk_speed: mvp.WalkSpeed ?? null,
+            })
+            .select()
 
-    if (mvpError) {
-        console.error('Error inserting MVPs:', mvpError)
-        return
-    }
+        if (error) {
+            console.error('Error inserting mvp', error)
+            return
+        }
 
-    // Insert drops for each MVP
-    for (const mvp of mvps) {
-        if (mvp.Drops) {
-            const { error: dropsError } = await supabase
-                .from('drops')
-                .insert(
-                    mvp.Drops.map(drop => ({
-                        mvp_id: mvp.Id,
-                        item: drop.Item,
-                        rate: drop.Rate,
-                        steal_protected: drop.StealProtected || false
-                    }))
-                )
+        if (mvp.mvpMaps) {
+            const { data: mvpMaps, error: mvpMapsError } = await supabase
+                .from('mvp_maps')
+                .insert(mvp.mvpMaps.map((map) => ({
+                    mvp_id: data[0].id,
+                    name: map.name,
+                    respawn_timer: map.respawnTimer,
+                    death_time: map.deathTime,
+                    map_height: map.size.height,
+                    map_width: map.size.width,
+                    tomb_pos_x: map.tombPos.x,
+                    tomb_pos_y: map.tombPos.y,
+                })))
+                .select()
 
-            if (dropsError) {
-                console.error(`Error inserting drops for MVP ${mvp.Name}:`, dropsError)
+            if (mvpMapsError) {
+                console.error(mvpMapsError)
+                return
             }
         }
 
         if (mvp.MvpDrops) {
-            const { error: mvpDropsError } = await supabase
+            const { data: mvpDrops, error: mvpDropsError } = await supabase
                 .from('mvp_drops')
-                .insert(
-                    mvp.MvpDrops.map(drop => ({
-                        mvp_id: mvp.Id,
-                        item: drop.Item,
-                        rate: drop.Rate,
-                        steal_protected: drop.StealProtected || false
-                    }))
-                )
+                .insert(mvp.MvpDrops.map((drop) => ({
+                    mvp_id: data[0].id,
+                    item: drop.Item,
+                    rate: drop.Rate,
+                    steal_protected: drop.StealProtected ?? null,
+                    random_option_group: drop.RandomOptionGroup ?? null,
+                    index: drop.Index ?? null,
+                    is_mvp_drop: true,
+                })))
 
             if (mvpDropsError) {
-                console.error(`Error inserting MVP drops for MVP ${mvp.Name}:`, mvpDropsError)
+                console.error('Error inserting mvp drops', mvpDropsError)
+                return
             }
         }
 
-        if (mvp.mvpMaps) {
-            const { error: mvpMapsError } = await supabase
-                .from('mvp_maps')
-                .insert(
-                    mvp.mvpMaps.map(map => ({
-                        mvp_id: mvp.Id,
-                        name: map.name,
-                        death_time: map.deathTime,
-                        respawn_timer: map.respawnTimer,
-                        tomb_pos_x: map.tombPos.x,
-                        tomb_pos_y: map.tombPos.y,
-                        height: map.size.height,
-                        width: map.size.width
-                    }))
-                )
+        if (mvp.Drops) {
+            const { data: mvpDrops, error: mvpDropsError } = await supabase
+                .from('mvp_drops')
+                .insert(mvp.Drops.map((drop) => ({
+                    mvp_id: data[0].id,
+                    item: drop.Item,
+                    rate: drop.Rate,
+                    steal_protected: drop.StealProtected ?? null,
+                    random_option_group: drop.RandomOptionGroup ?? null,
+                    index: drop.Index ?? null,
+                    is_mvp_drop: false,
+                })))
 
-            if (mvpMapsError) {
-                console.error(`Error inserting MVP maps for MVP ${mvp.Name}:`, mvpMapsError)
+            if (mvpDropsError) {
+                console.error('Error inserting drops', mvpDropsError)
+                return
             }
         }
 
         if (mvp.Modes) {
-            const { error: mvpModesError } = await supabase
+            const { data: mvpModes, error: mvpModesError } = await supabase
                 .from('mvp_modes')
                 .insert({
-                    mvp_id: mvp.Id,
-                    can_move: mvp.Modes.CanMove || false,
-                    cast_sensor_idle: mvp.Modes.CastSensorIdle || false,
-                    cast_sensor_chase: mvp.Modes.CastSensorChase || false,
-                    ignore_melee: mvp.Modes.IgnoreMelee || false,
-                    change_chase: mvp.Modes.ChangeChase || false,
-                    ignore_magic: mvp.Modes.IgnoreMagic || false,
-                    ignore_misc: mvp.Modes.IgnoreMisc || false,
-                    ignore_ranged: mvp.Modes.IgnoreRanged || false,
-                    no_random_walk: mvp.Modes.NoRandomWalk || false,
-                    teleport_block: mvp.Modes.TeleportBlock || false,
-                    mvp: mvp.Modes.Mvp || false
+                    mvp_id: data[0].id,
+                    can_move: mvp.Modes.CanMove ?? null,
+                    cast_sensor_idle: mvp.Modes.CastSensorIdle ?? null,
+                    cast_sensor_chase: mvp.Modes.CastSensorChase ?? null,
+                    ignore_melee: mvp.Modes.IgnoreMelee ?? null,
+                    change_chase: mvp.Modes.ChangeChase ?? null,
+                    ignore_magic: mvp.Modes.IgnoreMagic ?? null,
+                    ignore_misc: mvp.Modes.IgnoreMisc ?? null,
+                    ignore_ranged: mvp.Modes.IgnoreRanged ?? null,
+                    no_random_walk: mvp.Modes.NoRandomWalk ?? null,
+                    teleport_block: mvp.Modes.TeleportBlock ?? null,
+                    mvp: mvp.Modes.Mvp ?? null,
                 })
+                .select()
 
             if (mvpModesError) {
-                console.error(`Error inserting MVP modes for MVP ${mvp.Name}:`, mvpModesError)
+                console.error('Error inserting mvp modes', mvpModesError)
+                return
             }
         }
-    }
+
+        if (mvp.RaceGroups) {
+            const { data: mvpRaceGroups, error: mvpRaceGroupsError } = await supabase
+                .from('mvp_race_groups')
+                .insert(Object.entries(mvp.RaceGroups).map(([key, value]) => ({
+                    mvp_id: data[0].id,
+                    group_name: key,
+                    enabled: value,
+                })))
+                .select()
+
+            if (mvpRaceGroupsError) {
+                console.error('Error inserting mvp race groups', mvpRaceGroupsError)
+                return
+            }
+        }
+    })
 }
 
-insertMvps()
+importMvps()

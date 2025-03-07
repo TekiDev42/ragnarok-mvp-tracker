@@ -51,7 +51,7 @@ interface Window {
 
         /**
          * Clears all notifications.
-         */ 
+         */
         clearNotifications: () => void
     }
 }
@@ -102,7 +102,7 @@ interface MvpMap {
 }
 
 /**
- * Represents an MVP (Most Valuable Player) monster.
+ * Represents an MVP monster.
  */
 interface Mvp {
     Id: number,

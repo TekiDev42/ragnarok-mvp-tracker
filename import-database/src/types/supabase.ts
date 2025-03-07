@@ -34,34 +34,60 @@ export type Database = {
   }
   public: {
     Tables: {
-      drops: {
+      maps_party: {
         Row: {
+          created_at: string
+          death_time: string | null
           id: number
-          item: string | null
+          map_id: number | null
           mvp_id: number | null
-          rate: number | null
-          steal_protected: boolean | null
+          party_id: number | null
+          respawn_timer: number | null
+          tomb_pos_x: number | null
+          tomb_pos_y: number | null
         }
         Insert: {
+          created_at?: string
+          death_time?: string | null
           id?: number
-          item?: string | null
+          map_id?: number | null
           mvp_id?: number | null
-          rate?: number | null
-          steal_protected?: boolean | null
+          party_id?: number | null
+          respawn_timer?: number | null
+          tomb_pos_x?: number | null
+          tomb_pos_y?: number | null
         }
         Update: {
+          created_at?: string
+          death_time?: string | null
           id?: number
-          item?: string | null
+          map_id?: number | null
           mvp_id?: number | null
-          rate?: number | null
-          steal_protected?: boolean | null
+          party_id?: number | null
+          respawn_timer?: number | null
+          tomb_pos_x?: number | null
+          tomb_pos_y?: number | null
         }
         Relationships: [
           {
-            foreignKeyName: "drops_mvp_id_fkey"
+            foreignKeyName: "maps_party_map_id_fkey"
+            columns: ["map_id"]
+            isOneToOne: false
+            referencedRelation: "mvp_maps"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "maps_party_mvp_id_fkey"
             columns: ["mvp_id"]
             isOneToOne: false
             referencedRelation: "mvps"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "maps_party_party_id_fkey"
+            columns: ["party_id"]
+            isOneToOne: false
+            referencedRelation: "party"
             referencedColumns: ["id"]
           },
         ]
@@ -69,21 +95,33 @@ export type Database = {
       mvp_drops: {
         Row: {
           id: number
-          item: string | null
+          index: number | null
+          is_mvp_drop: boolean | null
+          item: string
           mvp_id: number | null
-          rate: number | null
+          random_option_group: string | null
+          rate: number
+          steal_protected: boolean | null
         }
         Insert: {
           id?: number
-          item?: string | null
+          index?: number | null
+          is_mvp_drop?: boolean | null
+          item: string
           mvp_id?: number | null
-          rate?: number | null
+          random_option_group?: string | null
+          rate: number
+          steal_protected?: boolean | null
         }
         Update: {
           id?: number
-          item?: string | null
+          index?: number | null
+          is_mvp_drop?: boolean | null
+          item?: string
           mvp_id?: number | null
-          rate?: number | null
+          random_option_group?: string | null
+          rate?: number
+          steal_protected?: boolean | null
         }
         Relationships: [
           {
@@ -98,36 +136,36 @@ export type Database = {
       mvp_maps: {
         Row: {
           death_time: string | null
-          height: number | null
           id: number
+          map_height: number | null
+          map_width: number | null
           mvp_id: number | null
-          name: string | null
-          respawn_timer: number | null
+          name: string
+          respawn_timer: number
           tomb_pos_x: number | null
           tomb_pos_y: number | null
-          width: number | null
         }
         Insert: {
           death_time?: string | null
-          height?: number | null
           id?: number
+          map_height?: number | null
+          map_width?: number | null
           mvp_id?: number | null
-          name?: string | null
-          respawn_timer?: number | null
+          name: string
+          respawn_timer: number
           tomb_pos_x?: number | null
           tomb_pos_y?: number | null
-          width?: number | null
         }
         Update: {
           death_time?: string | null
-          height?: number | null
           id?: number
+          map_height?: number | null
+          map_width?: number | null
           mvp_id?: number | null
-          name?: string | null
-          respawn_timer?: number | null
+          name?: string
+          respawn_timer?: number
           tomb_pos_x?: number | null
           tomb_pos_y?: number | null
-          width?: number | null
         }
         Relationships: [
           {
@@ -142,20 +180,44 @@ export type Database = {
       mvp_modes: {
         Row: {
           can_move: boolean | null
+          cast_sensor_chase: boolean | null
+          cast_sensor_idle: boolean | null
+          change_chase: boolean | null
+          ignore_magic: boolean | null
+          ignore_melee: boolean | null
+          ignore_misc: boolean | null
+          ignore_ranged: boolean | null
           mvp: boolean | null
           mvp_id: number
+          no_random_walk: boolean | null
           teleport_block: boolean | null
         }
         Insert: {
           can_move?: boolean | null
+          cast_sensor_chase?: boolean | null
+          cast_sensor_idle?: boolean | null
+          change_chase?: boolean | null
+          ignore_magic?: boolean | null
+          ignore_melee?: boolean | null
+          ignore_misc?: boolean | null
+          ignore_ranged?: boolean | null
           mvp?: boolean | null
           mvp_id: number
+          no_random_walk?: boolean | null
           teleport_block?: boolean | null
         }
         Update: {
           can_move?: boolean | null
+          cast_sensor_chase?: boolean | null
+          cast_sensor_idle?: boolean | null
+          change_chase?: boolean | null
+          ignore_magic?: boolean | null
+          ignore_melee?: boolean | null
+          ignore_misc?: boolean | null
+          ignore_ranged?: boolean | null
           mvp?: boolean | null
           mvp_id?: number
+          no_random_walk?: boolean | null
           teleport_block?: boolean | null
         }
         Relationships: [
@@ -168,9 +230,35 @@ export type Database = {
           },
         ]
       }
+      mvp_race_groups: {
+        Row: {
+          enabled: boolean | null
+          group_name: string
+          mvp_id: number
+        }
+        Insert: {
+          enabled?: boolean | null
+          group_name: string
+          mvp_id: number
+        }
+        Update: {
+          enabled?: boolean | null
+          group_name?: string
+          mvp_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mvp_race_groups_mvp_id_fkey"
+            columns: ["mvp_id"]
+            isOneToOne: false
+            referencedRelation: "mvps"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       mvps: {
         Row: {
-          aegis_name: string | null
+          aegis_name: string
           agi: number | null
           ai: number | null
           attack: number | null
@@ -180,17 +268,18 @@ export type Database = {
           attack2: number | null
           base_exp: number | null
           chase_range: number | null
-          class: string | null
+          class: Database["public"]["Enums"]["class_type"] | null
           client_attack_motion: number | null
+          created_at: string | null
           damage_motion: number | null
           damage_taken: number | null
           defense: number | null
           dex: number | null
-          element: string | null
+          element: Database["public"]["Enums"]["element_type"] | null
           element_level: number | null
           hp: number | null
           id: number
-          image: string | null
+          image: string
           int: number | null
           is_bookmark: boolean | null
           japanese_name: string | null
@@ -198,17 +287,22 @@ export type Database = {
           level: number | null
           luk: number | null
           magic_defense: number | null
+          magic_resistance: number | null
           mvp_exp: number | null
-          name: string | null
+          mvp_id: number
+          name: string
           race: string | null
-          size: string | null
+          resistance: number | null
+          size: Database["public"]["Enums"]["size_type"] | null
           skill_range: number | null
+          sp: number | null
           str: number | null
+          updated_at: string | null
           vit: number | null
           walk_speed: number | null
         }
         Insert: {
-          aegis_name?: string | null
+          aegis_name: string
           agi?: number | null
           ai?: number | null
           attack?: number | null
@@ -218,17 +312,18 @@ export type Database = {
           attack2?: number | null
           base_exp?: number | null
           chase_range?: number | null
-          class?: string | null
+          class?: Database["public"]["Enums"]["class_type"] | null
           client_attack_motion?: number | null
+          created_at?: string | null
           damage_motion?: number | null
           damage_taken?: number | null
           defense?: number | null
           dex?: number | null
-          element?: string | null
+          element?: Database["public"]["Enums"]["element_type"] | null
           element_level?: number | null
           hp?: number | null
-          id: number
-          image?: string | null
+          id?: number
+          image: string
           int?: number | null
           is_bookmark?: boolean | null
           japanese_name?: string | null
@@ -236,17 +331,22 @@ export type Database = {
           level?: number | null
           luk?: number | null
           magic_defense?: number | null
+          magic_resistance?: number | null
           mvp_exp?: number | null
-          name?: string | null
+          mvp_id: number
+          name: string
           race?: string | null
-          size?: string | null
+          resistance?: number | null
+          size?: Database["public"]["Enums"]["size_type"] | null
           skill_range?: number | null
+          sp?: number | null
           str?: number | null
+          updated_at?: string | null
           vit?: number | null
           walk_speed?: number | null
         }
         Update: {
-          aegis_name?: string | null
+          aegis_name?: string
           agi?: number | null
           ai?: number | null
           attack?: number | null
@@ -256,17 +356,18 @@ export type Database = {
           attack2?: number | null
           base_exp?: number | null
           chase_range?: number | null
-          class?: string | null
+          class?: Database["public"]["Enums"]["class_type"] | null
           client_attack_motion?: number | null
+          created_at?: string | null
           damage_motion?: number | null
           damage_taken?: number | null
           defense?: number | null
           dex?: number | null
-          element?: string | null
+          element?: Database["public"]["Enums"]["element_type"] | null
           element_level?: number | null
           hp?: number | null
           id?: number
-          image?: string | null
+          image?: string
           int?: number | null
           is_bookmark?: boolean | null
           japanese_name?: string | null
@@ -274,14 +375,43 @@ export type Database = {
           level?: number | null
           luk?: number | null
           magic_defense?: number | null
+          magic_resistance?: number | null
           mvp_exp?: number | null
-          name?: string | null
+          mvp_id?: number
+          name?: string
           race?: string | null
-          size?: string | null
+          resistance?: number | null
+          size?: Database["public"]["Enums"]["size_type"] | null
           skill_range?: number | null
+          sp?: number | null
           str?: number | null
+          updated_at?: string | null
           vit?: number | null
           walk_speed?: number | null
+        }
+        Relationships: []
+      }
+      party: {
+        Row: {
+          code: string | null
+          created_at: string
+          id: number
+          leader: string | null
+          member: string | null
+        }
+        Insert: {
+          code?: string | null
+          created_at?: string
+          id?: number
+          leader?: string | null
+          member?: string | null
+        }
+        Update: {
+          code?: string | null
+          created_at?: string
+          id?: number
+          leader?: string | null
+          member?: string | null
         }
         Relationships: []
       }
@@ -293,7 +423,19 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      class_type: "Normal" | "Boss" | "Guardian" | "Battlefield"
+      element_type:
+      | "Neutral"
+      | "Water"
+      | "Earth"
+      | "Fire"
+      | "Wind"
+      | "Poison"
+      | "Holy"
+      | "Shadow"
+      | "Ghost"
+      | "Undead"
+      size_type: "Small" | "Medium" | "Large"
     }
     CompositeTypes: {
       [_ in never]: never
