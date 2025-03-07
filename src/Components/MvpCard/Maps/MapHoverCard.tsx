@@ -13,6 +13,8 @@ export const MapHoverCard = ({mvpmap}: PropsWithChildren & {mvpmap: MvpMap}) => 
 
     const graveIconSize = 16
 
+    const diff = DateTime.now().plus({minutes: mvpmap.respawnTimer}).diff(DateTime.now(), ['hours', 'minutes', 'seconds'])
+
     return (
         <HoverCard withArrow={true} arrowSize={12} position={"right"} width={300} shadow="md">
             <HoverCard.Target>
@@ -44,7 +46,7 @@ export const MapHoverCard = ({mvpmap}: PropsWithChildren & {mvpmap: MvpMap}) => 
                             />
                         </figure>
 
-                        <div className="text-sm text-white py-1">Respawn time: {DateTime.fromSeconds(mvpmap.respawnTimer * 60).toFormat("hh'h'mm")}</div>
+                        <div className="text-sm text-white py-1">Respawn time: {diff.toFormat("hh'h'mm")}</div>
                     </div>
                 </Flex>
             </HoverCard.Dropdown>

@@ -18,17 +18,24 @@ export const JoinPartyDropdown = () => {
             return
         }
 
+        if (code.length <= 6) {
+            setIsLoading(false)
+            return
+        }
+
+        console.log(code)
+
         const { data, error } = await supabase.rpc('insert_party_member', {
             code: code,
             user_id: userSession?.user.id
         })
 
         if (error) {
-            console.error(error)
+            console.error("Error joining party", error)
         }
 
         if (data) {
-            console.log(data)
+            console.log("Data", data)
         }
 
         setIsLoading(false)
@@ -36,24 +43,21 @@ export const JoinPartyDropdown = () => {
 
 
     return (
-        <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={400}>
+        <HoverCard width={320} shadow="md" withArrow>
             <HoverCard.Target>
                 <ActionIcon variant="gradient"
-                            gradient={{from: 'violet', to: 'cyan', deg: 200}}
-                            size="lg" radius="xl" aria-label="Notifications"
-            >
-                <IconUserPlus style={{ width: '70%', height: '70%' }} stroke={1.5} />
-            </ActionIcon>
+                        gradient={{from: 'violet', to: 'cyan', deg: 200}}
+                        size="lg" radius="xl" aria-label="Notifications"
+                >
+                    <IconUserPlus style={{ width: '70%', height: '70%' }} stroke={1.5} />
+                </ActionIcon>
             </HoverCard.Target>
             <HoverCard.Dropdown>
-                <HoverCard.Target>
-                    <Flex direction="column" gap={10}>
-                        <Input placeholder="Party ID" value={code} onChange={(e) => setCode(e.target.value)} />
-                        <Button variant="gradient" gradient={{ from: 'violet', to: 'cyan', deg: 206 }} loading={isLoading} onClick={handleJoinParty}>Join Party</Button>
-                    </Flex>
-                </HoverCard.Target>
+                <Flex direction="column" gap={10}>
+                    <Input placeholder="Party ID" value={code} onChange={(e) => {setCode(e.target.value)}} />
+                    <Button variant="gradient" gradient={{ from: 'violet', to: 'cyan', deg: 206 }} loading={isLoading} onClick={handleJoinParty}>Join Party</Button>
+                </Flex>
             </HoverCard.Dropdown>
         </HoverCard>
-
     )
 }

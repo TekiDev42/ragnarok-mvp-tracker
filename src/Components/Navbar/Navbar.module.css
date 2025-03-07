@@ -8,7 +8,7 @@
 }
 
 .TimerContainer {
-    @apply flex items-center gap-5;
+    @apply flex relative items-center gap-5;
 }
 
 .mvpImage {

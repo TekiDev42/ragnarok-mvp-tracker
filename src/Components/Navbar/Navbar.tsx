@@ -27,7 +27,7 @@ export const Navbar = () => {
             <div className={style.TimerContainer}>
                 <NotificationList/>
 
-                {userSession ? <SignInModal /> : <JoinPartyDropdown />}
+                {!userSession ? <SignInModal /> : <JoinPartyDropdown />}
 
                 <Settings />
             </div>
