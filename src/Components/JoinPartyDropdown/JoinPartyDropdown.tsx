@@ -23,8 +23,6 @@ export const JoinPartyDropdown = () => {
             return
         }
 
-        console.log(code)
-
         const { data, error } = await supabase.rpc('insert_party_member', {
             code: code,
             user_id: userSession?.user.id
