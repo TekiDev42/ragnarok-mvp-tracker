@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="@supabase/supabase-js" />
 
 /**
  * Extends the Window interface to include the mvpApi object.
@@ -209,6 +210,7 @@ interface UserState extends Settings {
     rates: number
     notificationVolume: number
     notifications: MvpNotification[]
+    userSession: Session | null
 }
 
 

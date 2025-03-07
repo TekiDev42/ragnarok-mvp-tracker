@@ -7,6 +7,7 @@ import {setDelayNotificationReducer} from "@store/Reducers/User/setDelayNotifica
 import {setPerPageReducer} from "@store/Reducers/User/setPerPageReducer.ts"
 import {setRespawnTimerReducer} from "@store/Reducers/User/setRespawnTimerReducer.ts"
 import {defaultSettings} from "@constants/defaults.ts"
+import { Session } from "@supabase/supabase-js"
 
 /**
  * Initial state for the user slice of the Redux store.
@@ -18,7 +19,8 @@ const initialState: UserState = {
     cardRates: 1,
     rates: 1,
     notificationVolume: 100,
-    notifications: []
+    notifications: [],
+    userSession: null
 }
 
 /**
@@ -127,13 +129,28 @@ export const userSlice = createSlice({
         clearNotifications: (state) => {
             state.notifications = []
             window.mvpApi.clearNotifications()
-        }
+        },
+
+        /**
+         * Sets the user session.
+         */
+        setUserSession: (state, action: PayloadAction<Session | null>) => {
+            state.userSession = action.payload
+        },
+
+        /**
+         * Clears the user session.
+         */
+        clearUserSession: (state) => {
+            state.userSession = null
+        },
     }
 })
 
 // Export individual action creators
 export const {setAnimation, setBackground, setPerPage, setRespawnTimer, setSettings, setCardRates, setRates, setNotificationVolume} = userSlice.actions
 export const {addNotification, removeNotification, clearNotifications} = userSlice.actions
+export const {setUserSession, clearUserSession} = userSlice.actions
 export const {setActivePage, setSoundNotification, setDelayNotification, reset} = userSlice.actions
 
 // Export the reducer

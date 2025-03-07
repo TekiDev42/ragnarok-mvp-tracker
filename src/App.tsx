@@ -7,7 +7,8 @@ import { MvpList } from "@components/MvpList/MvpList"
 import { useEffect, useState } from "react"
 import { setSettings } from "@store/Slice/User/UserSlice"
 import { useAppDispatch } from "@store/Hooks"
-
+import { supabase } from "@/supabase/supabase"
+import { setUserSession } from "@store/Slice/User/UserSlice"
 
 const App = () => {
     const dispatch = useAppDispatch()
@@ -18,8 +19,20 @@ const App = () => {
         dispatch(setSettings(settings))
     }
 
+    const fetchUserSession = async () => {
+        const {data, error} = await supabase.auth.getSession()
+        if (error) {
+            console.error(error)
+        }
+
+        if (data) {
+            dispatch(setUserSession(data.session))
+        }
+    }
+
     useEffect(() => {
         fetchSettings()
+        fetchUserSession()
     }, [dispatch])
 
     useEffect(() => {
