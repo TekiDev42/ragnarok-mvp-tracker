@@ -1,28 +1,6 @@
 import sharp from "sharp";
 import fs from "fs";
 
-const inputFixePath = "converter/fixe";
-const inputAnimatedPath = "converter/animated";
-
-const outputFixePath = "converter/output/fixe";
-const outputAnimatedPath = "converter/output/animated";
-
-const inputMapsPath = "converter/maps";
-const outputMapsPath = "converter/output/maps";
-
-
-if (!fs.existsSync(outputFixePath)) {
-    fs.mkdirSync(outputFixePath, { recursive: true });
-}
-
-if (!fs.existsSync(outputAnimatedPath)) {
-    fs.mkdirSync(outputAnimatedPath, { recursive: true });
-}
-
-if (!fs.existsSync(outputMapsPath)) {
-    fs.mkdirSync(outputMapsPath, { recursive: true });
-}
-
 const convertToWebp = async (inputPath: string, outputPath: string, animated: boolean) => {
     await sharp(inputPath, { animated })
         .toFormat('webp')
@@ -34,10 +12,11 @@ const convertToWebp = async (inputPath: string, outputPath: string, animated: bo
 
 const convertAllImages = async () => {
 
-    const files = fs.readdirSync("converter/input");
+    const files = fs.readdirSync("input");
     for (const file of files) {
-        console.log(`Converting ${file} to ${outputFixePath}/${file.replace('.jpg', '.webp')}`)
-        await convertToWebp(`converter/input/${file}`, `converter/output/fixe/${file.replace('.jpg', '.webp')}`, false)
+        const ext = file.split('.').pop();
+        console.log(`Converting ${file} to /output/${file.replace(`.${ext}`, '.webp')}`)
+        await convertToWebp(`input/${file}`, `output/${file.replace(`.${ext}`, '.webp')}`, false)
     }
 
     /*const animatedFiles = fs.readdirSync("converter/input")

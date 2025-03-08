@@ -17,6 +17,7 @@ import { GetPathImage } from '@/Utils/GetImage'
 import { ScrollArea } from "@mantine/core";
 import { StatsHoverCard } from "@components/MvpCard/Stats/StatsHover.tsx";
 
+
 export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
     const dispatch = useAppDispatch();
     const animation = useAppSelector(state => state.userSlice.animation)

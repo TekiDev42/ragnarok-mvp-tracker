@@ -27,6 +27,8 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
     const soundNotification = useAppSelector(state => state.userSlice.soundNotification);
     const notificationVolume = useAppSelector(state => state.userSlice.notificationVolume);
     const dispatch = useAppDispatch();
+    
+    const timerLeft = 5;
 
     const updateDiff = useCallback(() => {
         setDiff(respawn.diff(now, ['hours', 'minutes', 'seconds']));
@@ -41,7 +43,7 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
                 const newDiff = respawn.diff(now, ['hours', 'minutes', 'seconds']);
                 setDiff(newDiff);
 
-                if (newDiff.as('minutes') <= 10 && !tenMinutesLeftNotification) {
+                if (newDiff.as('minutes') <= timerLeft && !tenMinutesLeftNotification) {
                     setTenMinutesLeftNotification(true);
                     
                     audio = new Audio('sounds/sign_right.wav');
@@ -49,10 +51,10 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
                     audio.play().then(() => audio.remove());
 
                     notifications.show({
-                        title: <div className="text-gray-500 text-sm italic">10 minutes left</div>,
+                        title: <div className="text-gray-500 text-sm italic">{timerLeft} minutes left</div>,
                         message: <Flex direction="column" gap={0}>
-                            <div className="text-gray-800 text-lg font-bold">MVP : {mvpName}</div>
-                            <div className="text-gray-800 text-lg font-bold">Map : {mapName}</div>
+                            <div className="text-gray-800 text-md font-bold">MVP : {mvpName}</div>
+                            <div className="text-gray-800 text-md font-bold">Map : {mapName}</div>
                         </Flex>,
                         autoClose: delayNotification === 0 ? false : delayNotification * 1000,
                         color: 'orange',

@@ -25,21 +25,22 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
     }, [mvp.mvpMaps])
 
     return mvpMaps.map(mvpmap => {
-            return (
-                <div key={mvpmap.name} className={style.countdownItem}>
-                    <Flex className={"flex-grow ro-cursor"} align={"center"}>
-                        <MapHoverCard mvpmap={mvpmap}/>
-                    </Flex>
-                    <Countdown
-                        mvpName={mvp.Name}
-                        mapName={mvpmap.name}
-                        respawn={getRespawn(
-                            mvpmap.deathTime,
-                            respawnTimer === 0 ? mvpmap.respawnTimer : respawnTimer)}
-                        handleResetDeathTime={handleResetDeathTime}
-                    />
-                </div>
-            )
-        }
-    )
+        const isInstance = mvpmap.name.match(/^\d+@.+/) !== null;
+
+        return (
+            <div key={mvpmap.name} className={style.countdownItem}>
+                <Flex className={"flex-grow ro-cursor"} align={"center"}>
+                    <MapHoverCard mvpmap={mvpmap} isInstance={isInstance} />
+                </Flex>
+                {!isInstance && <Countdown
+                    mvpName={mvp.Name}
+                    mapName={mvpmap.name}
+                    respawn={getRespawn(
+                        mvpmap.deathTime,
+                        respawnTimer === 0 ? mvpmap.respawnTimer : respawnTimer)}
+                    handleResetDeathTime={handleResetDeathTime}
+                />}
+            </div>
+        )
+    })
 }

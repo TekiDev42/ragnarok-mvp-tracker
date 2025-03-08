@@ -5,7 +5,9 @@ import { useForm } from "@mantine/form";
 import { z } from "zod";
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { supabase } from "@/supabase/supabase";
-
+import { setUserSession } from "@store/Slice/User/UserSlice";
+import { useAppDispatch } from "@store/Hooks";
+import { notifications } from "@mantine/notifications";
 
 const schema = z.object({
     email: z.string().email({ message: 'Invalid email' }),
@@ -13,6 +15,7 @@ const schema = z.object({
 });
 
 export const SignInModal = () => {
+    const dispatch = useAppDispatch()
     const [opened, setOpened] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -38,11 +41,36 @@ export const SignInModal = () => {
         })
 
         if (error) {
-            console.log(error);
+            notifications.show({
+                title: 'Error',
+                message: error.message,
+                autoClose: 5000,
+                color: 'red',
+                radius: "md",
+                withBorder: false,
+                style: {
+                    backgroundColor: '#FFF1F0',
+                    color: '#CF1322',
+                    border: '1px solid #FFF1F0',
+                }
+            });
         }
 
         if (data) {
-            console.log(data);
+            notifications.show({
+                title: 'Success',
+                message: 'You have successfully signed in',
+                autoClose: 5000,
+                color: 'green',
+                radius: "md",
+                withBorder: false,
+                style: {
+                    backgroundColor: '#F0FFF0',
+                    color: '#008000',
+                    border: '1px solid #F0FFF0',
+                }
+            });
+            dispatch(setUserSession(data.session))
         }
 
         setIsLoading(false);

@@ -23,7 +23,7 @@ export const DeathFormModal = () => {
     /**
      * Memoized array of MVP map names
      */
-    const mvpMapsName = useMemo(() => mvp.mvpMaps.map(mvpmap => mvpmap.name), [mvp.mvpMaps]);
+    const mvpMapsName = useMemo(() => mvp.mvpMaps.map(mvpmap => mvpmap.name).filter(name => name.match(/^\d+@.+/) === null), [mvp.mvpMaps]);
 
     useEffect(() => {
         if (mvpMapsName.length === 1) {

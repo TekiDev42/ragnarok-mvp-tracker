@@ -5,7 +5,7 @@ import {CSSProperties, PropsWithChildren} from "react";
 import {sizeImage} from "@constants/defaults.ts";
 import { DateTime } from "luxon";
 
-export const MapHoverCard = ({mvpmap}: PropsWithChildren & {mvpmap: MvpMap}) => {
+export const MapHoverCard = ({mvpmap, isInstance}: PropsWithChildren & {mvpmap: MvpMap, isInstance: boolean}) => {
     const ratio = {
         x: sizeImage / mvpmap.size.width,
         y: sizeImage / mvpmap.size.height
@@ -16,7 +16,15 @@ export const MapHoverCard = ({mvpmap}: PropsWithChildren & {mvpmap: MvpMap}) => 
     const diff = DateTime.now().plus({minutes: mvpmap.respawnTimer}).diff(DateTime.now(), ['hours', 'minutes', 'seconds'])
 
     return (
-        <HoverCard withArrow={true} arrowSize={12} position={"right"} width={300} shadow="md">
+        <>
+        {isInstance 
+            && <Flex align={"center"} gap={5}>
+                <IconMapPin2 size={18}/>
+                <Text>{mvpmap.name.trim()} <span className="text-xs text-gray-200">(Instance)</span></Text>
+            </Flex>
+        }
+
+        {!isInstance && <HoverCard withArrow={true} arrowSize={12} position={"right"} width={300} shadow="md">
             <HoverCard.Target>
                 <Flex align={"center"} gap={5}>
                     <IconMapPin2 size={18}/>
@@ -50,6 +58,7 @@ export const MapHoverCard = ({mvpmap}: PropsWithChildren & {mvpmap: MvpMap}) => 
                     </div>
                 </Flex>
             </HoverCard.Dropdown>
-        </HoverCard>
+        </HoverCard>}
+        </>
     )
 }
