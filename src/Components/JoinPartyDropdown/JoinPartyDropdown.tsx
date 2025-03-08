@@ -1,32 +1,47 @@
 import { useState } from "react"
-import { ActionIcon, Input, Button, HoverCard, Flex } from "@mantine/core"
+import { ActionIcon, Button, HoverCard, Flex } from "@mantine/core"
 import { IconUserPlus } from "@tabler/icons-react"
 import { useAppSelector, useAppDispatch } from "@store/Hooks"
 import { supabase } from "@/supabase/supabase"
 import { notifications } from "@mantine/notifications"
 import { setPartyId } from "@store/Slice/User/UserSlice"
+import { z } from "zod"
+import { zodResolver } from 'mantine-form-zod-resolver';
+import { useForm } from "@mantine/form";
+import { TextInput } from "@mantine/core";
+
+
+const schema = z.object({
+    code: z.string().min(6, { message: 'Code must be at least 6 characters' }),
+});
+
 
 export const JoinPartyDropdown = () => {
     const [isLoading, setIsLoading] = useState(false)
     const userSession = useAppSelector((state) => state.userSlice.userSession)
     const dispatch = useAppDispatch()
-    const [code, setCode] = useState('')
 
-    const handleJoinParty = async () => {
+    const form = useForm({
+        mode: 'uncontrolled',
+        initialValues: { code: '' },
+        validate: zodResolver(schema),
+    });
+
+    const handleJoinParty = async (values: typeof form.values) => {
         setIsLoading(true)
 
-        if (!code) {
+        if (!values.code) {
             setIsLoading(false)
             return
         }
 
-        if (code.length <= 6) {
+        if (values.code.length <= 6) {
             setIsLoading(false)
             return
         }
 
         const { data, error } = await supabase.rpc('insert_party_member', {
-            code: code,
+            code: values.code,
             user_id: userSession?.user.id
         })
 
@@ -80,8 +95,15 @@ export const JoinPartyDropdown = () => {
             </HoverCard.Target>
             <HoverCard.Dropdown>
                 <Flex direction="column" gap={10}>
-                    <Input placeholder="Party ID" value={code} onChange={(e) => {setCode(e.target.value)}} />
-                    <Button variant="gradient" gradient={{ from: 'violet', to: 'cyan', deg: 206 }} loading={isLoading} onClick={handleJoinParty}>Join Party</Button>
+                    <form onSubmit={form.onSubmit(handleJoinParty)}>
+                        <Flex direction="column" gap={10}>
+                            <TextInput label="Code" placeholder="Code" {...form.getInputProps('code')} />
+                        
+                            <Button variant="gradient" gradient={{ from: 'violet', to: 'cyan', deg: 206 }} type="submit" loading={isLoading}>
+                                {isLoading ? 'Joining...' : 'Join Party'}
+                            </Button>
+                        </Flex>
+                    </form>
                 </Flex>
             </HoverCard.Dropdown>
         </HoverCard>
