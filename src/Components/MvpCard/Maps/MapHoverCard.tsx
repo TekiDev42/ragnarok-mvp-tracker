@@ -57,7 +57,7 @@ export const MapHoverCard = ({mvpmap, isInstance}: PropsWithChildren & {mvpmap: 
                             />
                         </figure>
 
-                        <div className="text-sm text-white py-1">Respawn time: {diff.toFormat("hh'h'mm")}</div>
+                        <div className="text-sm text-white py-1">Respawn time: {diff.toMillis() > 0 ? diff.toFormat("hh'h'mm") : "Unknown"}</div>
                     </div>
                 </Flex>
             </HoverCard.Dropdown>

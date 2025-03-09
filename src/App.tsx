@@ -18,8 +18,10 @@ const App = () => {
     const viewport = useRef<HTMLDivElement>(null)
 
     const fetchSettings = async () => {
-        const settings = await window.mvpApi.getSettings()
-        dispatch(setSettings(settings))
+        if (window.mvpApi) {
+            const settings = await window.mvpApi.getSettings()
+            dispatch(setSettings(settings))
+        }
     }
 
     const fetchUserSession = async () => {
