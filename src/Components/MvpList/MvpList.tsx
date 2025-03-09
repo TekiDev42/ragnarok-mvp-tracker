@@ -24,8 +24,8 @@ export const MvpList = () => {
     // Fetch MVPs when the component mounts
     useEffect(() => {
         const fetchMvps = async () => {
-            const mvps = await getSortedMvp()
-            dispatch(setMvps(mvps))
+            const sortedMvps = await getSortedMvp()
+            dispatch(setMvps(sortedMvps))
         }
 
         fetchMvps()
