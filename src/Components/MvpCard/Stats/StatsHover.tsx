@@ -1,6 +1,5 @@
-import { HoverCard, ActionIcon, Divider } from "@mantine/core";
+import { HoverCard, ActionIcon} from "@mantine/core";
 import { StatsIcon } from "@components/Icons/Icons.tsx";
-import style from "@components/MvpCard/Stats/StatsHover.module.css";
 import { NumberFormatter } from "@mantine/core";
 
 interface StatsHoverCardProps {
@@ -49,39 +48,49 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                 </ActionIcon>
             </HoverCard.Target>
             <HoverCard.Dropdown style={{ width: "auto" }}>
-                <Divider my="xs" label="Stats" labelPosition="center" />
-                <ul className={style.stats_hover}>
-                    {mvp.Id && <li>ID: <span>{mvp.Id}</span></li>}
-                    {mvp.AegisName && <li>Aegis: <span>{mvp.AegisName}</span></li>}
-                    {mvp.Name && <li>Name: <span>{mvp.Name}</span></li>}
-                    {mvp.JapaneseName && <li>JP Name: <span>{mvp.JapaneseName}</span></li>}
-                    {mvp.Level && <li>Level: <span>{mvp.Level}</span></li>}
-                    {mvp.Hp && <li>HP: {formatNumber(mvp.Hp)}</li>}
-                    {mvp.BaseExp && <li>Base Exp: {formatNumber(mvp.BaseExp)}</li>}
-                    {mvp.JobExp && <li>Job Exp: {formatNumber(mvp.JobExp)}</li>}
-                    {mvp.MvpExp && <li>MVP Exp: {formatNumber(mvp.MvpExp)}</li>}
-                    {mvp.Attack && <li>Attack: {formatNumber(mvp.Attack)}</li>}
-                    {mvp.Attack2 && <li>Attack2: {formatNumber(mvp.Attack2)}</li>}
-                    {mvp.Defense && <li>Defense: {formatNumber(mvp.Defense)}</li>}
-                    {mvp.MagicDefense && <li>M.Def: {formatNumber(mvp.MagicDefense)}</li>}
-                    {mvp.MagicResistance && <li>M.Res: {formatNumber(mvp.MagicResistance)}</li>}
-                    {mvp.Resistance && <li>Res: {formatNumber(mvp.Resistance)}</li>}
-                    {mvp.Str && <li>STR: <span>{mvp.Str}</span></li>}
-                    {mvp.Agi && <li>AGI: <span>{mvp.Agi}</span></li>}
-                    {mvp.Vit && <li>VIT: <span>{mvp.Vit}</span></li>}
-                    {mvp.Int && <li>INT: <span>{mvp.Int}</span></li>}
-                    {mvp.Dex && <li>DEX: <span>{mvp.Dex}</span></li>}
-                    {mvp.Luk && <li>LUK: <span>{mvp.Luk}</span></li>}
-                    {mvp.Sp && <li>SP: <span>{mvp.Sp}</span></li>}
-                    {mvp.AttackRange && <li>Atk Range: <span>{mvp.AttackRange}</span></li>}
-                    {mvp.SkillRange && <li>Skill Range: <span>{mvp.SkillRange}</span></li>}
-                    {mvp.ChaseRange && <li>Chase Range: <span>{mvp.ChaseRange}</span></li>}
-                    {mvp.Size && <li>Size: <span>{mvp.Size}</span></li>}
-                    {mvp.Race && <li>Race: <span>{mvp.Race}</span></li>}
-                    {mvp.Element && <li>Element: <span>{mvp.Element}</span></li>}
-                    {mvp.ElementLevel && <li>Elem Level: <span>{mvp.ElementLevel}</span></li>}
-                    {mvp.WalkSpeed && <li>Walk Speed: <span>{mvp.WalkSpeed}</span></li>}
-                </ul>
+                <div className="grid grid-cols-4 gap-2">
+                    <div className="flex flex-col gap-1">
+                        <div>Id: <span>{mvp.Id}</span></div>
+                        <div>Level: <span>{mvp.Level}</span></div>
+                        <div>Name: <span>{mvp.Name}</span></div>
+                        <div>Aegis name: <span>{mvp.AegisName}</span></div>
+                        <div>Japanese Name: <span>{mvp.JapaneseName}</span></div>
+                        <div>HP: {formatNumber(mvp.Hp ?? 0)}</div>
+                        <div>Base Exp: {formatNumber(mvp.BaseExp ?? 0)}</div>
+                        <div>Job Exp: {formatNumber(mvp.JobExp ?? 0)}</div>
+                        <div>MVP Exp: {formatNumber(mvp.MvpExp ?? 0)}</div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                        {mvp.AttackRange && <div>Atk Range: <span>{mvp.AttackRange}</span></div>}
+                        {mvp.SkillRange && <div>Skill Range: <span>{mvp.SkillRange}</span></div>}
+                        {mvp.ChaseRange && <div>Chase Range: <span>{mvp.ChaseRange}</span></div>}
+                        {mvp.Size && <div>Size: <span>{mvp.Size}</span></div>}
+                        {mvp.Race && <div>Race: <span>{mvp.Race}</span></div>}
+                        {mvp.Element && <div>Element: <span>{mvp.Element}</span></div>}
+                        {mvp.ElementLevel && <div>Elem Level: <span>{mvp.ElementLevel}</span></div>}
+                        {mvp.WalkSpeed && <div>Walk Speed: <span>{mvp.WalkSpeed}</span></div>}
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                        <div>Attack: {formatNumber(mvp.Attack ?? 0)}</div>
+                        <div>Attack2: {formatNumber(mvp.Attack2 ?? 0)}</div>
+                        <div>Defense: {formatNumber(mvp.Defense ?? 0)}</div>
+                        <div>Magic Defense: {formatNumber(mvp.MagicDefense ?? 0)}</div>
+                        <div>Magic Resistance: {formatNumber(mvp.MagicResistance ?? 0)}</div>
+                        <div>Resistance: {formatNumber(mvp.Resistance ?? 0)}</div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                        {mvp.Str && <div>STR: {mvp.Str}</div>}
+                        {mvp.Agi && <div>AGI: {mvp.Agi}</div>}
+                        {mvp.Vit && <div>VIT: {mvp.Vit}</div>}
+                        {mvp.Int && <div>INT: {mvp.Int}</div>}
+                        {mvp.Dex && <div>DEX: {mvp.Dex}</div>}
+                        {mvp.Luk && <div>LUK: {mvp.Luk}</div>}
+                    </div>
+
+                </div>
             </HoverCard.Dropdown>
         </HoverCard>
     )

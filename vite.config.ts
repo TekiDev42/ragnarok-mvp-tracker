@@ -51,6 +51,7 @@ export default defineConfig({
               '@mantine/hooks',
               '@mantine/modals',
               '@mantine/notifications',
+              '@mantine/charts',
           ],
           redux: ['react-redux', '@reduxjs/toolkit'],
         }

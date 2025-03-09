@@ -9,10 +9,15 @@ import { setSettings } from "@store/Slice/User/UserSlice"
 import { useAppDispatch } from "@store/Hooks"
 import { supabase } from "@/supabase/supabase"
 import { setUserSession } from "@store/Slice/User/UserSlice"
+import { Affix, Button, Transition } from "@mantine/core"
+import { IconArrowUp } from "@tabler/icons-react"
+import { useRef } from "react"
 
 const App = () => {
     const dispatch = useAppDispatch()
     const [height, setHeight] = useState(window.innerHeight)
+    const [scroll, setScroll] = useState(0)
+    const viewport = useRef<HTMLDivElement>(null)
 
     const fetchSettings = async () => {
         const settings = await window.mvpApi.getSettings()
@@ -45,13 +50,30 @@ const App = () => {
     }, [])
 
     return (
-        <ScrollArea type="always" overscrollBehavior="contain" h={height}>
+        <ScrollArea 
+            viewportRef={viewport} type="always" 
+            overscrollBehavior="contain" h={height} 
+            onScrollPositionChange={(e) => setScroll(e.y)}
+        >
             <div className={style.App}>
                 <Background />
                 <Navbar />
                 <MvpList />
             </div>
+
             <DeathFormModal />
+
+            <Affix position={{ bottom: 20, right: 20 }}>
+                <Transition transition="slide-up" mounted={scroll > 0}>
+                    {(transitionStyles) => (
+                        <Button
+                            leftSection={<IconArrowUp size={16} />}
+                            style={transitionStyles}
+                            onClick={() => viewport.current!.scrollTo({ top: 0, behavior: 'smooth' })}
+                        >Scroll to top</Button>
+                    )}
+                </Transition>
+            </Affix>
         </ScrollArea>
     )
 }
