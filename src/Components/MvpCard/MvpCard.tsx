@@ -31,36 +31,38 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
 
     return (
         <div className={`${style.card} glass`}>
+            <div className="absolute top-2 left-2 text-xs text-white">{mvp.Id}</div>
+
             <Bookmark mvp={mvp} />
 
-                <div className={style.image_container}>
-                    <Image src={GetPathImage({ mvp, animation })} fit="contain" fallbackSrc="/images/mvp-flag.png" />
-                </div>
+            <div className={style.image_container}>
+                <Image src={GetPathImage({ mvp, animation })} fit="contain" fallbackSrc="/images/mvp-flag.png" />
+            </div>
 
-                <div className={style.content}>
-                    <h2 className={style.name}>{mvp.Name}</h2>
+            <div className={style.content}>
+                <h2 className={style.name}>{mvp.Name}</h2>
 
-                    <ScrollArea h={100} type="auto" w={"100%"} className={"px-3"}>
-                        <MvpMapCardList mvp={mvp} />
-                    </ScrollArea>
-                </div>
+                <ScrollArea h={100} type="auto" w={"100%"} className={"px-3"}>
+                    <MvpMapCardList mvp={mvp} />
+                </ScrollArea>
+            </div>
 
-                <div className={style.actions}>
-                    <Flex flex={1} gap={8}>
-                        <StatsHoverCard mvp={mvp} />
-                        <DropsHoverCard drops={mvp.Drops ?? []} mvpDrops={mvp.MvpDrops ?? []} />
-                    </Flex>
+            <div className={style.actions}>
+                <Flex flex={1} gap={8}>
+                    <StatsHoverCard mvp={mvp} />
+                    <DropsHoverCard drops={mvp.Drops ?? []} mvpDrops={mvp.MvpDrops ?? []} />
+                </Flex>
 
-                    {mvp.mvpMaps.length > 0 && <ActionIcon
-                        onClick={handleClick}
-                        className="glass ro-cursor"
-                        variant="gradient"
-                        gradient={{ from: 'pink', to: 'violet', deg: 90 }}
-                        color="#1e293b"
-                        radius="xl"
-                        aria-label="Action set death mvp"
-                    >
-                        <HeadstoneIcon />
+                {mvp.mvpMaps.length > 0 && <ActionIcon
+                    onClick={handleClick}
+                    className="glass ro-cursor"
+                    variant="gradient"
+                    gradient={{ from: 'pink', to: 'violet', deg: 90 }}
+                    color="#1e293b"
+                    radius="xl"
+                    aria-label="Action set death mvp"
+                >
+                <HeadstoneIcon />
                 </ActionIcon>}
             </div>
         </div>

@@ -50,15 +50,14 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
             <HoverCard.Dropdown style={{ width: "auto" }}>
                 <div className="grid grid-cols-4 gap-4">
                     <div className="flex flex-col gap-1">
-                        <div>Id: <span>{mvp.Id}</span></div>
                         <div>Level: <span>{mvp.Level}</span></div>
                         <div>Name: <span>{mvp.Name}</span></div>
                         <div>Aegis name: <span>{mvp.AegisName}</span></div>
-                        <div>Japanese Name: <span>{mvp.JapaneseName}</span></div>
+                        {mvp.JapaneseName && <div>Japanese Name: <span>{mvp.JapaneseName}</span></div>}
                         <div>HP: {formatNumber(mvp.Hp ?? 0)}</div>
-                        <div>Base Exp: {formatNumber(mvp.BaseExp ?? 0)}</div>
-                        <div>Job Exp: {formatNumber(mvp.JobExp ?? 0)}</div>
-                        <div>MVP Exp: {formatNumber(mvp.MvpExp ?? 0)}</div>
+                        {mvp.BaseExp && <div>Base Exp: {formatNumber(mvp.BaseExp ?? 0)}</div>}
+                        {mvp.JobExp && <div>Job Exp: {formatNumber(mvp.JobExp ?? 0)}</div>}
+                        {mvp.MvpExp && <div>MVP Exp: {formatNumber(mvp.MvpExp ?? 0)}</div>}
                     </div>
 
                     <div className="flex flex-col gap-1">
@@ -73,12 +72,12 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                        <div>Attack: {formatNumber(mvp.Attack ?? 0)}</div>
-                        <div>Attack2: {formatNumber(mvp.Attack2 ?? 0)}</div>
-                        <div>Defense: {formatNumber(mvp.Defense ?? 0)}</div>
-                        <div>Magic Defense: {formatNumber(mvp.MagicDefense ?? 0)}</div>
-                        <div>Magic Resistance: {formatNumber(mvp.MagicResistance ?? 0)}</div>
-                        <div>Resistance: {formatNumber(mvp.Resistance ?? 0)}</div>
+                        {mvp.Attack && <div>Attack: {formatNumber(mvp.Attack ?? 0)}</div>}
+                        {mvp.Attack2 && <div>Attack2: {formatNumber(mvp.Attack2 ?? 0)}</div>}
+                        {mvp.Defense && <div>Defense: {formatNumber(mvp.Defense ?? 0)}</div>}
+                        {mvp.MagicDefense && <div>Magic Defense: {formatNumber(mvp.MagicDefense ?? 0)}</div>}
+                        {mvp.MagicResistance && <div>Magic Resistance: {formatNumber(mvp.MagicResistance ?? 0)}</div>}
+                        {mvp.Resistance && <div>Resistance: {formatNumber(mvp.Resistance ?? 0)}</div>}
                     </div>
 
                     <div className="flex flex-col gap-1">
