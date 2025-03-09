@@ -8,9 +8,16 @@ export const useIntersectionObserver = (targetRef: React.RefObject<HTMLElement>,
         observer.current = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    if (isLoading) {
+                        return
+                    }
+
                     setIsLoading(true)
-                    callback()
-                    setIsLoading(false)
+
+                    setTimeout(() => {
+                        callback()
+                        setIsLoading(false)
+                    }, 1000)
                 }
             })
         }, options)
@@ -20,7 +27,9 @@ export const useIntersectionObserver = (targetRef: React.RefObject<HTMLElement>,
             observer.current?.observe(currentTarget)
         }
 
-        setIsLoading(false)
+         setTimeout(() => {
+            setIsLoading(false)
+        }, 1000)
 
         return () => {
             if (currentTarget) {

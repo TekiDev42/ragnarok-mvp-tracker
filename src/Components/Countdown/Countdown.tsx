@@ -11,11 +11,12 @@ import { v4 as uuidv4 } from 'uuid';
 type CountdownProps =  PropsWithChildren & {
     respawn: DateTime;
     mapName: string;
+    mapDisplayName: string;
     mvpName: string;
     handleResetDeathTime: (mapName: string) => void;
 }
 
-export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: CountdownProps) => {
+export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleResetDeathTime }: CountdownProps) => {
     const [diff, setDiff] = useState<Duration>(() => 
         respawn.diff(DateTime.now(), ['hours', 'minutes', 'seconds'])
     );
@@ -51,10 +52,13 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
                     audio.play().then(() => audio.remove());
 
                     notifications.show({
-                        title: <div className="text-gray-500 text-sm italic">{timerLeft} minutes left</div>,
+                        title: <div className="text-gray-500 text-xs italic">{timerLeft} minutes left</div>,
                         message: <Flex direction="column" gap={0}>
                             <div className="text-gray-800 text-md font-bold">MVP : {mvpName}</div>
-                            <div className="text-gray-800 text-md font-bold">Map : {mapName}</div>
+                            <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
+                                <span>Map : {mapName}</span>
+                                <span className="text-xs">({mapDisplayName})</span>
+                            </div>
                         </Flex>,
                         autoClose: delayNotification === 0 ? false : delayNotification * 1000,
                         color: 'orange',
@@ -72,10 +76,13 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
                     }));
 
                     notifications.show({
-                        title: <div className="text-gray-500 text-sm italic">{now.toFormat("dd/MM/yyyy HH'h'mm'm")}</div>,
+                        title: <div className="text-gray-500 text-xs italic">{now.toFormat("dd/MM/yyyy HH'h'mm")}</div>,
                         message: <Flex direction="column" gap={0}>
-                            <div className="text-gray-800 text-lg font-bold">MVP : {mvpName}</div>
-                            <div className="text-gray-800 text-lg font-bold">Map : {mapName}</div>
+                            <div className="text-gray-800 text-md font-bold">MVP : {mvpName}</div>
+                            <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
+                                <span>Map : {mapName}</span>
+                                <span className="text-xs">({mapDisplayName})</span>
+                            </div>
                         </Flex>,
                         autoClose: delayNotification === 0 ? false : delayNotification * 1000,
                         color: 'green',
@@ -91,6 +98,7 @@ export const Countdown = ({ respawn, mapName, mvpName, handleResetDeathTime }: C
                         audio.play().then(() => audio.remove());
                     }
 
+                    setTenMinutesLeftNotification(false);
                     clearInterval(interval);
                 }
             }, 1000);

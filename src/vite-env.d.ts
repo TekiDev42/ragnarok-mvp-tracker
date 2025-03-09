@@ -95,6 +95,7 @@ interface MvpMap {
     name: string
     deathTime: string
     respawnTimer: number
+    displayName: string
     tombPos: TombPos
     size: {
         height: number,

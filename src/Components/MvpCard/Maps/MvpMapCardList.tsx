@@ -35,6 +35,7 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
                 {!isInstance && <Countdown
                     mvpName={mvp.Name}
                     mapName={mvpmap.name}
+                    mapDisplayName={mvpmap.displayName}
                     respawn={getRespawn(
                         mvpmap.deathTime,
                         respawnTimer === 0 ? mvpmap.respawnTimer : respawnTimer)}

@@ -20,7 +20,9 @@ export const MapHoverCard = ({mvpmap, isInstance}: PropsWithChildren & {mvpmap: 
         {isInstance 
             && <Flex align={"center"} gap={5}>
                 <IconMapPin2 size={18}/>
-                <Text>{mvpmap.name.trim()} <span className="text-xs text-gray-200">(Instance)</span></Text>
+                <Text>
+                    {mvpmap.name.trim()} <span className="text-xs text-gray-200">(Instance)</span>
+                </Text>
             </Flex>
         }
 
@@ -34,6 +36,7 @@ export const MapHoverCard = ({mvpmap, isInstance}: PropsWithChildren & {mvpmap: 
             <HoverCard.Dropdown bd={"none"} bg={rgba("0, 0, 0", 0.85)}>
                 <Flex justify={"center"} align={"center"}>
                     <div className={style.map}>
+                        <div className="text-sm text-white py-1">{mvpmap.displayName}</div>
                         { mvpmap.tombPos.x > 0 && mvpmap.tombPos.y > 0 &&
                             <IconGrave color={"transparent"}
                                 fill={"#ffd43b"}

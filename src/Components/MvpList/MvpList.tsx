@@ -44,20 +44,20 @@ export const MvpList = () => {
     }, [mvps, visibleItems])
 
     return (
-        <div className={style.cardContainer} style={{ width: "100%" }}>
-            {items}
-
-            {loading && 
-                Array(24)
-                .fill(0)
-                .map((_, i) => (
-                    <Box className="flex justify-center items-center glass shadow-lg" pos="relative" key={`skeleton-${i}`} style={{ height: 325, borderRadius: "1rem" }}>
-                        <img src="/images/poring-loader.webp" alt="Poring loader" width={"41px"} height={"39px"}/>
-                    </Box>
-                ))
-            }
-
-            <div ref={loadMoreRef} style={{ height: "20px" }} />
-        </div>
+        <>
+            <div className={style.cardContainer} style={{ width: "100%" }}>
+                {items}
+            </div>
+            <div className={"grid grid-cols-6 justify-center items-center w-full gap-8"} ref={loadMoreRef} style={{ height: "50px" }}>
+                { loading && items.length < mvps.length && Array(24)
+                    .fill(0)
+                    .map((_, i) => (
+                        <Box className="flex justify-center items-center glass shadow-lg w-full" pos="relative" key={`skeleton-${i}`} style={{ height: 325, borderRadius: "1rem" }}>
+                            <img src="/images/poring-loader.webp" alt="Poring loader" width={"41px"} height={"39px"}/>
+                        </Box>
+                    ))
+                }
+            </div>
+        </>
     )
 }
