@@ -65,8 +65,6 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                         {mvp.SkillRange && <div>Skill Range: <span>{mvp.SkillRange}</span></div>}
                         {mvp.ChaseRange && <div>Chase Range: <span>{mvp.ChaseRange}</span></div>}
                         {mvp.Size && <div>Size: <span>{mvp.Size}</span></div>}
-                        {mvp.Race && <div>Race: <span>{mvp.Race}</span></div>}
-                        {mvp.Element && <div>Element: <span>{mvp.Element}</span></div>}
                         {mvp.ElementLevel && <div>Elem Level: <span>{mvp.ElementLevel}</span></div>}
                         {mvp.WalkSpeed && <div>Walk Speed: <span>{mvp.WalkSpeed}</span></div>}
                     </div>

@@ -15,9 +15,7 @@ export const Bookmark = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
 
     return (
         <div onClick={handleBookmarkClick}
-             className={`bookmark absolute top-2 right-2 
-                            ${mvp.isBookmark ? "text-yellow-500" : "text-white"} 
-                            cursor-pointer p-1`}>
+                className={`bookmark ${mvp.isBookmark ? "text-yellow-500" : "text-white"} cursor-pointer p-1`}>
             <BookmarkIcon checked={mvp.isBookmark}/>
         </div>
     )

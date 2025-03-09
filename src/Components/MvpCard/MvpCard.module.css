@@ -9,7 +9,7 @@
 }
 
 .actions {
-    @apply flex w-full items-end justify-end px-5 py-2 gap-2 flex-grow;
+    @apply flex w-full items-center justify-start px-5 py-2 gap-2 flex-grow;
 }
 
 .image_container {
@@ -18,8 +18,4 @@
 
 .image_container img {
     @apply max-h-32 w-auto;
-}
-
-.name {
-    @apply flex w-full flex-col justify-between items-center gap-0 text-xl text-white;
 }

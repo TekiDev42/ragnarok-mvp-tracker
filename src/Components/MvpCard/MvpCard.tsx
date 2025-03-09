@@ -1,8 +1,3 @@
-/**
- * @file MvpCard.tsx
- * @description This file contains the MvpCard component, which displays information about an MVP (Most Valuable Player) in a card format.
- */
-
 import style from './MvpCard.module.css'
 import { HeadstoneIcon } from "@components/Icons/Icons.tsx";
 import { ActionIcon, Flex, ScrollArea } from "@mantine/core";
@@ -15,6 +10,9 @@ import { PropsWithChildren } from 'react';
 import { GetPathImage } from '@/Utils/GetImage'
 import { StatsHoverCard } from "@components/MvpCard/Stats/StatsHover.tsx";
 import { Image } from "@mantine/core";
+import { Badge } from "@mantine/core";
+import { getBadgeColor } from "@/Utils/getBadgeColor";
+
 
 export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
     const dispatch = useAppDispatch();
@@ -31,16 +29,25 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
 
     return (
         <div className={`${style.card} glass`}>
-            <div className="absolute top-2 left-2 text-xs text-white">{mvp.Id}</div>
-
-            <Bookmark mvp={mvp} />
+            <div className={"flex items-center justify-between py-0 px-2"}>
+                <Badge w={"fit-content"} autoContrast size="xs" color={"white"}>{mvp.Id}</Badge>
+                <Bookmark mvp={mvp} />
+            </div>
 
             <div className={style.image_container}>
                 <Image src={GetPathImage({ mvp, animation })} fit="contain" fallbackSrc="/images/mvp-flag.png" />
             </div>
 
             <div className={style.content}>
-                <h2 className={style.name}>{mvp.Name}</h2>
+                <div className="flex flex-col gap-2 w-full justify-center items-center">
+                    <Flex justify="center" align="center" gap={8}>
+                        <Badge w={"fit-content"} autoContrast size="xs" color={getBadgeColor(mvp.Size ?? '')}>{mvp.Size}</Badge>
+                        <Badge w={"fit-content"} autoContrast size="xs" color={getBadgeColor(mvp.Race ?? '')}>{mvp.Race}</Badge>
+                        <Badge w={"fit-content"} autoContrast size="xs" color={getBadgeColor(mvp.Element ?? '')}>{mvp.Element}</Badge>
+                    </Flex>
+
+                    <h2 className={"w-full text-md text-center text-white font-bold"}>{mvp.Name}</h2>
+                </div>
 
                 <ScrollArea h={100} type="auto" w={"100%"} className={"px-3"}>
                     <MvpMapCardList mvp={mvp} />
@@ -48,7 +55,7 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
             </div>
 
             <div className={style.actions}>
-                <Flex flex={1} gap={8}>
+                <Flex gap={8} flex={1}>
                     <StatsHoverCard mvp={mvp} />
                     <DropsHoverCard drops={mvp.Drops ?? []} mvpDrops={mvp.MvpDrops ?? []} />
                 </Flex>
