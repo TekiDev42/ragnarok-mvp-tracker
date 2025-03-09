@@ -1,11 +1,11 @@
 import {TextInput} from "@mantine/core";
 import {ChangeEvent, useEffect, useState} from "react";
-import {useAppDispatch, useAppSelector} from "@store/Hooks.ts";
+import {useAppDispatch} from "@store/Hooks.ts";
 import {filterByNameOrId} from "@store/Slice/Mvp/Slice.ts";
+import { IconX } from "@tabler/icons-react";
 
 export const ActionSearch = () => {
     const dispatch = useAppDispatch()
-    const mvps = useAppSelector((state) => state.Slice.mvps)
     const [search, setSearch] = useState<string>("")
 
     const searchHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,15 +21,12 @@ export const ActionSearch = () => {
         return () => clearTimeout(timeout)
     }, [search]);
 
-    useEffect(() => {
-        setSearch('')
-    }, [mvps])
-
     return (
         <TextInput radius="xl"
                    style={{width: "100%",maxWidth: "320px"}}
                    onChange={searchHandleChange}
                    value={search}
-                   placeholder="Search MVP by name, DB name or id"/>
+                   placeholder="Search MVP by name, DB name or id"
+                   rightSection={<IconX size={16} onClick={() => setSearch("")}/>}/>
     )
 }

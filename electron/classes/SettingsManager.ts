@@ -1,5 +1,6 @@
 import Store from "electron-store"
 import { Schema, store } from "../store/store.ts"
+import { version as appVersion } from "../../package.json"
 
 /**
  * SettingsManager class
@@ -18,6 +19,11 @@ export class SettingsManager {
      * Creates an instance of SettingsManager.
      */
     constructor() {
+        if ((store.get('version') as unknown as string) !== appVersion) {
+            store.clear()
+            store.set('version', appVersion)
+        }
+
         this.settings = store
     }
 

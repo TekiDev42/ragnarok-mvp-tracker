@@ -49,7 +49,7 @@ export const MvpList = () => {
                 {items}
             </div>
             <div className={"grid grid-cols-6 justify-center items-center w-full gap-8"} ref={loadMoreRef} style={{ height: "50px" }}>
-                { loading && items.length < mvps.length && Array(24)
+                { loading && items.length < mvps.length && items.length > 18 && Array(24)
                     .fill(0)
                     .map((_, i) => (
                         <Box className="flex justify-center items-center glass shadow-lg w-full" pos="relative" key={`skeleton-${i}`} style={{ height: 325, borderRadius: "1rem" }}>

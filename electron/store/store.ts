@@ -1,8 +1,11 @@
-import bg from "../../public/images/wallpaper.webp"
+import bg from "../../public/images/dark-background.webp"
 import Store from "electron-store"
 
-
 export type Schema = {
+    version: {
+        type: string,
+        default: string,
+    },
     animation: {
         type: string,
         default: boolean,
@@ -49,6 +52,10 @@ export type Schema = {
  * Configuration schema for the application.
  */
 export const schema: Schema = {
+    version: {
+        type: 'string',
+        default: '1.0.0',
+    },
     animation: {
         type: 'boolean',
         default: true,
