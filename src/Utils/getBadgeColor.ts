@@ -32,8 +32,6 @@ export const getBadgeColor = (race: string) => {
             return 'red.4'
         case 'wind':
             return 'lime.4'
-        case 'poison':
-            return 'violet.4'
         case 'holy':
             return 'cyan.4'
         case 'shadow':

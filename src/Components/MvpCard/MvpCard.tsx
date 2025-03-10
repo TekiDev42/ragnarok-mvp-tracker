@@ -46,7 +46,7 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
                         <Badge w={"fit-content"} autoContrast size="xs" color={getBadgeColor(mvp.Element ?? '')}>{mvp.Element}</Badge>
                     </Flex>
 
-                    <h2 className={"w-full text-md text-center text-white font-bold"}>{mvp.Name}</h2>
+                    <h2 className={"w-full text-md uppercase text-center text-white tracking-wider"}>{mvp.Name}</h2>
                 </div>
 
                 <ScrollArea h={100} type="auto" w={"100%"} className={"px-3"}>
