@@ -12,14 +12,11 @@ import {Provider} from "react-redux";
 import {store} from "@store/Store.ts";
 import {MantineProvider} from "@mantine/core";
 import {Notifications} from "@mantine/notifications";
-import { SubscriptionsSupabase } from "@components/SubscriptionsSupabase/SubscriptionsSupabase.tsx";
-
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <Provider store={store}>
             <MantineProvider>
-                <SubscriptionsSupabase />
                 <Notifications />
                 <App/>
             </MantineProvider>

@@ -74,7 +74,48 @@ export const DeathFormModal = () => {
 
         if (userSession && partyId) {
             mapsData.forEach(async (map) => {
-                const { data, error } = await supabase.from('maps_party')
+
+                if (!mvpMapsName.includes(map.name)) {
+                    return;
+                }
+
+                let { data: maps_party, error: errorSelect } = await supabase
+                    .from('maps_party')
+                    .select("*")
+                    .eq('map_name', map.name)
+                    .eq('mvp_id', mvp.Id)
+                    .eq('party_id', partyId)
+
+                if (errorSelect) {
+                    console.error('Error selecting map party:', errorSelect)
+                    return;
+                }
+
+                if (maps_party && maps_party.length > 0) {
+                    console.log('Map party already exists:', maps_party)
+
+                    const { data: maps_party_update, error: errorUpdate } = await supabase.from('maps_party')
+                    .update({
+                        tomb_pos_x: map.tombPos.x,
+                        tomb_pos_y: map.tombPos.y,
+                        death_time: map.deathTime,
+                        last_user_update: userSession.user.id,
+                    })
+                    .eq('id', maps_party[0].id)
+                    .eq('party_id', partyId)
+                    .eq('map_name', map.name)
+                    .eq('mvp_id', mvp.Id)
+                    .select()
+
+                    if (errorUpdate) {
+                        console.error('Error updating map party:', errorUpdate)
+                    } else {
+                        console.log('Map party updated:', maps_party_update)
+                    }
+                    return;
+                }
+
+                const { data, error: errorInsert } = await supabase.from('maps_party')
                 .insert({
                     party_id: partyId,
                     last_user_update: userSession.user.id,
@@ -86,16 +127,15 @@ export const DeathFormModal = () => {
                 })
                 .select()
     
-                if (error) {
-                    console.error('Error inserting map party:', error)
+                if (errorInsert) {
+                    console.error('Error inserting map party:', errorInsert)
                 } else {
                     console.log('Map party inserted:', data)
                 }
             })
         }
-
-        dispatch(setOpened(false));
         
+        dispatch(setOpened(false));
     }, [dispatch, mapsData, mvp, mvpMapsName]);
 
     /**
