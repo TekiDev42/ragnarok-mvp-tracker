@@ -11,11 +11,14 @@ import { setMvpMaps } from "@store/Slice/Mvp/Slice.ts";
 import { setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { TimeInputWithIcon } from "@/Components/Form/TimeInput/TimeInput.tsx";
 import { MapChip } from "@/Components/MapChip/MapChip.tsx";
+import { supabase } from "@/supabase/supabase";
 
 
 export const DeathFormModal = () => {
     const dispatch = useAppDispatch();
     const { opened, mvp } = useAppSelector(state => state.modalSlice);
+    const userSession = useAppSelector(state => state.userSlice.userSession);
+    const partyId = useAppSelector(state => state.userSlice.partyId);
 
     const [mapsSelected, setMapsSelected] = useState<string[]>([]);
     const [mapsData, setMapsData] = useState<MvpMap[]>([]);
@@ -65,10 +68,34 @@ export const DeathFormModal = () => {
     /**
      * Handles the confirmation of the form submission
      */
-    const handleConfirm = useCallback(() => {
+    const handleConfirm = useCallback(async () => {
         dispatch(setMvpMaps({ mvp, newMapsData: mapsData }));
         setMapsSelected(mvpMapsName.length === 1 ? [mvpMapsName[0]] : []);
+
+        if (userSession && partyId) {
+            mapsData.forEach(async (map) => {
+                const { data, error } = await supabase.from('maps_party')
+                .insert({
+                    party_id: partyId,
+                    last_user_update: userSession.user.id,
+                    map_name: map.name,
+                    mvp_id: mvp.Id,
+                    tomb_pos_x: map.tombPos.x,
+                    tomb_pos_y: map.tombPos.y,
+                    death_time: map.deathTime,
+                })
+                .select()
+    
+                if (error) {
+                    console.error('Error inserting map party:', error)
+                } else {
+                    console.log('Map party inserted:', data)
+                }
+            })
+        }
+
         dispatch(setOpened(false));
+        
     }, [dispatch, mapsData, mvp, mvpMapsName]);
 
     /**

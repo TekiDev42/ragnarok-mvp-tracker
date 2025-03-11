@@ -7,7 +7,6 @@ import {setDelayNotificationReducer} from "@store/Reducers/User/setDelayNotifica
 import {setPerPageReducer} from "@store/Reducers/User/setPerPageReducer.ts"
 import {setRespawnTimerReducer} from "@store/Reducers/User/setRespawnTimerReducer.ts"
 import {defaultSettings} from "@constants/defaults.ts"
-import { Session } from "@supabase/supabase-js"
 
 /**
  * Initial state for the user slice of the Redux store.
