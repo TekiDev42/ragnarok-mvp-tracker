@@ -81,7 +81,8 @@ export const useSubscriptionsSupabase = () => {
         }
 
         if (maps_party) {
-            maps_party.forEach((db_map) => {
+
+            for (const db_map of maps_party) {
                 const mvp = mvps.find((mvp) => mvp.Id === db_map.mvp_id)
 
                 if (mvp) {
@@ -101,7 +102,7 @@ export const useSubscriptionsSupabase = () => {
 
                     dispatch(setMvpMaps({ mvp, newMapsData: newMvpMaps }))
                 }
-            })
+            }
         }
 
         return 
