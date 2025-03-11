@@ -98,6 +98,7 @@ export const useSubscriptionsSupabase = () => {
                         }
                         return map
                     })
+
                     dispatch(setMvpMaps({ mvp, newMapsData: newMvpMaps }))
                 }
             })
