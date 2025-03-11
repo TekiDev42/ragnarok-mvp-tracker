@@ -7,8 +7,10 @@ import { SignInModal } from "@components/Form/SignInModal.tsx"
 import { useAppSelector } from "@store/Hooks"
 import { JoinPartyDropdown } from "@components/JoinPartyDropdown/JoinPartyDropdown.tsx"
 
+
 export const Navbar = () => {
     const userSession = useAppSelector((state) => state.userSlice.userSession)
+    const partyId = useAppSelector((state) => state.userSlice.partyId)
 
     return (
         <div className={`${style.Navbar} glass`}>
@@ -20,15 +22,17 @@ export const Navbar = () => {
                 </figure>
             </div>
 
-            <div className={style.containerSearch}>
+            <div className={style.container_search}>
                 <ActionSearch />
             </div>
 
-            <div className={style.TimerContainer}>
+            <div className={style.timer_container}>
+
+                {userSession && partyId && <div className={"text-white text-sm"}>Party ID: {partyId}</div>}
+                {!userSession && <SignInModal />}
+                {userSession && !partyId && <JoinPartyDropdown />}
+
                 <NotificationList/>
-
-                {!userSession ? <SignInModal /> : <JoinPartyDropdown />}
-
                 <Settings />
             </div>
         </div>
