@@ -10,9 +10,9 @@ import { useMemo } from "react";
 
 export const MvpList = () => {
     const dispatch = useAppDispatch()
-    const [loading, setLoading] = useState(true)
     const mvps = useAppSelector((state) => state.Slice.filtered)
     const [mvpsSorted, setMvpsSorted] = useState<Mvp[]>([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchMvps = async () => {
