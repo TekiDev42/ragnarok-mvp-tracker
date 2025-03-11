@@ -64,8 +64,52 @@ export const useSubscriptionsSupabase = () => {
         }
     }
 
+    const fetchMapsParty = async (partyId: number, abortController: AbortController) => {
+
+        if (!partyId) {
+            return
+        }
+
+        const { data: maps_party, error } = await supabase
+            .from('maps_party')
+            .select('*')
+            .eq('party_id', partyId)
+            .abortSignal(abortController.signal)
+
+        if (error) {
+            console.error('Error fetching maps_party', error)
+        }
+
+        if (maps_party) {
+            maps_party.forEach((db_map) => {
+                const mvp = mvps.find((mvp) => mvp.Id === db_map.mvp_id)
+
+                if (mvp) {
+                    const newMvpMaps = mvp.mvpMaps.map((map) => {
+                        if (map.name === db_map.map_name) {
+                            return {
+                                ...map,
+                                deathTime: db_map.death_time ?? map.deathTime,
+                                tombPos: {
+                                    x: db_map.tomb_pos_x ?? map.tombPos.x,
+                                    y: db_map.tomb_pos_y ?? map.tombPos.y
+                                }
+                            }
+                        }
+                        return map
+                    })
+                    dispatch(setMvpMaps({ mvp, newMapsData: newMvpMaps }))
+                }
+            })
+        }
+
+        return 
+    }
+
     useEffect(() => {
+        const abortController = new AbortController()
         let mapsParty = null
+
         if (partyId) {
             mapsParty = supabase.channel('schema-db-changes')
                 .on(
@@ -74,12 +118,15 @@ export const useSubscriptionsSupabase = () => {
                     handleChanges
                 )
                 .subscribe()
+
+            fetchMapsParty(partyId, abortController)
         }
 
         return () => {
-            if (mapsParty) {
-                mapsParty.unsubscribe()
-            }
+            if (mapsParty) mapsParty.unsubscribe()
+
+            abortController.abort()
         }
+
     }, [partyId])
 }

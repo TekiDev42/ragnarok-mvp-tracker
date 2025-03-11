@@ -10,7 +10,6 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import { useForm } from "@mantine/form";
 import { TextInput } from "@mantine/core";
 
-
 const schema = z.object({
     code: z.string().min(6, { message: 'Code must be at least 6 characters' }),
 });
@@ -40,15 +39,20 @@ export const JoinPartyDropdown = () => {
             return
         }
 
-        const { data, error } = await supabase.rpc('insert_party_member', {
+        if (!userSession?.user.id) {
+            setIsLoading(false)
+            return
+        }
+
+        const { data, error }: { data: any, error: any } = await supabase.rpc('insert_party_member', {
             code: values.code,
-            user_id: userSession?.user.id
+            user_id: userSession.user.id
         })
 
-        if (error || (data && data.status === 401)) {
+        if (error || (data.status === 401)) {
             notifications.show({
                 title: 'Error',
-                message: error?.message || data?.message,
+                message: error?.message || data.message,
                 autoClose: 5000,
                 color: 'red',
                 radius: "md",
