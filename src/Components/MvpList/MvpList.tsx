@@ -4,14 +4,13 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@store/Hooks";
 import { setMvps } from "@/Store/Slice/Mvp/Slice";
 import { getSortedMvp } from "@/Utils/getSortedMvp";
-import { sortMvps } from "@/Utils/Sort/sortMvps";
+import { sortMvps } from "@utils/Sort/sortMvps";
 import { useMemo } from "react";
 
 
 export const MvpList = () => {
     const dispatch = useAppDispatch()
     const mvps = useAppSelector((state) => state.Slice.filtered)
-    const [mvpsSorted, setMvpsSorted] = useState<Mvp[]>([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -22,15 +21,10 @@ export const MvpList = () => {
         }
         fetchMvps()
     }, [])
-
-    useEffect(() => {
-        const mvpsSorted = sortMvps(mvps)
-        setMvpsSorted(mvpsSorted)
-    }, [mvps])
-
-    const items = useMemo(() => mvpsSorted.map((mvp, i) => (
+    
+    const items = useMemo(() => sortMvps(mvps).map((mvp, i) => (
         <MvpCard key={mvp.Id ?? `mvp-${i}`} mvp={mvp} />
-    )), [mvpsSorted])
+    )), [mvps])
 
     return (
         <>

@@ -1,8 +1,9 @@
 import { useAppSelector, useAppDispatch } from "@store/Hooks"
 import { useEffect } from "react"
 import { supabase } from "@/supabase/supabase"
-import { setMvpMaps } from "@store/Slice/Mvp/Slice.ts";
+import { setMvpMaps, setMvpsFromDb } from "@store/Slice/Mvp/Slice.ts";
 import { notifications } from "@mantine/notifications";
+
 
 
 export const useSubscriptionsSupabase = () => {
@@ -81,28 +82,7 @@ export const useSubscriptionsSupabase = () => {
         }
 
         if (maps_party) {
-
-            for (const db_map of maps_party) {
-                const mvp = mvps.find((mvp) => mvp.Id === db_map.mvp_id)
-
-                if (mvp) {
-                    const newMvpMaps = mvp.mvpMaps.map((map) => {
-                        if (map.name === db_map.map_name) {
-                            return {
-                                ...map,
-                                deathTime: db_map.death_time ?? map.deathTime,
-                                tombPos: {
-                                    x: db_map.tomb_pos_x ?? map.tombPos.x,
-                                    y: db_map.tomb_pos_y ?? map.tombPos.y
-                                }
-                            }
-                        }
-                        return map
-                    })
-
-                    dispatch(setMvpMaps({ mvp, newMapsData: newMvpMaps }))
-                }
-            }
+            dispatch(setMvpsFromDb({ maps_party }))
         }
 
         return 

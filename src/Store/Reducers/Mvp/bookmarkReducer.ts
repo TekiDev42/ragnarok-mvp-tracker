@@ -1,6 +1,5 @@
 import {PayloadAction} from "@reduxjs/toolkit";
 import {getMvpIndex} from "@utils/getMvpIndex.ts";
-import {sortMvps} from "@utils/Sort/sortMvps.ts";
 import {makeClones} from "@utils/makeClones.ts";
 import { CaseReducer } from "@reduxjs/toolkit";
 import { WritableDraft } from "immer";
@@ -12,10 +11,8 @@ export const bookmarkReducer: CaseReducer<MvpState, PayloadAction<{mvp: Mvp, boo
     newMvp.isBookmark = action.payload.bookmark
     newMvpList[mvpIndex] = newMvp
 
-    const mvpsSorted = sortMvps(newMvpList)
-
-    state.filtered = mvpsSorted as WritableDraft<Mvp>[]
-    state.mvps = mvpsSorted as WritableDraft<Mvp>[]
+    state.filtered = newMvpList as WritableDraft<Mvp>[]
+    state.mvps = newMvpList as WritableDraft<Mvp>[]
 
     window.mvpApi.updateMvp(newMvp)
 }

@@ -1,4 +1,3 @@
-import {sortMvps} from "@utils/Sort/sortMvps.ts";
 import { defaultMvps } from "@/Constants/defaultMvps.ts";
 
 /**
@@ -20,8 +19,8 @@ import { defaultMvps } from "@/Constants/defaultMvps.ts";
 export const getSortedMvp = async (): Promise<Mvp[]> => {
     
     if (window.mvpApi) {
-        return sortMvps((await window.mvpApi.getMvps()))
+        return await window.mvpApi.getMvps()
     }
 
-    return sortMvps(defaultMvps)
+    return defaultMvps
 }

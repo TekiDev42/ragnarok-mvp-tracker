@@ -1,5 +1,4 @@
 import {defaultMvps} from "@constants/defaultMvps.ts"
-import {sortMvps} from "@utils/Sort/sortMvps.ts"
 import { CaseReducer } from "@reduxjs/toolkit";
 import { WritableDraft } from "immer";
 
@@ -28,10 +27,8 @@ import { WritableDraft } from "immer";
  * // And also update the persisted MVPs using window.mvpApi.setMvps()
  */
 export const resetReducer: CaseReducer<MvpState> = (state) => {
-    const mvpsSorted = sortMvps(defaultMvps)
+    state.filtered = defaultMvps as WritableDraft<Mvp>[]
+    state.mvps = defaultMvps as WritableDraft<Mvp>[]
 
-    state.filtered = mvpsSorted as WritableDraft<Mvp>[]
-    state.mvps = mvpsSorted as WritableDraft<Mvp>[]
-
-    window.mvpApi.setMvps(mvpsSorted)
+    window.mvpApi.setMvps(defaultMvps)
 }
