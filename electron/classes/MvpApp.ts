@@ -3,7 +3,7 @@ import url from "node:url";
 
 import {app, BrowserWindow, Menu, nativeImage, net,
         screen, Tray, Display, Size, App, protocol, ipcMain,
-        IpcMainEvent} from "electron";
+        IpcMainEvent, Point} from "electron";
 import { MvpManager } from "./MvpManager";
 import { SettingsManager } from "./SettingsManager";
 import {ICON_APP_PATH, RENDERER_DIST, VITE_DEV_SERVER_URL, __dirname} from "../constants/path.ts";
@@ -28,6 +28,7 @@ export class MvpApp {
 
     primaryDisplay: Display | null = null
     windowSize: Size | null = null
+    windowPosition: Point | null = null
 
     /**
      * Creates an instance of MvpApp.
@@ -85,6 +86,8 @@ export class MvpApp {
         this.window = new BrowserWindow({
             width: this.windowSize?.width ?? 1280,
             height: this.windowSize?.height ?? 800,
+            x: this.windowPosition?.x ?? 0,
+            y: this.windowPosition?.y ?? 0,
             fullscreen: false,
             autoHideMenuBar: true,
             icon: ICON_APP_PATH,
@@ -106,7 +109,7 @@ export class MvpApp {
             })
         }
 
-        this.window.maximize()
+        // this.window.maximize()
         this.window.removeMenu()
     }
 
@@ -124,6 +127,52 @@ export class MvpApp {
         protocol.handle('atom', (request) => {
             const filePath = request.url.slice('atom://'.length)
             return net.fetch(url.pathToFileURL(path.join(__dirname, filePath)).toString())
+        })
+    }
+
+    setWindowEvent(){
+        this.window?.on('maximize', () => {
+            /*this.settingsManager.updateSetting('windowMaximized', true)*/
+        })
+
+        this.window?.on('unmaximize', () => {
+            /*this.settingsManager.updateSetting('windowMaximized', false)*/
+        })
+
+        this.window?.on('resized', () => {
+            const windowBounds = this.window?.getBounds()
+            if (!windowBounds) return
+
+            this.settingsManager.updateSetting('windowSize', {
+                width: windowBounds.width,
+                height: windowBounds.height
+            })
+        })
+
+        this.window?.on('moved', () => {
+            // Get the current window bounds
+            const windowBounds = this.window?.getBounds()
+            if (!windowBounds) return
+
+            // Find which display the window is currently on
+            const currentDisplay = screen.getDisplayNearestPoint({
+                x: windowBounds.x,
+                y: windowBounds.y
+            })
+
+            // Update the primary display and window size if the display has changed
+            if (currentDisplay.id !== this.primaryDisplay?.id) {
+                console.log('currentDisplay', currentDisplay.id)
+                console.log('primaryDisplay', this.primaryDisplay?.id)
+
+                this.primaryDisplay = currentDisplay
+                this.settingsManager.updateSetting('primaryDisplay', currentDisplay.id)
+            }
+
+            this.settingsManager.updateSetting('windowPosition', {
+                x: windowBounds.x,
+                y: windowBounds.y
+            })
         })
     }
 
@@ -210,14 +259,29 @@ export class MvpApp {
     whenReady () {
         this.app.whenReady()
         .then(() => {
-            this.primaryDisplay = screen.getPrimaryDisplay()
-            this.windowSize = this.primaryDisplay.workAreaSize
+
+            const primaryDisplay = this.settingsManager.getSetting('primaryDisplay') as unknown as number
+            let userScreen = null
+
+            if (primaryDisplay !== 0) {
+                console.log('user display', primaryDisplay)
+                userScreen = screen.getAllDisplays().find(display => display.id === primaryDisplay) ?? null
+            } 
+            
+            if (!userScreen) {
+                console.log('getPrimaryDisplay', screen.getPrimaryDisplay())
+                userScreen = screen.getPrimaryDisplay()
+            }
+
+            this.primaryDisplay = userScreen
+            this.windowSize = this.settingsManager.getSetting('windowSize') as unknown as Size
+            this.windowPosition = this.settingsManager.getSetting('windowPosition') as unknown as Point
 
             this.setHandleEvent()
             this.setOnEvent()
-
             this.createTray()
             this.createWindow()
+            this.setWindowEvent()
         })
         .catch((e) => {
             console.log('Error : ', e)

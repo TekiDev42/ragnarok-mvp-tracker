@@ -45,7 +45,25 @@ export type Schema = {
     notifications: {
         type: string,
         default: [],
-    }
+    },
+    primaryDisplay: {
+        type: string,
+        default: number,
+    },
+    windowPosition: {
+        type: string,
+        default: {
+            x: 0,
+            y: 0,
+        },
+    },
+    windowSize: {
+        type: string,
+        default: {
+            width: 0,
+            height: 0,
+        },
+    },
 }
 
 /**
@@ -95,7 +113,25 @@ export const schema: Schema = {
     notifications: {
         type: "array",
         default: [],
-    }
+    },
+    primaryDisplay: {
+        type: "number",
+        default: 0,
+    },
+    windowPosition: {
+        type: "object",
+        default: {
+            x: 0,
+            y: 0,
+        },
+    },
+    windowSize: {
+        type: "object",
+        default: {
+            width: 0,
+            height: 0,
+        },
+    },
 }
 
 export const store = new Store<Schema>({schema})

@@ -30,7 +30,7 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
                 <Flex className={"flex-grow ro-cursor"} align={"center"}>
                     <MapHoverCard mvpmap={mvpmap} isInstance={isInstance} />
                 </Flex>
-                {!isInstance && <Countdown
+                {!isInstance && mvpmap.deathTime > 0 && <Countdown
                     mvpName={mvp.Name}
                     mapName={mvpmap.name}
                     mapDisplayName={mvpmap.displayName}
