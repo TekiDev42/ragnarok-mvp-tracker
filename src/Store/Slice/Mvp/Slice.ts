@@ -5,6 +5,7 @@ import { filterByNameOrIdReducer } from "@store/Reducers/Mvp/filterByNameOrIdRed
 import { resetReducer } from "@store/Reducers/Mvp/resetReducer"
 import { reSortMvpReducer } from "@store/Reducers/Mvp/reSortMvpReducer"
 import { WritableDraft } from "immer"
+import { sortMvps } from "@utils/Sort/sortMvps"
 
 
 /**
@@ -23,7 +24,9 @@ export const Slice = createSlice({
     initialState,
     reducers: {
         setMvps: (state, action: PayloadAction<Mvp[]>) => {
-            state.mvps = action.payload as WritableDraft<Mvp>[]
+            const sortedMvps = sortMvps(action.payload as Mvp[])
+
+            state.mvps = sortedMvps as WritableDraft<Mvp>[]
         },
         setMvpBookmarkStatus: bookmarkReducer,
         setMvpMaps: mvpMapsReducer,
@@ -52,8 +55,10 @@ export const Slice = createSlice({
                 }
             }
 
-            state.filtered = newMvps as WritableDraft<Mvp>[]
-            state.mvps = newMvps as WritableDraft<Mvp>[]
+            const sortedMvps = sortMvps(newMvps as Mvp[])
+
+            state.filtered = sortedMvps as WritableDraft<Mvp>[]
+            state.mvps = sortedMvps as WritableDraft<Mvp>[]
         },
         filterByNameOrId: filterByNameOrIdReducer,
         reset: resetReducer

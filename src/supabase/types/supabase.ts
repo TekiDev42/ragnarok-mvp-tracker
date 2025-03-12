@@ -37,7 +37,7 @@ export type Database = {
       maps_party: {
         Row: {
           created_at: string
-          death_time: string | null
+          death_time: number | null
           id: number
           last_user_update: string | null
           map_name: string | null
@@ -48,7 +48,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string
-          death_time?: string | null
+          death_time?: number | null
           id?: number
           last_user_update?: string | null
           map_name?: string | null
@@ -59,10 +59,10 @@ export type Database = {
         }
         Update: {
           created_at?: string
-          death_time?: string | null
+          death_time?: number | null
           id?: number
           last_user_update?: string | null
-          map_name?: string | null  
+          map_name?: string | null
           mvp_id?: number | null
           party_id?: number | null
           tomb_pos_x?: number | null

@@ -16,14 +16,14 @@ type CountdownProps =  PropsWithChildren & {
     handleResetDeathTime: (mapName: string) => void;
 }
 
+
+
 export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleResetDeathTime }: CountdownProps) => {
     const [diff, setDiff] = useState<Duration>(() => 
-        respawn.diff(DateTime.now(), ['hours', 'minutes', 'seconds'])
+        respawn.diffNow(['hours', 'minutes', 'seconds'])
     );
 
-    const now = DateTime.now();
     const [tenMinutesLeftNotification, setTenMinutesLeftNotification] = useState(false);
-
     const delayNotification = useAppSelector(state => state.userSlice.delayNotification);
     const soundNotification = useAppSelector(state => state.userSlice.soundNotification);
     const notificationVolume = useAppSelector(state => state.userSlice.notificationVolume);
@@ -32,7 +32,7 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
     const timerLeft = 5;
 
     const updateDiff = useCallback(() => {
-        setDiff(respawn.diff(now, ['hours', 'minutes', 'seconds']));
+        setDiff(respawn.diffNow(['hours', 'minutes', 'seconds']));
     }, [respawn]);
 
     useEffect(() => {
@@ -41,7 +41,7 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
 
         if (diff.as('seconds') > 0) {
             interval = setInterval(() => {
-                const newDiff = respawn.diff(now, ['hours', 'minutes', 'seconds']);
+                const newDiff = respawn.diffNow(['hours', 'minutes', 'seconds']);
                 setDiff(newDiff);
 
                 if (newDiff.as('minutes') <= timerLeft && !tenMinutesLeftNotification) {
@@ -72,11 +72,11 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
                         id: uuidv4(),
                         mvpName: mvpName,
                         mapName: mapName,
-                        respawn: now.toMillis()
+                        respawn: respawn.toMillis()
                     }));
 
                     notifications.show({
-                        title: <div className="text-gray-500 text-xs italic">{now.toFormat("dd/MM/yyyy HH'h'mm")}</div>,
+                        title: <div className="text-gray-500 text-xs italic">{respawn.toFormat("dd/MM/yyyy HH'h'mm")}</div>,
                         message: <Flex direction="column" gap={0}>
                             <div className="text-gray-800 text-md font-bold">MVP : {mvpName}</div>
                             <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
@@ -90,14 +90,13 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
                         withBorder: false
                     });
 
-                    dispatch(reSortMvp());
-
                     if (soundNotification) {
                         audio = new Audio('sounds/sign_right.wav');
                         audio.volume = notificationVolume / 100;
                         audio.play().then(() => audio.remove());
                     }
 
+                    dispatch(reSortMvp());
                     setTenMinutesLeftNotification(false);
                     clearInterval(interval);
                 }

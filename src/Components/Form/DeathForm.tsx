@@ -19,6 +19,7 @@ export const DeathFormModal = () => {
     const { opened, mvp } = useAppSelector(state => state.modalSlice);
     const userSession = useAppSelector(state => state.userSlice.userSession);
     const partyId = useAppSelector(state => state.userSlice.partyId);
+    const respawnTimer = useAppSelector(state => state.userSlice.respawnTimer)
 
     const [mapsSelected, setMapsSelected] = useState<string[]>([]);
     const [mapsData, setMapsData] = useState<MvpMap[]>([]);
@@ -41,6 +42,7 @@ export const DeathFormModal = () => {
         setMapsData(prevMapsData => {
             const newMapsData = [...prevMapsData];
             const index = newMapsData.findIndex(mvpMap => mvpMap.name === mapName);
+
             if (index === -1) return prevMapsData;
 
             const newMap = { ...newMapsData[index] }
@@ -49,8 +51,13 @@ export const DeathFormModal = () => {
                 case 'time':
                     if (typeof value === "string") {
                         const [hour, minute] = value.split(':');
-                        const dt = DateTime.now().set({ hour: parseInt(hour), minute: parseInt(minute) });
-                        newMap.deathTime = dt.toISO({ includeOffset: false });
+                        const dt = DateTime.now();
+
+                        const respawn = dt
+                        .set({ hour: parseInt(hour), minute: parseInt(minute) })
+                        .plus({minutes: respawnTimer === 0 ? newMap.respawnTimer : respawnTimer})
+
+                        newMap.deathTime = respawn.toMillis();
                     }
                     break;
                 case 'x':
@@ -63,7 +70,7 @@ export const DeathFormModal = () => {
             newMapsData[index] = newMap;
             return newMapsData;
         });
-    }, []);
+    }, [respawnTimer, setMapsData]);
 
     /**
      * Handles the confirmation of the form submission

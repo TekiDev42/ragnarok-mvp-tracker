@@ -1,7 +1,7 @@
 import { useAppSelector, useAppDispatch } from "@store/Hooks"
 import { useEffect } from "react"
 import { supabase } from "@/supabase/supabase"
-import { setMvpMaps, setMvpsFromDb } from "@store/Slice/Mvp/Slice.ts";
+import { setMvpsFromDb } from "@store/Slice/Mvp/Slice.ts";
 import { notifications } from "@mantine/notifications";
 
 
@@ -28,13 +28,12 @@ export const useSubscriptionsSupabase = () => {
             return
         }
 
-        const mvp = mvps.find((mvp) => mvp.Id === payload.new.mvp_id)
+        const mvpIndex = mvps.findIndex((mvp) => mvp.Id === payload.new.mvp_id)
 
-        if (mvp) {
-
+        if (mvpIndex !== -1) {
             notifications.show({
                 title: 'MVP Map Updated',
-                message: `The MVP ${mvp.Name} has been updated`,
+                message: `The MVP ${mvps[mvpIndex].Name} has been updated`,
                 autoClose: delayNotification === 0 ? false : delayNotification * 1000,
                 color: 'green',
                 radius: "md",
@@ -46,22 +45,17 @@ export const useSubscriptionsSupabase = () => {
                 }
             })
 
-            const newMvpMaps = mvp.mvpMaps.map((map) => {
-                if (map.name === payload.new.map_name) {
-                    return {
-                        ...map,
-                        deathTime: payload.new.death_time,
-                        tombPos: {
-                            x: payload.new.tomb_pos_x,
-                            y: payload.new.tomb_pos_y
-                        }
-                    }
+            dispatch(setMvpsFromDb([
+                {
+                    map_name: payload.new.map_name,
+                    mvp_id: payload.new.mvp_id,
+                    party_id: payload.new.party_id,
+                    tomb_pos_x: payload.new.tomb_pos_x,
+                    tomb_pos_y: payload.new.tomb_pos_y, 
+                    death_time: payload.new.death_time,
+                    last_user_update: payload.new.last_user_update
                 }
-
-                return map
-            })
-
-            dispatch(setMvpMaps({ mvp, newMapsData: newMvpMaps }))
+            ]))
         }
     }
 

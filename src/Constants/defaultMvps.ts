@@ -91,7 +91,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "2@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -105,7 +105,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "moc_pryd04",
         "displayName": "Inside Pyramid F4",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 200,
@@ -210,7 +210,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "3@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -224,7 +224,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld_dun03",
         "displayName": "Valkyrie Guild Dungeon",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 300,
@@ -238,7 +238,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "prt_maze03",
         "displayName": "Labyrinth Forest F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 200,
@@ -339,7 +339,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "3@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -353,7 +353,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gef_dun02",
         "displayName": "Geffen Dungeon F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 260,
@@ -367,7 +367,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld_dun04",
         "displayName": "Britoniah Guild Dungeon",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 300,
@@ -472,7 +472,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -486,7 +486,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld_dun02",
         "displayName": "Luina Guild Dungeon",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 200,
@@ -500,7 +500,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "mjolnir_04",
         "displayName": "Mt.Mjolnir",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 400,
@@ -601,7 +601,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -615,7 +615,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "prt_sewb4",
         "displayName": "Prontera Culvert F4",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 200,
@@ -723,7 +723,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "2@orcs",
         "displayName": "Subterranean Orc Cave F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -737,7 +737,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "3@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -751,7 +751,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gef_fild03",
         "displayName": "Geffen Field",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 400,
@@ -852,7 +852,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -866,7 +866,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "treasure02",
         "displayName": "Sunken Ship F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 200,
@@ -971,7 +971,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld_dun01_2",
         "displayName": "Greenwood Lake Guild Dungeon F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 240,
@@ -985,7 +985,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "pay_fild10",
         "displayName": "Payon Forest",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 400,
@@ -1090,7 +1090,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -1104,7 +1104,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "anthell02",
         "displayName": "Ant Hell F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 300,
@@ -1118,7 +1118,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld_dun02_2",
         "displayName": "Luina Guild Dungeon F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 200,
@@ -1223,7 +1223,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -1237,7 +1237,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld_dun01",
         "displayName": "Greenwood Lake Guild Dungeon",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 240,
@@ -1251,7 +1251,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "pay_dun04",
         "displayName": "Payon Cave F5",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 240,
@@ -1356,7 +1356,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "2@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -1370,7 +1370,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "in_sphinx5",
         "displayName": "Sphinx F5",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 200,
@@ -1475,7 +1475,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -1489,7 +1489,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "moc_fild17",
         "displayName": "Sograt Desert",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 400,
@@ -1593,7 +1593,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "3@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -1607,7 +1607,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gef_fild10",
         "displayName": "Geffen Field",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 400,
@@ -1713,7 +1713,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "xmas_dun02",
         "displayName": "Toy Monitoring Room",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 260,
@@ -1815,7 +1815,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "xmas_fild01",
         "displayName": "Lutie Field",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 280,
@@ -1920,7 +1920,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "3@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -1934,7 +1934,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld_dun04_2",
         "displayName": "Britoniah Guild Dungeon F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 300,
@@ -1948,7 +1948,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gl_chyard",
         "displayName": "Glast Heim Churchyard",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 300,
@@ -1962,7 +1962,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gl_chyard_",
         "displayName": "Churchyard",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 300,
@@ -2067,7 +2067,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "2@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -2081,7 +2081,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "tur_dun04",
         "displayName": "Turtle Palace",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 200,
@@ -2187,7 +2187,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "niflheim",
         "displayName": "Nifflheim, Realm of the Dead",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 133,
         "size": {
           "height": 300,
@@ -2288,7 +2288,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gef_dun01",
         "displayName": "Geffen Dungeon F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 300,
@@ -2393,7 +2393,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "3@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -2407,7 +2407,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gon_dun03",
         "displayName": "Arcadia",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 94,
         "size": {
           "height": 300,
@@ -2513,7 +2513,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "2@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -2527,7 +2527,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ama_dun03",
         "displayName": "Amatsu Underground Shrine",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 91,
         "size": {
           "height": 240,
@@ -2721,7 +2721,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "2@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -2735,7 +2735,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "moc_pryd06",
         "displayName": "Inside Pyramid B2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 204,
@@ -2915,7 +2915,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "beach_dun",
         "displayName": "Karu, the West cave",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 300,
         "size": {
           "height": 300,
@@ -3021,7 +3021,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ein_dun02",
         "displayName": "Einbech Mine Dungeon 2F",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 125,
         "size": {
           "height": 300,
@@ -3128,7 +3128,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -3142,7 +3142,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun03",
         "displayName": "Bio Laboratory F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 280,
@@ -3249,7 +3249,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -3263,7 +3263,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun03",
         "displayName": "Bio Laboratory F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 280,
@@ -3371,7 +3371,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -3385,7 +3385,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun03",
         "displayName": "Bio Laboratory F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 280,
@@ -3493,7 +3493,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -3507,7 +3507,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun03",
         "displayName": "Bio Laboratory F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 280,
@@ -3615,7 +3615,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -3629,7 +3629,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun03",
         "displayName": "Bio Laboratory F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 280,
@@ -3737,7 +3737,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -3751,7 +3751,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun03",
         "displayName": "Bio Laboratory F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 280,
@@ -3860,7 +3860,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "3@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -3874,7 +3874,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun02",
         "displayName": "Bio Laboratory F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 300,
@@ -3979,7 +3979,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "jupe_core",
         "displayName": "Juperos Core",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 300,
@@ -4084,7 +4084,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ayo_dun02",
         "displayName": "Inside Ancient Shrine",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 420,
         "size": {
           "height": 300,
@@ -4193,7 +4193,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "thana_boss",
         "displayName": "The top of The Thanatos Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -4299,7 +4299,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "abyss_03",
         "displayName": "Abyss Lakes Underground Cave F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 180,
         "size": {
           "height": 200,
@@ -4404,7 +4404,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "kh_dun02",
         "displayName": "Robot Factory Level 2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 240,
@@ -4505,7 +4505,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "4@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -4519,7 +4519,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "odin_tem03",
         "displayName": "Odin Temple F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 400,
@@ -4725,7 +4725,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ra_san05",
         "displayName": "Holy Ground F5",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 300,
         "size": {
           "height": 300,
@@ -4830,7 +4830,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ice_dun03",
         "displayName": "Ice Cave F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 300,
@@ -4935,7 +4935,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "3@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -4949,7 +4949,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld_dun03_2",
         "displayName": "Valkyrie Guild Dungeon F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 300,
@@ -4963,7 +4963,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ra_fild03",
         "displayName": "The Plain of Ida",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 180,
         "size": {
           "height": 400,
@@ -4977,7 +4977,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ra_fild04",
         "displayName": "Audhumbla Grassland",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 300,
         "size": {
           "height": 400,
@@ -4991,7 +4991,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ve_fild01",
         "displayName": "Veins Field",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 180,
         "size": {
           "height": 400,
@@ -5005,7 +5005,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ve_fild02",
         "displayName": "Veins Field",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 360,
         "size": {
           "height": 400,
@@ -5189,7 +5189,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "4@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -5203,7 +5203,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "thor_v03",
         "displayName": "Thors Volcano Dungeon F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 660,
         "size": {
           "height": 300,
@@ -5309,7 +5309,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "4@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -5323,7 +5323,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "abbey02",
         "displayName": "Cursed Monastery F2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 300,
@@ -5428,7 +5428,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "4@tower",
         "displayName": "The Endless Tower",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -5442,7 +5442,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "abbey03",
         "displayName": "Cursed Monastery F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 720,
         "size": {
           "height": 240,
@@ -5547,7 +5547,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "mosk_dun03",
         "displayName": "Dremuci Forest",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 300,
@@ -5643,7 +5643,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "moc_fild22",
         "displayName": "Morocc Field (Dimensional Gorge)",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 720,
         "size": {
           "height": 400,
@@ -5806,7 +5806,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "2@nyd",
         "displayName": "Nidhoggur's Nest Lv 2",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -5911,7 +5911,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "bra_dun02",
         "displayName": "Brasilis Dungeon F2, Beyond the Waterfall",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 300,
@@ -6084,7 +6084,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "dic_dun02",
         "displayName": "Scaraba Hole 02, Scaraba Hall",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 240,
@@ -6266,7 +6266,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@mist",
         "displayName": "The Hazy Maze Forest",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -6371,7 +6371,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "dew_dun01",
         "displayName": "Dewata Dungeon 01, Volcanic Island of Krakatoa",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 360,
@@ -6479,7 +6479,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "dic_dun03",
         "displayName": "Skarava hall",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -6641,7 +6641,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@cash",
         "displayName": "Octopus Cave",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -6746,7 +6746,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "iz_dun05",
         "displayName": "Undersea Tunnel F6",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 280,
@@ -6850,7 +6850,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -6864,7 +6864,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun04",
         "displayName": "Bio Laboratory F4",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 300,
@@ -6971,7 +6971,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -6985,7 +6985,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun04",
         "displayName": "Bio Laboratory F4",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 300,
@@ -7084,7 +7084,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -7098,7 +7098,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun04",
         "displayName": "Bio Laboratory F4",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 300,
@@ -7202,7 +7202,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -7216,7 +7216,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun04",
         "displayName": "Bio Laboratory F4",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 300,
@@ -7319,7 +7319,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -7333,7 +7333,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun04",
         "displayName": "Bio Laboratory F4",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 300,
@@ -7432,7 +7432,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -7446,7 +7446,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun04",
         "displayName": "Bio Laboratory F4",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 300,
@@ -7535,7 +7535,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@lhz",
         "displayName": "Wolfchev's Lab",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -7549,7 +7549,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun04",
         "displayName": "Bio Laboratory F4",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 100,
         "size": {
           "height": 300,
@@ -7651,7 +7651,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld2_prt",
         "displayName": "Hall of the Abyss : Warrior road",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 280,
@@ -7752,7 +7752,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld2_ald",
         "displayName": "Hall of the Abyss : Tear of Hero",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 300,
@@ -7854,7 +7854,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld2_pay",
         "displayName": "Hall of the Abyss : Wind of beginning",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 240,
@@ -7956,7 +7956,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gld2_gef",
         "displayName": "Hall of the Abyss : Hill of death",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 240,
@@ -8056,7 +8056,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@ma_c",
         "displayName": "Buwaya Cave",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -8322,7 +8322,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "moc_prydn2",
         "displayName": "Morocc Pyramid Underground 2FChallenge",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 0,
@@ -8410,7 +8410,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "teg_dun01",
         "displayName": "TE Subterranean Guild Dungeon",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 480,
         "size": {
           "height": 300,
@@ -8494,7 +8494,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "teg_dun02",
         "displayName": "TE Subterranean Guild Dungeon",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 200,
@@ -8960,7 +8960,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@gl_k",
         "displayName": "Old Glast Heim Chivalry 2F",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9048,7 +9048,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "2@gl_k",
         "displayName": "Old Glast Heim Chivalry 1F",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9152,7 +9152,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gl_cas02_",
         "displayName": "2nd Hall",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -9239,7 +9239,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@face",
         "displayName": "Faceworm's Nest",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9327,7 +9327,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@face",
         "displayName": "Faceworm's Nest",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9415,7 +9415,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@face",
         "displayName": "Faceworm's Nest",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9503,7 +9503,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@face",
         "displayName": "Faceworm's Nest",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9591,7 +9591,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@face",
         "displayName": "Faceworm's Nest",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9691,7 +9691,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@xm_d",
         "displayName": "Horror Toy Factory",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9768,7 +9768,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@rev",
         "displayName": "Mors Cave",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9862,7 +9862,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "c_tower3_",
         "displayName": "Clock Tower of Twisted Time 3F",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 260,
@@ -9922,7 +9922,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@eom",
         "displayName": "Temple of the Demon God",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -9975,7 +9975,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@eom",
         "displayName": "Temple of the Demon God",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -10028,7 +10028,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@eom",
         "displayName": "Temple of the Demon God",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -10088,7 +10088,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@eom",
         "displayName": "Temple of the Demon God",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -10148,7 +10148,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@eom",
         "displayName": "Temple of the Demon God",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -10218,7 +10218,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@glast",
         "displayName": "Sarah and Fenrir",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -10310,7 +10310,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -10402,7 +10402,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -10495,7 +10495,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -10588,7 +10588,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -10681,7 +10681,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -10773,7 +10773,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -10865,7 +10865,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -10957,7 +10957,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -11049,7 +11049,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -11141,7 +11141,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -11233,7 +11233,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -11325,7 +11325,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -11417,7 +11417,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "lhz_dun_n",
         "displayName": "Tomb of the Fallen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 280,
@@ -11503,7 +11503,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@uns",
         "displayName": "The Last Room",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -11608,7 +11608,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@infi",
         "displayName": "Infinite Space",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -11713,7 +11713,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@infi",
         "displayName": "Infinite Space",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -11818,7 +11818,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@infi",
         "displayName": "Infinite Space",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -11926,7 +11926,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@infi",
         "displayName": "Infinite Space",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -12031,7 +12031,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@infi",
         "displayName": "Infinite Space",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -12128,7 +12128,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@mir",
         "displayName": "Ritual Room",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -12232,7 +12232,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@sthd",
         "displayName": "Aerial Fortress Top Floor",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -12497,7 +12497,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@swat",
         "displayName": "Heart Hunter War Base",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -12511,7 +12511,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@swat(quest)",
         "displayName": "War Base Quest Area",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -12618,7 +12618,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "slabw01",
         "displayName": "Werner Laboratory",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 300,
         "size": {
           "height": 0,
@@ -12722,7 +12722,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@md_gef",
         "displayName": "Friday Memorial",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -12809,7 +12809,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "rockmi1",
         "displayName": "Rock Ridge Mine",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 400,
@@ -12912,7 +12912,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "gef_d01_i",
         "displayName": "Illusion of Vampire",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -13015,7 +13015,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "pay_d03_i",
         "displayName": "Illusion of Moonlight",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -13111,7 +13111,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ice_d03_i",
         "displayName": "Illusion of Frozen",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -13203,7 +13203,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "tur_d04_i",
         "displayName": "Illusion of Abyss Gloomy Turtle Palace",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -13301,7 +13301,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@begi",
         "displayName": "Poring Village (Beginner Instance)",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -13393,7 +13393,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "com_d02_i",
         "displayName": "Illusion of Luanda North Cave",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -13485,7 +13485,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "com_d02_i",
         "displayName": "Illusion of Luanda North Cave",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -13570,7 +13570,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "sp_rudus2",
         "displayName": "Rudus F2 Laboratory Waste Disposal Plant",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 360,
         "size": {
           "height": 0,
@@ -13663,7 +13663,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "mag_dun03",
         "displayName": "Nogg Road F3",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 60,
         "size": {
           "height": 260,
@@ -13752,7 +13752,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ein_dun03",
         "displayName": "Einbech Mine Dungeon 3F",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 300,
@@ -13844,7 +13844,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@herbs",
         "displayName": "Hidden Flower Garden",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -13936,7 +13936,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@herbs(hard)",
         "displayName": "Hidden Garden Hard Mode",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -14014,7 +14014,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "1@bamq",
         "displayName": "Twilight Garden Unfair Dock",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 0,
         "size": {
           "height": 0,
@@ -14110,7 +14110,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "ba_lost",
         "displayName": "Lost Farm Valley",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -14195,7 +14195,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "iz_d04_i",
         "displayName": "Illusion of Underwater 1F",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -14280,7 +14280,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "iz_d05_i",
         "displayName": "Illusion of Underwater 2F",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 120,
         "size": {
           "height": 0,
@@ -14368,7 +14368,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "amicitia2",
         "displayName": "Abandoned Lab Amicitia 2F",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 360,
         "size": {
           "height": 300,
@@ -14448,7 +14448,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "sp_rudus4",
         "displayName": "Rudus, Experiment Waste Disposal 4F",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 360,
         "size": {
           "height": 400,
@@ -14536,7 +14536,7 @@ export const defaultMvps: Mvp[] = [
       {
         "name": "nif_dun02",
         "displayName": "Niflheim Dungeon 2F Collapsed Opera House",
-        "deathTime": "1970-01-01T01:00:00",
+        "deathTime": 0,
         "respawnTimer": 360,
         "size": {
           "height": 300,

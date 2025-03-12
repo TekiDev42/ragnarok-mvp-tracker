@@ -92,7 +92,7 @@ interface TombPos {
  */
 interface MvpMap {
     name: string
-    deathTime: string
+    deathTime: number
     respawnTimer: number
     displayName: string
     tombPos: TombPos

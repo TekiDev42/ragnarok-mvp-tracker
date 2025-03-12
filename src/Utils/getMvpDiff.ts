@@ -19,7 +19,7 @@ import { getStorageTimer } from "@utils/Storage/getStorageTimer.ts";
  */
 export const getMvpDiff = (mvp: Mvp): Duration => {
     const respawnTimer = getStorageTimer() || mvp.mvpMaps[0]?.respawnTimer || 0;
-    const deathTime = mvp.mvpMaps[0]?.deathTime || "1970-01-01T01:00:00";
+    const deathTime = mvp.mvpMaps[0]?.deathTime || 0;
     const respawn = getRespawn(deathTime, respawnTimer);
 
     return respawn.diffNow(['hours', 'minutes', 'seconds']);

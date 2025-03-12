@@ -30,7 +30,7 @@
     }
 }
 
-@media screen(2xl){
+@media screen and (min-width: 1681px) {
     .cardContainer {
         @apply grid-cols-6
     }

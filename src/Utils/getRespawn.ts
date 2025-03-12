@@ -17,5 +17,5 @@ import {DateTime} from "luxon"
  * const respawnTime = getRespawn(deathTime, respawnInterval);
  * console.log(respawnTime.toISO()); // Outputs: 2023-06-01T14:00:00.000Z
  */
-export const getRespawn = (deathTime: string, respawnTime: number): DateTime =>
-    DateTime.fromISO(deathTime).plus({minutes: respawnTime});
+export const getRespawn = (deathTime: number, respawnTime: number): DateTime =>
+    DateTime.fromMillis(deathTime).plus({minutes: respawnTime});
