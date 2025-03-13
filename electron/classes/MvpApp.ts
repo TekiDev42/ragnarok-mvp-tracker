@@ -114,6 +114,7 @@ export class MvpApp {
             show: false,
         })
 
+
         if (VITE_DEV_SERVER_URL) {
             this.window.loadURL(VITE_DEV_SERVER_URL)
         } else {
@@ -121,7 +122,12 @@ export class MvpApp {
         }
 
         if (VITE_DEV_SERVER_URL) {
-            this.window.webContents.openDevTools({
+
+            this.splashScreen?.webContents.openDevTools({
+                mode: 'detach'
+            })
+
+            this.window?.webContents.openDevTools({
                 mode: 'detach'
             })
         }
@@ -211,6 +217,7 @@ export class MvpApp {
 
                 if (this.window && !this.window.isVisible()) {
                     this.window.show()
+                    this.window.focus()
                 }
             }, 3_000)
         })
