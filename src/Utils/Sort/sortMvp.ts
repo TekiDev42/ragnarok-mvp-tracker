@@ -3,8 +3,8 @@ import {getMvpDiff} from "@utils/getMvpDiff.ts"
 
 export const sortMvp = (MvpA: Mvp, MvpB: Mvp): number => {
     // Get time differences for both MVPs
-    const MvpADiff = getMvpDiff(MvpA).toMillis() > 0 ? getMvpDiff(MvpA).toMillis() : 0
-    const MvpBDiff = getMvpDiff(MvpB).toMillis() > 0 ? getMvpDiff(MvpB).toMillis() : 0
+    const MvpADiff = MvpA.mvpMaps[0]?.deathTime > 0 ? getMvpDiff(MvpA.mvpMaps[0]?.deathTime) : 0
+    const MvpBDiff = MvpB.mvpMaps[0]?.deathTime > 0 ? getMvpDiff(MvpB.mvpMaps[0]?.deathTime) : 0
 
     // Compare bookmark status first
     const bookmarkDiff = Number(MvpB.isBookmark) - Number(MvpA.isBookmark)

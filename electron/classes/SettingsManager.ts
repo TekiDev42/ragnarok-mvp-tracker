@@ -63,7 +63,7 @@ export class SettingsManager {
      * @example
      * settingsManager.updateSetting('theme', 'dark')
      */
-    updateSetting<K extends keyof Schema>(key: K, value: Schema[K]): void {
+    updateSetting<K extends keyof Schema>(key: K, value: any): void {
         this.settings.set(key, value)
     }
 
