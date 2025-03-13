@@ -97,7 +97,7 @@ export class MvpApp {
         })
 
         this.splashScreen.center()
-        this.splashScreen.loadFile(path.join(RENDERER_DIST, 'splashScreen.html'))
+        this.splashScreen.loadFile(path.join("splash-screen", 'splashScreen.html'))
 
         this.window = new BrowserWindow({
             width: this.windowSize?.width ?? 1280,
@@ -202,14 +202,17 @@ export class MvpApp {
      */
     setOnEvent(){
         ipcMain.on('appLoaded', () => {
-            if (this.splashScreen) {
-                this.splashScreen.close()
-                this.splashScreen = null
-            }
 
-            if (this.window && !this.window.isVisible()) {
-                this.window.show()
-            }
+            setTimeout(() => {
+                if (this.splashScreen) {
+                    this.splashScreen.close()
+                    this.splashScreen = null
+                }
+
+                if (this.window && !this.window.isVisible()) {
+                    this.window.show()
+                }
+            }, 3_000)
         })
 
         ipcMain.on('updateMvp', (_event, args: Mvp) => {

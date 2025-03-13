@@ -11,7 +11,8 @@
   "files": [
     "dist",
     "dist-electron",
-    "public"
+    "public",
+    "splash-screen"
   ],
   "win": {
     "icon": "public/images/mvp-timer-icon.png",
