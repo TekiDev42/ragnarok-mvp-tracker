@@ -25,8 +25,11 @@ export const Slice = createSlice({
     reducers: {
         setMvps: (state, action: PayloadAction<Mvp[]>) => {
             const sortedMvps = sortMvps(action.payload as Mvp[])
-
             state.mvps = sortedMvps as WritableDraft<Mvp>[]
+
+            if (window.mvpApi) {
+                window.mvpApi.appLoaded()
+            }
         },
         setMvpBookmarkStatus: bookmarkReducer,
         setMvpMaps: mvpMapsReducer,
