@@ -307,8 +307,27 @@ export class MvpApp {
             }
 
             this.primaryDisplay = userScreen
-            this.windowSize = this.settingsManager.getSetting('windowSize') as unknown as Size
-            this.windowPosition = this.settingsManager.getSetting('windowPosition') as unknown as Point
+
+            const windowSize = this.settingsManager.getSetting('windowSize') as unknown as Size
+            const windowPosition = this.settingsManager.getSetting('windowPosition') as unknown as Point
+
+            if (windowSize) {
+                this.windowSize = windowSize
+            } else {
+                this.windowSize = {
+                    width: 1280,
+                    height: 800
+                }
+            }
+
+            if (windowPosition) {
+                this.windowPosition = windowPosition
+            } else {
+                this.windowPosition = {
+                    x: 0,
+                    y: 0
+                }
+            }
 
             this.setHandleEvent()
             this.setOnEvent()
