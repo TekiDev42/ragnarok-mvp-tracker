@@ -4194,7 +4194,7 @@ export const defaultMvps: Mvp[] = [
         "name": "thana_boss",
         "displayName": "The top of The Thanatos Tower",
         "deathTime": 0,
-        "respawnTimer": 0,
+        "respawnTimer": 120,
         "size": {
           "height": 280,
           "width": 280
