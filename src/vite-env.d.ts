@@ -53,6 +53,11 @@ interface Window {
          * Clears all notifications.
          */
         clearNotifications: () => void
+
+        /**
+         * Indicates that the application has loaded.
+         */
+        appLoaded: () => void
     }
 }
 

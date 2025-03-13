@@ -13,13 +13,14 @@ import {store} from "@store/Store.ts";
 import {MantineProvider} from "@mantine/core";
 import {Notifications} from "@mantine/notifications";
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <MantineProvider>
-                <Notifications />
-                <App/>
-            </MantineProvider>
-        </Provider>
-    </React.StrictMode>,
+<React.StrictMode>
+    <Provider store={store}>
+        <MantineProvider>
+            <Notifications />
+            <App/>
+        </MantineProvider>
+    </Provider>
+</React.StrictMode>,
 )

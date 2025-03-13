@@ -73,5 +73,10 @@ contextBridge.exposeInMainWorld('mvpApi', {
     /**
      * Removes a notification.
      */
-    removeNotification: (notification: MvpNotification) => ipcRenderer.send('removeNotification', notification)
+    removeNotification: (notification: MvpNotification) => ipcRenderer.send('removeNotification', notification),
+
+    /**
+     * Indicates that the application has loaded.
+     */
+    appLoaded: () => ipcRenderer.send('appLoaded')
 })

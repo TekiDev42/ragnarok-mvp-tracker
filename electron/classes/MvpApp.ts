@@ -22,6 +22,7 @@ import { Schema } from "electron/store/store.ts";
 export class MvpApp {
     private app: App = app
     private window: BrowserWindow | null = null
+    private splashScreen: BrowserWindow | null = null
     private tray: Tray | null = null
     private readonly mvpManager: MvpManager
     private readonly settingsManager: SettingsManager
@@ -83,6 +84,21 @@ export class MvpApp {
      * // Main application window is now created and visible
      */
     createWindow () {
+
+        this.splashScreen = new BrowserWindow({
+            width: 600,
+            height: 600,
+            fullscreen: false,
+            autoHideMenuBar: true,
+            transparent: true,
+            frame: false,
+            alwaysOnTop: true,
+            icon: ICON_APP_PATH,
+        })
+
+        this.splashScreen.center()
+        this.splashScreen.loadFile(path.join(RENDERER_DIST, 'splashScreen.html'))
+
         this.window = new BrowserWindow({
             width: this.windowSize?.width ?? 1280,
             height: this.windowSize?.height ?? 800,
@@ -95,6 +111,7 @@ export class MvpApp {
                 preload: path.join(__dirname, 'preload.mjs'),
             },
             title: "Mvp Timer",
+            show: false,
         })
 
         if (VITE_DEV_SERVER_URL) {
@@ -184,6 +201,17 @@ export class MvpApp {
      * // Event listeners are now set up for 'updateMvp', 'setMvps', and 'setSettings'
      */
     setOnEvent(){
+        ipcMain.on('appLoaded', () => {
+            if (this.splashScreen) {
+                this.splashScreen.close()
+                this.splashScreen = null
+            }
+
+            if (this.window && !this.window.isVisible()) {
+                this.window.show()
+            }
+        })
+
         ipcMain.on('updateMvp', (_event, args: Mvp) => {
             this.mvpManager.updateMvp(args)
         })

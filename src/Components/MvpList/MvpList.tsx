@@ -19,6 +19,11 @@ export const MvpList = () => {
         fetchMvps()
     }, [dispatch])
  
+    useEffect(() => {
+        if (window.mvpApi) {
+            window.mvpApi.appLoaded()
+        }
+    }, [])
     
     return (
         <>
