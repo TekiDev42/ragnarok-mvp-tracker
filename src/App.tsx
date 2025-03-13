@@ -49,6 +49,8 @@ const App = () => {
             setHeight(window.innerHeight)
         }
 
+        window.addEventListener('resize', handleResize)
+
         if (window.mvpApi) {
             window.mvpApi.appLoaded()
         }

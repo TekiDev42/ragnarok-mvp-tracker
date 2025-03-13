@@ -53,15 +53,15 @@ export type Schema = {
     windowPosition: {
         type: string,
         default: {
-            x: 0,
-            y: 0,
+            x: number,
+            y: number,
         },
     },
     windowSize: {
         type: string,
         default: {
-            width: 0,
-            height: 0,
+            width: number,
+            height: number,
         },
     },
 }
@@ -128,8 +128,8 @@ export const schema: Schema = {
     windowSize: {
         type: "object",
         default: {
-            width: 0,
-            height: 0,
+            width: 1280,
+            height: 800,
         },
     },
 }
