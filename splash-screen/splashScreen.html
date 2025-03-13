@@ -83,16 +83,16 @@
             let progress = 0;
             const interval = setInterval(() => {
                 progressBar.style.width = `${progress}%`;
-                progress += 10;
+                progress += Math.random() * 20;
                 if (progress > 100) {
                     clearInterval(interval);
                 }
-            }, 500);
+            }, 100);
 
             setTimeout(() => {
                 progressBar.style.width = `100%`;
                 clearInterval(interval);
-            }, 3000);
+            }, 5000);
         });
     </script>
 </body>

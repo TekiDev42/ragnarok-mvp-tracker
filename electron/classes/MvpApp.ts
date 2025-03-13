@@ -185,9 +185,6 @@ export class MvpApp {
 
             // Update the primary display and window size if the display has changed
             if (currentDisplay.id !== this.primaryDisplay?.id) {
-                console.log('currentDisplay', currentDisplay.id)
-                console.log('primaryDisplay', this.primaryDisplay?.id)
-
                 this.primaryDisplay = currentDisplay
                 this.settingsManager.updateSetting('primaryDisplay', currentDisplay.id)
             }
@@ -219,7 +216,7 @@ export class MvpApp {
                     this.window.show()
                     this.window.focus()
                 }
-            }, 3_000)
+            }, 5_000)
         })
 
         ipcMain.on('updateMvp', (_event, args: Mvp) => {
@@ -302,12 +299,10 @@ export class MvpApp {
             let userScreen = null
 
             if (primaryDisplay !== 0) {
-                console.log('user display', primaryDisplay)
                 userScreen = screen.getAllDisplays().find(display => display.id === primaryDisplay) ?? null
             } 
             
             if (!userScreen) {
-                console.log('getPrimaryDisplay', screen.getPrimaryDisplay())
                 userScreen = screen.getPrimaryDisplay()
             }
 
