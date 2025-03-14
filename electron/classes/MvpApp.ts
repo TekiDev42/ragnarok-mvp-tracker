@@ -29,6 +29,7 @@ export class MvpApp {
     private readonly mvpManager: MvpManager
     private readonly settingsManager: SettingsManager
     private progress: number = 0
+    private appLoaded: boolean = false
 
     primaryDisplay: Display | null = null
     windowSize: Size | null = null
@@ -213,6 +214,7 @@ export class MvpApp {
     setOnEvent() {
         ipcMain.on('appLoaded', () => {
             this.progress = 90
+            this.appLoaded = true
 
             setTimeout(() => {
                 this.progress = 100
@@ -232,9 +234,9 @@ export class MvpApp {
 
         ipcMain.handle('progress', () => {
             return new Promise((resolve) => {
-                this.progress += Math.floor(Math.random() * (10 - 0 + 1) + 0)
+                this.progress += Math.floor(Math.random() * (20 - 0 + 1) + 0)
 
-                if (this.progress >= 80) {
+                if (this.progress >= 80 && !this.appLoaded) {
                     this.progress = 80
                 }
 

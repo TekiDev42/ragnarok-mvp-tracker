@@ -1,11 +1,12 @@
 import { HoverCard, ActionIcon} from "@mantine/core";
 import { StatsIcon } from "@components/Icons/Icons.tsx";
 import { NumberFormatter } from "@mantine/core";
+import { Badge } from "@mantine/core";
+import { RadarChart } from '@mantine/charts';
 
 interface StatsHoverCardProps {
     mvp: Mvp
 }
-
 
 const formatNumber = (value: number) => {
 
@@ -34,7 +35,7 @@ const formatNumber = (value: number) => {
 
 export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
     return (
-        <HoverCard width={325} shadow="md">
+        <HoverCard width={"auto"} shadow="md">
             <HoverCard.Target>
                 <ActionIcon
                     className="glass ro-cursor"
@@ -47,52 +48,107 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                     <StatsIcon />
                 </ActionIcon>
             </HoverCard.Target>
-            <HoverCard.Dropdown style={{ width: "auto" }}>
-                <div className="flex gap-1">
-                    
+            <HoverCard.Dropdown style={{ width: "fit-content" }}>
 
+            <div className="flex flex-col gap-1">
+
+                <div className="flex justify-center items-center gap-2">
+                    <Badge autoContrast size="lg" color="violet">
+                        Level: {mvp.Level}
+                    </Badge>
+
+                    <Badge autoContrast size="lg" color="violet">
+                        HP: {formatNumber(mvp.Hp ?? 0)}
+                    </Badge>
+                </div>
+            </div>
+
+            <div className="flex justify-center items-center gap-2">
+                <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1">
+                        <h2 className="text-lg font-bold">Attack</h2>
+                        <div className="grid grid-cols-2 justify-left gap-1 py-1">
+                            <Badge autoContrast fullWidth size="md" color="green.1">
+                                Attack: {formatNumber(mvp.Attack ?? 0)}
+                            </Badge>
+
+                            <Badge autoContrast fullWidth size="md" color="green.1">
+                                Attack2: {formatNumber(mvp.Attack2 ?? 0)}
+                            </Badge>
+
+                            <Badge autoContrast fullWidth size="md" color="green.1">
+                                Atk Range: {formatNumber(mvp.AttackRange ?? 0)}
+                            </Badge>
+
+                            <Badge autoContrast fullWidth size="md" color="green.1">
+                                Skill Range: {formatNumber(mvp.SkillRange ?? 0)}
+                            </Badge>
+                            
+                            <Badge autoContrast fullWidth size="md" color="green.1">
+                                Chase Range: {formatNumber(mvp.ChaseRange ?? 0)}
+                            </Badge>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                        <h2 className="text-lg font-bold">Defense</h2>
+                        <div className="grid grid-cols-2 justify-left gap-1 py-1">
+                            <Badge autoContrast fullWidth size="md" color="yellow.1">
+                                Defense: {formatNumber(mvp.Defense ?? 0)}
+                            </Badge>
+
+                            <Badge autoContrast fullWidth size="md" color="yellow.1">
+                                Magic Defense: {formatNumber(mvp.MagicDefense ?? 0)}
+                            </Badge>
+
+                            <Badge autoContrast fullWidth size="md" color="yellow.1">
+                                Magic Resistance: {formatNumber(mvp.MagicResistance ?? 0)}
+                            </Badge>
+
+                            <Badge autoContrast fullWidth size="md" color="yellow.1">
+                                Resistance: {formatNumber(mvp.Resistance ?? 0)}
+                            </Badge>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                        <h2 className="text-lg font-bold">Exp</h2>
+                        <div className="grid grid-cols-2 justify-left gap-1 py-1">
+                            <Badge autoContrast fullWidth size="md" color="red.1">
+                                Base Exp: {formatNumber(mvp.BaseExp ?? 0)}
+                            </Badge>
+
+                            <Badge autoContrast fullWidth size="md" color="red.1">
+                                Job Exp: {formatNumber(mvp.JobExp ?? 0)}
+                            </Badge>
+
+                            <Badge autoContrast fullWidth size="md" color="red.1">
+                                MVP Exp: {formatNumber(mvp.MvpExp ?? 0)}
+                            </Badge>
+                        </div>
+                    </div>        
                 </div>
 
-                <div className="grid grid-cols-4 gap-4">
-                    <div className="flex flex-col gap-1">
-                        <div>Level: <span>{mvp.Level}</span></div>
-                        <div>Name: <span>{mvp.Name}</span></div>
-                        <div>Aegis name: <span>{mvp.AegisName}</span></div>
-                        {mvp.JapaneseName && <div>Japanese Name: <span>{mvp.JapaneseName}</span></div>}
-                        <div>HP: {formatNumber(mvp.Hp ?? 0)}</div>
-                        {mvp.BaseExp && <div>Base Exp: {formatNumber(mvp.BaseExp ?? 0)}</div>}
-                        {mvp.JobExp && <div>Job Exp: {formatNumber(mvp.JobExp ?? 0)}</div>}
-                        {mvp.MvpExp && <div>MVP Exp: {formatNumber(mvp.MvpExp ?? 0)}</div>}
-                    </div>
-
-                    <div className="flex flex-col gap-1">
-                        {mvp.AttackRange && <div>Atk Range: <span>{mvp.AttackRange}</span></div>}
-                        {mvp.SkillRange && <div>Skill Range: <span>{mvp.SkillRange}</span></div>}
-                        {mvp.ChaseRange && <div>Chase Range: <span>{mvp.ChaseRange}</span></div>}
-                        {mvp.Size && <div>Size: <span>{mvp.Size}</span></div>}
-                        {mvp.ElementLevel && <div>Elem Level: <span>{mvp.ElementLevel}</span></div>}
-                        {mvp.WalkSpeed && <div>Walk Speed: <span>{mvp.WalkSpeed}</span></div>}
-                    </div>
-
-                    <div className="flex flex-col gap-1">
-                        {mvp.Attack && <div>Attack: {formatNumber(mvp.Attack ?? 0)}</div>}
-                        {mvp.Attack2 && <div>Attack2: {formatNumber(mvp.Attack2 ?? 0)}</div>}
-                        {mvp.Defense && <div>Defense: {formatNumber(mvp.Defense ?? 0)}</div>}
-                        {mvp.MagicDefense && <div>Magic Defense: {formatNumber(mvp.MagicDefense ?? 0)}</div>}
-                        {mvp.MagicResistance && <div>Magic Resistance: {formatNumber(mvp.MagicResistance ?? 0)}</div>}
-                        {mvp.Resistance && <div>Resistance: {formatNumber(mvp.Resistance ?? 0)}</div>}
-                    </div>
-
-                    <div className="flex flex-col gap-1">
-                        {mvp.Str && <div>STR: {mvp.Str}</div>}
-                        {mvp.Agi && <div>AGI: {mvp.Agi}</div>}
-                        {mvp.Vit && <div>VIT: {mvp.Vit}</div>}
-                        {mvp.Int && <div>INT: {mvp.Int}</div>}
-                        {mvp.Dex && <div>DEX: {mvp.Dex}</div>}
-                        {mvp.Luk && <div>LUK: {mvp.Luk}</div>}
-                    </div>
-
+                <div className="flex flex-col gap-1 items-center">
+                    <h2 className="text-lg font-bold text-center">Stats</h2>
+                    <RadarChart
+                        h={200}
+                        w={300}
+                    data={[
+                        {stat: `STR ${mvp.Str ?? 0}`, value: mvp.Str ?? 0},
+                        {stat: `AGI ${mvp.Agi ?? 0}`, value: mvp.Agi ?? 0},
+                        {stat: `VIT ${mvp.Vit ?? 0}`, value: mvp.Vit ?? 0},
+                        {stat: `INT ${mvp.Int ?? 0}`, value: mvp.Int ?? 0},
+                        {stat: `DEX ${mvp.Dex ?? 0}`, value: mvp.Dex ?? 0},
+                        {stat: `LUK ${mvp.Luk ?? 0}`, value: mvp.Luk ?? 0},
+                    ]}
+                        dataKey="stat"
+                        withPolarRadiusAxis
+                        series={[{ name: 'value', color: 'blue.4', opacity: 0.2 }]}
+                        style={{zIndex: 1}}
+                    />
                 </div>
+            </div>
             </HoverCard.Dropdown>
         </HoverCard>
     )
