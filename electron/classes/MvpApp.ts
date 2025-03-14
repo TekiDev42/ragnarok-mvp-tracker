@@ -40,7 +40,7 @@ export class MvpApp {
      */
     constructor() {
         this.settingsManager = new SettingsManager()
-        this.mvpManager = new MvpManager()
+        this.mvpManager = new MvpManager(this.settingsManager.versionChanged)
         this.onActivate()
         this.onWindowAllClosed()
         this.whenReady()

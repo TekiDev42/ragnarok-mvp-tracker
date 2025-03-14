@@ -18,6 +18,7 @@ import { defaultMvps } from "../constants/mvps.ts"
  */
 export class MvpManager extends FileManager {
     private mvps: Mvp[] = defaultMvps
+    public versionChanged: boolean = false
 
     /**
      * Creates an instance of MvpManager and initializes the data.
@@ -25,8 +26,9 @@ export class MvpManager extends FileManager {
      * @example
      * const mvpManager = new MvpManager()
      */
-    constructor() {
+    constructor(versionChanged: boolean = false) {
         super(MVPS_FILE)
+        this.versionChanged = versionChanged
         this.initializeData()
     }
 
@@ -42,7 +44,7 @@ export class MvpManager extends FileManager {
      * // At this point, the data has been initialized
      */
     private initializeData(): void {
-        if (!fs.existsSync(DOCUMENTS_PATH) || !fs.existsSync(this.filepath)) {
+        if (!fs.existsSync(DOCUMENTS_PATH) || !fs.existsSync(this.filepath) || this.versionChanged) {
             this.createDirApp(DOCUMENTS_PATH)
             this.writeFile(this.mvps, this.filepath)
         } else {

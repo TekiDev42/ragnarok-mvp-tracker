@@ -14,13 +14,14 @@ import { version as appVersion } from "../../package.json"
  */
 export class SettingsManager {
     private readonly settings: Store<Schema>
+    public versionChanged: boolean = false
 
     /**
      * Creates an instance of SettingsManager.
      */
     constructor() {
         if ((store.get('version') as unknown as string) !== appVersion) {
-            store.clear()
+            this.versionChanged = true
             store.set('version', appVersion)
         }
 
