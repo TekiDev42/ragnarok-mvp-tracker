@@ -83,7 +83,6 @@
     <script defer>
         document.addEventListener('DOMContentLoaded', function () {
             const progressBar = document.querySelector('.progress-bar');
-            let progress = 0;
             const interval = setInterval(async () => {
 
                 const progress = await window.splashScreenApi.progress()
