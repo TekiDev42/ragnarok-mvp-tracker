@@ -50,23 +50,20 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
             </HoverCard.Target>
             <HoverCard.Dropdown style={{ width: "fit-content" }}>
 
-            <div className="flex flex-col gap-1">
+            <div className="flex justify-center items-center gap-2">
+                <Badge autoContrast size="lg" color="violet.1">
+                    Level: {mvp.Level}
+                </Badge>
 
-                <div className="flex justify-center items-center gap-2">
-                    <Badge autoContrast size="lg" color="violet">
-                        Level: {mvp.Level}
-                    </Badge>
-
-                    <Badge autoContrast size="lg" color="violet">
-                        HP: {formatNumber(mvp.Hp ?? 0)}
-                    </Badge>
-                </div>
+                <Badge autoContrast size="lg" color="violet.1">
+                    HP: {formatNumber(mvp.Hp ?? 0)}
+                </Badge>
             </div>
 
             <div className="flex justify-center items-center gap-2">
                 <div className="flex flex-col gap-1">
                     <div className="flex flex-col gap-1">
-                        <h2 className="text-lg font-bold">Attack</h2>
+                        <h2 className="text-md font-bold">Attack</h2>
                         <div className="grid grid-cols-2 justify-left gap-1 py-1">
                             <Badge autoContrast fullWidth size="md" color="green.1">
                                 Attack: {formatNumber(mvp.Attack ?? 0)}
@@ -91,7 +88,7 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                        <h2 className="text-lg font-bold">Defense</h2>
+                        <h2 className="text-md font-bold">Defense</h2>
                         <div className="grid grid-cols-2 justify-left gap-1 py-1">
                             <Badge autoContrast fullWidth size="md" color="yellow.1">
                                 Defense: {formatNumber(mvp.Defense ?? 0)}
@@ -112,7 +109,7 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                        <h2 className="text-lg font-bold">Exp</h2>
+                        <h2 className="text-md font-bold">Exp</h2>
                         <div className="grid grid-cols-2 justify-left gap-1 py-1">
                             <Badge autoContrast fullWidth size="md" color="red.1">
                                 Base Exp: {formatNumber(mvp.BaseExp ?? 0)}
@@ -130,7 +127,7 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                 </div>
 
                 <div className="flex flex-col gap-1 items-center">
-                    <h2 className="text-lg font-bold text-center">Stats</h2>
+                    <h2 className="text-md font-bold text-center">Stats</h2>
                     <RadarChart
                         h={200}
                         w={300}
