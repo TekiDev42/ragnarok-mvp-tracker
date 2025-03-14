@@ -48,6 +48,11 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                 </ActionIcon>
             </HoverCard.Target>
             <HoverCard.Dropdown style={{ width: "auto" }}>
+                <div className="flex gap-1">
+                    
+
+                </div>
+
                 <div className="grid grid-cols-4 gap-4">
                     <div className="flex flex-col gap-1">
                         <div>Level: <span>{mvp.Level}</span></div>
