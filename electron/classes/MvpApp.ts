@@ -212,9 +212,11 @@ export class MvpApp {
      */
     setOnEvent() {
         ipcMain.on('appLoaded', () => {
-            this.progress = 100
+            this.progress = 90
 
             setTimeout(() => {
+                this.progress = 100
+
                 if (this.splashScreen) {
                     this.splashScreen.close()
                     this.splashScreen = null
@@ -224,12 +226,18 @@ export class MvpApp {
                     this.window.show()
                     this.window.focus()
                 }
-            }, 1_000)
+            }, 2_000)
+
         })
 
         ipcMain.handle('progress', () => {
             return new Promise((resolve) => {
-                this.progress += Math.random() * 10
+                this.progress += Math.floor(Math.random() * (10 - 0 + 1) + 0)
+
+                if (this.progress >= 80) {
+                    this.progress = 80
+                }
+
                 resolve(this.progress)
             })
         })
