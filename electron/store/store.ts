@@ -79,8 +79,8 @@ export const schema: Schema = {
         default: true,
     },
     background: {
-      type: 'string',
-      default: bg,
+        type: 'string',
+        default: bg,
     },
     soundNotification: {
         type: 'boolean',
@@ -94,7 +94,7 @@ export const schema: Schema = {
         type: 'number',
         default: 0,
     },
-    perPage:{
+    perPage: {
         type: "number",
         default: 12,
     },
@@ -134,4 +134,4 @@ export const schema: Schema = {
     },
 }
 
-export const store = new Store<Schema>({schema})
+export const store = new Store<Schema>({ schema })
