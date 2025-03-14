@@ -97,6 +97,7 @@ export class MvpApp {
         })
 
         this.splashScreen.center()
+        this.splashScreen.focus()
         this.splashScreen.loadFile(path.join("splash-screen", 'splashScreen.html'))
 
         this.window = new BrowserWindow({
