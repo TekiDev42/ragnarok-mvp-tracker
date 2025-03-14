@@ -57,7 +57,7 @@ contextBridge.exposeInMainWorld('mvpApi', {
      * window.mvpApi.setSettings('theme', 'light')
      * window.mvpApi.setSettings('notifications', false)
      */
-    setSettings: <K extends keyof Schema>(key: K, value: Schema[K]) => ipcRenderer.send('setSettings', {key: key, value: value}),
+    setSettings: <K extends keyof Schema>(key: K, value: Schema[K]) => ipcRenderer.send('setSettings', { key: key, value: value }),
 
     // NOTIFICATIONS
     /**
@@ -79,4 +79,8 @@ contextBridge.exposeInMainWorld('mvpApi', {
      * Indicates that the application has loaded.
      */
     appLoaded: () => ipcRenderer.send('appLoaded')
+})
+
+contextBridge.exposeInMainWorld('splashScreenApi', {
+    progress: () => ipcRenderer.invoke('progress')
 })

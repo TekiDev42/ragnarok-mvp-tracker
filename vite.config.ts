@@ -2,19 +2,19 @@ import { defineConfig } from 'vite'
 import path from 'node:path'
 import electron from 'vite-plugin-electron/simple'
 import react from '@vitejs/plugin-react'
-import {resolve} from "path";
+import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: [
-      {find: '@', replacement: resolve(__dirname, 'src') },
-      {find: '@components', replacement: resolve(__dirname, 'src/Components') },
-      {find: '@store', replacement: resolve(__dirname, 'src/Store') },
-      {find: '@constants', replacement: resolve(__dirname, 'src/Constants') },
-      {find: '@utils', replacement: resolve(__dirname, 'src/Utils') },
-      {find: '@assets', replacement: resolve(__dirname, 'src/assets') },
-      {find: '@socket', replacement: resolve(__dirname, 'src/Socket') },
+      { find: '@', replacement: resolve(__dirname, 'src') },
+      { find: '@components', replacement: resolve(__dirname, 'src/Components') },
+      { find: '@store', replacement: resolve(__dirname, 'src/Store') },
+      { find: '@constants', replacement: resolve(__dirname, 'src/Constants') },
+      { find: '@utils', replacement: resolve(__dirname, 'src/Utils') },
+      { find: '@assets', replacement: resolve(__dirname, 'src/assets') },
+      { find: '@socket', replacement: resolve(__dirname, 'src/Socket') },
     ]
   },
   plugins: [
@@ -45,13 +45,13 @@ export default defineConfig({
           react: ['react', 'react-dom'],
           luxon: ['luxon'],
           mantine: [
-              '@mantine/core',
-              '@mantine/dates',
-              '@mantine/form',
-              '@mantine/hooks',
-              '@mantine/modals',
-              '@mantine/notifications',
-              '@mantine/charts',
+            '@mantine/core',
+            '@mantine/dates',
+            '@mantine/form',
+            '@mantine/hooks',
+            '@mantine/modals',
+            '@mantine/notifications',
+            '@mantine/charts',
           ],
           redux: ['react-redux', '@reduxjs/toolkit'],
         }

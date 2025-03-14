@@ -1,12 +1,14 @@
 import path from "node:path";
 import url from "node:url";
 
-import {app, BrowserWindow, Menu, nativeImage, net,
-        screen, Tray, Display, Size, App, protocol, ipcMain,
-        IpcMainEvent, Point} from "electron";
+import {
+    app, BrowserWindow, Menu, nativeImage, net,
+    screen, Tray, Display, Size, App, protocol, ipcMain,
+    IpcMainEvent, Point
+} from "electron";
 import { MvpManager } from "./MvpManager";
 import { SettingsManager } from "./SettingsManager";
-import {ICON_APP_PATH, RENDERER_DIST, VITE_DEV_SERVER_URL, __dirname} from "../constants/path.ts";
+import { ICON_APP_PATH, RENDERER_DIST, VITE_DEV_SERVER_URL, __dirname } from "../constants/path.ts";
 import { Schema } from "electron/store/store.ts";
 
 /**
@@ -26,6 +28,7 @@ export class MvpApp {
     private tray: Tray | null = null
     private readonly mvpManager: MvpManager
     private readonly settingsManager: SettingsManager
+    private progress: number = 0
 
     primaryDisplay: Display | null = null
     windowSize: Size | null = null
@@ -47,7 +50,7 @@ export class MvpApp {
      * Sets up the 'activate' event listener.
      * Creates a new window if no windows are open when the app is activated.
      */
-    onActivate () {
+    onActivate() {
         this.app.on('activate', () => {
             // On OS X it's common to re-create a window in the app when the
             // dock icon is clicked and there are no other windows open.
@@ -64,10 +67,10 @@ export class MvpApp {
      * this.createTray();
      * // Tray icon is now visible with a 'Quit' option in its context menu
      */
-    createTray () {
+    createTray() {
         const icon = nativeImage.createFromPath(ICON_APP_PATH)
         const contextMenu = Menu.buildFromTemplate([
-            {label: 'Quit', role: 'quit'},
+            { label: 'Quit', role: 'quit' },
         ])
 
         this.tray = new Tray(icon)
@@ -83,7 +86,7 @@ export class MvpApp {
      * this.createWindow();
      * // Main application window is now created and visible
      */
-    createWindow () {
+    createWindow() {
 
         this.splashScreen = new BrowserWindow({
             width: 600,
@@ -94,6 +97,9 @@ export class MvpApp {
             frame: false,
             alwaysOnTop: true,
             icon: ICON_APP_PATH,
+            webPreferences: {
+                preload: path.join(__dirname, 'preload.mjs'),
+            },
         })
 
         this.splashScreen.center()
@@ -144,7 +150,7 @@ export class MvpApp {
      * this.setHandleEvent();
      * // Event handlers are now set up for 'getMvps', 'getSettings', and 'atom' protocol
      */
-    setHandleEvent(){
+    setHandleEvent() {
         ipcMain.handle('getMvps', () => this.getMvps())
         ipcMain.handle('getSettings', () => this.getSettings())
 
@@ -154,7 +160,7 @@ export class MvpApp {
         })
     }
 
-    setWindowEvent(){
+    setWindowEvent() {
         this.window?.on('maximize', () => {
             /*this.settingsManager.updateSetting('windowMaximized', true)*/
         })
@@ -204,8 +210,9 @@ export class MvpApp {
      * this.setOnEvent();
      * // Event listeners are now set up for 'updateMvp', 'setMvps', and 'setSettings'
      */
-    setOnEvent(){
+    setOnEvent() {
         ipcMain.on('appLoaded', () => {
+            this.progress = 100
 
             setTimeout(() => {
                 if (this.splashScreen) {
@@ -217,7 +224,14 @@ export class MvpApp {
                     this.window.show()
                     this.window.focus()
                 }
-            }, 5_000)
+            }, 1_000)
+        })
+
+        ipcMain.handle('progress', () => {
+            return new Promise((resolve) => {
+                this.progress += Math.random() * 10
+                resolve(this.progress)
+            })
         })
 
         ipcMain.on('updateMvp', (_event, args: Mvp) => {
@@ -228,7 +242,7 @@ export class MvpApp {
             this.mvpManager.setMvps(args)
         })
 
-        ipcMain.on('setSettings', <K extends keyof Schema>(_event: IpcMainEvent, args: {key: K, value: Schema[K] }) => {
+        ipcMain.on('setSettings', <K extends keyof Schema>(_event: IpcMainEvent, args: { key: K, value: Schema[K] }) => {
             this.settingsManager.updateSetting(args.key, args.value)
         })
 
@@ -254,7 +268,7 @@ export class MvpApp {
      * const mvps = this.getMvps();
      * console.log(mvps); // [{id: 1, name: 'Baphomet', ...}, ...]
      */
-    getMvps (): Mvp[] {
+    getMvps(): Mvp[] {
         return this.mvpManager.getMvps()
     }
 
@@ -267,15 +281,15 @@ export class MvpApp {
      * const settings = this.getSettings();
      * console.log(settings); // {theme: 'dark', notifications: true, ...}
      */
-    getSettings (): Schema {
+    getSettings(): Schema {
         return this.settingsManager.getAllSettings()
     }
-    
+
     /**
      * Sets up the 'window-all-closed' event listener.
      * Quits the app if all windows are closed (except on macOS).
      */
-    onWindowAllClosed () {
+    onWindowAllClosed() {
         this.app.on('window-all-closed', () => {
             if (process.platform !== 'darwin') {
                 this.app.quit()
@@ -292,37 +306,37 @@ export class MvpApp {
      * this.whenReady();
      * // App is now fully initialized and running
      */
-    whenReady () {
+    whenReady() {
         this.app.whenReady()
-        .then(() => {
+            .then(() => {
 
-            const primaryDisplay = this.settingsManager.getSetting('primaryDisplay') as unknown as number
-            let userScreen = null
+                const primaryDisplay = this.settingsManager.getSetting('primaryDisplay') as unknown as number
+                let userScreen = null
 
-            if (primaryDisplay !== 0) {
-                userScreen = screen.getAllDisplays().find(display => display.id === primaryDisplay) ?? null
-            } 
-            
-            if (!userScreen) {
-                userScreen = screen.getPrimaryDisplay()
-            }
+                if (primaryDisplay !== 0) {
+                    userScreen = screen.getAllDisplays().find(display => display.id === primaryDisplay) ?? null
+                }
 
-            this.primaryDisplay = userScreen
+                if (!userScreen) {
+                    userScreen = screen.getPrimaryDisplay()
+                }
 
-            const windowSize = this.settingsManager.getSetting('windowSize') as unknown as Size
-            const windowPosition = this.settingsManager.getSetting('windowPosition') as unknown as Point
+                this.primaryDisplay = userScreen
 
-            this.windowSize = windowSize
-            this.windowPosition = windowPosition
+                const windowSize = this.settingsManager.getSetting('windowSize') as unknown as Size
+                const windowPosition = this.settingsManager.getSetting('windowPosition') as unknown as Point
 
-            this.setHandleEvent()
-            this.setOnEvent()
-            this.createTray()
-            this.createWindow()
-            this.setWindowEvent()
-        })
-        .catch((e) => {
-            console.log('Error : ', e)
-        })
+                this.windowSize = windowSize
+                this.windowPosition = windowPosition
+
+                this.setHandleEvent()
+                this.setOnEvent()
+                this.createTray()
+                this.createWindow()
+                this.setWindowEvent()
+            })
+            .catch((e) => {
+                console.log('Error : ', e)
+            })
     }
 }
