@@ -28,7 +28,7 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
     };
 
     return (
-        <div className={`${style.card} glass`}>
+        <div id={mvp.Id.toString()} className={`${style.card} glass`}>
             <div className={"flex items-center justify-between py-0 px-2"}>
                 <Badge w={"fit-content"} autoContrast size="xs" color={"white"}>{mvp.Id}</Badge>
                 <Bookmark mvp={mvp} />

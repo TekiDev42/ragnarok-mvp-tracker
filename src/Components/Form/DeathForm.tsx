@@ -188,7 +188,7 @@ export const DeathFormModal = () => {
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         }
-    }, [])
+    }, [handleKeyDown])
 
 
     return (

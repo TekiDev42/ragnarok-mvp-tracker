@@ -42,6 +42,7 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
                 }
 
                 {!isInstance && mvpmap.deathTime > 0 && <Countdown
+                    id={mvp.Id.toString()}
                     mvpName={mvp.Name}
                     mapName={mvpmap.name}
                     mapDisplayName={mvpmap.displayName}

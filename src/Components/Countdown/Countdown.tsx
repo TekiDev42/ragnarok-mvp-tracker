@@ -14,10 +14,11 @@ type CountdownProps =  PropsWithChildren & {
     mapDisplayName: string;
     mvpName: string;
     handleResetDeathTime: (mapName: string) => void;
+    id: string;
 }
 
 
-export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleResetDeathTime }: CountdownProps) => {
+export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, id, handleResetDeathTime }: CountdownProps) => {
     const [diff, setDiff] = useState<Duration>(() => 
         respawn.diffNow(['hours', 'minutes', 'seconds'])
     );
@@ -54,7 +55,7 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
                     notifications.show({
                         title: <div className="text-gray-500 text-xs italic">{timerLeft} minutes left</div>,
                         message: <Flex direction="column" gap={0}>
-                            <div className="text-gray-800 text-md font-bold">MVP : {mvpName}</div>
+                            <div className="text-gray-800 text-md font-bold"><a href={`#${id}`}>MVP : {mvpName}</a></div>
                             <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
                                 <span>Map : {mapName}</span>
                                 <span className="text-xs">({mapDisplayName})</span>
@@ -78,7 +79,7 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
                     notifications.show({
                         title: <div className="text-gray-500 text-xs italic">{respawn.toFormat("dd/MM/yyyy HH'h'mm")}</div>,
                         message: <Flex direction="column" gap={0}>
-                            <div className="text-gray-800 text-md font-bold">MVP : {mvpName}</div>
+                            <div className="text-gray-800 text-md font-bold"><a href={`#${id}`}>MVP : {mvpName}</a></div>
                             <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
                                 <span>Map : {mapName}</span>
                                 <span className="text-xs">({mapDisplayName})</span>
@@ -87,7 +88,8 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
                         autoClose: delayNotification === 0 ? false : delayNotification * 1000,
                         color: 'green',
                         radius: "md",
-                        withBorder: false
+                        withBorder: false,
+                        children: <Flex></Flex>
                     });
 
                     if (soundNotification) {
