@@ -1,5 +1,5 @@
 .Navbar {
-    @apply flex text-white rounded-xl justify-center flex-col gap-5 p-3 sticky top-0 z-50;
+    @apply flex text-white rounded-xl justify-center flex-col gap-5 p-3;
 }
 
 .container_search {

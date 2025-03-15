@@ -12,11 +12,13 @@ import { StatsHoverCard } from "@components/MvpCard/Stats/StatsHover.tsx";
 import { Image } from "@mantine/core";
 import { Badge } from "@mantine/core";
 import { getBadgeColor } from "@/Utils/getBadgeColor";
+import { useState } from "react";
 
 
 export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
     const dispatch = useAppDispatch();
     const animation = useAppSelector((state) => state.userSlice.animation);
+    const [color, setColor] = useState("white");
 
     /**
      * Handles the click event on the death action button
@@ -35,7 +37,9 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
     return (
         <div id={mvp.Id.toString()} className={`${style.card} glass`}>
             <div className={"flex items-center justify-between py-0 px-2"}>
-                <Badge w={"fit-content"} autoContrast size="xs" color={"white"} onClick={handleClickLink} className="ro-cursor">
+                <Badge autoContrast onMouseEnter={() => setColor("indigo")} onMouseLeave={() => setColor("white")} 
+                        w={"fit-content"} size="md" color={color} className="ro-cursor"
+                        onClick={handleClickLink}>
                     {mvp.Id}
                 </Badge>
                 <Bookmark mvp={mvp} />

@@ -14,6 +14,10 @@ html body[data-scroll-locked] {
     overflow: hidden !important;
 }
 
+* {
+    scroll-behavior: smooth !important;
+}
+
 .bookmark, .ro-cursor, button,
 .mantine-Switch-track , .mantine-Switch-label,
 .mantine-Slider-track, .mantine-Slider-bar, .mantine-Slider-thumb{

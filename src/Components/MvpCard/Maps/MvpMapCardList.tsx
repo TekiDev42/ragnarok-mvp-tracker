@@ -6,6 +6,8 @@ import {MapHoverCard} from "@components/MvpCard/Maps/MapHoverCard.tsx";
 import {setMvpMaps as setMvpMapsAction} from "@store/Slice/Mvp/Slice.ts";
 import {useAppDispatch} from "@store/Hooks.ts";
 import {useCallback} from "react";
+import {DateTime} from "luxon";
+
 
 export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
 
@@ -24,13 +26,15 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
     return mvpMaps.map(mvpmap => {
         const isInstance = mvpmap.name.match(/^\d+@.+/) !== null;
 
+        const diff = DateTime.fromMillis(mvpmap.deathTime).diffNow(['hours', 'minutes', 'seconds', 'milliseconds'])
+
         return (
             <div key={mvpmap.name} className={style.countdownItem}>
                 <Flex className={"flex-grow ro-cursor"} align={"center"}>
                     <MapHoverCard mvpmap={mvpmap} isInstance={isInstance} />
                 </Flex>
 
-                {mvpmap.deathTime <= 0 && 
+                {!isInstance && diff.as('seconds') <= 0 && 
                     <Badge
                         size="xs"
                         variant="gradient"
@@ -40,12 +44,12 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
                     </Badge>
                 }
 
-                {!isInstance && mvpmap.deathTime > 0 && <Countdown
+                {!isInstance && diff.as('seconds') > 0 && <Countdown
                     id={mvp.Id.toString()}
                     mvpName={mvp.Name}
                     mapName={mvpmap.name}
                     mapDisplayName={mvpmap.displayName}
-                    respawn={mvpmap.deathTime}
+                    respawn={DateTime.fromMillis(mvpmap.deathTime)}
                     handleResetDeathTime={handleResetDeathTime}
                 />}
             </div>
