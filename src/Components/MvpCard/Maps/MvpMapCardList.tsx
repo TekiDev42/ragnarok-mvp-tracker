@@ -1,5 +1,5 @@
 import style from "@components/MvpCard/Maps/MapHoverCard.module.css";
-import {Flex} from "@mantine/core";
+import {Flex, Badge} from "@mantine/core";
 import {Countdown} from "@components/Countdown/Countdown.tsx";
 import {PropsWithChildren, useEffect, useState} from "react";
 import {MapHoverCard} from "@components/MvpCard/Maps/MapHoverCard.tsx";
@@ -30,6 +30,17 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
                 <Flex className={"flex-grow ro-cursor"} align={"center"}>
                     <MapHoverCard mvpmap={mvpmap} isInstance={isInstance} />
                 </Flex>
+
+                {mvpmap.deathTime <= 0 && 
+                    <Badge
+                        size="xs"
+                        variant="gradient"
+                        gradient={{ from: 'violet', to: 'blue', deg: 90 }}
+                    >
+                        ALIVE
+                    </Badge>
+                }
+
                 {!isInstance && mvpmap.deathTime > 0 && <Countdown
                     mvpName={mvp.Name}
                     mapName={mvpmap.name}

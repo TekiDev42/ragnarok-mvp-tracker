@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect, useState, useCallback } from "react";
 import { DateTime, Duration } from "luxon";
-import { Badge, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { reSortMvp } from "@store/Slice/Mvp/Slice.ts";
@@ -15,7 +15,6 @@ type CountdownProps =  PropsWithChildren & {
     mvpName: string;
     handleResetDeathTime: (mapName: string) => void;
 }
-
 
 
 export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleResetDeathTime }: CountdownProps) => {
@@ -35,6 +34,7 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
         setDiff(respawn.diffNow(['hours', 'minutes', 'seconds']));
     }, [respawn]);
 
+
     useEffect(() => {
         let interval: NodeJS.Timeout;
         let audio: HTMLAudioElement;
@@ -44,9 +44,9 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
                 const newDiff = respawn.diffNow(['hours', 'minutes', 'seconds']);
                 setDiff(newDiff);
 
-                if (newDiff.as('minutes') <= timerLeft && !tenMinutesLeftNotification) {
+                if (newDiff.as('minutes') === timerLeft && !tenMinutesLeftNotification) {
                     setTenMinutesLeftNotification(true);
-                    
+
                     audio = new Audio('sounds/sign_right.wav');
                     audio.volume = notificationVolume / 100;
                     audio.play().then(() => audio.remove());
@@ -109,21 +109,11 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, handleRes
         };
     }, [respawn, diff, delayNotification, soundNotification, mvpName, mapName, dispatch]);
 
+
     useEffect(() => {
         updateDiff();
     }, [respawn, updateDiff]);
 
-    if (diff.as('seconds') <= 0) {
-        return (
-            <Badge
-                size="xs"
-                variant="gradient"
-                gradient={{ from: 'violet', to: 'blue', deg: 90 }}
-            >
-                ALIVE
-            </Badge>
-        );
-    }
 
     return (
         <Flex align="center">

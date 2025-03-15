@@ -162,12 +162,34 @@ export const DeathFormModal = () => {
         setMapsSelected(mvpMapsName.length === 1 ? [mvpMapsName[0]] : []);
     }, [dispatch, mvpMapsName]);
 
+
+    const handleKeyDown = useCallback((event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+            handleClose();
+        }
+
+        if (event.key === 'Enter') {    
+            handleConfirm();
+        }
+    }, [handleClose, handleConfirm]);
+
+
     /**
      * Updates the mapsData state when the MVP changes
      */
     useEffect(() => {
         setMapsData([...mvp.mvpMaps]);
     }, [mvp]);
+
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+    }, [])
+
 
     return (
         <Modal opened={opened} onClose={handleClose} centered withCloseButton={false} radius="lg">
