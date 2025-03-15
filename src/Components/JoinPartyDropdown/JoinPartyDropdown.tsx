@@ -90,12 +90,14 @@ export const JoinPartyDropdown = () => {
     return (
         <HoverCard width={320} shadow="md" withArrow>
             <HoverCard.Target>
-                <ActionIcon variant="gradient"
-                        gradient={{from: 'violet', to: 'cyan', deg: 200}}
-                        size="lg" radius="xl" aria-label="Notifications"
+                <Button
+                    size="sm"
+                    variant="gradient"
+                    gradient={{ from: 'violet', to: 'cyan', deg: 200 }}
+                    leftSection={<IconUserPlus stroke={1.5} />}
                 >
-                    <IconUserPlus style={{ width: '70%', height: '70%' }} stroke={1.5} />
-                </ActionIcon>
+                    Join a party
+                </Button>
             </HoverCard.Target>
             <HoverCard.Dropdown>
                 <Flex direction="column" gap={10}>
