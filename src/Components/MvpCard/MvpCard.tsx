@@ -27,10 +27,17 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
         dispatch(setOpened(true));
     };
 
+    const handleClickLink = () => {
+        const link = `https://ratemyserver.net/index.php?mob_name=${mvp.Id}&page=re_mob_db&quick=1&f=1&mob_search=Search`;
+        window.mvpApi.openLink(link);
+    }
+
     return (
         <div id={mvp.Id.toString()} className={`${style.card} glass`}>
             <div className={"flex items-center justify-between py-0 px-2"}>
-                <Badge w={"fit-content"} autoContrast size="xs" color={"white"}>{mvp.Id}</Badge>
+                <Badge w={"fit-content"} autoContrast size="xs" color={"white"} onClick={handleClickLink} className="ro-cursor">
+                    {mvp.Id}
+                </Badge>
                 <Bookmark mvp={mvp} />
             </div>
 

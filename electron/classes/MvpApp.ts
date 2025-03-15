@@ -10,6 +10,7 @@ import { MvpManager } from "./MvpManager";
 import { SettingsManager } from "./SettingsManager";
 import { ICON_APP_PATH, RENDERER_DIST, VITE_DEV_SERVER_URL, __dirname } from "../constants/path.ts";
 import { Schema } from "electron/store/store.ts";
+import { shell } from "electron";
 
 /**
  * MvpApp class
@@ -250,6 +251,10 @@ export class MvpApp {
 
         ipcMain.on('setMvps', (_event, args: Mvp[]) => {
             this.mvpManager.setMvps(args)
+        })
+
+        ipcMain.on('openLink', (_event, args: string) => {
+            shell.openExternal(args)
         })
 
         ipcMain.on('setSettings', <K extends keyof Schema>(_event: IpcMainEvent, args: { key: K, value: Schema[K] }) => {

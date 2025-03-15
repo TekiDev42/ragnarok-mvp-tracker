@@ -50,6 +50,7 @@ export const TimeInputWithIcon = ({ mapsData, mvpMap, updateMapData }: TimeInput
             }}
             rightSection={PickerControl(ref)}
             leftSection={setInstantDeath(ref, { mapsData, mvpMap, updateMapData })}
+            style={{flex: 1}}
         />
     )
 }

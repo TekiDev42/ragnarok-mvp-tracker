@@ -6,7 +6,6 @@ import {MapHoverCard} from "@components/MvpCard/Maps/MapHoverCard.tsx";
 import {setMvpMaps as setMvpMapsAction} from "@store/Slice/Mvp/Slice.ts";
 import {useAppDispatch} from "@store/Hooks.ts";
 import {useCallback} from "react";
-import {DateTime} from "luxon";
 
 export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
 
@@ -46,7 +45,7 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
                     mvpName={mvp.Name}
                     mapName={mvpmap.name}
                     mapDisplayName={mvpmap.displayName}
-                    respawn={DateTime.fromMillis(mvpmap.deathTime)}
+                    respawn={mvpmap.deathTime}
                     handleResetDeathTime={handleResetDeathTime}
                 />}
             </div>

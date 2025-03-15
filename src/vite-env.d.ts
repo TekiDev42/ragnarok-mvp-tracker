@@ -57,7 +57,12 @@ interface Window {
         /**
          * Indicates that the application has loaded.
          */
-        appLoaded: () => void
+        appLoaded: () => voida
+
+        /**
+         * Opens a link in the default browser.
+         */
+        openLink: (link: string) => void
     }
 }
 

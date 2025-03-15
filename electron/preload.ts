@@ -78,7 +78,12 @@ contextBridge.exposeInMainWorld('mvpApi', {
     /**
      * Indicates that the application has loaded.
      */
-    appLoaded: () => ipcRenderer.send('appLoaded')
+    appLoaded: () => ipcRenderer.send('appLoaded'),
+
+    /**
+     * Opens a link in the default browser.
+     */
+    openLink: (link: string) => ipcRenderer.send('openLink', link)
 })
 
 contextBridge.exposeInMainWorld('splashScreenApi', {

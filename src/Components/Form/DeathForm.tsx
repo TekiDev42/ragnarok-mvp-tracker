@@ -23,6 +23,7 @@ export const DeathFormModal = () => {
 
     const [mapsSelected, setMapsSelected] = useState<string[]>([]);
     const [mapsData, setMapsData] = useState<MvpMap[]>([]);
+    const [j, setJ] = useState<string>("today");
 
     /**
      * Memoized array of MVP map names
@@ -51,7 +52,11 @@ export const DeathFormModal = () => {
                 case 'time':
                     if (typeof value === "string") {
                         const [hour, minute] = value.split(':');
-                        const dt = DateTime.now();
+                        let dt = DateTime.now();
+
+                        if (j === "-1") {
+                            dt = DateTime.now().minus({ days: 1 });
+                        }
 
                         const respawn = dt
                         .set({ hour: parseInt(hour), minute: parseInt(minute) })
@@ -191,6 +196,10 @@ export const DeathFormModal = () => {
     }, [handleKeyDown])
 
 
+    const handleChipClick = useCallback((value: string) => {
+        setJ(value);
+    }, [updateMapData]);
+
     return (
         <Modal opened={opened} onClose={handleClose} centered withCloseButton={false} radius="lg">
             <Text>
@@ -216,7 +225,17 @@ export const DeathFormModal = () => {
                         <Flex direction="column" key={mvpMap}>
                             <h2 className="text-sm font-bold text-center py-2">{mvpMap}</h2>
                             <Flex direction="column" gap={8}>
-                                <TimeInputWithIcon mapsData={mapsData} mvpMap={mvpMap} updateMapData={updateMapData} />
+
+                                <Flex gap={4} align="center">
+                                    <TimeInputWithIcon mapsData={mapsData} mvpMap={mvpMap} updateMapData={updateMapData} />
+
+                                    <Chip.Group multiple={false} defaultValue={j} onChange={handleChipClick}>
+                                        <Group justify="flex-start" gap={4}>
+                                            <Chip size="sm" value="today" onClick={() => handleChipClick("today")}>Today</Chip>
+                                            <Chip size="sm" value="-1" onClick={() => handleChipClick("-1")}>J -1</Chip>
+                                        </Group>
+                                    </Chip.Group>
+                                </Flex>
 
                                 <Flex gap={12}>
                                     <NumberInput
@@ -234,6 +253,7 @@ export const DeathFormModal = () => {
                                         placeholder="Y"
                                     />
                                 </Flex>
+
                             </Flex>
                         </Flex>
                     ))}

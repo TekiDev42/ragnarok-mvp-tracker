@@ -9,7 +9,7 @@ import { addNotification } from "@store/Slice/User/UserSlice.ts";
 import { v4 as uuidv4 } from 'uuid';
 
 type CountdownProps =  PropsWithChildren & {
-    respawn: DateTime;
+    respawn: number;
     mapName: string;
     mapDisplayName: string;
     mvpName: string;
@@ -20,7 +20,7 @@ type CountdownProps =  PropsWithChildren & {
 
 export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, id, handleResetDeathTime }: CountdownProps) => {
     const [diff, setDiff] = useState<Duration>(() => 
-        respawn.diffNow(['hours', 'minutes', 'seconds'])
+        DateTime.fromMillis(respawn).diffNow(['hours', 'minutes', 'seconds', 'milliseconds'])
     );
 
     const [tenMinutesLeftNotification, setTenMinutesLeftNotification] = useState(false);
@@ -32,17 +32,17 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, id, handl
     const timerLeft = 5;
 
     const updateDiff = useCallback(() => {
-        setDiff(respawn.diffNow(['hours', 'minutes', 'seconds']));
+        setDiff(DateTime.fromMillis(respawn).diffNow(['hours', 'minutes', 'seconds', 'milliseconds']));
     }, [respawn]);
-
 
     useEffect(() => {
         let interval: NodeJS.Timeout;
         let audio: HTMLAudioElement;
 
         if (diff.as('seconds') > 0) {
+
             interval = setInterval(() => {
-                const newDiff = respawn.diffNow(['hours', 'minutes', 'seconds']);
+                const newDiff = DateTime.fromMillis(respawn).diffNow(['hours', 'minutes', 'seconds', 'milliseconds']);
                 setDiff(newDiff);
 
                 if (newDiff.as('minutes') === timerLeft && !tenMinutesLeftNotification) {
@@ -73,11 +73,11 @@ export const Countdown = ({ respawn, mapName, mapDisplayName, mvpName, id, handl
                         id: uuidv4(),
                         mvpName: mvpName,
                         mapName: mapName,
-                        respawn: respawn.toMillis()
+                        respawn: respawn
                     }));
 
                     notifications.show({
-                        title: <div className="text-gray-500 text-xs italic">{respawn.toFormat("dd/MM/yyyy HH'h'mm")}</div>,
+                        title: <div className="text-gray-500 text-xs italic">{DateTime.fromMillis(respawn).toFormat("dd/MM/yyyy HH'h'mm")}</div>,
                         message: <Flex direction="column" gap={0}>
                             <div className="text-gray-800 text-md font-bold"><a href={`#${id}`}>MVP : {mvpName}</a></div>
                             <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
