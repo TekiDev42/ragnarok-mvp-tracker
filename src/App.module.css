@@ -32,6 +32,6 @@
 
 @media screen and (min-width: 1681px) {
     .cardContainer {
-        @apply grid-cols-6
+        @apply grid-cols-5
     }
 }
