@@ -87,6 +87,10 @@ export const DeathFormModal = () => {
         if (userSession && partyId) {
             mapsData.forEach(async (map) => {
 
+                if (map.deathTime === 0) {
+                    return;
+                }
+
                 if (!mvpMapsName.includes(map.name)) {
                     return;
                 }

@@ -4,7 +4,7 @@ import { IconUserPlus } from "@tabler/icons-react"
 import { useAppSelector, useAppDispatch } from "@store/Hooks"
 import { supabase } from "@/supabase/supabase"
 import { notifications } from "@mantine/notifications"
-import { setPartyId } from "@store/Slice/User/UserSlice"
+import { setPartyId, setPartyName } from "@store/Slice/User/UserSlice"
 import { z } from "zod"
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { useForm } from "@mantine/form";
@@ -18,14 +18,17 @@ const schema = z.object({
 
 export const JoinPartyDropdown = () => {
     const [isLoading, setIsLoading] = useState(false)
+
     const userSession = useAppSelector((state) => state.userSlice.userSession)
     const dispatch = useAppDispatch()
+
 
     const form = useForm({
         mode: 'uncontrolled',
         initialValues: { code: '' },
         validate: zodResolver(schema),
     });
+
 
     const handleJoinParty = async (values: typeof form.values) => {
         setIsLoading(true)
@@ -51,6 +54,7 @@ export const JoinPartyDropdown = () => {
         })
 
         if (error || (data.status === 401)) {
+            console.log(error)
             notifications.show({
                 title: 'Error',
                 message: error?.message || data.message,
@@ -82,6 +86,7 @@ export const JoinPartyDropdown = () => {
             });
 
             dispatch(setPartyId(data.party_id))
+            dispatch(setPartyName(data.party_name))
         }
 
         setIsLoading(false)

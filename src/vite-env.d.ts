@@ -320,6 +320,7 @@ interface UserState extends Settings {
     notifications: MvpNotification[]
     userSession: Session | null
     partyId: number | null
+    partyName: string | null
 }
 
 

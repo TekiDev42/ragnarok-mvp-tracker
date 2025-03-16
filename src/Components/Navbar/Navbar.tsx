@@ -11,6 +11,7 @@ import { JoinPartyDropdown } from "@components/JoinPartyDropdown/JoinPartyDropdo
 export const Navbar = () => {
     const userSession = useAppSelector((state) => state.userSlice.userSession)
     const partyId = useAppSelector((state) => state.userSlice.partyId)
+    const partyName = useAppSelector((state) => state.userSlice.partyName)
 
     return (
         <div className={`${style.Navbar} glass`}>
@@ -28,7 +29,7 @@ export const Navbar = () => {
 
             <div className={style.timer_container}>
 
-                {userSession && partyId && <div className={"text-white text-sm"}>Party ID: {partyId}</div>}
+                {userSession && partyId && <div className={"text-white text-sm"}>Party: {partyName}</div>}
                 {!userSession && <SignInModal />}
                 {userSession && !partyId && <JoinPartyDropdown />}
 

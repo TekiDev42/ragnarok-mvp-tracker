@@ -20,7 +20,8 @@ const initialState: UserState = {
     notificationVolume: 100,
     notifications: [],
     userSession: null,
-    partyId: null
+    partyId: null,
+    partyName: null
 }
 
 /**
@@ -151,13 +152,20 @@ export const userSlice = createSlice({
         setPartyId: (state, action: PayloadAction<number>) => {
             state.partyId = action.payload
         },
+
+        /**
+         * Sets the party name.
+         */
+        setPartyName: (state, action: PayloadAction<string>) => {
+            state.partyName = action.payload
+        }
     }
 })
 
 // Export individual action creators
 export const {setAnimation, setBackground, setPerPage, setRespawnTimer, setSettings, setCardRates, setRates, setNotificationVolume} = userSlice.actions
 export const {addNotification, removeNotification, clearNotifications} = userSlice.actions
-export const {setUserSession, clearUserSession, setPartyId} = userSlice.actions
+export const {setUserSession, clearUserSession, setPartyId, setPartyName} = userSlice.actions
 export const {setActivePage, setSoundNotification, setDelayNotification, reset} = userSlice.actions
 
 // Export the reducer

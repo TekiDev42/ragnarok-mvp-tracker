@@ -84,18 +84,21 @@ export type Database = {
           created_at: string
           id: number
           leader: string | null
+          party_name: string | null
         }
         Insert: {
           code_id?: string | null
           created_at?: string
           id?: number
           leader?: string | null
+          party_name?: string | null
         }
         Update: {
           code_id?: string | null
           created_at?: string
           id?: number
           leader?: string | null
+          party_name?: string | null
         }
         Relationships: []
       }

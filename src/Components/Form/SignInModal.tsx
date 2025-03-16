@@ -35,6 +35,7 @@ export const SignInModal = () => {
 
     const handleSubmit = useCallback(async (values: typeof form.values) => {
         setIsLoading(true);
+
         let { data, error } = await supabase.auth.signInWithPassword({
             email: values.email,
             password: values.password
@@ -87,9 +88,8 @@ export const SignInModal = () => {
             </ActionIcon>
 
             <Modal opened={opened} onClose={handleClose} centered withCloseButton={false} radius="lg">
-                <Text>
-                    <span className="text-2xl">Sign In</span>
-                </Text>
+
+                <Text><span className="text-2xl">Sign In</span></Text>
 
                 <form onSubmit={form.onSubmit(handleSubmit)}>
                     <Flex direction="column" gap={10}>
