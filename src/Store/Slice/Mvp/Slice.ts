@@ -38,7 +38,7 @@ export const Slice = createSlice({
 
             const newMvps = [...state.mvps]
 
-            for (const db_map of action.payload.maps_party) {
+            for (const db_map of action.payload) {
                 const mvpIndex = newMvps.findIndex((mvp) => mvp.Id === db_map.mvp_id)
 
                 if (mvpIndex !== -1) {

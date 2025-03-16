@@ -16,15 +16,12 @@ export const useSubscriptionsSupabase = () => {
 
 
     const handleChanges = (payload: any) => {
-        console.log('Change received!', payload)
 
         if (payload.new.party_id !== partyId) { 
-            console.log('Party ID does not match, skipping')
             return
         }
 
         if (payload.new.last_user_update === userSession?.user.id) {
-            console.log('User is the same, skipping')
             return
         }
 
@@ -72,11 +69,23 @@ export const useSubscriptionsSupabase = () => {
             .abortSignal(abortController.signal)
 
         if (error) {
-            console.error('Error fetching maps_party', error)
+            notifications.show({
+                title: 'Error fetching',
+                message: error.message,
+                autoClose: 5000,
+                color: 'red',
+                radius: "md",
+                withBorder: false,
+                style: {
+                    backgroundColor: '#FFF1F0',
+                    color: '#CF1322',
+                    border: '1px solid #FFF1F0',
+                }
+            })
         }
 
         if (maps_party) {
-            dispatch(setMvpsFromDb({ maps_party }))
+            dispatch(setMvpsFromDb(maps_party))
         }
 
         return 
