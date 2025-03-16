@@ -19,13 +19,15 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
         dispatch(setMvpMapsAction({ mvp, newMapsData }))
     }, [dispatch, mvpMaps, mvp])
 
+    
     useEffect(() => {
         setMvpMaps(mvp.mvpMaps)
     }, [mvp])
 
-    return mvpMaps.map(mvpmap => {
-        const isInstance = mvpmap.name.match(/^\d+@.+/) !== null;
 
+    return mvpMaps.map(mvpmap => {
+
+        const isInstance = mvpmap.name.match(/^\d+@.+/) !== null;
         const diff = DateTime.fromMillis(mvpmap.deathTime).diffNow(['hours', 'minutes', 'seconds', 'milliseconds'])
 
         return (
