@@ -131,14 +131,14 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                     <RadarChart
                         h={200}
                         w={300}
-                    data={[
-                        {stat: `STR ${mvp.Str ?? 0}`, value: mvp.Str ?? 0},
-                        {stat: `AGI ${mvp.Agi ?? 0}`, value: mvp.Agi ?? 0},
-                        {stat: `VIT ${mvp.Vit ?? 0}`, value: mvp.Vit ?? 0},
-                        {stat: `INT ${mvp.Int ?? 0}`, value: mvp.Int ?? 0},
-                        {stat: `DEX ${mvp.Dex ?? 0}`, value: mvp.Dex ?? 0},
-                        {stat: `LUK ${mvp.Luk ?? 0}`, value: mvp.Luk ?? 0},
-                    ]}
+                        data={[
+                            {stat: `STR ${mvp.Str ?? 0}`, value: mvp.Str ?? 0},
+                            {stat: `AGI ${mvp.Agi ?? 0}`, value: mvp.Agi ?? 0},
+                            {stat: `VIT ${mvp.Vit ?? 0}`, value: mvp.Vit ?? 0},
+                            {stat: `INT ${mvp.Int ?? 0}`, value: mvp.Int ?? 0},
+                            {stat: `DEX ${mvp.Dex ?? 0}`, value: mvp.Dex ?? 0},
+                            {stat: `LUK ${mvp.Luk ?? 0}`, value: mvp.Luk ?? 0},
+                        ]}
                         dataKey="stat"
                         withPolarRadiusAxis
                         series={[{ name: 'value', color: 'blue.4', opacity: 0.2 }]}
