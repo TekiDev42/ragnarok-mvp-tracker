@@ -54,7 +54,6 @@ export const JoinPartyDropdown = () => {
         })
 
         if (error || (data.status === 401)) {
-            console.log(error)
             notifications.show({
                 title: 'Error',
                 message: error?.message || data.message,
