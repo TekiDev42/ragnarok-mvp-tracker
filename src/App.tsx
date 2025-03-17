@@ -73,7 +73,7 @@ const App = () => {
                 <DeathFormModal />
             </ScrollArea>
 
-            <Affix position={{ bottom: 20, right: 20 }}>
+            <Affix position={{ bottom: 20, left: 20 }}>
                 <ActionIcon onClick={() => viewport.current!.scrollTo({ top: 0, behavior: 'smooth' })}
                     variant="filled" size="lg" radius="xl" aria-label="Settings">
                     <IconArrowUp style={{ width: '70%', height: '70%' }} stroke={1.5} />

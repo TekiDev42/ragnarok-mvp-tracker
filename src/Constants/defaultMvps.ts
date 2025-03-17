@@ -2749,14 +2749,15 @@ export const defaultMvps: Mvp[] = [
     ]
   },
   {
-    "Id": 1518,
-    "AegisName": "BACSOJIN",
+    "Id": 1630,
+    "AegisName": "BACSOJIN_",
     "Name": "White Lady",
     "JapaneseName": "Bacsojin",
     "Level": 97,
     "Hp": 720500,
     "BaseExp": 400896,
     "JobExp": 271440,
+    "MvpExp": 200448,
     "Attack": 1414,
     "Attack2": 2036,
     "Defense": 210,
@@ -2767,23 +2768,38 @@ export const defaultMvps: Mvp[] = [
     "Int": 126,
     "Dex": 246,
     "Luk": 102,
-    "AttackRange": 2,
+    "AttackRange": 3,
     "SkillRange": 10,
     "ChaseRange": 12,
     "Size": "Large",
     "Race": "Demihuman",
-    "Element": "Water",
-    "ElementLevel": 2,
-    "WalkSpeed": 160,
+    "Element": "Wind",
+    "ElementLevel": 3,
+    "WalkSpeed": 130,
     "AttackDelay": 576,
     "AttackMotion": 960,
     "ClientAttackMotion": 768,
     "DamageMotion": 480,
-    "Ai": 4,
+    "DamageTaken": 10,
+    "Ai": 21,
     "Class": "Boss",
     "Modes": {
       "Mvp": true
     },
+    "MvpDrops": [
+      {
+        "Item": "Yggdrasilberry",
+        "Rate": 5500
+      },
+      {
+        "Item": "Celestial_Robe",
+        "Rate": 2000
+      },
+      {
+        "Item": "Old_Violet_Box",
+        "Rate": 5000
+      }
+    ],
     "Drops": [
       {
         "Item": "Long_Hair",
@@ -2791,37 +2807,66 @@ export const defaultMvps: Mvp[] = [
       },
       {
         "Item": "Old_Blue_Box",
-        "Rate": 1
+        "Rate": 2500
       },
       {
         "Item": "Old_Violet_Box",
-        "Rate": 1
+        "Rate": 1500
       },
       {
         "Item": "Limpid_Celestial_Robe",
         "Rate": 1500
       },
       {
-        "Item": "Soft_Silk_Cloth",
-        "Rate": 500
-      },
-      {
-        "Item": "Crystal_Mirror",
-        "Rate": 250
-      },
-      {
         "Item": "Tantanmen",
         "Rate": 25
       },
       {
+        "Item": "Red_Silk_Seal",
+        "Rate": 50
+      },
+      {
         "Item": "Tiara",
+        "Rate": 5
+      },
+      {
+        "Item": "Bacsojin_Card",
         "Rate": 1,
         "StealProtected": true
       }
     ],
     "image": "BACSOJIN.webp",
     "isBookmark": false,
-    "mvpMaps": []
+    "mvpMaps": [
+      {
+        "name": "2@tower",
+        "displayName": "The Endless Tower",
+        "deathTime": 0,
+        "respawnTimer": 0,
+        "size": {
+          "height": 300,
+          "width": 300
+        },
+        "tombPos": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "name": "lou_dun03",
+        "displayName": "Suei Long Gon",
+        "deathTime": 0,
+        "respawnTimer": 117,
+        "size": {
+          "height": 300,
+          "width": 300
+        },
+        "tombPos": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ]
   },
   {
     "Id": 1583,
