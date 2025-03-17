@@ -107,9 +107,11 @@ export const DeathFormModal = () => {
                     return;
                 }
 
-                if (maps_party && maps_party.length > 0) {
-                    console.log('Map party already exists:', maps_party)
+                if (maps_party && maps_party.length > 0 && maps_party[0].death_time === map.deathTime) {
+                    return;
+                }
 
+                if (maps_party && maps_party.length > 0) {
                     const { data: maps_party_update, error: errorUpdate } = await supabase.from('maps_party')
                     .update({
                         tomb_pos_x: map.tombPos.x,

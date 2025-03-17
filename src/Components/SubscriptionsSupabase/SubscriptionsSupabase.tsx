@@ -17,6 +17,8 @@ export const useSubscriptionsSupabase = () => {
 
     const handleChanges = (payload: any) => {
 
+        console.log(payload)
+
         if (payload.new.party_id !== partyId) { 
             return
         }
@@ -26,6 +28,7 @@ export const useSubscriptionsSupabase = () => {
         }
 
         const mvpIndex = mvps.findIndex((mvp) => mvp.Id === payload.new.mvp_id)
+
 
         if (mvpIndex !== -1) {
             notifications.show({
