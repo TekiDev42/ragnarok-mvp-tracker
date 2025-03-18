@@ -18,6 +18,7 @@ const App = () => {
     const [height, setHeight] = useState(window.innerHeight)
     const viewport = useRef<HTMLDivElement>(null)
 
+
     const fetchSettings = async () => {
         if (window.mvpApi) {
             const settings = await window.mvpApi.getSettings()
@@ -39,7 +40,7 @@ const App = () => {
     useEffect(() => {
         fetchSettings()
         fetchUserSession()
-    }, [dispatch])
+    }, [])
 
     useEffect(() => {
         const handleResize = () => {

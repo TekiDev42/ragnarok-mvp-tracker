@@ -1,40 +1,27 @@
-import {ChangeEvent, useState} from "react";
-import {useAppDispatch} from "@store/Hooks.ts";
-import {setSearch as setSearchAction} from "@store/Slice/Mvp/Slice.ts";
+import { useState } from "react";
+import { useAppDispatch } from "@store/Hooks.ts";
+import { setSearch as setSearchAction } from "@store/Slice/Mvp/Slice.ts";
 import { Autocomplete, AutocompleteProps, ComboboxItem, OptionsFilter } from "@mantine/core";
 import { useAppSelector } from "@store/Hooks";
 import { Image, Flex, Badge } from "@mantine/core";
-
-
+import { filterByNameOrId } from "@store/Slice/Mvp/Slice.ts";
 
 export const ActionSearch = () => {
     const dispatch = useAppDispatch()
-    const [search, setSearch] = useState<string>("")
     const [timeout, setStateTimeout] = useState<NodeJS.Timeout | null>(null)
     const mvps = useAppSelector((state) => state.Slice.mvps)
 
 
     const searchHandleChange = (value: string) => {
-
         if (timeout) {
             clearTimeout(timeout)
         }
 
         setStateTimeout(setTimeout(() => {
             dispatch(setSearchAction(value))
+            dispatch(filterByNameOrId())
         }, 400))
-
-        setSearch(value)
     }
-
-
-    /* <TextInput radius="xl"
-                   style={{width: "100%",maxWidth: "320px"}}
-                   onChange={searchHandleChange}
-                   value={search}
-                   placeholder="Search MVP by name, DB name or id"
-                   rightSection={<IconX size={16} onClick={() => setSearch("")}/>}/> */
-
 
     const renderAutocompleteOption: AutocompleteProps['renderOption'] = ({ option }) => {
         const mvp = mvps.find((mvp) => mvp.Id.toString() === option.value)
@@ -76,9 +63,10 @@ export const ActionSearch = () => {
             data={mvps.map((mvp) => mvp.Id.toString())}
             filter={optionsFilter}
             renderOption={renderAutocompleteOption}
-            maxDropdownHeight={300}
+            maxDropdownHeight={300} 
             placeholder="Search MVP by name, DB name or id"
-            onChange={searchHandleChange}
+            onOptionSubmit={searchHandleChange}
+            onClear={() => searchHandleChange('')}
             clearable
         />
     )
