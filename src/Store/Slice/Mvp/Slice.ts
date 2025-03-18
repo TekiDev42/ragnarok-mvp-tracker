@@ -14,6 +14,7 @@ import { sortMvps } from "@utils/Sort/sortMvps"
 const initialState: MvpState = {
     mvps: [],
     filtered: [],
+    search: ""
 }
 
 /**
@@ -25,7 +26,9 @@ export const Slice = createSlice({
     reducers: {
         setMvps: (state, action: PayloadAction<Mvp[]>) => {
             const sortedMvps = sortMvps(action.payload as Mvp[])
+
             state.mvps = sortedMvps as WritableDraft<Mvp>[]
+            state.filtered = sortedMvps as WritableDraft<Mvp>[]
 
             if (window.mvpApi) {
                 window.mvpApi.appLoaded()
@@ -64,11 +67,15 @@ export const Slice = createSlice({
             state.mvps = sortedMvps as WritableDraft<Mvp>[]
         },
         filterByNameOrId: filterByNameOrIdReducer,
-        reset: resetReducer
+        reset: resetReducer,
+        setSearch: (state, action: PayloadAction<string>) => {
+            state.search = action.payload
+        }
     }
 })
 
 
-export const { setMvpBookmarkStatus, filterByNameOrId, reSortMvp, reset, setMvpMaps, setMvps, setMvpsFromDb } = Slice.actions
+export const { setMvpBookmarkStatus, filterByNameOrId, reSortMvp, 
+                reset, setMvpMaps, setMvps, setMvpsFromDb, setSearch } = Slice.actions
 
 export default Slice.reducer

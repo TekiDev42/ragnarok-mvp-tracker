@@ -35,7 +35,7 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
     }
 
     return (
-        <div id={mvp.Id.toString()} className={`${style.card} glass`}>
+        <div id={'mvp-' + mvp.Id.toString()} className={`${style.card} glass`}>
             <div className={"flex items-center justify-between py-0 px-2"}>
                 <Badge autoContrast onMouseEnter={() => setColor("indigo")} onMouseLeave={() => setColor("white")} 
                         w={"fit-content"} size="md" color={color} className="ro-cursor"

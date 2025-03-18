@@ -14,7 +14,7 @@ html body[data-scroll-locked] {
     overflow: hidden !important;
 }
 
-* {
+.app-scroll-area .mantine-ScrollArea-viewport{
     scroll-behavior: smooth !important;
 }
 

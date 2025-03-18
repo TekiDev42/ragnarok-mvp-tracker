@@ -50,7 +50,7 @@ export const UseIntervalForNotifications = () => {
                         notifications.show({
                             title: <div className="text-gray-500 text-xs italic">5 minutes left</div>,
                             message: <Flex direction="column" gap={0}>
-                                <div className="text-gray-800 text-md font-bold"><a href={`#${mvp.Id}`}>MVP : {mvp.Name}</a></div>
+                                <div className="text-gray-800 text-md font-bold"><a href={`#mvp-${mvp.Id}`}>MVP : {mvp.Name}</a></div>
                                 <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
                                     <span>Map : {map.name}</span>
                                     <span className="text-xs">({map.displayName})</span>
@@ -81,7 +81,7 @@ export const UseIntervalForNotifications = () => {
                         notifications.show({
                             title: <div className="text-gray-500 text-xs italic">{deathTime.toFormat("dd/MM/yyyy HH'h'mm")}</div>,
                             message: <Flex direction="column" gap={0}>
-                                <div className="text-gray-800 text-md font-bold"><a href={`#${mvp.Id}`}>MVP : {mvp.Name}</a></div>
+                                <div className="text-gray-800 text-md font-bold"><a href={`#mvp-${mvp.Id}`}>MVP : {mvp.Name}</a></div>
                                 <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
                                     <span>Map : {map.name}</span>
                                     <span className="text-xs">({map.displayName})</span>

@@ -60,6 +60,7 @@ const App = () => {
             <ScrollArea 
                 viewportRef={viewport} type="always" 
                 overscrollBehavior="contain" h={height} 
+                className="app-scroll-area"
             >
                 <div className={style.App}>
                     <Background />

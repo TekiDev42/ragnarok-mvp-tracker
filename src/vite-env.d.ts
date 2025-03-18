@@ -200,6 +200,7 @@ interface Mvp {
 interface MvpState {
     mvps: Mvp[]
     filtered: Mvp[]
+    search: string
 }
 
 /**
