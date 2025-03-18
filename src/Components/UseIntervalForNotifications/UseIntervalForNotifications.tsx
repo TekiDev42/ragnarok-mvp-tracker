@@ -91,7 +91,6 @@ export const UseIntervalForNotifications = () => {
                             color: 'green',
                             radius: "md",
                             withBorder: false,
-                            children: <Flex></Flex>
                         });
     
                         if (soundNotification) {
