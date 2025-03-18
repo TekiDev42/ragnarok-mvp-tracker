@@ -11,6 +11,9 @@ import { setMvpMaps as setMvpMapsAction } from "@store/Slice/Mvp/Slice.ts";
 import { supabase } from '@/supabase/supabase'
 
 
+const fiveMinutesLeftMvps: {mvpId: number, mapName: string}[] = []
+
+
 export const UseIntervalForNotifications = () => {
 
     const dispatch = useAppDispatch()
@@ -28,9 +31,6 @@ export const UseIntervalForNotifications = () => {
 
 
     useEffect(() => {
-
-        let fiveMinutesLeftMvps: {mvpId: number, mapName: string}[] = []
-
         const interval = setInterval(async () => {
             let updated = false
 
@@ -98,12 +98,6 @@ export const UseIntervalForNotifications = () => {
                             audio.play();
                         }
 
-                        const index = fiveMinutesLeftMvps.findIndex(item => item.mvpId === mvp.Id && item.mapName === map.name)
-
-                        if (index !== -1) {
-                            fiveMinutesLeftMvps.splice(index, 1)
-                        }
-
                         const newMapsData = mvp.mvpMaps.map(mvpmap => mvpmap.name === map.name ? {...mvpmap, deathTime: 0} : mvpmap)
                         dispatch(setMvpMapsAction({ mvp, newMapsData }))
                         updated = true
@@ -165,6 +159,11 @@ export const UseIntervalForNotifications = () => {
                                     }
                                 })
                             }
+                        }
+
+                        const index = fiveMinutesLeftMvps.findIndex(item => item.mvpId === mvp.Id && item.mapName === map.name)
+                        if (index !== -1) {
+                            fiveMinutesLeftMvps.splice(index, 1)
                         }
                     }
                 })
