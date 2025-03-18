@@ -12,6 +12,8 @@ import {Provider} from "react-redux";
 import {store} from "@store/Store.ts";
 import {MantineProvider} from "@mantine/core";
 import {Notifications} from "@mantine/notifications";
+import { UseSubscriptionsSupabase } from "@components/SubscriptionsSupabase/SubscriptionsSupabase"
+import { UseIntervalForNotifications } from "@components/UseIntervalForNotifications/UseIntervalForNotifications"
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 
@@ -20,6 +22,8 @@ root.render(
         <Provider store={store}>
             <MantineProvider>
                 <Notifications />
+                <UseSubscriptionsSupabase />
+                <UseIntervalForNotifications />
                 <App/>
             </MantineProvider>
         </Provider>

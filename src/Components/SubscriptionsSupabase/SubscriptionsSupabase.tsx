@@ -6,7 +6,7 @@ import { notifications } from "@mantine/notifications";
 
 
 
-export const useSubscriptionsSupabase = () => {
+export const UseSubscriptionsSupabase = () => {
     const dispatch = useAppDispatch()
 
     const partyId = useAppSelector((state) => state.userSlice.partyId)
@@ -16,8 +16,6 @@ export const useSubscriptionsSupabase = () => {
 
 
     const handleChanges = (payload: any) => {
-
-        console.log(payload)
 
         if (payload.new.party_id !== partyId) { 
             return
@@ -117,4 +115,6 @@ export const useSubscriptionsSupabase = () => {
         }
 
     }, [partyId])
+
+    return null
 }

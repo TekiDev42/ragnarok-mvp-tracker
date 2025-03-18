@@ -11,15 +11,12 @@ import { supabase } from "@/supabase/supabase"
 import { setUserSession } from "@store/Slice/User/UserSlice"
 import { Affix, ActionIcon } from "@mantine/core"
 import { IconArrowUp } from "@tabler/icons-react"
-import { useSubscriptionsSupabase } from "@components/SubscriptionsSupabase/SubscriptionsSupabase"
 
 
 const App = () => {
     const dispatch = useAppDispatch()
     const [height, setHeight] = useState(window.innerHeight)
     const viewport = useRef<HTMLDivElement>(null)
-
-    useSubscriptionsSupabase()
 
     const fetchSettings = async () => {
         if (window.mvpApi) {

@@ -110,6 +110,7 @@ interface MvpMap {
         height: number,
         width: number
     },
+    fiveMinutesLeft?: boolean
 }
 
 /**
