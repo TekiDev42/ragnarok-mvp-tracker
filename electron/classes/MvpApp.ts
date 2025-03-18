@@ -1,6 +1,5 @@
 import path from "node:path";
 import url from "node:url";
-
 import {
     app, BrowserWindow, Menu, nativeImage, net,
     screen, Tray, Display, Size, App, protocol, ipcMain,
