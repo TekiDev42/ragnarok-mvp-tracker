@@ -12,6 +12,7 @@ import { setOpened } from "@store/Slice/Modal/ModalSlice.ts";
 import { TimeInputWithIcon } from "@/Components/Form/TimeInput/TimeInput.tsx";
 import { MapChip } from "@/Components/MapChip/MapChip.tsx";
 import { supabase } from "@/supabase/supabase";
+import { notifications } from "@mantine/notifications";
 
 
 export const DeathFormModal = () => {
@@ -103,7 +104,19 @@ export const DeathFormModal = () => {
                     .eq('party_id', partyId)
 
                 if (errorSelect) {
-                    console.error('Error selecting map party:', errorSelect)
+                    notifications.show({
+                        title: 'Error fetching',
+                        message: errorSelect.message,
+                        autoClose: 5000,
+                        color: 'red',
+                        radius: "md",
+                        withBorder: false,
+                        style: {
+                            backgroundColor: '#FFF1F0',
+                            color: '#CF1322',
+                            border: '1px solid #FFF1F0',
+                        }
+                    })
                     return;
                 }
 
@@ -112,7 +125,7 @@ export const DeathFormModal = () => {
                 }
 
                 if (maps_party && maps_party.length > 0) {
-                    const { data: maps_party_update, error: errorUpdate } = await supabase.from('maps_party')
+                    const { error: errorUpdate } = await supabase.from('maps_party')
                     .update({
                         tomb_pos_x: map.tombPos.x,
                         tomb_pos_y: map.tombPos.y,
@@ -126,14 +139,25 @@ export const DeathFormModal = () => {
                     .select()
 
                     if (errorUpdate) {
-                        console.error('Error updating map party:', errorUpdate)
-                    } else {
-                        console.log('Map party updated:', maps_party_update)
+                        notifications.show({
+                            title: 'Error updating',
+                            message: errorUpdate.message,
+                            autoClose: 5000,
+                            color: 'red',
+                            radius: "md",
+                            withBorder: false,
+                            style: {
+                                backgroundColor: '#FFF1F0',
+                                color: '#CF1322',
+                                border: '1px solid #FFF1F0',
+                            }
+                        })
                     }
+
                     return;
                 }
 
-                const { data, error: errorInsert } = await supabase.from('maps_party')
+                const { error: errorInsert } = await supabase.from('maps_party')
                 .insert({
                     party_id: partyId,
                     last_user_update: userSession.user.id,
@@ -146,9 +170,19 @@ export const DeathFormModal = () => {
                 .select()
     
                 if (errorInsert) {
-                    console.error('Error inserting map party:', errorInsert)
-                } else {
-                    console.log('Map party inserted:', data)
+                    notifications.show({
+                        title: 'Error inserting',
+                        message: errorInsert.message,
+                        autoClose: 5000,
+                        color: 'red',
+                        radius: "md",
+                        withBorder: false,
+                        style: {
+                            backgroundColor: '#FFF1F0',
+                            color: '#CF1322',
+                            border: '1px solid #FFF1F0',
+                        }
+                    })
                 }
             })
         }
