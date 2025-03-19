@@ -44,32 +44,6 @@ export const UseIntervalForNotifications = () => {
                     const deathTime = DateTime.fromMillis(map.deathTime)
                     const diffNow = deathTime.diffNow(['hours', 'minutes', 'seconds', 'milliseconds'])
 
-                    if (diffNow.as('minutes') > 0 && diffNow.as('minutes') <= 5 
-                        && !fiveMinutesLeftMvps.find(item => item.mvpId === mvp.Id && item.mapName === map.name)) {
-
-                        notifications.show({
-                            title: <div className="text-gray-500 text-xs italic">5 minutes left</div>,
-                            message: <Flex direction="column" gap={0}>
-                                <div className="text-gray-800 text-md font-bold"><a href={`#mvp-${mvp.Id}`}>MVP : {mvp.Name}</a></div>
-                                <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
-                                    <span>Map : {map.name}</span>
-                                    <span className="text-xs">({map.displayName})</span>
-                                </div>
-                            </Flex>,
-                            autoClose: delayNotification === 0 ? false : delayNotification * 1000,
-                            color: 'orange',
-                            radius: "md",
-                            withBorder: false
-                        });
-
-                        if (soundNotification) {
-                            audio.volume = notificationVolume / 100;
-                            audio.play();
-                        }
-
-                        fiveMinutesLeftMvps.push({mvpId: mvp.Id, mapName: map.name})
-                    }
-
                     if (diffNow.as('seconds') <= 0) {
                         dispatch(addNotification({
                             id: uuidv4(),
@@ -79,8 +53,9 @@ export const UseIntervalForNotifications = () => {
                         }));
     
                         notifications.show({
-                            title: <div className="text-gray-500 text-xs italic">{deathTime.toFormat("dd/MM/yyyy HH'h'mm")}</div>,
+                            title: <div className="text-gray-500 text-xs italic">Respawn</div>,
                             message: <Flex direction="column" gap={0}>
+                                <div className="text-gray-500 text-xs italic">{deathTime.toFormat("dd/MM/yyyy HH'h'mm")}</div>
                                 <div className="text-gray-800 text-md font-bold"><a href={`#mvp-${mvp.Id}`}>MVP : {mvp.Name}</a></div>
                                 <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
                                     <span>Map : {map.name}</span>
@@ -88,9 +63,14 @@ export const UseIntervalForNotifications = () => {
                                 </div>
                             </Flex>,
                             autoClose: delayNotification === 0 ? false : delayNotification * 1000,
-                            color: 'green',
+                            color: 'yellow',
                             radius: "md",
                             withBorder: false,
+                            style: {
+                                backgroundColor: '#FFFBE6',
+                                color: '#FAAD14', 
+                                border: '1px solid #FFFBE6',
+                            }
                         });
     
                         if (soundNotification) {

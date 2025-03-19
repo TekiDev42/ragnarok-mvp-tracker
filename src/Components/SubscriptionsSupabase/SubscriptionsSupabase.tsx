@@ -3,7 +3,8 @@ import { useEffect } from "react"
 import { supabase } from "@/supabase/supabase"
 import { setMvpsFromDb } from "@store/Slice/Mvp/Slice.ts";
 import { notifications } from "@mantine/notifications";
-
+import { Flex } from "@mantine/core";
+import { DateTime } from "luxon";
 
 
 export const UseSubscriptionsSupabase = () => {
@@ -33,19 +34,24 @@ export const UseSubscriptionsSupabase = () => {
 
         const mvpIndex = mvps.findIndex((mvp) => mvp.Id === payload.new.mvp_id)
 
-
         if (mvpIndex !== -1) {
             notifications.show({
-                title: 'MVP Map Updated',
-                message: `The MVP ${mvps[mvpIndex].Name} has been updated`,
+                title: <div className="text-gray-500 text-xs italic">Killed</div>,
+                message: <Flex direction="column" gap={0}>
+                    <div className="text-gray-500 text-xs italic">Respawn : {DateTime.fromMillis(payload.new.death_time).toFormat("dd/MM/yyyy HH'h'mm")}</div>
+                    <div className="text-gray-800 text-md font-bold"><a href={`#mvp-${payload.new.mvp_id}`}>MVP : {mvps[mvpIndex].Name}</a></div>
+                    <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
+                        <span>Map : {payload.new.map_name}</span>
+                    </div>
+                </Flex>,
                 autoClose: delayNotification === 0 ? false : delayNotification * 1000,
-                color: 'green',
+                color: 'blue',
                 radius: "md",
                 withBorder: false,
                 style: {
-                    backgroundColor: '#F0FFF0',
-                    color: '#008000',
-                    border: '1px solid #F0FFF0',
+                    backgroundColor: '#F0F8FF',
+                    color: '#0000FF',
+                    border: '1px solid #F0F8FF',
                 }
             })
 
