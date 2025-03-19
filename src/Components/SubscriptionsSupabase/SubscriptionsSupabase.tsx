@@ -18,8 +18,6 @@ export const UseSubscriptionsSupabase = () => {
 
     const handleChanges = (payload: any) => {
 
-        console.log(payload)
-
         if (payload.new.party_id !== partyId) { 
             return
         }
