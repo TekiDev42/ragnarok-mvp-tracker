@@ -132,17 +132,11 @@ export const UseIntervalForNotifications = () => {
                             }
 
                             const { error: errorUpdate } = await supabase.from('maps_party')
-                                .update({
-                                    tomb_pos_x: 0,
-                                    tomb_pos_y: 0,
-                                    death_time: 0,
-                                    last_user_update: session.user.id,
-                                })
+                                .delete()
                                 .eq('id', data[0].id)
                                 .eq('party_id', partyId)
                                 .eq('map_name', map.name)
                                 .eq('mvp_id', mvp.Id)
-                                .select()
 
                             if (errorUpdate) {
                                 notifications.show({
