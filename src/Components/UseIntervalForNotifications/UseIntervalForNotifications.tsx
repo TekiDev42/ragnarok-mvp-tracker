@@ -56,7 +56,9 @@ export const UseIntervalForNotifications = () => {
                             title: <div className="text-gray-500 text-xs italic">Respawn</div>,
                             message: <Flex direction="column" gap={0}>
                                 <div className="text-gray-500 text-xs italic">{deathTime.toFormat("dd/MM/yyyy HH'h'mm")}</div>
-                                <div className="text-gray-800 text-md font-bold"><a href={`#mvp-${mvp.Id}`}>MVP : {mvp.Name}</a></div>
+                                <div className="text-gray-800 text-md font-bold hover:text-yellow-500">
+                                    <a href={`#mvp-${mvp.Id}`}>MVP : {mvp.Name}</a>
+                                </div>
                                 <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
                                     <span>Map : {map.name}</span>
                                     <span className="text-xs">({map.displayName})</span>
@@ -64,13 +66,11 @@ export const UseIntervalForNotifications = () => {
                             </Flex>,
                             autoClose: delayNotification === 0 ? false : delayNotification * 1000,
                             color: 'yellow',
-                            radius: "md",
+                            radius: "sm",
                             withBorder: false,
                             style: {
-                                backgroundColor: '#FFFBE6',
-                                color: '#FAAD14', 
-                                border: '1px solid #FFFBE6',
-                            }
+                                backgroundColor: 'white',
+                            },
                         });
     
                         if (soundNotification) {
@@ -96,7 +96,7 @@ export const UseIntervalForNotifications = () => {
                                     message: errorSelect.message,
                                     autoClose: 5000,
                                     color: 'red',
-                                    radius: "md",
+                                    radius: "sm",
                                     withBorder: false,
                                     style: {
                                         backgroundColor: '#FFF1F0',

@@ -37,14 +37,16 @@ export const UseSubscriptionsSupabase = () => {
                 title: <div className="text-gray-500 text-xs italic">Killed</div>,
                 message: <Flex direction="column" gap={0}>
                     <div className="text-gray-500 text-xs italic">Respawn : {DateTime.fromMillis(payload.new.death_time).toFormat("dd/MM/yyyy HH'h'mm")}</div>
-                    <div className="text-gray-800 text-md font-bold"><a href={`#mvp-${payload.new.mvp_id}`}>MVP : {mvps[mvpIndex].Name}</a></div>
+                    <div className="text-gray-800 text-md font-bold hover:text-blue-500">
+                        <a href={`#mvp-${payload.new.mvp_id}`}>MVP : {mvps[mvpIndex].Name}</a>
+                    </div>
                     <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
                         <span>Map : {payload.new.map_name}</span>
                     </div>
                 </Flex>,
                 autoClose: delayNotification === 0 ? false : delayNotification * 1000,
                 color: 'blue',
-                radius: "md",
+                radius: "sm",
                 withBorder: false,
                 style: {
                     backgroundColor: '#F0F8FF',
@@ -85,7 +87,7 @@ export const UseSubscriptionsSupabase = () => {
                 message: error.message,
                 autoClose: 5000,
                 color: 'red',
-                radius: "md",
+                radius: "sm",
                 withBorder: false,
                 style: {
                     backgroundColor: '#FFF1F0',
