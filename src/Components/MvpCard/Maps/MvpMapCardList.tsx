@@ -9,6 +9,7 @@ import {useCallback} from "react";
 import {DateTime} from "luxon";
 import { useAppSelector } from "@store/Hooks.ts";
 import { supabase } from "@/supabase/supabase";
+import { notifications } from "@mantine/notifications";
 
 
 export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
@@ -39,50 +40,45 @@ export const MvpMapCardList = ({mvp}: PropsWithChildren & {mvp: Mvp}) => {
                     .eq('party_id', partyId)
 
                 if (errorSelect) {
-                    console.error('Error selecting map party:', errorSelect)
+                    notifications.show({
+                        title: 'Error',
+                        message: errorSelect.message,
+                        autoClose: 5000,
+                        color: 'red',
+                        radius: "md",
+                        withBorder: false,
+                        style: {
+                            backgroundColor: '#FFF1F0',
+                            color: '#CF1322',
+                            border: '1px solid #FFF1F0',
+                        }
+                    })
                     return;
                 }
 
                 if (maps_party && maps_party.length > 0) {
-                    console.log('Map party already exists:', maps_party)
-
-                    const { data: maps_party_update, error: errorUpdate } = await supabase.from('maps_party')
-                    .update({
-                        tomb_pos_x: 0,
-                        tomb_pos_y: 0,
-                        death_time: 0,
-                        last_user_update: userSession.user.id,
-                    })
-                    .eq('id', maps_party[0].id)
-                    .eq('party_id', partyId)
-                    .eq('map_name', map.name)
-                    .eq('mvp_id', mvp.Id)
-                    .select()
+                    const { error: errorUpdate } = await supabase.from('maps_party')
+                        .delete()
+                        .eq('id', maps_party[0].id)
+                        .eq('party_id', partyId)
+                        .eq('map_name', map.name)
+                        .eq('mvp_id', mvp.Id)
 
                     if (errorUpdate) {
-                        console.error('Error updating map party:', errorUpdate)
-                    } else {
-                        console.log('Map party updated:', maps_party_update)
+                        notifications.show({
+                            title: 'Error',
+                            message: errorUpdate.message,
+                            autoClose: 5000,
+                            color: 'red',
+                            radius: "md",
+                            withBorder: false,
+                            style: {
+                                backgroundColor: '#FFF1F0',
+                                color: '#CF1322',
+                                border: '1px solid #FFF1F0',
+                            }
+                        })
                     }
-                    return;
-                }
-
-                const { data, error: errorInsert } = await supabase.from('maps_party')
-                .insert({
-                    party_id: partyId,
-                    last_user_update: userSession.user.id,
-                    map_name: map.name,
-                    mvp_id: mvp.Id,
-                    tomb_pos_x: 0,
-                    tomb_pos_y: 0,
-                    death_time: 0,
-                })
-                .select()
-    
-                if (errorInsert) {
-                    console.error('Error inserting map party:', errorInsert)
-                } else {
-                    console.log('Map party inserted:', data)
                 }
             })
         }
