@@ -53,10 +53,10 @@ export const UseIntervalForNotifications = () => {
                             title: <div className="text-gray-500 text-xs italic">Respawn</div>,
                             message: <Flex direction="column" gap={0}>
                                 <div className="text-gray-500 text-xs italic">{deathTime.toFormat("dd/MM/yyyy HH'h'mm")}</div>
-                                <div className="text-gray-800 text-md font-bold hover:text-yellow-500">
+                                <div className="text-gray-800 text-xs font-bold hover:text-yellow-500">
                                     <a href={`#mvp-${mvp.Id}`}>MVP : {mvp.Name}</a>
                                 </div>
-                                <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
+                                <div className="text-gray-800 text-xs font-bold flex gap-1 items-center">
                                     <span>Map : {map.name}</span>
                                     <span className="text-xs">({map.displayName})</span>
                                 </div>

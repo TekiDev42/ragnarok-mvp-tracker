@@ -77,10 +77,10 @@ export const UseSubscriptionsSupabase = () => {
                         </div>,
                 message: <Flex direction="column" gap={0}>
                     <div className="text-gray-500 text-xs italic">Respawn : {DateTime.fromMillis(payload.new.death_time).toFormat("dd/MM/yyyy HH'h'mm")}</div>
-                    <div className="text-gray-800 text-md font-bold hover:text-blue-500">
+                    <div className="text-gray-800 text-xs font-bold hover:text-blue-500">
                         <a href={`#mvp-${payload.new.mvp_id}`}>MVP : {mvps[mvpIndex].Name}</a>
                     </div>
-                    <div className="text-gray-800 text-md font-bold flex gap-1 items-center">
+                    <div className="text-gray-800 text-xs font-bold flex gap-1 items-center">
                         <span>Map : {payload.new.map_name}</span>
                     </div>
                 </Flex>,
