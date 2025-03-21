@@ -9,6 +9,7 @@ Une application pour suivre et gérer les MVP dans Ragnarok Online.
   - Notification sonore à la fin du timer
   - Localisation de la tombe sur la carte
   - Affichage des drops normaux et MVP drops
+  - Affichage de la race et de l'élement
   - Taux de drop personnalisables
   - Partage des timers avec les membres connectés et du même groupe.
 
@@ -31,6 +32,10 @@ Une application pour suivre et gérer les MVP dans Ragnarok Online.
 3. **Favoris**
    - Ajoutez des MVP à vos favoris
    - Accédez rapidement à vos MVP favoris depuis l'onglet dédié (TODO)
+
+3. **Stats**
+   - Race et élement visible rapidement
+   - Voir les statistiques
 
 ## Installation
 1. **Téléchargement**
