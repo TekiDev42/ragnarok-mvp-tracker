@@ -77,9 +77,7 @@ export const JoinPartyDropdown = () => {
                 radius: "md",
                 withBorder: false,
                 style: {
-                    backgroundColor: '#F0FFF0',
-                    color: '#008000',
-                    border: '1px solid #F0FFF0',
+                    backgroundColor: 'white',
                 }
             });
 
