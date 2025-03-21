@@ -12,7 +12,7 @@ import { IconUserCircle } from "@tabler/icons-react";
 export const UseSubscriptionsSupabase = () => {
     const dispatch = useAppDispatch()
 
-    const partyId = useAppSelector((state) => state.userSlice.partyId)
+    const partyId = useAppSelector((state) => state.partySlice.partyId)
     const mvps = useAppSelector((state) => state.Slice.mvps)
     const userSession = useAppSelector((state) => state.userSlice.userSession)
     const delayNotification = useAppSelector(state => state.userSlice.delayNotification);

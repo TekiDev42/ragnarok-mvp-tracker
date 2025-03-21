@@ -10,8 +10,8 @@ import { JoinPartyDropdown } from "@components/JoinPartyDropdown/JoinPartyDropdo
 
 export const Navbar = () => {
     const userSession = useAppSelector((state) => state.userSlice.userSession)
-    const partyId = useAppSelector((state) => state.userSlice.partyId)
-    const partyName = useAppSelector((state) => state.userSlice.partyName)
+    const partyId = useAppSelector((state) => state.partySlice.partyId)
+    const partyName = useAppSelector((state) => state.partySlice.partyName)
 
     return (
         <div className={`${style.Navbar} glass`}>

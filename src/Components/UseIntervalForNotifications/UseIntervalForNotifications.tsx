@@ -20,7 +20,7 @@ export const UseIntervalForNotifications = () => {
     const notificationVolume = useAppSelector(state => state.userSlice.notificationVolume)
 
     const session = useAppSelector(state => state.userSlice.userSession)
-    const partyId = useAppSelector(state => state.userSlice.partyId)
+    const partyId = useAppSelector(state => state.partySlice.partyId)
 
     const mvps = useAppSelector(state => state.Slice.mvps)
 

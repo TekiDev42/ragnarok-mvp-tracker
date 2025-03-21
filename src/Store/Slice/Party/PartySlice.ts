@@ -12,24 +12,16 @@ export const partySlice = createSlice({
     name: "party",
     initialState,
     reducers: {
-        setPartyId: (state, action) => {
-            state.partyId = action.payload
-        },
-        setPartyName: (state, action) => {
-            state.partyName = action.payload
-        },
-        setPartyMembers: (state, action) => {
-            state.partyMembers = action.payload
-        },
-        setPartyOwner: (state, action) => {
-            state.partyOwner = action.payload
-        },
-        setPartyOwnerId: (state, action) => {
-            state.partyOwnerId = action.payload
+        setParty: (state, action) => {
+            state.partyId = action.payload.party_id
+            state.partyName = action.payload.party_name
+            state.partyMembers = action.payload.party_members
+            state.partyOwner = action.payload.party_owner
+            state.partyOwnerId = action.payload.party_owner_id
         },
     }
 })
 
-export const { setPartyId, setPartyName, setPartyMembers, setPartyOwner, setPartyOwnerId } = partySlice.actions
+export const { setParty } = partySlice.actions
 
 export default partySlice.reducer

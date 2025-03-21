@@ -335,7 +335,7 @@ interface TombPosCss extends React.CSSProperties {
 }
 
 interface PartyState {
-    partyId: string | null;
+    partyId: number | null;
     partyName: string | null;
     partyMembers: string[];
     partyOwner: string | null;

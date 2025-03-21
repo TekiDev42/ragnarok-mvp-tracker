@@ -4,12 +4,11 @@ import { IconUserPlus } from "@tabler/icons-react"
 import { useAppSelector, useAppDispatch } from "@store/Hooks"
 import { supabase } from "@/supabase/supabase"
 import { notifications } from "@mantine/notifications"
-import { setPartyId, setPartyName } from "@store/Slice/User/UserSlice"
 import { z } from "zod"
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { useForm } from "@mantine/form";
 import { TextInput } from "@mantine/core";
-
+import { setParty } from "@store/Slice/Party/PartySlice";
 
 const schema = z.object({
     code: z.string().min(6, { message: 'Code must be at least 6 characters' }),
@@ -53,7 +52,7 @@ export const JoinPartyDropdown = () => {
             user_id: userSession.user.id
         })
 
-        if (error || (data.status === 401)) {
+        if (error || data.status === 401) {
             notifications.show({
                 title: 'Error',
                 message: error?.message || data.message,
@@ -84,8 +83,23 @@ export const JoinPartyDropdown = () => {
                 }
             });
 
-            dispatch(setPartyId(data.party_id))
-            dispatch(setPartyName(data.party_name))
+            const { data: party_members } = await supabase.from('party_members').select('*').eq('party_id', data.party_id)
+
+            if (party_members) {
+
+                const { data: party_members_info } = await supabase
+                    .from('user_profile')
+                    .select('*')
+                    .in('user_id', party_members?.map((member: any) => member.member_id) || [])
+
+                dispatch(setParty({
+                    party_id: data.party_id,
+                    party_name: data.party_name,
+                    party_members: party_members_info,
+                    party_owner: '',
+                        party_owner_id: ''
+                    }))
+            }
         }
 
         setIsLoading(false)
