@@ -16,7 +16,7 @@ export const UseSubscriptionsSupabase = () => {
     const delayNotification = useAppSelector(state => state.userSlice.delayNotification);
 
 
-    const handleChanges = (payload: any) => {
+    const handleChanges = async (payload: any) => {
 
         if (payload.new.party_id !== partyId) { 
             return
@@ -33,8 +33,39 @@ export const UseSubscriptionsSupabase = () => {
         const mvpIndex = mvps.findIndex((mvp) => mvp.Id === payload.new.mvp_id)
 
         if (mvpIndex !== -1) {
+
+            let pseudo = null
+            let { data: user_profile, error } = await supabase
+                    .from('user_profile')
+                    .select('pseudo')
+                    .eq('id', payload.new.last_user_update)
+
+            if (error) {
+                notifications.show({
+                    title: 'Error get user',
+                    message: error.message,
+                    autoClose: 10000,
+                    color: 'red',
+                    radius: "sm",
+                    withBorder: false,
+                    style: {
+                        backgroundColor: '#FFF1F0',
+                        color: '#CF1322',
+                        border: '1px solid #FFF1F0',
+                    }
+                })
+            }
+
+            if (user_profile) {
+                pseudo = user_profile[0].pseudo
+            }
+
+            if (!pseudo) {
+                pseudo = 'Unknown'
+            }
+
             notifications.show({
-                title: <div className="text-gray-500 text-xs italic">Killed</div>,
+                title: <div className="text-gray-500 text-xs italic">Updated by {pseudo}</div>,
                 message: <Flex direction="column" gap={0}>
                     <div className="text-gray-500 text-xs italic">Respawn : {DateTime.fromMillis(payload.new.death_time).toFormat("dd/MM/yyyy HH'h'mm")}</div>
                     <div className="text-gray-800 text-md font-bold hover:text-blue-500">
