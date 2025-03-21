@@ -11,9 +11,6 @@ import { setMvpMaps as setMvpMapsAction } from "@store/Slice/Mvp/Slice.ts";
 import { supabase } from '@/supabase/supabase'
 
 
-const fiveMinutesLeftMvps: {mvpId: number, mapName: string}[] = []
-
-
 export const UseIntervalForNotifications = () => {
 
     const dispatch = useAppDispatch()
@@ -133,11 +130,6 @@ export const UseIntervalForNotifications = () => {
                                     }
                                 })
                             }
-                        }
-
-                        const index = fiveMinutesLeftMvps.findIndex(item => item.mvpId === mvp.Id && item.mapName === map.name)
-                        if (index !== -1) {
-                            fiveMinutesLeftMvps.splice(index, 1)
                         }
                     }
                 })
