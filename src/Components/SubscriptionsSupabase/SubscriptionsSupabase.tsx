@@ -71,7 +71,7 @@ export const UseSubscriptionsSupabase = () => {
 
             notifications.show({
                 title: <div className="flex gap-1 items-center text-gray-500 text-xs italic"><span>Updated by</span>
-                            <Badge leftSection={<IconUserCircle size={16} />} autoContrast size="sm" color={color}>
+                            <Badge variant="light" leftSection={<IconUserCircle size={16} />} autoContrast size="sm" color={color}>
                                 {pseudo}
                             </Badge>
                         </div>,
