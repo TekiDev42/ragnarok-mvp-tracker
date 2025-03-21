@@ -51,7 +51,11 @@ export const Navbar = () => {
 
                                 <Flex direction="column" gap={10}>
                                     {partyMembers.map((member: PartyMember) => (
-                                        <Badge autoContrast key={member.id} variant="light" color={member.color ?? 'gray'} size="md">{member.pseudo} {partyOwnerId === member.user_id && '(Leader)'}</Badge>
+                                        <Badge autoContrast key={member.id} 
+                                                variant="light" color={member.color ?? 'gray'} 
+                                                size="md">
+                                            {member.pseudo} {partyOwnerId === member.user_id && '(Leader)'}
+                                        </Badge>
                                     ))}
                                 </Flex>
                             </Flex>
