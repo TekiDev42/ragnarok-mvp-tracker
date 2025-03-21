@@ -6,12 +6,16 @@ import {NotificationList} from "@components/NotificationList/NotificationList.ts
 import { SignInModal } from "@components/Form/SignInModal.tsx"
 import { useAppSelector } from "@store/Hooks"
 import { JoinPartyDropdown } from "@components/JoinPartyDropdown/JoinPartyDropdown.tsx"
+import { Badge, Button, Flex, HoverCard } from "@mantine/core"
+import { IconUserPlus } from "@tabler/icons-react"
 
 
 export const Navbar = () => {
     const userSession = useAppSelector((state) => state.userSlice.userSession)
     const partyId = useAppSelector((state) => state.partySlice.partyId)
     const partyName = useAppSelector((state) => state.partySlice.partyName)
+    const partyMembers = useAppSelector((state) => state.partySlice.partyMembers)
+    const partyOwner = useAppSelector((state) => state.partySlice.partyOwner)
 
     return (
         <div className={`${style.Navbar} glass`}>
@@ -29,7 +33,32 @@ export const Navbar = () => {
 
             <div className={style.timer_container}>
 
-                {userSession && partyId && <div className={"text-white text-sm"}>Party: {partyName}</div>}
+                {userSession && partyId && 
+                    <HoverCard width={320} shadow="md" withArrow>
+                        <HoverCard.Target>
+                            <Button
+                                size="sm"
+                                variant="gradient"
+                                gradient={{ from: 'violet', to: 'cyan', deg: 200 }}
+                                leftSection={<IconUserPlus stroke={1.5} />}
+                            >
+                                {partyName}
+                            </Button>
+                        </HoverCard.Target>
+                        <HoverCard.Dropdown>
+                            <Flex direction="column" gap={10}>
+                                <div>Members : {partyMembers.length}</div>
+                                <div>Leader : {partyOwner}</div>
+
+                                <Flex direction="column" gap={10}>
+                                    {partyMembers.map((member: PartyMember) => (
+                                        <Badge key={member.id} variant="light" color={member.color ?? 'gray'} size="md">{member.pseudo}</Badge>
+                                    ))}
+                                </Flex>
+                            </Flex>
+                        </HoverCard.Dropdown>
+                    </HoverCard>
+                }
                 {!userSession && <SignInModal />}
                 {userSession && !partyId && <JoinPartyDropdown />}
 

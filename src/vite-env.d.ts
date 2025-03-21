@@ -334,10 +334,18 @@ interface TombPosCss extends React.CSSProperties {
     "--tombpos-y": string
 }
 
+interface PartyMember {
+    color: string | null;
+    created_at: string;
+    id: number;
+    pseudo: string | null;
+    user_id: string | null;
+}
+
 interface PartyState {
     partyId: number | null;
     partyName: string | null;
-    partyMembers: string[];
+    partyMembers: PartyMember[];
     partyOwner: string | null;
     partyOwnerId: string | null;
 }
