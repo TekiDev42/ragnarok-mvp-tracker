@@ -62,7 +62,7 @@ export const UseSubscriptionsSupabase = () => {
 
             if (user_profile) {
                 pseudo = user_profile[0].pseudo
-                color = user_profile[0].color || 'blue'
+                color = user_profile[0].color || 'gray'
             }
 
             if (!pseudo) {
