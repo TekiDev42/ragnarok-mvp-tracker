@@ -6,6 +6,8 @@ import { notifications } from "@mantine/notifications";
 import { Flex } from "@mantine/core";
 import { DateTime } from "luxon";
 import { Badge } from "@mantine/core";
+import { IconUserCircle } from "@tabler/icons-react";
+
 
 export const UseSubscriptionsSupabase = () => {
     const dispatch = useAppDispatch()
@@ -68,7 +70,7 @@ export const UseSubscriptionsSupabase = () => {
             }
 
             notifications.show({
-                title: <div className="text-gray-500 text-xs italic">Updated by <Badge autoContrast size="sm" color={color}>{pseudo}</Badge></div>,
+                title: <div className="text-gray-500 text-xs italic">Updated by <Badge leftSection={<IconUserCircle size={16} />} autoContrast size="sm" color={color}>{pseudo}</Badge></div>,
                 message: <Flex direction="column" gap={0}>
                     <div className="text-gray-500 text-xs italic">Respawn : {DateTime.fromMillis(payload.new.death_time).toFormat("dd/MM/yyyy HH'h'mm")}</div>
                     <div className="text-gray-800 text-md font-bold hover:text-blue-500">
