@@ -55,10 +55,13 @@ Une application pour suivre et gérer les MVP dans Ragnarok Online.
    ```bash
    npm run build / bun run build / pnpm run build
    ```
+5. **ENV**
+   Créer un .env avec vos clés SUPABASE :
+   ```
+   VITE_SUPABASE_URL=https://exemple.supabase.co
+   VITE_SUPABASE_ANON_KEY=votre_anon_key_ici
+   ```
+
 
 ## Contribueurs
 - [MrKitey](https://github.com/TekiDev42)
-
-## TODO
-- Multi synchro (local) creation de groupe / rejoindre une session avec code, socket.io ?? / Creer un serveur node websocket 
-- Ajouter un onglet avec une liste de notification passées (mvp + map)
