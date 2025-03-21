@@ -5,7 +5,7 @@ import { setMvpsFromDb } from "@store/Slice/Mvp/Slice.ts";
 import { notifications } from "@mantine/notifications";
 import { Flex } from "@mantine/core";
 import { DateTime } from "luxon";
-
+import { Badge } from "@mantine/core";
 
 export const UseSubscriptionsSupabase = () => {
     const dispatch = useAppDispatch()
@@ -35,9 +35,11 @@ export const UseSubscriptionsSupabase = () => {
         if (mvpIndex !== -1) {
 
             let pseudo = null
+            let color = 'blue'
+    
             let { data: user_profile, error } = await supabase
                     .from('user_profile')
-                    .select('pseudo')
+                    .select('pseudo, color')
                     .eq('id', payload.new.last_user_update)
 
             if (error) {
@@ -58,6 +60,7 @@ export const UseSubscriptionsSupabase = () => {
 
             if (user_profile) {
                 pseudo = user_profile[0].pseudo
+                color = user_profile[0].color || 'blue'
             }
 
             if (!pseudo) {
@@ -65,7 +68,7 @@ export const UseSubscriptionsSupabase = () => {
             }
 
             notifications.show({
-                title: <div className="text-gray-500 text-xs italic">Updated by {pseudo}</div>,
+                title: <div className="text-gray-500 text-xs italic">Updated by <Badge autoContrast size="sm" color={color}>{pseudo}</Badge></div>,
                 message: <Flex direction="column" gap={0}>
                     <div className="text-gray-500 text-xs italic">Respawn : {DateTime.fromMillis(payload.new.death_time).toFormat("dd/MM/yyyy HH'h'mm")}</div>
                     <div className="text-gray-800 text-md font-bold hover:text-blue-500">
@@ -76,13 +79,11 @@ export const UseSubscriptionsSupabase = () => {
                     </div>
                 </Flex>,
                 autoClose: delayNotification === 0 ? false : delayNotification * 1000,
-                color: 'blue',
+                color: color,
                 radius: "sm",
                 withBorder: false,
                 style: {
-                    backgroundColor: '#F0F8FF',
-                    color: '#0000FF',
-                    border: '1px solid #F0F8FF',
+                    backgroundColor: 'white',
                 }
             })
 
