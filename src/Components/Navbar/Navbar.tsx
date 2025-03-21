@@ -7,7 +7,7 @@ import { SignInModal } from "@components/Form/SignInModal.tsx"
 import { useAppSelector } from "@store/Hooks"
 import { JoinPartyDropdown } from "@components/JoinPartyDropdown/JoinPartyDropdown.tsx"
 import { Badge, Button, Flex, HoverCard } from "@mantine/core"
-import { IconUserPlus } from "@tabler/icons-react"
+import { IconUsers } from "@tabler/icons-react"
 
 
 export const Navbar = () => {
@@ -15,7 +15,7 @@ export const Navbar = () => {
     const partyId = useAppSelector((state) => state.partySlice.partyId)
     const partyName = useAppSelector((state) => state.partySlice.partyName)
     const partyMembers = useAppSelector((state) => state.partySlice.partyMembers)
-    const partyOwner = useAppSelector((state) => state.partySlice.partyOwner)
+    const partyOwnerId = useAppSelector((state) => state.partySlice.partyOwnerId)
 
     return (
         <div className={`${style.Navbar} glass`}>
@@ -40,7 +40,7 @@ export const Navbar = () => {
                                 size="sm"
                                 variant="gradient"
                                 gradient={{ from: 'violet', to: 'cyan', deg: 200 }}
-                                leftSection={<IconUserPlus stroke={1.5} />}
+                                leftSection={<IconUsers stroke={1.5} />}
                             >
                                 {partyName}
                             </Button>
@@ -48,11 +48,10 @@ export const Navbar = () => {
                         <HoverCard.Dropdown>
                             <Flex direction="column" gap={10}>
                                 <div>Members : {partyMembers.length}</div>
-                                <div>Leader : {partyOwner}</div>
 
                                 <Flex direction="column" gap={10}>
                                     {partyMembers.map((member: PartyMember) => (
-                                        <Badge key={member.id} variant="light" color={member.color ?? 'gray'} size="md">{member.pseudo}</Badge>
+                                        <Badge autoContrast key={member.id} variant="light" color={member.color ?? 'gray'} size="md">{member.pseudo} {partyOwnerId === member.user_id && '(Leader)'}</Badge>
                                     ))}
                                 </Flex>
                             </Flex>

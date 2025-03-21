@@ -84,7 +84,7 @@ export const JoinPartyDropdown = () => {
             });
 
             const { data: party_members } = await supabase.from('party_members').select('*').eq('party_id', data.party_id)
-            const { data: party_leader } = await supabase.from('party').select('leader').eq('party_id', data.party_id).single()
+            const { data: party_leader } = await supabase.from('party').select('leader').eq('id', data.party_id).single()
 
             if (party_members && party_leader) {
 
@@ -97,7 +97,7 @@ export const JoinPartyDropdown = () => {
                     party_id: data.party_id,
                     party_name: data.party_name,
                     party_members: party_members_info,
-                    party_owner: party_members_info?.find((member: any) => member.id === party_leader.leader)?.pseudo,
+                    party_owner: party_members_info?.find((member: any) => member.user_id === party_leader.leader)?.pseudo,
                     party_owner_id: party_leader.leader
                 }))
             }
