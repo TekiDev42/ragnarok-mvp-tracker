@@ -216,18 +216,18 @@ interface MvpNotification {
 interface Factor {
     /** ID of the factor. */
     id: string
-  
+
     /** Friendly name of the factor, useful to disambiguate between multiple factors. */
     friendly_name?: string
-  
+
     /**
      * Type of factor. `totp` and `phone` supported with this version
      */
     factor_type: 'totp' | 'phone' | (string & {})
-  
+
     /** Factor's status. */
     status: 'verified' | 'unverified'
-  
+
     created_at: string
     updated_at: string
 }
@@ -236,7 +236,7 @@ interface UserIdentity {
     id: string
     user_id: string
     identity_data?: {
-      [key: string]: any
+        [key: string]: any
     }
     identity_id: string
     provider: string
@@ -249,7 +249,7 @@ interface UserAppMetadata {
     provider?: string
     [key: string]: any
 }
-  
+
 interface UserMetadata {
     [key: string]: any
 }
@@ -308,7 +308,7 @@ interface Session {
     expires_at?: number
     token_type: string
     user: User
-  }
+}
 
 /**
  * 
@@ -332,4 +332,12 @@ interface UserState extends Settings {
 interface TombPosCss extends React.CSSProperties {
     "--tombpos-x": string
     "--tombpos-y": string
+}
+
+interface PartyState {
+    partyId: string | null;
+    partyName: string | null;
+    partyMembers: string[];
+    partyOwner: string | null;
+    partyOwnerId: string | null;
 }

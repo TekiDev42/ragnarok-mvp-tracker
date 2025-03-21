@@ -1,7 +1,8 @@
-import {configureStore} from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit"
 import Slice from "@store/Slice/Mvp/Slice"
 import modalSlice from '@store/Slice/Modal/ModalSlice'
 import userSlice from '@store/Slice/User/UserSlice'
+import partySlice from '@store/Slice/Party/PartySlice'
 
 /**
  * Configures and creates the Redux store for the application.
@@ -22,7 +23,8 @@ export const store = configureStore({
     reducer: {
         Slice,
         modalSlice,
-        userSlice
+        userSlice,
+        partySlice
     },
 })
 

@@ -42,7 +42,7 @@ export const UseSubscriptionsSupabase = () => {
             let { data: user_profile, error } = await supabase
                     .from('user_profile')
                     .select('pseudo, color')
-                    .eq('id', payload.new.last_user_update)
+                    .eq('user_id', payload.new.last_user_update)
 
             if (error) {
                 notifications.show({
