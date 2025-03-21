@@ -97,8 +97,8 @@ export const JoinPartyDropdown = () => {
                     party_name: data.party_name,
                     party_members: party_members_info,
                     party_owner: '',
-                        party_owner_id: ''
-                    }))
+                    party_owner_id: ''
+                }))
             }
         }
 
