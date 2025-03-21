@@ -21,7 +21,7 @@ root.render(
     <React.StrictMode>
         <Provider store={store}>
             <MantineProvider>
-                <Notifications />
+                <Notifications limit={6} />
                 <UseSubscriptionsSupabase />
                 <UseIntervalForNotifications />
                 <App/>
