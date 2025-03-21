@@ -37,7 +37,7 @@ export const UseIntervalForNotifications = () => {
                     if (map.deathTime <= 0) {
                         return
                     }
-
+                    
                     const deathTime = DateTime.fromMillis(map.deathTime)
                     const diffNow = deathTime.diffNow(['hours', 'minutes', 'seconds', 'milliseconds'])
 

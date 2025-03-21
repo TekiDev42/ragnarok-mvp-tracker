@@ -47,17 +47,18 @@ export const Navbar = () => {
                         </HoverCard.Target>
                         <HoverCard.Dropdown>
                             <Flex direction="column" gap={10}>
-                                <div>Members : {partyMembers.length}</div>
+                                <div className="text-center">Members : <span className="font-bold">{partyMembers.length}</span></div>
 
-                                <Flex direction="column" gap={10}>
+                                <div className='grid grid-cols-2 gap-4'>
                                     {partyMembers.map((member: PartyMember) => (
-                                        <Badge autoContrast key={member.id} 
-                                                variant="light" color={member.color ?? 'gray'} 
-                                                size="md">
+                                        <Badge autoContrast key={member.id}
+                                            w={"100%"}
+                                            variant="light" color={member.color ?? 'gray'} 
+                                            size="lg">
                                             {member.pseudo} {partyOwnerId === member.user_id && '(Leader)'}
                                         </Badge>
                                     ))}
-                                </Flex>
+                                </div>
                             </Flex>
                         </HoverCard.Dropdown>
                     </HoverCard>
