@@ -135,11 +135,12 @@ export class MvpApp {
                 mode: 'detach'
             })
 
-        }
 
-        this.window?.webContents.openDevTools({
-            mode: 'detach'
-        })
+            this.window?.webContents.openDevTools({
+                mode: 'detach'
+            })
+
+        }
 
         // this.window.maximize()
         this.window.removeMenu()
