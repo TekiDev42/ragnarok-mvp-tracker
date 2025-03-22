@@ -44,14 +44,14 @@ export default defineConfig({
         manualChunks: {
           react: ['react', 'react-dom'],
           luxon: ['luxon'],
+          redux: ['react-redux', '@reduxjs/toolkit'],
+          mantineCore: ['@mantine/core'],
           mantineNotifications: ['@mantine/notifications'],
           mantineCharts: ['@mantine/charts'],
           mantineDates: ['@mantine/dates'],
           mantineForm: ['@mantine/form'],
           mantineHooks: ['@mantine/hooks'],
           mantineModals: ['@mantine/modals'],
-          mantineCore: ['@mantine/core'],
-          redux: ['react-redux', '@reduxjs/toolkit'],
         }
       }
     },
