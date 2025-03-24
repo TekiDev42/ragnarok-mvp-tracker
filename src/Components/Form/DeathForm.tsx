@@ -19,7 +19,7 @@ export const DeathFormModal = () => {
     const dispatch = useAppDispatch();
     const { opened, mvp } = useAppSelector(state => state.modalSlice);
     const userSession = useAppSelector(state => state.userSlice.userSession);
-    const partyId = useAppSelector(state => state.userSlice.partyId);
+    const partyId = useAppSelector(state => state.partySlice.partyId);
     const respawnTimer = useAppSelector(state => state.userSlice.respawnTimer)
 
     const [mapsSelected, setMapsSelected] = useState<string[]>([]);
