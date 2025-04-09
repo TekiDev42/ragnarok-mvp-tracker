@@ -5,12 +5,13 @@ import { Autocomplete, AutocompleteProps, ComboboxItem, OptionsFilter } from "@m
 import { useAppSelector } from "@store/Hooks";
 import { Image, Flex, Badge } from "@mantine/core";
 import { filterByNameOrId } from "@store/Slice/Mvp/Slice.ts";
+import { getBadgeColor } from "@/Utils/getBadgeColor";
+
 
 export const ActionSearch = () => {
     const dispatch = useAppDispatch()
     const [timeout, setStateTimeout] = useState<NodeJS.Timeout | null>(null)
     const mvps = useAppSelector((state) => state.Slice.mvps)
-
 
     const searchHandleChange = (value: string) => {
         if (timeout) {
@@ -32,7 +33,12 @@ export const ActionSearch = () => {
             </div>
 
             <Flex direction="column" gap={2}>
-                <Badge size="md" color="blue" variant="light" autoContrast>{mvp?.Id}</Badge>
+                <Flex justify="center" align="center" gap={4}>
+                    <Badge size="md" color="blue" variant="light" autoContrast>{mvp?.Id}</Badge>
+                    <Badge w={"fit-content"} autoContrast size="xs" color={getBadgeColor(mvp?.Size ?? '')}>{mvp?.Size}</Badge>
+                    <Badge w={"fit-content"} autoContrast size="xs" color={getBadgeColor(mvp?.Race ?? '')}>{mvp?.Race}</Badge>
+                    <Badge w={"fit-content"} autoContrast size="xs" color={getBadgeColor(mvp?.Element ?? '')}>{mvp?.Element} Lvl: {mvp?.ElementLevel}</Badge>
+                </Flex>
                 <div className="text-md uppercase font-bold">{mvp?.Name}</div>
             </Flex>
         </Flex>
@@ -45,12 +51,16 @@ export const ActionSearch = () => {
         return (options as ComboboxItem[]).filter((option) => {
             const mvp = mvps.find((mvp) => mvp.Id === parseInt(option.value))
 
-            if (!isNaN(numValue)) {
-                return mvp?.Id === numValue
+            if (!isNaN(numValue) && mvp) {
+                return mvp.Id === numValue
             }
 
             if (mvp) {
-                return mvp?.Name.toLowerCase().includes(searchLower) || mvp?.AegisName.toLowerCase().includes(searchLower)
+                return mvp.Name.toLowerCase().includes(searchLower) 
+                        || mvp.AegisName.toLowerCase().includes(searchLower) 
+                        || mvp.Race?.toLowerCase().includes(searchLower)
+                        || mvp.Size?.toLowerCase().includes(searchLower)
+                        || mvp.Element?.toLowerCase().includes(searchLower)
             }
 
             return false
@@ -64,7 +74,7 @@ export const ActionSearch = () => {
             filter={optionsFilter}
             renderOption={renderAutocompleteOption}
             maxDropdownHeight={300} 
-            placeholder="Search MVP by name, DB name or id"
+            placeholder="Search..."
             onOptionSubmit={searchHandleChange}
             onClear={() => searchHandleChange('')}
             clearable
