@@ -1,4 +1,4 @@
-import { autoUpdater, AppUpdater } from "electron-updater";
+import { autoUpdater, AppUpdater, UpdateInfo } from "electron-updater";
 import { dialog } from "electron";
 
 
@@ -17,28 +17,20 @@ export class appAutoUpdater {
 
     setAutoUpdaterEvents() {
         this.autoUpdater.on('error', (error) => dialog.showErrorBox('Error: ', error === null ? "unknown" : (error.stack || error).toString()))
-        this.autoUpdater.on('update-available', () => this.updateAvailable())
-        this.autoUpdater.on('update-not-available', () => this.updateNotAvailable())
+        this.autoUpdater.on('update-available', (info) => this.updateAvailable(info))
         this.autoUpdater.on('update-downloaded', () => this.updateDownloaded())
     }
 
-    async updateAvailable() {
+    async updateAvailable(info: UpdateInfo) {
         const response = await dialog.showMessageBox({
             title: 'Update Available',
-            message: 'An update is available. Do you want to update now?',
+            message: `An update is available. Do you want to update now? New version: ${info.version}`,
             buttons: ['Yes', 'No']
         })
 
         if (response.response === 0) {
             this.autoUpdater.downloadUpdate()
         }
-    }
-
-    async updateNotAvailable() {
-        dialog.showMessageBox({
-            title: 'No Updates',
-            message: 'Current version is up-to-date.'
-        })
     }
 
     async updateDownloaded() {
