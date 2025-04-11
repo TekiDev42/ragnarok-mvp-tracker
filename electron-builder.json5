@@ -30,7 +30,7 @@
         ]
       }
     ],
-    "artifactName": "${productName}-${version}-Setup.${ext}"
+    "artifactName": "${productName}-${version}-x64.${ext}"
   },
   "msi": {
     "oneClick": false,
