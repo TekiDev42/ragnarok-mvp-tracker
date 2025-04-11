@@ -12,7 +12,7 @@ export class appAutoUpdater {
     }
 
     checkForUpdatesAndNotify() {
-        this.autoUpdater.checkForUpdatesAndNotify()
+        this.autoUpdater.checkForUpdates()
     }
 
     setAutoUpdaterEvents() {
