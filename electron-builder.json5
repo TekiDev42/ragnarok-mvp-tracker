@@ -23,6 +23,12 @@
           "x64"
         ]
       },
+      {
+        "target": "msi",
+        "arch": [
+          "x64"
+        ]
+      }
     ],
     "artifactName": "${productName}-${version}-Setup.${ext}"
   },
@@ -38,9 +44,9 @@
     "perMachine": true,
     "multiLanguageInstaller": true,
     "allowToChangeInstallationDirectory": true,
-    "deleteAppDataOnUninstall": false,
+    "deleteAppDataOnUninstall": true,
     "createDesktopShortcut": true,
     "createStartMenuShortcut": true,
     "shortcutName": "Ragnarok MVP Tracker"
-  }
+  },
 }
