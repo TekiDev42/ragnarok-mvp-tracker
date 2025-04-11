@@ -1,19 +1,22 @@
 {
   "name": "ragnarok-mvp-tracker",
   "private": true,
-  "version": "1.0.27",
+  "version": "1.0.28",
   "type": "module",
-  "author": "Kitey",
+  "author": "MrKitey",
   "description": "Allows tracking of MVP respawns in Ragnarok Online, displays the tomb on the map (official).",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && electron-builder",
+    "build": "tsc && vite build && electron-builder -p always",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/TekiDev42/ragnarok-mvp-tracker.git"
+  "build": {
+    "publish": [{
+        "provider": "github",
+        "owner": "TekiDev42",
+        "repo": "ragnarok-mvp-tracker"
+    }]
   },
   "dependencies": {
     "@electron-forge/maker-squirrel": "^7.8.0",
@@ -34,6 +37,7 @@
     "dayjs": "^1.11.13",
     "electron-builder-squirrel-windows": "^26.0.12",
     "electron-store": "^10.0.1",
+    "electron-updater": "^6.6.2",
     "embla-carousel-react": "^8.6.0",
     "mantine-form-zod-resolver": "^1.1.0",
     "postcss": "^8.5.3",
