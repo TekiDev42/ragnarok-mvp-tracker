@@ -2,6 +2,8 @@
 
 Une application pour suivre et gérer les MVP dans Ragnarok Online.
 
+Télécharger la dernière version pour Windows [ici](https://github.com/TekiDev42/ragnarok-mvp-tracker/releases/)
+
 ## Fonctionnalités
 
 - **Suivi des MVP**
