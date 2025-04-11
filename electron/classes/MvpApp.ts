@@ -10,6 +10,8 @@ import { SettingsManager } from "./SettingsManager";
 import { ICON_APP_PATH, RENDERER_DIST, VITE_DEV_SERVER_URL, __dirname } from "../constants/path.ts";
 import { Schema } from "electron/store/store.ts";
 import { shell } from "electron";
+import { appAutoUpdater } from "./autoUpdater.ts";
+
 
 /**
  * MvpApp class
@@ -30,6 +32,7 @@ export class MvpApp {
     private readonly settingsManager: SettingsManager
     private progress: number = 0
     private appLoaded: boolean = false
+    private autoUpdater: appAutoUpdater | null = null
 
     primaryDisplay: Display | null = null
     windowSize: Size | null = null
@@ -342,6 +345,9 @@ export class MvpApp {
                 this.createTray()
                 this.createWindow()
                 this.setWindowEvent()
+
+                this.autoUpdater = new appAutoUpdater()
+                this.autoUpdater.checkForUpdatesAndNotify()
             })
             .catch((e) => {
                 console.log('Error : ', e)
