@@ -8,6 +8,11 @@
   "directories": {
     "output": "release/${version}",
   },
+  "publish": [{
+      "provider": "github",
+      "owner": "TekiDev42",
+      "repo": "ragnarok-mvp-tracker"
+  }],
   "files": [
     "dist",
     "dist-electron",
@@ -19,12 +24,6 @@
     "target": [
       {
         "target": "nsis",
-        "arch": [
-          "x64"
-        ]
-      },
-      {
-        "target": "msi",
         "arch": [
           "x64"
         ]

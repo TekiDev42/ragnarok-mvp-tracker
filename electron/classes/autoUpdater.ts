@@ -41,7 +41,6 @@ export class appAutoUpdater {
         })
     }
 
-
     async updateDownloaded() {
         dialog.showMessageBox({
             title: 'Install Updates',

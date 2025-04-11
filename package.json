@@ -11,13 +11,6 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "build": {
-    "publish": [{
-      "provider": "github",
-      "owner": "TekiDev42",
-      "repo": "ragnarok-mvp-tracker"
-    }]
-  },
   "dependencies": {
     "@mantine/charts": "^7.17.4",
     "@mantine/core": "^7.17.4",
