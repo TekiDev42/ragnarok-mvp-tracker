@@ -164,14 +164,6 @@ export class MvpApp {
     }
 
     setWindowEvent() {
-        this.window?.on('maximize', () => {
-            /*this.settingsManager.updateSetting('windowMaximized', true)*/
-        })
-
-        this.window?.on('unmaximize', () => {
-            /*this.settingsManager.updateSetting('windowMaximized', false)*/
-        })
-
         this.window?.on('resized', () => {
             const windowBounds = this.window?.getBounds()
             if (!windowBounds) return
