@@ -7,7 +7,6 @@ updateElectronApp({
         repo: 'TekiDev42/ragnarok-mvp-tracker'
     },
     updateInterval: '10 minutes',
-    logger: require('electron-log')
 })
 
 new MvpApp()
