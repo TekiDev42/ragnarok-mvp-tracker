@@ -5,11 +5,10 @@ import { Button, Progress } from "@mantine/core";
 
 
 export const AutoUpdater = () => {
-    const [updateAvailable, setUpdateAvailable] = useState(true)
+    const [updateAvailable, setUpdateAvailable] = useState(false)
     const [updateInfo, setUpdateInfo] = useState<UpdateInfo | null>(null)
     const [updateDownloaded, setUpdateDownloaded] = useState(false)
     const [updateProgress, setUpdateProgress] = useState<ProgressInfo | null>(null)
-
     const [isDownloading, setIsDownloading] = useState(false)
 
     useEffect(() => {
