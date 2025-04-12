@@ -4,6 +4,9 @@
  * Extends the Window interface to include the mvpApi object.
  */
 interface Window {
+    /**
+     * Represents the MVP API.
+     */
     mvpApi: {
         // MVP related methods
         /**
@@ -63,6 +66,18 @@ interface Window {
          * Opens a link in the default browser.
          */
         openLink: (link: string) => void
+    }
+
+    /**
+     * Represents the auto updater API.
+     */
+    autoUpdaterApi: {
+        checkForUpdates: () => void
+        downloadUpdate: () => void
+        quitAndInstall: () => void
+        updateAvailable: (callback: (info: UpdateInfo) => void) => void
+        updateDownloaded: (callback: () => void) => void
+        downloadProgress: (callback: (progress: ProgressInfo) => void) => void
     }
 }
 

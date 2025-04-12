@@ -1,5 +1,7 @@
 import { contextBridge, ipcRenderer } from "electron"
 import { Schema } from "./store/store"
+import { ProgressInfo, UpdateInfo } from "electron-updater"
+
 
 contextBridge.exposeInMainWorld('mvpApi', {
     // MVPS
@@ -86,6 +88,18 @@ contextBridge.exposeInMainWorld('mvpApi', {
     openLink: (link: string) => ipcRenderer.send('openLink', link)
 })
 
+
 contextBridge.exposeInMainWorld('splashScreenApi', {
     progress: () => ipcRenderer.invoke('progress')
+})
+
+
+contextBridge.exposeInMainWorld('autoUpdaterApi', {
+    checkForUpdates: () => ipcRenderer.send('checkForUpdates'),
+    downloadUpdate: () => ipcRenderer.send('downloadUpdate'),
+    quitAndInstall: () => ipcRenderer.send('quitAndInstall'),
+
+    updateAvailable: (callback: (info: UpdateInfo) => void) => ipcRenderer.on('updateAvailable', (_event, value) => callback(value)),
+    updateDownloaded: (callback: () => void) => ipcRenderer.on('updateDownloaded', (_event) => callback()),
+    downloadProgress: (callback: (progress: ProgressInfo) => void) => ipcRenderer.on('downloadProgress', (_event, value) => callback(value))
 })
