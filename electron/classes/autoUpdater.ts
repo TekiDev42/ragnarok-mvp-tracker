@@ -16,18 +16,12 @@ export class appAutoUpdater {
      */
     constructor(mainWindow: BrowserWindow) {
         this.autoUpdater = autoUpdater
-        this.autoUpdater.autoDownload = false
         this.mainWindow = mainWindow
-
-        this.setAutoUpdaterEvents()
     }
 
-
-    /**
-     * Checks if there are any updates available for the application
-     */
-    checkForUpdatesAndNotify() {
-        this.autoUpdater.checkForUpdates()
+    init(){
+        this.autoUpdater.autoDownload = false
+        this.setAutoUpdaterEvents()
     }
 
 
@@ -37,9 +31,11 @@ export class appAutoUpdater {
      */
     setAutoUpdaterEvents() {
         this.autoUpdater.on('error', (error) => dialog.showErrorBox('Error: ', error === null ? "unknown" : (error.stack || error).toString()))
+        this.autoUpdater.on('checking-for-update', () => console.log('Checking for update...'))
         this.autoUpdater.on('update-available', (info: UpdateInfo) => this.updateAvailable(info))
         this.autoUpdater.on('update-downloaded', () => this.updateDownloaded())
         this.autoUpdater.on('download-progress', (progress: ProgressInfo) => this.downloadProgress(progress))
+        this.autoUpdater.on('update-not-available', () => console.log('Update not available'))
 
         ipcMain.on('checkForUpdates', () => this.autoUpdater.checkForUpdates())
         ipcMain.on('downloadUpdate', () => this.autoUpdater.downloadUpdate())
@@ -58,7 +54,6 @@ export class appAutoUpdater {
 
     /**
      * Handles the case when an update is available
-     * Shows a dialog to the user asking if they want to update
      * @param info - Information about the available update
      */
     async updateAvailable(info: UpdateInfo) {
@@ -67,7 +62,6 @@ export class appAutoUpdater {
 
     /**
      * Handles the case when an update is downloaded
-     * Shows a message to the user and initiates the update installation
      */
     async updateDownloaded() {
         this.mainWindow.webContents.emit('updateDownloaded')

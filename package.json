@@ -7,7 +7,8 @@
   "description": "Allows tracking of MVP respawns in Ragnarok Online, displays the tomb on the map (official).",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && electron-builder -p always",
+    "build": "tsc && vite build && electron-builder",
+    "build:publish": "tsc && vite build && electron-builder -p always",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

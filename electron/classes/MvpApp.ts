@@ -313,6 +313,7 @@ export class MvpApp {
                 this.setWindowEvent()
 
                 this.autoUpdater = new appAutoUpdater(this.window as BrowserWindow)
+                this.autoUpdater.init()
             })
             .catch((e) => {
                 console.log('Error : ', e)
