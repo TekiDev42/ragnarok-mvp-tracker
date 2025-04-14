@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Portal } from '@mantine/core';
 import { UpdateInfo, ProgressInfo } from "electron-updater";
 import { Button, Progress } from "@mantine/core";
+import { bytesToMB } from "@utils/bytesToMB";
 
 
 export const AutoUpdater = () => {
@@ -11,23 +12,21 @@ export const AutoUpdater = () => {
     const [updateProgress, setUpdateProgress] = useState<ProgressInfo | null>(null)
     const [isDownloading, setIsDownloading] = useState(false)
 
+
     useEffect(() => {
         window.autoUpdaterApi.checkForUpdates()
 
         window.autoUpdaterApi.updateAvailable((info) => {
-            console.log(info)
             setUpdateAvailable(true)
             setUpdateInfo(info)
         })
 
         window.autoUpdaterApi.updateDownloaded(() => {
-            console.log('update downloaded')
             setUpdateDownloaded(true)
             setIsDownloading(false)
         })
 
         window.autoUpdaterApi.downloadProgress((progress) => {
-            console.log(progress)
             setUpdateProgress(progress)
         })
 
@@ -54,9 +53,11 @@ export const AutoUpdater = () => {
 
                     {isDownloading &&
                         <div className="flex flex-col items-center gap-1 w-full">
-                            <div className="text-sm">Download speed : {((updateProgress?.bytesPerSecond ?? 0) / (1024 * 1024)).toFixed(1)} MB/s</div>
-                            <div className="text-sm">Progress : {updateProgress?.percent ?? 0} %</div>
-                            <Progress className="w-full" color="indigo" size="lg" radius="xl" transitionDuration={100} value={updateProgress?.percent ?? 0} striped animated />
+                            <div className="text-sm">Download speed : {bytesToMB(updateProgress?.bytesPerSecond ?? 0, 1)}/s</div>
+                            <div className="w-full relative">
+                                <div className="text-sm absolute top-1/2 -translate-y-1/2 left-2 text-white z-10">{Math.round(updateProgress?.percent ?? 0)} %</div>
+                                <Progress className="w-full" color={"grape"} size="20px" transitionDuration={100} value={updateProgress?.percent ?? 0} animated />
+                            </div>
                         </div>
                     }
 

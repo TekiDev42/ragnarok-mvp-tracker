@@ -205,7 +205,7 @@ export class MvpApp {
                     this.window.show()
                     this.window.focus()
                 }
-            }, 2_000)
+            }, 1_000)
 
         })
 
