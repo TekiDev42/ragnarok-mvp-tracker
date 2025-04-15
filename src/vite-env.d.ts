@@ -215,7 +215,7 @@ interface Mvp {
 interface MvpState {
     mvps: Mvp[]
     filtered: Mvp[]
-    search: string
+    mvpFocus: number | null
 }
 
 /**

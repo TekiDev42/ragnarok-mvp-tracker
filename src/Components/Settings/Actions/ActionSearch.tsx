@@ -1,27 +1,18 @@
-import { useState } from "react";
 import { useAppDispatch } from "@store/Hooks.ts";
-import { setSearch as setSearchAction } from "@store/Slice/Mvp/Slice.ts";
+import { setMvpFocus } from "@store/Slice/Mvp/Slice.ts";
 import { Autocomplete, AutocompleteProps, ComboboxItem, OptionsFilter } from "@mantine/core";
 import { useAppSelector } from "@store/Hooks";
 import { Image, Flex, Badge } from "@mantine/core";
-import { filterByNameOrId } from "@store/Slice/Mvp/Slice.ts";
 import { getBadgeColor } from "@/Utils/getBadgeColor";
 
 
 export const ActionSearch = () => {
     const dispatch = useAppDispatch()
-    const [timeout, setStateTimeout] = useState<NodeJS.Timeout | null>(null)
     const mvps = useAppSelector((state) => state.Slice.mvps)
 
     const searchHandleChange = (value: string) => {
-        if (timeout) {
-            clearTimeout(timeout)
-        }
-
-        setStateTimeout(setTimeout(() => {
-            dispatch(setSearchAction(value))
-            dispatch(filterByNameOrId())
-        }, 400))
+        const numValue = parseInt(value)
+        dispatch(setMvpFocus(isNaN(numValue) ? null : numValue))
     }
 
     const renderAutocompleteOption: AutocompleteProps['renderOption'] = ({ option }) => {

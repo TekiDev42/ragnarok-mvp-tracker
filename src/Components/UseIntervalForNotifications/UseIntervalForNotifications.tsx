@@ -6,8 +6,7 @@ import { Flex } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { addNotification } from "@store/Slice/User/UserSlice.ts";
 import { useState } from "react";
-import { reSortMvp } from "@store/Slice/Mvp/Slice.ts";
-import { setMvpMaps as setMvpMapsAction } from "@store/Slice/Mvp/Slice.ts";
+import { reSortMvp, setMvpFocus, setMvpMaps as setMvpMapsAction } from "@store/Slice/Mvp/Slice.ts";
 import { supabase } from '@/supabase/supabase'
 
 
@@ -54,7 +53,9 @@ export const UseIntervalForNotifications = () => {
                             message: <Flex direction="column" gap={0}>
                                 <div className="text-gray-500 text-xs italic">{deathTime.toFormat("dd/MM/yyyy HH'h'mm")}</div>
                                 <div className="text-gray-800 text-xs font-bold hover:text-yellow-500">
-                                    <a href={`#mvp-${mvp.Id}`}>MVP : {mvp.Name}</a>
+                                    <div className="cursor-pointer" onClick={() => {
+                                        dispatch(setMvpFocus(mvp.Id))
+                                    }}>MVP : {mvp.Name}</div>
                                 </div>
                                 <div className="text-gray-800 text-xs font-bold flex gap-1 items-center">
                                     <span>Map : {map.name}</span>

@@ -15,6 +15,7 @@ import { Notifications } from "@mantine/notifications";
 import { UseSubscriptionsSupabase } from "@components/SubscriptionsSupabase/SubscriptionsSupabase"
 import { UseIntervalForNotifications } from "@components/UseIntervalForNotifications/UseIntervalForNotifications"
 import { AutoUpdater } from "@components/AutoUpdater/AutoUpdater"
+import { MvpFocus } from "@components/MvpFocus/MvpFocus"
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 
@@ -26,6 +27,7 @@ root.render(
                 <UseSubscriptionsSupabase />
                 <UseIntervalForNotifications />
                 <AutoUpdater />
+                <MvpFocus />
                 <App/>
             </MantineProvider>
         </Provider>

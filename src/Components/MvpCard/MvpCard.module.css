@@ -1,6 +1,5 @@
 .card {
-    @apply relative flex flex-col w-full shadow-lg py-2 select-none;
-    border-radius: 1rem;
+    @apply relative flex flex-col w-full shadow-lg py-2 select-none rounded-xl;
     min-height: 300px;
 }
 

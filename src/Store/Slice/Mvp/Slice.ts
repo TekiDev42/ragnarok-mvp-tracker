@@ -14,7 +14,7 @@ import { sortMvps } from "@utils/Sort/sortMvps"
 const initialState: MvpState = {
     mvps: [],
     filtered: [],
-    search: ""
+    mvpFocus: null
 }
 
 /**
@@ -68,14 +68,14 @@ export const Slice = createSlice({
         },
         filterByNameOrId: filterByNameOrIdReducer,
         reset: resetReducer,
-        setSearch: (state, action: PayloadAction<string>) => {
-            state.search = action.payload
+        setMvpFocus: (state, action: PayloadAction<number | null>) => {
+            state.mvpFocus = action.payload
         }
     }
 })
 
 
 export const { setMvpBookmarkStatus, filterByNameOrId, reSortMvp, 
-                reset, setMvpMaps, setMvps, setMvpsFromDb, setSearch } = Slice.actions
+                reset, setMvpMaps, setMvps, setMvpsFromDb, setMvpFocus } = Slice.actions
 
 export default Slice.reducer

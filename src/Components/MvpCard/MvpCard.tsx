@@ -13,12 +13,14 @@ import { Image } from "@mantine/core";
 import { Badge } from "@mantine/core";
 import { getBadgeColor } from "@/Utils/getBadgeColor";
 import { useState } from "react";
+import { CloseButton } from "@mantine/core";
+import { setMvpFocus } from "@store/Slice/Mvp/Slice";
 
 
-export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
-    const dispatch = useAppDispatch();
-    const animation = useAppSelector((state) => state.userSlice.animation);
-    const [color, setColor] = useState("white");
+export const MvpCard = ({ mvp, isFocus = false }: PropsWithChildren & { mvp: Mvp, isFocus?: boolean }) => {
+    const dispatch = useAppDispatch()
+    const animation = useAppSelector((state) => state.userSlice.animation)
+    const [color, setColor] = useState("white")
 
     /**
      * Handles the click event on the death action button
@@ -35,7 +37,19 @@ export const MvpCard = ({ mvp }: PropsWithChildren & { mvp: Mvp }) => {
     }
 
     return (
-        <div id={'mvp-' + mvp.Id.toString()} className={`${style.card} glass`}>
+        <div id={'mvp-' + mvp.Id.toString() + (isFocus ? '-focus' : '')} className={`${style.card} glass ${isFocus ? 'z-20' : ''}`}>
+
+            {isFocus && <div className="w-full h-5 flex justify-center items-center border-b border-white/30">
+                            <h2 className="text-white text-sm uppercase">Focus mode</h2>
+
+                            <div className="absolute top-0 right-0 z-50">
+                                <CloseButton c={"white"} variant="transparent" onClick={() => {
+                                    dispatch(setMvpFocus(null))
+                                }} />
+                            </div>
+                        </div>
+            }
+
             <div className={"flex items-center justify-between py-0 px-2"}>
                 <Badge autoContrast onMouseEnter={() => setColor("indigo")} onMouseLeave={() => setColor("white")} 
                         w={"fit-content"} size="md" color={color} className="ro-cursor"
