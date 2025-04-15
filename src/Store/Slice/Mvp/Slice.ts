@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { bookmarkReducer } from "@store/Reducers/Mvp/bookmarkReducer"
 import { mvpMapsReducer } from "@store/Reducers/Mvp/mvpMapsReducer"
-import { filterByNameOrIdReducer } from "@store/Reducers/Mvp/filterByNameOrIdReducer"
 import { resetReducer } from "@store/Reducers/Mvp/resetReducer"
 import { reSortMvpReducer } from "@store/Reducers/Mvp/reSortMvpReducer"
 import { WritableDraft } from "immer"
@@ -66,7 +65,6 @@ export const Slice = createSlice({
             state.filtered = sortedMvps as WritableDraft<Mvp>[]
             state.mvps = sortedMvps as WritableDraft<Mvp>[]
         },
-        filterByNameOrId: filterByNameOrIdReducer,
         reset: resetReducer,
         setMvpFocus: (state, action: PayloadAction<number | null>) => {
             state.mvpFocus = action.payload
@@ -75,7 +73,7 @@ export const Slice = createSlice({
 })
 
 
-export const { setMvpBookmarkStatus, filterByNameOrId, reSortMvp, 
+export const { setMvpBookmarkStatus, reSortMvp, 
                 reset, setMvpMaps, setMvps, setMvpsFromDb, setMvpFocus } = Slice.actions
 
 export default Slice.reducer
