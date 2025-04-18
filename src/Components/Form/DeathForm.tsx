@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState, useMemo } from "react";
 import { DateTime } from "luxon";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { setMvpMaps } from "@store/Slice/Mvp/Slice.ts";
-import { setOpened } from "@store/Slice/Modal/ModalSlice.ts";
+import { setOpened } from "@/Store/Slice/Modal/DeathFormModalSlice";
 import { TimeInputWithIcon } from "@/Components/Form/TimeInput/TimeInput.tsx";
 import { MapChip } from "@/Components/MapChip/MapChip.tsx";
 import { supabase } from "@/supabase/supabase";
@@ -17,7 +17,7 @@ import { notifications } from "@mantine/notifications";
 
 export const DeathFormModal = () => {
     const dispatch = useAppDispatch();
-    const { opened, mvp } = useAppSelector(state => state.modalSlice);
+    const { opened, mvp } = useAppSelector(state => state.deathFormModalSlice);
     const userSession = useAppSelector(state => state.userSlice.userSession);
     const partyId = useAppSelector(state => state.partySlice.partyId);
     const respawnTimer = useAppSelector(state => state.userSlice.respawnTimer)
@@ -241,7 +241,7 @@ export const DeathFormModal = () => {
     }, [updateMapData]);
 
     return (
-        <Modal opened={opened} onClose={handleClose} centered withCloseButton={false} radius="lg">
+        <Modal opened={opened} onClose={handleClose} centered withCloseButton={false} radius="md">
             <Text>
                 <span className="text-2xl">{mvp.Name}</span>
             </Text>

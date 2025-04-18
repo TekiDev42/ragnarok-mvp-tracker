@@ -1,14 +1,15 @@
 import style from './MvpCard.module.css'
-import { HeadstoneIcon } from "@components/Icons/Icons.tsx";
+import { HeadstoneIcon, StatsIcon } from "@components/Icons/Icons.tsx";
 import { ActionIcon, Flex, ScrollArea } from "@mantine/core";
 import { MvpMapCardList } from "@components/MvpCard/Maps/MvpMapCardList.tsx";
-import { DropsHoverCard } from "@components/MvpCard/Drops/DropsHoverCard.tsx";
+// TODO : Delete import { DropsHoverCard } from "@components/MvpCard/Drops/DropsHoverCard.tsx";
 import { Bookmark } from "@components/MvpCard/Bookmark/Bookmark.tsx";
-import { setMvp, setOpened } from "@store/Slice/Modal/ModalSlice.ts";
+import { setDeathMvp, setOpened } from "@/Store/Slice/Modal/DeathFormModalSlice";
+import { setMvpInfosModal } from "@/Store/Slice/Modal/MvpInfosModalSlice";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { PropsWithChildren } from 'react';
 import { GetPathImage } from '@/Utils/GetImage'
-import { StatsHoverCard } from "@components/MvpCard/Stats/StatsHover.tsx";
+// TODO : Delete import { StatsHoverCard } from "@components/MvpCard/Stats/StatsHover.tsx";
 import { Image } from "@mantine/core";
 import { Badge } from "@mantine/core";
 import { getBadgeColor } from "@/Utils/getBadgeColor";
@@ -27,7 +28,7 @@ export const MvpCard = ({ mvp, isFocus = false }: PropsWithChildren & { mvp: Mvp
      * Opens the MVP death modal
      */
     const handleClick = () => {
-        dispatch(setMvp(mvp));
+        dispatch(setDeathMvp(mvp));
         dispatch(setOpened(true));
     };
 
@@ -81,8 +82,17 @@ export const MvpCard = ({ mvp, isFocus = false }: PropsWithChildren & { mvp: Mvp
 
             <div className={style.actions}>
                 <Flex gap={8} flex={1}>
-                    <StatsHoverCard mvp={mvp} />
-                    <DropsHoverCard drops={mvp.Drops ?? []} mvpDrops={mvp.MvpDrops ?? []} />
+                    <ActionIcon
+                        className="glass ro-cursor"
+                        variant="gradient"
+                        gradient={{ from: 'pink', to: 'grape', deg: 90 }}
+                        color="#1e293b"
+                        radius="xl"
+                        aria-label="Action open stats"
+                        onClick={() => dispatch(setMvpInfosModal(mvp))}
+                    >
+                        <StatsIcon />
+                    </ActionIcon>
                 </Flex>
 
                 {mvp.mvpMaps.length > 0 && <ActionIcon

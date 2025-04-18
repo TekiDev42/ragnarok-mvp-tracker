@@ -1,12 +1,6 @@
-import { Divider } from "@mantine/core";
+import { Divider, ScrollArea } from "@mantine/core";
 import { FC } from "react";
 
-/**
- * Props for the Drops component
- * @interface DropsProps
- * @property {string} label - The label for the drops section
- * @property {Drop[]} drops - An array of Drop objects to be displayed
- */
 interface DropsProps {
   label: string
   drops: Drop[]
@@ -16,35 +10,34 @@ interface DropsProps {
 
 /**
  * Drops component displays a list of items and their drop rates
- *
- * @component
- * @param {DropsProps} props - The props for the Drops component
- * @returns {JSX.Element} A fragment containing a divider and a list of drops
- *
  * @example
  * <Drops label="MVP Drops" drops={mvpDrops} />
  */
 export const Drops: FC<DropsProps> = ({ drops, label, rates, cardRates }) => (
-    <>
+    <div className="w-1/2 flex flex-col gap-2">
         <Divider my="xs" label={label} labelPosition="center" />
-    
-        {drops.map(({ Item, Rate }, index) => {
 
-            let itemRate = Rate * rates
+        <ScrollArea h={180} type="always" className={"px-3"}>
+            <ul className="w-full pt-0 px-3">
+                {drops.map(({ Item, Rate }, index) => {
 
-            if (Item.includes('Card')){
-                itemRate = Rate * cardRates
-            }
+                let itemRate = Rate * rates
 
-            return (
-                <li
-                    key={`${Item}-${index}`}
-                    className="flex justify-between w-full p-1"
-                    >
-                    <div>{Item.replace(/_/g, ' ')}</div>
-                    <div>{((itemRate / 100) > 100 ? 100.0 : (itemRate / 100).toFixed(2))}%</div>
-                </li> 
-            )
-        })}
-    </>
+                if (Item.includes('Card')){
+                    itemRate = Rate * cardRates
+                }
+
+                return (
+                    <li
+                        key={`${Item}-${index}`}
+                        className="flex justify-between w-full p-1"
+                        >
+                        <div>{Item.replace(/_/g, ' ')}</div>
+                        <div>{((itemRate / 100) > 100 ? 100.0 : (itemRate / 100).toFixed(2))}%</div>
+                    </li> 
+                )
+            })}
+            </ul>
+        </ScrollArea>
+    </div>
 );

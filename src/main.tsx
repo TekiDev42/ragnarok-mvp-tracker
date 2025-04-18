@@ -16,6 +16,7 @@ import { UseSubscriptionsSupabase } from "@components/SubscriptionsSupabase/Subs
 import { UseIntervalForNotifications } from "@components/UseIntervalForNotifications/UseIntervalForNotifications"
 import { AutoUpdater } from "@components/AutoUpdater/AutoUpdater"
 import { MvpFocus } from "@components/MvpFocus/MvpFocus"
+import { MvpInfosModal } from './Components/MvpInfosModal/MvpInfosModal.tsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 
@@ -28,6 +29,7 @@ root.render(
                 <UseIntervalForNotifications />
                 <AutoUpdater />
                 <MvpFocus />
+                <MvpInfosModal />
                 <App/>
             </MantineProvider>
         </Provider>

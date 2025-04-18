@@ -1,10 +1,8 @@
-import { HoverCard, ActionIcon} from "@mantine/core";
-import { StatsIcon } from "@components/Icons/Icons.tsx";
-import { NumberFormatter } from "@mantine/core";
-import { Badge } from "@mantine/core";
+import { Badge } from "@mantine/core"
+import { NumberFormatter } from "@mantine/core"
 import { RadarChart } from '@mantine/charts';
 
-interface StatsHoverCardProps {
+interface MvpStatsProps {
     mvp: Mvp
 }
 
@@ -33,23 +31,9 @@ const formatNumber = (value: number) => {
     return <NumberFormatter suffix={suffix} thousandSeparator=" " decimalSeparator="," value={valueFixed} />
 }
 
-export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
+export const MvpStats = ({mvp}: MvpStatsProps) => {
     return (
-        <HoverCard width={"auto"} shadow="md">
-            <HoverCard.Target>
-                <ActionIcon
-                    className="glass ro-cursor"
-                    variant="gradient"
-                    gradient={{ from: 'pink', to: 'grape', deg: 90 }}
-                    color="#1e293b"
-                    radius="xl"
-                    aria-label="Action open stats"
-                >
-                    <StatsIcon />
-                </ActionIcon>
-            </HoverCard.Target>
-            <HoverCard.Dropdown style={{ width: "fit-content" }}>
-
+        <div className="flex flex-col">
             <div className="flex justify-center items-center gap-2">
                 <Badge autoContrast size="lg" color="violet.1">
                     Level: {mvp.Level}
@@ -60,8 +44,8 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                 </Badge>
             </div>
 
-            <div className="flex justify-center items-center gap-2">
-                <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+                <div className="flex flex-col w-1/2 gap-1">
                     <div className="flex flex-col gap-1">
                         <h2 className="text-md font-bold">Attack</h2>
                         <div className="grid grid-cols-2 justify-left gap-1 py-1">
@@ -126,7 +110,7 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                     </div>        
                 </div>
 
-                <div className="flex flex-col gap-1 items-center">
+                <div className="flex flex-col w-1/2 gap-1 items-center">
                     <h2 className="text-md font-bold text-center">Stats</h2>
                     <RadarChart
                         h={200}
@@ -146,7 +130,6 @@ export const StatsHoverCard = ({ mvp }: StatsHoverCardProps) => {
                     />
                 </div>
             </div>
-            </HoverCard.Dropdown>
-        </HoverCard>
+        </div>
     )
 }

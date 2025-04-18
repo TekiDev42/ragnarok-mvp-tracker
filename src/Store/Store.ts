@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit"
 import Slice from "@store/Slice/Mvp/Slice"
-import modalSlice from '@store/Slice/Modal/ModalSlice'
+import deathFormModalSlice from '@/Store/Slice/Modal/DeathFormModalSlice'
+import mvpInfosModalSlice from '@/Store/Slice/Modal/MvpInfosModalSlice'
 import userSlice from '@store/Slice/User/UserSlice'
 import partySlice from '@store/Slice/Party/PartySlice'
 
@@ -22,7 +23,8 @@ import partySlice from '@store/Slice/Party/PartySlice'
 export const store = configureStore({
     reducer: {
         Slice,
-        modalSlice,
+        deathFormModalSlice,
+        mvpInfosModalSlice,
         userSlice,
         partySlice
     },

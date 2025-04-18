@@ -26,7 +26,7 @@ export const MapHoverCard = ({mvpmap, isInstance}: PropsWithChildren & {mvpmap: 
             </Flex>
         }
 
-        {!isInstance && <HoverCard withArrow={true} arrowSize={12} position={"right"} width={300} shadow="md">
+        {!isInstance && <HoverCard withArrow={true} keepMounted arrowSize={12} position={"right"} width={300} shadow="md">
             <HoverCard.Target>
                 <Flex align={"center"} gap={5}>
                     <IconMapPin2 size={18}/>
