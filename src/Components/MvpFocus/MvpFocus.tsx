@@ -64,7 +64,7 @@ export const MvpFocus = () => {
     return (
         isOpen && mvpFocus && <Portal>
             <div 
-                className={`cursor-grab w-80 fixed z-[9999] border-4 border-orange-500 rounded-2xl overflow-hidden ${isDragging ? 'cursor-grabbing' : ''}`}
+                className={`cursor-grab w-80 fixed z-50 border-4 border-orange-500 rounded-2xl overflow-hidden ${isDragging ? 'cursor-grabbing' : ''}`}
                 style={{
                     top: `${position.y}px`,
                     left: `${position.x}px`
