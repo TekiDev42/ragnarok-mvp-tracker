@@ -49,9 +49,8 @@ export const UseIntervalForNotifications = () => {
                         }));
     
                         notifications.show({
-                            title: <div className="text-gray-500 text-xs italic">Respawn</div>,
+                            title: <div className="text-gray-500 text-xs italic">Respawn {deathTime.toFormat("dd/MM/yyyy HH'h'mm")}</div>,
                             message: <Flex direction="column" gap={0}>
-                                <div className="text-gray-500 text-xs italic">{deathTime.toFormat("dd/MM/yyyy HH'h'mm")}</div>
                                 <div className="text-gray-800 text-xs font-bold hover:text-yellow-500">
                                     <div className="cursor-pointer" onClick={() => {
                                         dispatch(setMvpFocus(mvp.Id))
