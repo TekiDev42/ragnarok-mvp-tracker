@@ -130,7 +130,6 @@ export class MvpApp {
             this.window?.webContents.openDevTools({
                 mode: 'detach'
             })
-
         }
 
         // this.window.maximize()

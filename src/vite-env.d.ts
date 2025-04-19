@@ -224,6 +224,7 @@ interface MvpState {
 interface MvpNotification {
     id: string
     mvpName: string
+    mvpId: number
     mapName: string
     respawn: number
 }

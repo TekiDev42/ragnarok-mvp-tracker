@@ -25,7 +25,6 @@ export const UseIntervalForNotifications = () => {
 
     const [audio] = useState<HTMLAudioElement>(new Audio('sounds/sign_right.wav'))
 
-
     useEffect(() => {
         const interval = setInterval(async () => {
             let updated = false
@@ -44,6 +43,7 @@ export const UseIntervalForNotifications = () => {
                         dispatch(addNotification({
                             id: uuidv4(),
                             mvpName: mvp.Name,
+                            mvpId: mvp.Id,
                             mapName: map.name,
                             respawn: map.deathTime,
                         }));
@@ -52,7 +52,7 @@ export const UseIntervalForNotifications = () => {
                             title: <div className="text-gray-500 text-xs italic">Respawn : {deathTime.toFormat("dd/MM/yyyy HH'h'mm")}</div>,
                             message: <Flex direction="column" gap={0}>
                                 <div className="text-gray-800 text-xs font-bold hover:text-yellow-500">
-                                    <div className="cursor-pointer" onClick={() => {
+                                    <div className="ro-cursor" onClick={() => {
                                         dispatch(setMvpFocus(mvp.Id))
                                     }}>MVP : {mvp.Name}</div>
                                 </div>
@@ -68,7 +68,7 @@ export const UseIntervalForNotifications = () => {
                             style: {
                                 backgroundColor: 'white',
                             },
-                        });
+                        })
     
                         if (soundNotification) {
                             audio.volume = notificationVolume / 100;
@@ -101,6 +101,7 @@ export const UseIntervalForNotifications = () => {
                                         border: '1px solid #FFF1F0',
                                     }
                                 })
+
                                 return
                             }
 
