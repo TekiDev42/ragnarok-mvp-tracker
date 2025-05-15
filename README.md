@@ -10,6 +10,7 @@ Download the latest version for Windows [here](https://github.com/TekiDev42/ragn
 [![Image 2](./images-preview/mini-2.png)](./images-preview/2.png)
 [![Image 3](./images-preview/mini-3.png)](./images-preview/3.png)
 [![Image 4](./images-preview/mini-4.png)](./images-preview/4.png)
+
 [![Image 5](./images-preview/mini-5.png)](./images-preview/5.png)
 [![Image 6](./images-preview/mini-6.png)](./images-preview/6.png)
 [![Image 7](./images-preview/mini-7.png)](./images-preview/7.png)
