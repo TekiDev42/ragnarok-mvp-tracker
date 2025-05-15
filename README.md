@@ -1,4 +1,4 @@
-# Ragnarok Online MVP Timer
+# Ragnarok Online MVP Respawn Timer
 
 An application to track and manage MVPs in Ragnarok Online.
 
