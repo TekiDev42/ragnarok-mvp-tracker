@@ -11,6 +11,10 @@ export const MapHoverCard = ({mvpmap, isInstance}: PropsWithChildren & {mvpmap: 
         y: sizeImage / mvpmap.size.height
     }
 
+    if (mvpmap.name === 'ra_fild03') {
+        console.log('maphovercard' , mvpmap.tombPos.x, mvpmap.tombPos.y)
+    }
+
     const graveIconSize = 16
 
     const diff = DateTime.now().plus({minutes: mvpmap.respawnTimer}).diff(DateTime.now(), ['hours', 'minutes', 'seconds'])
@@ -37,24 +41,25 @@ export const MapHoverCard = ({mvpmap, isInstance}: PropsWithChildren & {mvpmap: 
                 <Flex justify={"center"} align={"center"}>
                     <div className={style.map}>
                         <div className="text-sm text-white py-1">{mvpmap.displayName}</div>
-                        { mvpmap.tombPos.x > 0 && mvpmap.tombPos.y > 0 &&
-                            <IconGrave color={"transparent"}
-                                fill={"#ffd43b"}
-                                style={{
-                                    position: "absolute",
-                                    left: `${mvpmap.tombPos.x * ratio.x - (graveIconSize / 2)}px`,
-                                    bottom: `${mvpmap.tombPos.y * ratio.y}px`,
-                                    width: `${graveIconSize}px`,
-                                    height: `${graveIconSize}px`
-                                }}
-                            />
-                        }
-                        <figure>
+                        <figure style={{position: "relative"}}>
                             <img loading={"lazy"}
                                  style={{"--image-size": `${sizeImage}px`} as CSSProperties & {"--image-size": string}}
                                  src={`images/maps/${mvpmap.name}.webp`}
                                  alt={mvpmap.name}
                             />
+
+                            { mvpmap.tombPos.x > 0 && mvpmap.tombPos.y > 0 &&
+                                <IconGrave color={"transparent"}
+                                    fill={"#ffd43b"}
+                                    style={{
+                                        position: "absolute",
+                                        left: `${mvpmap.tombPos.x * ratio.x - (graveIconSize / 2)}px`,
+                                        bottom: `${mvpmap.tombPos.y * ratio.y}px`,
+                                        width: `${graveIconSize}px`,
+                                        height: `${graveIconSize}px`
+                                    }}
+                                />
+                            }
                         </figure>
 
                         <div className="text-sm text-white py-1">Respawn time: {diff.toMillis() > 0 ? diff.toFormat("hh'h'mm") : "Unknown"}</div>

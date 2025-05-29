@@ -113,7 +113,6 @@ export class MvpApp {
             show: false,
         })
 
-
         if (VITE_DEV_SERVER_URL) {
             this.window.loadURL(VITE_DEV_SERVER_URL)
         } else {

@@ -3,8 +3,8 @@
  * @description This file contains the DeathFormModal component, which is responsible for handling the MVP death form.
  */
 
-import { NumberInput, Text, Modal, Flex, Button, Chip, Group } from "@mantine/core";
-import { useCallback, useEffect, useState, useMemo } from "react";
+import { Text, Modal, Flex, Button, Chip, Group, ScrollArea } from "@mantine/core";
+import { useCallback, useEffect, useState, useMemo, CSSProperties } from "react";
 import { DateTime } from "luxon";
 import { useAppDispatch, useAppSelector } from "@store/Hooks.ts";
 import { setMvpMaps } from "@store/Slice/Mvp/Slice.ts";
@@ -13,6 +13,8 @@ import { TimeInputWithIcon } from "@/Components/Form/TimeInput/TimeInput.tsx";
 import { MapChip } from "@/Components/MapChip/MapChip.tsx";
 import { supabase } from "@/supabase/supabase";
 import { notifications } from "@mantine/notifications";
+import { sizeImage } from "@/Constants/defaults";
+import { IconGrave } from "@tabler/icons-react";
 
 
 export const DeathFormModal = () => {
@@ -25,6 +27,8 @@ export const DeathFormModal = () => {
     const [mapsSelected, setMapsSelected] = useState<string[]>([]);
     const [mapsData, setMapsData] = useState<MvpMap[]>([]);
     const [j, setJ] = useState<string>("today");
+
+    const graveIconSize = 16
 
     /**
      * Memoized array of MVP map names
@@ -240,8 +244,42 @@ export const DeathFormModal = () => {
         setJ(value);
     }, [updateMapData]);
 
+
+    const getStyleTomb = useCallback((map: string): CSSProperties => {
+        const mvpMap = mvp.mvpMaps.find(mvpmap => mvpmap.name === map)
+        const mapData = mapsData.find(item => item.name === map)
+    
+        if (!mvpMap || !mapData) {
+            return {
+                position: "absolute",
+                left: `0px`,
+                bottom: `0px`,
+                width: 0,
+                height: 0
+            }
+        }
+
+        const ratio = {
+            x: sizeImage / mvpMap.size.width,
+            y: sizeImage / mvpMap.size.height
+        }
+        
+        console.log('deathform' , mapData.tombPos.x, mapData.tombPos.y)
+
+        return {
+            position: "absolute",
+            left: `${mapData.tombPos.x * ratio.x - (graveIconSize / 2)}px`,
+            bottom: `${mapData.tombPos.y * ratio.y}px`,
+            width: `${graveIconSize}px`,
+            height: `${graveIconSize}px`
+        }
+
+    }, [sizeImage, graveIconSize, mvp.mvpMaps, mapsData]);
+
+
     return (
-        <Modal opened={opened} onClose={handleClose} centered withCloseButton={false} radius="md">
+        <Modal opened={opened} onClose={handleClose} centered withCloseButton={false} radius="md" size={mapsSelected.length > 1 ? "640px" : "auto"}>
+            <ScrollArea h={mapsSelected.length > 0 ? 510 : 150} type="auto" offsetScrollbars>
             <Text>
                 <span className="text-2xl">{mvp.Name}</span>
             </Text>
@@ -260,43 +298,54 @@ export const DeathFormModal = () => {
                     </Chip.Group>
                 </li>
 
-                <li className="flex flex-col gap-2">
-                    {mapsSelected.map((mvpMap) => (
-                        <Flex direction="column" key={mvpMap}>
-                            <h2 className="text-sm font-bold text-center py-2">{mvpMap}</h2>
-                            <Flex direction="column" gap={8}>
+                <li className={`grid grid-cols-${mapsSelected.length > 1 ? 2 : 1} gap-2`}>
+                    
+                        {mapsSelected.map((mvpMap) => (
+                            <Flex direction="column" key={mvpMap}>
+                                <h2 className="text-sm font-bold text-center py-2">{mvpMap}</h2>
 
-                                <Flex gap={4} align="center">
-                                    <TimeInputWithIcon mapsData={mapsData} mvpMap={mvpMap} updateMapData={updateMapData} />
+                                <Flex direction="column" gap={8} justify="center" align="center">
+                                    <Flex gap={4} direction="column" justify="center" align="center">
+                                        <Chip.Group multiple={false} defaultValue={j} onChange={handleChipClick}>
+                                            <Group gap={0}>
+                                                <Chip size="sm" value="today" onClick={() => handleChipClick("today")}>Today</Chip>
+                                                <Chip size="sm" value="-1" onClick={() => handleChipClick("-1")}>J -1</Chip>
+                                            </Group>
+                                        </Chip.Group>
 
-                                    <Chip.Group multiple={false} defaultValue={j} onChange={handleChipClick}>
-                                        <Group justify="flex-start" gap={4}>
-                                            <Chip size="sm" value="today" onClick={() => handleChipClick("today")}>Today</Chip>
-                                            <Chip size="sm" value="-1" onClick={() => handleChipClick("-1")}>J -1</Chip>
-                                        </Group>
-                                    </Chip.Group>
+                                        <TimeInputWithIcon mapsData={mapsData} mvpMap={mvpMap} updateMapData={updateMapData} />
+                                    </Flex>
+
+                                    <figure style={{position: "relative", borderRadius: '10px'}} onClick={(e) => {
+                                        const ratio = {
+                                            x: sizeImage / mvp.mvpMaps.find(m => m.name === mvpMap)?.size.width!,
+                                            y: sizeImage / mvp.mvpMaps.find(m => m.name === mvpMap)?.size.height!
+                                        }
+
+                                        const rect = e.currentTarget.getBoundingClientRect();
+                                        const x = e.clientX - rect.left;
+                                        const y = rect.height - (e.clientY - rect.top) - 8;
+
+                                        updateMapData(mvpMap, 'x', x / ratio.x);
+                                        updateMapData(mvpMap, 'y', y / ratio.y);
+                                    }}>
+                                        <img loading={"lazy"}
+                                            style={{"width": `${sizeImage}px`, "height": `${sizeImage}px`, "borderRadius": '10px'}}
+                                            src={`images/maps/${mvpMap}.webp`}
+                                            alt={mvpMap}
+                                        />
+
+                                        { mapsData.find(map => map.name === mvpMap)!.tombPos.x > 0 && mapsData.find(map => map.name === mvpMap)!.tombPos.y > 0 &&
+                                            <IconGrave color={"transparent"}
+                                                fill={"#ffd43b"}
+                                                style={getStyleTomb(mvpMap)}
+                                            />
+                                        }
+                                    </figure>
+
                                 </Flex>
-
-                                <Flex gap={12}>
-                                    <NumberInput
-                                        name={`x-${mvpMap}`}
-                                        onChange={(value) => updateMapData(mvpMap, 'x', value)}
-                                        min={0}
-                                        radius="xl"
-                                        placeholder="X"
-                                    />
-                                    <NumberInput
-                                        name={`y-${mvpMap}`}
-                                        onChange={(value) => updateMapData(mvpMap, 'y', value)}
-                                        min={0}
-                                        radius="xl"
-                                        placeholder="Y"
-                                    />
-                                </Flex>
-
                             </Flex>
-                        </Flex>
-                    ))}
+                        ))}
                 </li>
             </ul>
 
@@ -318,6 +367,7 @@ export const DeathFormModal = () => {
                     Close
                 </Button>
             </Flex>
+            </ScrollArea>
         </Modal>
     );
 };

@@ -79,6 +79,9 @@ Download the latest version for Windows [here](https://github.com/TekiDev42/ragn
    ```
    VITE_SUPABASE_URL=https://example.supabase.co
    VITE_SUPABASE_ANON_KEY=your_anon_key_here
+
+   publish on github
+   [Environment]::SetEnvironmentVariable("GH_TOKEN","<YOUR_TOKEN_HERE>","User")
    ```
 
 
