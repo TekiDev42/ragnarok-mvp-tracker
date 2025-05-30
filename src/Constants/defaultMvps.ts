@@ -94,8 +94,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -213,8 +213,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -342,8 +342,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -475,8 +475,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -604,8 +604,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -726,8 +726,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -740,8 +740,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -855,8 +855,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -1093,8 +1093,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -1226,8 +1226,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -1359,8 +1359,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -1478,8 +1478,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -1596,8 +1596,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -1923,8 +1923,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -2070,8 +2070,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -2396,8 +2396,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -2516,8 +2516,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -2724,8 +2724,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -3176,8 +3176,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -3297,8 +3297,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -3419,8 +3419,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -3541,8 +3541,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -3663,8 +3663,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -3785,8 +3785,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -3908,8 +3908,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -4553,8 +4553,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -4983,8 +4983,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -5237,8 +5237,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -5357,8 +5357,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -5476,8 +5476,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -5854,8 +5854,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -6314,8 +6314,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -6527,8 +6527,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -6689,8 +6689,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -6898,8 +6898,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -7019,8 +7019,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -7132,8 +7132,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -7250,8 +7250,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -7367,8 +7367,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -7480,8 +7480,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -7583,8 +7583,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -8104,8 +8104,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -8370,8 +8370,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 60,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9008,8 +9008,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9096,8 +9096,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9200,8 +9200,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9287,8 +9287,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9375,8 +9375,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9463,8 +9463,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9551,8 +9551,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9639,8 +9639,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9739,8 +9739,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9816,8 +9816,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -9970,8 +9970,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -10023,8 +10023,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -10076,8 +10076,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -10136,8 +10136,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -10196,8 +10196,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -10266,8 +10266,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -11551,8 +11551,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -11656,8 +11656,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -11761,8 +11761,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -11866,8 +11866,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -11974,8 +11974,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -12079,8 +12079,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -12176,8 +12176,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -12280,8 +12280,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -12545,8 +12545,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -12559,8 +12559,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -12666,8 +12666,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 300,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -12770,8 +12770,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -12960,8 +12960,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -13063,8 +13063,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -13159,8 +13159,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -13251,8 +13251,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -13349,8 +13349,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -13441,8 +13441,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -13533,8 +13533,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -13618,8 +13618,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 360,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -13892,8 +13892,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -13984,8 +13984,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -14062,8 +14062,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 0,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -14158,8 +14158,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -14243,8 +14243,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -14328,8 +14328,8 @@ export const defaultMvps: Mvp[] = [
         "deathTime": 0,
         "respawnTimer": 120,
         "size": {
-          "height": 0,
-          "width": 0
+          "height": 200,
+          "width": 200
         },
         "tombPos": {
           "x": 0,
@@ -14780,5 +14780,110 @@ export const defaultMvps: Mvp[] = [
     "image": "EP18_MD_DEMI_FREYJA.webp",
     "isBookmark": false,
     "mvpMaps": []
-  }
+  },
+  {
+    "Id": 20520,
+    "AegisName": "ILL_BAPHOMET",
+    "Name": "Chaos Baphomet",
+    "Level": 178,
+    "Hp": 21278744,
+    "BaseExp": 218089,
+    "JobExp": 167053,
+    "MvpExp": 109044,
+    "Attack": 3150,
+    "Attack2": 1984,
+    "Defense": 343,
+    "MagicDefense": 122,
+    "Str": 276,
+    "Agi": 188,
+    "Vit": 55,
+    "Int": 267,
+    "Dex": 244,
+    "Luk": 99,
+    "AttackRange": 2,
+    "SkillRange": 10,
+    "ChaseRange": 12,
+    "Size": "Large",
+    "Race": "Demon",
+    "Element": "Dark",
+    "ElementLevel": 3,
+    "WalkSpeed": 100,
+    "AttackDelay": 768,
+    "AttackMotion": 768,
+    "ClientAttackMotion": 600,
+    "DamageMotion": 576,
+    "DamageTaken": 10,
+    "Ai": 21,
+    "Class": "Boss",
+    "Modes": {
+      "Mvp": true
+    },
+    "MvpDrops": [
+      {
+        "Item": "Old Purple Box",
+        "Rate": 3000
+      },
+      {
+        "Item": "Old Card Album",
+        "Rate": 4000
+      },
+      {
+        "Item": "Mystical Card Album",
+        "Rate": 5000
+      }
+    ],
+    "Drops": [
+      {
+        "Item": "Cursed Baphomet Doll",
+        "Rate": 1000
+      },
+      {
+        "Item": " Crescent Scythe",
+        "Rate": 150
+      },
+      {
+        "Item": "Essence of Demon",
+        "Rate": 5000
+      },
+      {
+        "Item": "Tae Goo Lyeon [2]",
+        "Rate": 100
+      },
+      {
+        "Item": "Baphomet's Horn",
+        "Rate": 3500
+      },
+      {
+        "Item": "Bazerald",
+        "Rate": 200
+      },
+      {
+        "Item": "Apple",
+        "Rate": 1
+      },
+      {
+        "Item": "Chaos_Baphomet_Card",
+        "Rate": 1,
+        "StealProtected": true
+      }
+    ],
+    "image": "BAPHOMET.webp",
+    "isBookmark": false,
+    "mvpMaps": [
+      {
+        "name": "prt_maze03",
+        "displayName": "Twisted Labyrinth Forest",
+        "deathTime": 0,
+        "respawnTimer": 120,
+        "size": {
+          "height": 200,
+          "width": 200
+        },
+        "tombPos": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ]
+  },
 ]

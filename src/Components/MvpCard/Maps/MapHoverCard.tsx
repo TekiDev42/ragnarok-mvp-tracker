@@ -1,18 +1,15 @@
 import {Flex, HoverCard, rgba, Text} from "@mantine/core";
-import {IconGrave, IconMapPin2} from "@tabler/icons-react";
+import {IconMapPin2} from "@tabler/icons-react";
 import style from "@components/MvpCard/Maps/MapHoverCard.module.css";
 import {CSSProperties, PropsWithChildren} from "react";
 import {sizeImage} from "@constants/defaults.ts";
 import { DateTime } from "luxon";
+import { GraveIcon } from "@/Components/Icons/Icons";
 
 export const MapHoverCard = ({mvpmap, isInstance}: PropsWithChildren & {mvpmap: MvpMap, isInstance: boolean}) => {
     const ratio = {
         x: sizeImage / mvpmap.size.width,
         y: sizeImage / mvpmap.size.height
-    }
-
-    if (mvpmap.name === 'ra_fild03') {
-        console.log('maphovercard' , mvpmap.tombPos.x, mvpmap.tombPos.y)
     }
 
     const graveIconSize = 16
@@ -49,16 +46,13 @@ export const MapHoverCard = ({mvpmap, isInstance}: PropsWithChildren & {mvpmap: 
                             />
 
                             { mvpmap.tombPos.x > 0 && mvpmap.tombPos.y > 0 &&
-                                <IconGrave color={"transparent"}
-                                    fill={"#ffd43b"}
-                                    style={{
-                                        position: "absolute",
-                                        left: `${mvpmap.tombPos.x * ratio.x - (graveIconSize / 2)}px`,
-                                        bottom: `${mvpmap.tombPos.y * ratio.y}px`,
-                                        width: `${graveIconSize}px`,
-                                        height: `${graveIconSize}px`
-                                    }}
-                                />
+                                <GraveIcon style={{
+                                    position: "absolute",
+                                    left: `${mvpmap.tombPos.x * ratio.x - (graveIconSize / 2)}px`,
+                                    bottom: `${mvpmap.tombPos.y * ratio.y}px`,
+                                    width: `${graveIconSize}px`,
+                                    height: `${graveIconSize}px`
+                                }}/>
                             }
                         </figure>
 

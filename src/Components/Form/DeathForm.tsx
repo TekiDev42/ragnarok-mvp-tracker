@@ -14,7 +14,7 @@ import { MapChip } from "@/Components/MapChip/MapChip.tsx";
 import { supabase } from "@/supabase/supabase";
 import { notifications } from "@mantine/notifications";
 import { sizeImage } from "@/Constants/defaults";
-import { IconGrave } from "@tabler/icons-react";
+import { GraveIcon } from "../Icons/Icons";
 
 
 export const DeathFormModal = () => {
@@ -263,15 +263,14 @@ export const DeathFormModal = () => {
             x: sizeImage / mvpMap.size.width,
             y: sizeImage / mvpMap.size.height
         }
-        
-        console.log('deathform' , mapData.tombPos.x, mapData.tombPos.y)
 
         return {
             position: "absolute",
             left: `${mapData.tombPos.x * ratio.x - (graveIconSize / 2)}px`,
             bottom: `${mapData.tombPos.y * ratio.y}px`,
             width: `${graveIconSize}px`,
-            height: `${graveIconSize}px`
+            height: `${graveIconSize}px`,
+            // filter: 'drop-shadow(0.1px 1px white) drop-shadow(1px -1px white) drop-shadow(-1px 1px white) drop-shadow(-1px -1px white)'
         }
 
     }, [sizeImage, graveIconSize, mvp.mvpMaps, mapsData]);
@@ -316,7 +315,7 @@ export const DeathFormModal = () => {
                                         <TimeInputWithIcon mapsData={mapsData} mvpMap={mvpMap} updateMapData={updateMapData} />
                                     </Flex>
 
-                                    <figure style={{position: "relative", borderRadius: '10px'}} onClick={(e) => {
+                                    <figure style={{position: "relative", borderRadius: '10px', userSelect: 'none'}} onClick={(e) => {
                                         const ratio = {
                                             x: sizeImage / mvp.mvpMaps.find(m => m.name === mvpMap)?.size.width!,
                                             y: sizeImage / mvp.mvpMaps.find(m => m.name === mvpMap)?.size.height!
@@ -326,20 +325,18 @@ export const DeathFormModal = () => {
                                         const x = e.clientX - rect.left;
                                         const y = rect.height - (e.clientY - rect.top) - 8;
 
-                                        updateMapData(mvpMap, 'x', x / ratio.x);
-                                        updateMapData(mvpMap, 'y', y / ratio.y);
+                                        updateMapData(mvpMap, 'x', Math.round(x / ratio.x));
+                                        updateMapData(mvpMap, 'y', Math.round(y / ratio.y));
                                     }}>
                                         <img loading={"lazy"}
-                                            style={{"width": `${sizeImage}px`, "height": `${sizeImage}px`, "borderRadius": '10px'}}
+                                            style={{"width": `${sizeImage}px`, "height": `${sizeImage}px`, "borderRadius": '10px', userSelect: 'none'}}
                                             src={`images/maps/${mvpMap}.webp`}
                                             alt={mvpMap}
+                                            draggable="false"
                                         />
 
                                         { mapsData.find(map => map.name === mvpMap)!.tombPos.x > 0 && mapsData.find(map => map.name === mvpMap)!.tombPos.y > 0 &&
-                                            <IconGrave color={"transparent"}
-                                                fill={"#ffd43b"}
-                                                style={getStyleTomb(mvpMap)}
-                                            />
+                                            <GraveIcon style={getStyleTomb(mvpMap)}/>
                                         }
                                     </figure>
 
