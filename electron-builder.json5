@@ -31,13 +31,6 @@
     ],
     "artifactName": "${productName}-${version}-win32-x64.${ext}"
   },
-  "msi": {
-    "oneClick": false,
-    "perMachine": true,
-    "createDesktopShortcut": true,
-    "createStartMenuShortcut": true,
-    "shortcutName": "Ragnarok MVP Tracker"
-  },
   "nsis": {
     "oneClick": false,
     "perMachine": true,
@@ -47,5 +40,18 @@
     "createDesktopShortcut": true,
     "createStartMenuShortcut": true,
     "shortcutName": "Ragnarok MVP Tracker"
+  },
+  "linux": {
+    "icon": "public/images/mvp-timer-icon.png",
+    "target": [
+      {
+        "target": "AppImage",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "artifactName": "${productName}-${version}-linux-x64.${ext}",
+    "category": "Utility"
   },
 }
