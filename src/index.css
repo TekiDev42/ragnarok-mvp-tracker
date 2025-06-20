@@ -20,7 +20,7 @@ html body[data-scroll-locked] {
 
 .bookmark, .ro-cursor, button,
 .mantine-Switch-track , .mantine-Switch-label,
-.mantine-Slider-track, .mantine-Slider-bar, .mantine-Slider-thumb{
+.mantine-Slider-track, .mantine-Slider-bar, .mantine-Slider-thumb {
     cursor: var(--url-cursor-pointer), pointer !important;
 }
 

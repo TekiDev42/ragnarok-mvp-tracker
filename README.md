@@ -75,11 +75,7 @@ Download the latest version for Windows [here](https://github.com/TekiDev42/ragn
    npm run build / bun run build / pnpm run build
    ```
 5. **ENV**
-   Create a .env with your SUPABASE keys:
    ```
-   VITE_SUPABASE_URL=https://example.supabase.co
-   VITE_SUPABASE_ANON_KEY=your_anon_key_here
-
    publish on github
    [Environment]::SetEnvironmentVariable("GH_TOKEN","<YOUR_TOKEN_HERE>","User")
    ```

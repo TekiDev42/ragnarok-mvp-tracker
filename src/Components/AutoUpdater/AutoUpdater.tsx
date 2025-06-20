@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { Portal } from '@mantine/core';
+import { Portal, Popover } from '@mantine/core';
 import { UpdateInfo, ProgressInfo } from "electron-updater";
-import { Button, Progress } from "@mantine/core";
+import { Button, Progress, Text } from "@mantine/core";
 import { bytesToMB } from "@utils/bytesToMB";
+import parse from 'html-react-parser';
 
 
 export const AutoUpdater = () => {
@@ -32,6 +33,15 @@ export const AutoUpdater = () => {
 
     }, [])
 
+
+    let releaseNotes = ''
+
+    if (typeof updateInfo?.releaseNotes === 'string') {
+        releaseNotes = updateInfo?.releaseNotes
+    } else {
+        releaseNotes = updateInfo?.releaseNotes?.map((note) => note.note).join('\n') ?? ''
+    }
+
     return (
         updateAvailable && <Portal>
             <div className="fixed bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center min-w-80 gap-2 p-4 rounded-md bg-white z-50">
@@ -39,7 +49,16 @@ export const AutoUpdater = () => {
                     {!isDownloading && !updateDownloaded &&
                         <div className="flex flex-col items-center gap-2">
                             <h1 className="font-bold">Update available</h1>
-                            <p>New version : {updateInfo?.version}</p>
+                            <Text>New version : {updateInfo?.version}</Text>
+
+                            <Popover width={360} shadow="md" offset={0} position="top" withArrow>
+                                <Popover.Target>
+                                    <Text className="hover:text-blue-500 ro-cursor">Click here to see release notes</Text>
+                                </Popover.Target>
+                                <Popover.Dropdown>
+                                    {parse(releaseNotes)}
+                                </Popover.Dropdown>
+                            </Popover>
 
                             <Button variant="outline" size="sm" onClick={() => {
                                 setIsDownloading(true)

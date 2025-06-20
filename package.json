@@ -1,7 +1,7 @@
 {
   "name": "ragnarok-mvp-tracker",
   "private": true,
-  "version": "1.0.38",
+  "version": "1.0.39",
   "type": "module",
   "author": "MrKitey",
   "description": "Allows tracking of MVP respawns in Ragnarok Online, displays the tomb on the map (official).",
@@ -31,6 +31,7 @@
     "electron-store": "^10.1.0",
     "electron-updater": "^6.6.2",
     "embla-carousel-react": "^8.6.0",
+    "html-react-parser": "^5.2.5",
     "mantine-form-zod-resolver": "^1.3.0",
     "postcss": "^8.5.6",
     "postcss-preset-mantine": "^1.17.0",
