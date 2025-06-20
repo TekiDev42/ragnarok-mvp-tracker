@@ -46,7 +46,6 @@ export default defineConfig({
           react: ['react', 'react-dom'],
           luxon: ['luxon'],
           redux: ['react-redux', '@reduxjs/toolkit'],
-          supabase: ['@supabase/supabase-js'],
           tablerIcons: ['@tabler/icons-react'],
           mantineCore: ['@mantine/core'],
           mantineNotifications: ['@mantine/notifications'],

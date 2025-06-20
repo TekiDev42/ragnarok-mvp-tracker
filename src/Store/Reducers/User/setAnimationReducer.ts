@@ -7,27 +7,6 @@ import {PayloadAction} from "@reduxjs/toolkit";
  * 
  * @param state - The current UserState.
  * @param action - The action containing the new animation setting value.
- * 
- * @example
- * // Assuming we have a current state with animation enabled:
- * const currentState = {
- *   animation: true,
- *   // ... other user settings
- * }
- * 
- * // To disable animation:
- * const action = {
- *   type: 'user/setAnimation',
- *   payload: false
- * }
- * 
- * setAnimationReducer(currentState, action)
- * // This will update the state to:
- * // {
- * //   animation: false,
- * //   // ... other user settings remain unchanged
- * // }
- * // And also update this setting in the persistent storage using window.mvpApi.setSettings()
  */
 
 export const setAnimationReducer = (state: UserState, action: PayloadAction<boolean>) => {

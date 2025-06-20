@@ -3,7 +3,6 @@ import Slice from "@store/Slice/Mvp/Slice"
 import deathFormModalSlice from '@/Store/Slice/Modal/DeathFormModalSlice'
 import mvpInfosModalSlice from '@/Store/Slice/Modal/MvpInfosModalSlice'
 import userSlice from '@store/Slice/User/UserSlice'
-import partySlice from '@store/Slice/Party/PartySlice'
 
 /**
  * Configures and creates the Redux store for the application.
@@ -25,8 +24,7 @@ export const store = configureStore({
         Slice,
         deathFormModalSlice,
         mvpInfosModalSlice,
-        userSlice,
-        partySlice
+        userSlice
     },
 })
 

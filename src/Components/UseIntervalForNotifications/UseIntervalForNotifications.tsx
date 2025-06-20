@@ -7,7 +7,6 @@ import { notifications } from "@mantine/notifications";
 import { addNotification } from "@store/Slice/User/UserSlice.ts";
 import { useState } from "react";
 import { reSortMvp, setMvpFocus, setMvpMaps as setMvpMapsAction } from "@store/Slice/Mvp/Slice.ts";
-import { supabase } from '@/supabase/supabase'
 
 
 export const UseIntervalForNotifications = () => {
@@ -17,9 +16,6 @@ export const UseIntervalForNotifications = () => {
     const delayNotification = useAppSelector(state => state.userSlice.delayNotification)
     const soundNotification = useAppSelector(state => state.userSlice.soundNotification)
     const notificationVolume = useAppSelector(state => state.userSlice.notificationVolume)
-
-    const session = useAppSelector(state => state.userSlice.userSession)
-    const partyId = useAppSelector(state => state.partySlice.partyId)
 
     const mvps = useAppSelector(state => state.Slice.mvps)
 
@@ -78,60 +74,6 @@ export const UseIntervalForNotifications = () => {
                         const newMapsData = mvp.mvpMaps.map(mvpmap => mvpmap.name === map.name ? {...mvpmap, deathTime: 0} : mvpmap)
                         dispatch(setMvpMapsAction({ mvp, newMapsData }))
                         updated = true
-
-                        if (session && partyId){
-                            let { data, error: errorSelect } = await supabase
-                            .from('maps_party')
-                            .select("*")
-                            .eq('map_name', map.name)
-                            .eq('mvp_id', mvp.Id)
-                            .eq('party_id', partyId)
-
-                            if (errorSelect) {
-                                notifications.show({
-                                    title: 'Error fetching',
-                                    message: errorSelect.message,
-                                    autoClose: 5000,
-                                    color: 'red',
-                                    radius: "sm",
-                                    withBorder: false,
-                                    style: {
-                                        backgroundColor: '#FFF1F0',
-                                        color: '#CF1322',
-                                        border: '1px solid #FFF1F0',
-                                    }
-                                })
-
-                                return
-                            }
-
-                            if (!data || data.length === 0) {
-                                return
-                            }
-
-                            const { error: errorUpdate } = await supabase.from('maps_party')
-                                .delete()
-                                .eq('id', data[0].id)
-                                .eq('party_id', partyId)
-                                .eq('map_name', map.name)
-                                .eq('mvp_id', mvp.Id)
-
-                            if (errorUpdate) {
-                                notifications.show({
-                                    title: 'Error updating',
-                                    message: errorUpdate.message,
-                                    autoClose: 5000,
-                                    color: 'red',
-                                    radius: "md",
-                                    withBorder: false,
-                                    style: {
-                                        backgroundColor: '#FFF1F0',
-                                        color: '#CF1322',
-                                        border: '1px solid #FFF1F0',
-                                    }
-                                })
-                            }
-                        }
                     }
                 })
             })

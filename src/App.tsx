@@ -7,8 +7,6 @@ import { MvpList } from "@components/MvpList/MvpList"
 import { useEffect, useState, useRef } from "react"
 import { setSettings } from "@store/Slice/User/UserSlice"
 import { useAppDispatch } from "@store/Hooks"
-import { supabase } from "@/supabase/supabase"
-import { setUserSession } from "@store/Slice/User/UserSlice"
 import { Affix, ActionIcon } from "@mantine/core"
 import { IconArrowUp } from "@tabler/icons-react"
 
@@ -26,20 +24,8 @@ const App = () => {
         }
     }
 
-    const fetchUserSession = async () => {
-        const {data, error} = await supabase.auth.getSession()
-        if (error) {
-            console.error(error)
-        }
-
-        if (data) {
-            dispatch(setUserSession(data.session))
-        }
-    }
-
     useEffect(() => {
         fetchSettings()
-        fetchUserSession()
     }, [])
 
     useEffect(() => {

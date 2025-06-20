@@ -12,7 +12,6 @@ import { Provider } from "react-redux";
 import { store } from "@store/Store.ts";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
-import { UseSubscriptionsSupabase } from "@components/SubscriptionsSupabase/SubscriptionsSupabase"
 import { UseIntervalForNotifications } from "@components/UseIntervalForNotifications/UseIntervalForNotifications"
 import { AutoUpdater } from "@components/AutoUpdater/AutoUpdater"
 import { MvpFocus } from "@components/MvpFocus/MvpFocus"
@@ -25,7 +24,6 @@ root.render(
         <Provider store={store}>
             <MantineProvider>
                 <Notifications limit={6} />
-                <UseSubscriptionsSupabase />
                 <UseIntervalForNotifications />
                 <AutoUpdater />
                 <MvpFocus />

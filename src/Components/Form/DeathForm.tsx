@@ -11,8 +11,6 @@ import { setMvpMaps } from "@store/Slice/Mvp/Slice.ts";
 import { setOpened } from "@/Store/Slice/Modal/DeathFormModalSlice";
 import { TimeInputWithIcon } from "@/Components/Form/TimeInput/TimeInput.tsx";
 import { MapChip } from "@/Components/MapChip/MapChip.tsx";
-import { supabase } from "@/supabase/supabase";
-import { notifications } from "@mantine/notifications";
 import { sizeImage } from "@/Constants/defaults";
 import { GraveIcon } from "../Icons/Icons";
 
@@ -20,8 +18,6 @@ import { GraveIcon } from "../Icons/Icons";
 export const DeathFormModal = () => {
     const dispatch = useAppDispatch();
     const { opened, mvp } = useAppSelector(state => state.deathFormModalSlice);
-    const userSession = useAppSelector(state => state.userSlice.userSession);
-    const partyId = useAppSelector(state => state.partySlice.partyId);
     const respawnTimer = useAppSelector(state => state.userSlice.respawnTimer)
 
     const [mapsSelected, setMapsSelected] = useState<string[]>([]);
@@ -88,108 +84,6 @@ export const DeathFormModal = () => {
     const handleConfirm = useCallback(async () => {
         dispatch(setMvpMaps({ mvp, newMapsData: mapsData }));
         setMapsSelected(mvpMapsName.length === 1 ? [mvpMapsName[0]] : []);
-
-        if (userSession && partyId) {
-            mapsData.forEach(async (map) => {
-
-                if (map.deathTime === 0) {
-                    return;
-                }
-
-                if (!mvpMapsName.includes(map.name)) {
-                    return;
-                }
-
-                let { data: maps_party, error: errorSelect } = await supabase
-                    .from('maps_party')
-                    .select("*")
-                    .eq('map_name', map.name)
-                    .eq('mvp_id', mvp.Id)
-                    .eq('party_id', partyId)
-
-                if (errorSelect) {
-                    notifications.show({
-                        title: 'Error fetching',
-                        message: errorSelect.message,
-                        autoClose: 5000,
-                        color: 'red',
-                        radius: "md",
-                        withBorder: false,
-                        style: {
-                            backgroundColor: '#FFF1F0',
-                            color: '#CF1322',
-                            border: '1px solid #FFF1F0',
-                        }
-                    })
-                    return;
-                }
-
-                if (maps_party && maps_party.length > 0 && maps_party[0].death_time === map.deathTime) {
-                    return;
-                }
-
-                if (maps_party && maps_party.length > 0) {
-                    const { error: errorUpdate } = await supabase.from('maps_party')
-                    .update({
-                        tomb_pos_x: map.tombPos.x,
-                        tomb_pos_y: map.tombPos.y,
-                        death_time: map.deathTime,
-                        last_user_update: userSession.user.id,
-                    })
-                    .eq('id', maps_party[0].id)
-                    .eq('party_id', partyId)
-                    .eq('map_name', map.name)
-                    .eq('mvp_id', mvp.Id)
-                    .select()
-
-                    if (errorUpdate) {
-                        notifications.show({
-                            title: 'Error updating',
-                            message: errorUpdate.message,
-                            autoClose: 5000,
-                            color: 'red',
-                            radius: "md",
-                            withBorder: false,
-                            style: {
-                                backgroundColor: '#FFF1F0',
-                                color: '#CF1322',
-                                border: '1px solid #FFF1F0',
-                            }
-                        })
-                    }
-
-                    return;
-                }
-
-                const { error: errorInsert } = await supabase.from('maps_party')
-                .insert({
-                    party_id: partyId,
-                    last_user_update: userSession.user.id,
-                    map_name: map.name,
-                    mvp_id: mvp.Id,
-                    tomb_pos_x: map.tombPos.x,
-                    tomb_pos_y: map.tombPos.y,
-                    death_time: map.deathTime,
-                })
-                .select()
-    
-                if (errorInsert) {
-                    notifications.show({
-                        title: 'Error inserting',
-                        message: errorInsert.message,
-                        autoClose: 5000,
-                        color: 'red',
-                        radius: "md",
-                        withBorder: false,
-                        style: {
-                            backgroundColor: '#FFF1F0',
-                            color: '#CF1322',
-                            border: '1px solid #FFF1F0',
-                        }
-                    })
-                }
-            })
-        }
         
         dispatch(setOpened(false));
     }, [dispatch, mapsData, mvp, mvpMapsName]);
