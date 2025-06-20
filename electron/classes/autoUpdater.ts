@@ -1,6 +1,6 @@
 import { autoUpdater, AppUpdater, UpdateInfo, ProgressInfo } from "electron-updater"
 import { dialog, ipcMain, BrowserWindow } from "electron"
-import { app } from "electron"
+// import { app } from "electron"
 
 /**
  * Class responsible for handling automatic updates in the application.
@@ -22,9 +22,9 @@ export class appAutoUpdater {
     init(){
         this.autoUpdater.autoDownload = false
 
-        if (!app.isPackaged) {
+        /*if (!app.isPackaged) {
             this.autoUpdater.forceDevUpdateConfig = true
-        }
+        }*/
 
         this.setAutoUpdaterEvents()
     }
