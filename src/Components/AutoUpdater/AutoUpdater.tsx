@@ -15,22 +15,23 @@ export const AutoUpdater = () => {
 
 
     useEffect(() => {
-        window.autoUpdaterApi.checkForUpdates()
+        if (window?.autoUpdaterApi) {
+            window.autoUpdaterApi.checkForUpdates()
 
-        window.autoUpdaterApi.updateAvailable((info) => {
-            setUpdateAvailable(true)
-            setUpdateInfo(info)
-        })
+            window.autoUpdaterApi.updateAvailable((info) => {
+                setUpdateAvailable(true)
+                setUpdateInfo(info)
+            })
 
-        window.autoUpdaterApi.updateDownloaded(() => {
-            setUpdateDownloaded(true)
-            setIsDownloading(false)
-        })
+            window.autoUpdaterApi.updateDownloaded(() => {
+                setUpdateDownloaded(true)
+                setIsDownloading(false)
+            })
 
-        window.autoUpdaterApi.downloadProgress((progress) => {
-            setUpdateProgress(progress)
-        })
-
+            window.autoUpdaterApi.downloadProgress((progress) => {
+                    setUpdateProgress(progress)
+                })
+        }
     }, [])
 
 
